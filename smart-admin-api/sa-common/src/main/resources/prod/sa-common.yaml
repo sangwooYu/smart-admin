@@ -64,7 +64,7 @@ spring:
 # tomcat 配置，主要用于 配置 访问日志（便于将来排查错误）
 server:
   tomcat:
-    basedir: ${localPath:/home}/logs/smart_admin_v2/tomcat-logs
+    basedir: ${localPath:/Users}/sangwooyu/logs/smart_admin_v2/tomcat-logs
     accesslog:
       enabled: true
       pattern: '%t %{X-Forwarded-For}i %a "%r" %s %D (%D ms)'
