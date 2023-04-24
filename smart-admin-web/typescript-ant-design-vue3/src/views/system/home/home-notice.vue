@@ -1,15 +1,6 @@
-<!--
-  * 首页的 通知公告
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-12 22:34:00 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
-  *
--->
+
 <template>
-  <default-home-card extra="更多" icon="SoundTwoTone" title="通知公告" @extraClick="onMore">
+  <default-home-card extra="자세히 보기" icon="SoundTwoTone" title="공지 사항" @extraClick="onMore">
     <a-spin :spinning="loading">
     <div class="content-wrapper">
       <a-empty v-if="$lodash.isEmpty(data)" />
@@ -55,7 +46,7 @@ import DefaultHomeCard from '/@/views/system/home/components/default-home-card.v
   let data = ref([]);
 
   const loading = ref(false);
-  // 查询列表
+  // 문의 목록
   async function queryNoticeList() {
     try {
       loading.value = true;
@@ -72,14 +63,14 @@ import DefaultHomeCard from '/@/views/system/home/components/default-home-card.v
     queryNoticeList();
   });
 
-  // 查看更多
+  // 자세히 보기
   function onMore() {
     router.push({
       path: '/oa/notice/notice-employee-list',
     });
   }
 
-  // 进入详情
+  // 세부 정보 입력
   const router = useRouter();
   function toDetail(noticeId) {
     router.push({

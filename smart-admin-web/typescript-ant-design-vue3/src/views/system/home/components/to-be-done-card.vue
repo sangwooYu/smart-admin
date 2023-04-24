@@ -9,31 +9,31 @@
   *
 -->
 <template>
-  <default-home-card icon="StarTwoTone" title="已办待办">
-    <div style="height: 280px;">
-      <div class="center column">
-        <a-space direction="vertical" style="width: 100%">
-          <div v-for="(item, index) in toDoList" :key="index" :class="['to-do', { done: item.doneFlag }]">
-            <a-checkbox v-model:checked="item.doneFlag">
-              <span class="task">{{ item.title }}</span>
-            </a-checkbox>
-            <div class="star-icon" @click="itemStar(item)">
-              <StarFilled v-if="item.starFlag" style="color: #ff8c00" />
-              <StarOutlined v-else style="color: #c0c0c0" />
-            </div>
-          </div>
-          <div v-for="(item, index) in doneList" :key="index" :class="['to-do', { done: item.doneFlag }]">
-            <a-checkbox v-model:checked="item.doneFlag">
-              <span class="task">{{ item.title }}</span>
-            </a-checkbox>
-            <div class="star-icon" @click="itemStar(item)">
-              <StarFilled v-if="item.starFlag" style="color: #ff8c00" />
-              <StarOutlined v-else style="color: #c0c0c0" />
-            </div>
-          </div>
-        </a-space>
-      </div>
-    </div>
+  <default-home-card icon="StarTwoTone" title="보류 중">
+<!--    <div style="height: 280px;">-->
+<!--      <div class="center column">-->
+<!--        <a-space direction="vertical" style="width: 100%">-->
+<!--          <div v-for="(item, index) in toDoList" :key="index" :class="['to-do', { done: item.doneFlag }]">-->
+<!--            <a-checkbox v-model:checked="item.doneFlag">-->
+<!--              <span class="task">{{ item.title }}</span>-->
+<!--            </a-checkbox>-->
+<!--            <div class="star-icon" @click="itemStar(item)">-->
+<!--              <StarFilled v-if="item.starFlag" style="color: #ff8c00" />-->
+<!--              <StarOutlined v-else style="color: #c0c0c0" />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div v-for="(item, index) in doneList" :key="index" :class="['to-do', { done: item.doneFlag }]">-->
+<!--            <a-checkbox v-model:checked="item.doneFlag">-->
+<!--              <span class="task">{{ item.title }}</span>-->
+<!--            </a-checkbox>-->
+<!--            <div class="star-icon" @click="itemStar(item)">-->
+<!--              <StarFilled v-if="item.starFlag" style="color: #ff8c00" />-->
+<!--              <StarOutlined v-else style="color: #c0c0c0" />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </a-space>-->
+<!--      </div>-->
+<!--    </div>-->
   </default-home-card>
 </template>
 <script setup lang="ts">

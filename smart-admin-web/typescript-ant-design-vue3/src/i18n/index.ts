@@ -31,10 +31,10 @@ export const messages = {
 };
 
 const i18n = createI18n({
-  fallbackLocale: 'zh_CN', //预设语言环境
+  fallbackLocale: 'en_US', //사전 설정된 언어 환경
   globalInjection: true,
   legacy: false, //
-  locale: getInitializedLanguage(), //默认初始化的语言
+  locale: getInitializedLanguage(), //기본 초기화 언어
   messages,
 });
 

@@ -9,24 +9,24 @@
   *
 -->
 <template>
-  <default-home-card icon="SmileTwoTone" title="添加微信，关注【小镇程序员】、【1024创新实验室】">
-    <div class="app-qr-box">
-      <div class="app-qr">
-        <img :src="zhuoda" />
-        <span class="qr-desc strong"> 卓大的微信号！ </span>
-        <span class="qr-desc"> 骚扰卓大 :) </span>
-      </div>
-      <div class="app-qr">
-        <img :src="xiaozhen" />
-        <span class="qr-desc strong"> 小镇程序员 </span>
-        <span class="qr-desc"> 代码与生活，还有钱途 </span>
-      </div>
-      <div class="app-qr">
-        <img :src="lab1024" />
-        <span class="qr-desc strong"> 1024创新实验室 </span>
-        <span class="qr-desc"> 官方账号 </span>
-      </div>
-    </div>
+  <default-home-card icon="SmileTwoTone" title="테스트">
+<!--    <div class="app-qr-box">-->
+<!--      <div class="app-qr">-->
+<!--        <img :src="zhuoda" />-->
+<!--        <span class="qr-desc strong"> 卓大的微信号！ </span>-->
+<!--        <span class="qr-desc"> 骚扰卓大 :) </span>-->
+<!--      </div>-->
+<!--      <div class="app-qr">-->
+<!--        <img :src="xiaozhen" />-->
+<!--        <span class="qr-desc strong"> 小镇程序员 </span>-->
+<!--        <span class="qr-desc"> 代码与生活，还有钱途 </span>-->
+<!--      </div>-->
+<!--      <div class="app-qr">-->
+<!--        <img :src="lab1024" />-->
+<!--        <span class="qr-desc strong"> 1024创新实验室 </span>-->
+<!--        <span class="qr-desc"> 官方账号 </span>-->
+<!--      </div>-->
+<!--    </div>-->
   </default-home-card>
 </template>
 <script setup lang="ts">

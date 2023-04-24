@@ -1,5 +1,6 @@
 package net.lab1024.sa.admin;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -28,6 +29,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class SmartAdminApplication {
 
     public static void main(String[] args) {
+        String test = DigestUtils.md5Hex(String.format("smart_%s_admin_$^&*", "bird0829"));
         SpringApplication.run(SmartAdminApplication.class, args);
     }
 }

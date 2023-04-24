@@ -19,7 +19,7 @@ export const homeRouters:Array<RouteRecordRaw> = [
     redirect: { name: HOME_PAGE_NAME },
     component: SmartLayout,
     meta: {
-      title: '首页',
+      title: '홈',
       menuType: MENU_TYPE_ENUM.CATALOG.value,
       icon: 'HomeOutlined',
     },
@@ -28,10 +28,10 @@ export const homeRouters:Array<RouteRecordRaw> = [
         path: '/home',
         name: HOME_PAGE_NAME,
         meta: {
-          title: '首页',
+          title: '홈',
           menuType: MENU_TYPE_ENUM.MENU.value,
           icon: 'HomeOutlined',
-          parentMenuList: [{ name: '_home', title: '首页' }],
+          parentMenuList: [{ name: '_home', title: '홈' }],
         },
         component: () => import('/@/views/system/home/index.vue'),
       },

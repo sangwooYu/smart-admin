@@ -28,7 +28,7 @@ if (appConfigStr) {
 }
 
 /**
- * 获取初始化的语言
+ * 초기화된 언어 가져오기
  */
 export const getInitializedLanguage = function () {
   return language;

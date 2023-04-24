@@ -13,5 +13,5 @@ import dayjs from 'dayjs/locale/zh-cn';
 export default {
   antdLocale: antd,
   dayjsLocale: dayjs,
-  'setting.title': '网站设置',
+  'setting.title': '웹사이트 설정',
 };
