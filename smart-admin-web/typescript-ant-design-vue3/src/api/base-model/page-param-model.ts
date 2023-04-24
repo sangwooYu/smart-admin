@@ -14,20 +14,20 @@ import { SortItemModel } from './sort-item-model';
  */
 export interface PageParamModel {
   /**
-   * 页码(不能为空)
+   * 페이지 번호(비워둘 수 없음)
    * @type {number}
    * @memberof ClueUserQueryForm
    */
   pageNum: number;
   /**
-   * 每页数量(不能为空)
+   * 페이지당 개수(비워둘 수 없음)
    * @type {number}
    * @memberof ClueUserQueryForm
    */
   pageSize: number;
 
   /**
-   * 排序字段集合
+   * 정렬된 필드 집합
    * @type {Array<SortItemDto>}
    * @memberof ClueUserQueryForm
    */

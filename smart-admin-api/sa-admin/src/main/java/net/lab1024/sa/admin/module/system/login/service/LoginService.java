@@ -71,12 +71,12 @@ public class LoginService {
     private LoginLogService loginLogService;
 
     /**
-     * 登录信息二级缓存
+     * 로그인 정보의 보조 캐시
      */
     private ConcurrentMap<Long, LoginEmployeeDetail> loginUserDetailCache = new ConcurrentLinkedHashMap.Builder<Long, LoginEmployeeDetail>().maximumWeightedCapacity(1000).build();
 
     /**
-     * 获取验证码
+     * 인증 코드 받기
      *
      * @return
      */
@@ -85,66 +85,66 @@ public class LoginService {
     }
 
     /**
-     * 员工登陆
+     * 직원 로그인
      *
      * @param loginForm
-     * @return 返回用户登录信息
+     * @return 사용자 로그인 정보 반환
      */
     public ResponseDTO<LoginEmployeeDetail> login(LoginForm loginForm, String ip, String userAgent) {
         LoginDeviceEnum loginDeviceEnum = SmartEnumUtil.getEnumByValue(loginForm.getLoginDevice(), LoginDeviceEnum.class);
         if (loginDeviceEnum == null) {
-            return ResponseDTO.userErrorParam("登录设备暂不支持！");
+            return ResponseDTO.userErrorParam("현재 로그인 장치는 지원되지 않습니다!");
         }
-        // 校验 图形验证码
+        // 캘리브레이션 그래픽 확인 코드
         ResponseDTO<String> checkCaptcha = captchaService.checkCaptcha(loginForm);
         if (!checkCaptcha.getOk()) {
             return ResponseDTO.error(checkCaptcha);
         }
 
         /**
-         * 验证账号和账号状态
+         * 계정 번호 및 계정 상태 확인
          */
         EmployeeEntity employeeEntity = employeeService.getByLoginName(loginForm.getLoginName());
         if (null == employeeEntity) {
-            return ResponseDTO.userErrorParam("登录名不存在！");
+            return ResponseDTO.userErrorParam("로그인 이름이 존재하지 않습니다!");
         }
 
         if (employeeEntity.getDisabledFlag()) {
-            saveLoginLog(employeeEntity, ip, userAgent, "账号已禁用", LoginLogResultEnum.LOGIN_FAIL);
-            return ResponseDTO.userErrorParam("您的账号已被禁用,请联系工作人员！");
+            saveLoginLog(employeeEntity, ip, userAgent, "계정이 비활성화됨", LoginLogResultEnum.LOGIN_FAIL);
+            return ResponseDTO.userErrorParam("계정이 비활성화되었으니 담당자에게 문의하세요!");
         }
         /**
-         * 验证密码：
-         * 1、万能密码
-         * 2、真实密码
+         * 비밀번호를 인증합니다:
+         * 1、범용 비밀번호
+         * 2、실제 코드
          */
         String superPassword = EmployeeService.getEncryptPwd(configService.getConfigValue(ConfigKeyEnum.SUPER_PASSWORD));
         String requestPassword = EmployeeService.getEncryptPwd(loginForm.getPassword());
         if (!(superPassword.equals(requestPassword) || employeeEntity.getLoginPwd().equals(requestPassword))) {
-            saveLoginLog(employeeEntity, ip, userAgent, "密码错误", LoginLogResultEnum.LOGIN_FAIL);
-            return ResponseDTO.userErrorParam("登录名或密码错误！");
+            saveLoginLog(employeeEntity, ip, userAgent, "비밀번호 오류", LoginLogResultEnum.LOGIN_FAIL);
+            return ResponseDTO.userErrorParam("로그인 이름 또는 비밀번호가 잘못되었습니다!");
         }
 
-        // 生成 登录token，保存token
+        // 로그인 토큰 생성, 토큰 저장
         Boolean superPasswordFlag = superPassword.equals(requestPassword);
         String token = tokenService.generateToken(employeeEntity.getEmployeeId(), employeeEntity.getActualName(), UserTypeEnum.ADMIN_EMPLOYEE, loginDeviceEnum, superPasswordFlag);
 
-        //获取员工登录信息
+        // 직원 로그인 정보 가져오기
         LoginEmployeeDetail loginEmployeeDetail = loadLoginInfo(employeeEntity);
         loginEmployeeDetail.setToken(token);
 
-        // 放入缓存
+        // 캐시에 저장
         loginUserDetailCache.put(employeeEntity.getEmployeeId(), loginEmployeeDetail);
 
-        //保存登录记录
-        saveLoginLog(employeeEntity, ip, userAgent, superPasswordFlag ? "万能密码登录" : loginDeviceEnum.getDesc(), LoginLogResultEnum.LOGIN_SUCCESS);
+        // 로그인 기록 저장
+        saveLoginLog(employeeEntity, ip, userAgent, superPasswordFlag ? "범용 비밀번호 로그인" : loginDeviceEnum.getDesc(), LoginLogResultEnum.LOGIN_SUCCESS);
 
         return ResponseDTO.ok(loginEmployeeDetail);
     }
 
 
     /**
-     * 获取登录的用户信息
+     * 로그인한 사용자에 대한 정보 가져오기
      *
      * @return
      */
@@ -152,22 +152,22 @@ public class LoginService {
         LoginEmployeeDetail loginEmployeeDetail = SmartBeanUtil.copy(employeeEntity, LoginEmployeeDetail.class);
         loginEmployeeDetail.setUserType(UserTypeEnum.ADMIN_EMPLOYEE);
 
-        //部门信息
+        //섹터 정보
         DepartmentVO department = departmentService.getDepartmentById(employeeEntity.getDepartmentId());
         loginEmployeeDetail.setDepartmentName(null == department ? StringConst.EMPTY : department.getName());
 
         /**
-         * 获取前端菜单和后端权限
-         * 1、从数据库获取所有的权限
-         * 2、拼凑成菜单和后端权限
+         * 프런트엔드 메뉴 및 백엔드 권한 얻기
+         * 1、데이터베이스에서 모든 권한 가져오기
+         * 2、메뉴 및 백엔드 권한 조합하기
          */
         List<MenuVO> menuAndPointsList = employeePermissionService.getEmployeeMenuAndPointsList(employeeEntity.getEmployeeId(), employeeEntity.getAdministratorFlag());
-        //前端菜单
+        //프런트 엔드 메뉴
         loginEmployeeDetail.setMenuList(menuAndPointsList);
-        //后端权限
+        //백엔드 권한
         loginEmployeeDetail.setAuthorities(employeePermissionService.buildAuthorities(menuAndPointsList));
 
-        //上次登录信息
+        //마지막 로그인 정보
         LoginLogVO loginLogVO = loginLogService.queryLastByUserId(employeeEntity.getEmployeeId(), UserTypeEnum.ADMIN_EMPLOYEE);
         if (loginLogVO != null) {
             loginEmployeeDetail.setLastLoginIp(loginLogVO.getLoginIp());
@@ -179,7 +179,7 @@ public class LoginService {
     }
 
     /**
-     * 保存登录日志
+     * 로그인 로그 보관
      *
      * @param employeeEntity
      * @param ip
@@ -201,7 +201,7 @@ public class LoginService {
 
 
     /**
-     * 移除用户信息缓存
+     * 사용자 정보 캐시 제거
      *
      * @param requestUserId
      */
@@ -210,7 +210,7 @@ public class LoginService {
     }
 
     /**
-     * 根据登陆token 获取员请求工信息
+     * 로그인 토큰에서 요청자의 정보를 가져옵니다.
      *
      * @param
      * @return
@@ -220,10 +220,10 @@ public class LoginService {
         if (requestUserId == null) {
             return null;
         }
-        // 查询用户信息
+        // 사용자 정보 검색
         LoginEmployeeDetail loginEmployeeDetail = loginUserDetailCache.get(requestUserId);
         if (loginEmployeeDetail == null) {
-            // 员工基本信息
+            // 기본 직원 정보
             EmployeeEntity employeeEntity = employeeService.getById(requestUserId);
             if (employeeEntity == null) {
                 return null;
@@ -234,7 +234,7 @@ public class LoginService {
             loginUserDetailCache.put(requestUserId, loginEmployeeDetail);
         }
 
-        //更新请求ip和user agent
+        //요청 IP 및 사용자 에이전트 업데이트
         loginEmployeeDetail.setUserAgent(ServletUtil.getHeaderIgnoreCase(request, RequestHeaderConst.USER_AGENT));
         loginEmployeeDetail.setIp(ServletUtil.getClientIP(request));
 
@@ -243,20 +243,20 @@ public class LoginService {
 
 
     /**
-     * 退出登陆，清除token缓存
+     * 로그아웃하고 토큰 캐시 지우기
      *
      * @return
      */
     public ResponseDTO<String> logout(String token, RequestUser requestUser) {
         loginUserDetailCache.remove(requestUser.getUserId());
         tokenService.removeToken(token);
-        //保存登出日志
+        //로그아웃 로그 저장
         saveLogoutLog(requestUser, requestUser.getIp(), requestUser.getUserAgent());
         return ResponseDTO.ok();
     }
 
     /**
-     * 保存登出日志
+     * 로그아웃 로그 저장
      */
     private void saveLogoutLog(RequestUser requestUser, String ip, String userAgent) {
         LoginLogEntity loginEntity = LoginLogEntity.builder()

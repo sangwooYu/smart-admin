@@ -21,7 +21,7 @@ import java.util.function.BiFunction;
 @Configuration
 public class SecurityConfig extends AbstractSecurityConfig {
     /**
-     * 获取TOKEN 解析类
+     * GET TOKEN Parsing class
      */
     @Autowired
     private LoginService loginService;

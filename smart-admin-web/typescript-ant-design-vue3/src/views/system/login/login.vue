@@ -12,78 +12,49 @@
   <div class="login-container">
     <div class="box-item desc">
       <div class="welcome">
-        <p>欢迎登录 SmartAdmin V2</p>
+        <p>클래시몬 admin</p>
         <p class="desc">
-          SmartAdmin 是由
-          <a target="_blank" href="https://www.1024lab.net" style="color: white; weight: bolder; font-size: 15px; text-decoration: underline"
-            >1024创新实验室（1024Lab）</a
-          >
-          使用SpringBoot2.x 和 Vue3.2 Setup标签、 Composition Api (同时支持JavaScript和TypeScript双版本) ，开发出的一套简洁、易用的中后台解决方案！
-          <br />
-          <br />
-          <span class="setence">
-            致伟大的开发者 ：
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;我们希望用一套漂亮优雅的代码和一套整洁高效的代码规范，让大家在这浮躁的世界里感受到一股把代码写好的清流 !
-            <br />
-            保持谦逊，保持学习，热爱代码，更热爱生活 !<br />
-            永远年轻，永远前行 !<br />
-            <span class="author">
-              <a target="_blank" href="https://zhuoda.vip" style="color: white;  font-size: 13px; text-decoration: underline">
-                1024创新实验室-主任：卓大 ( 2022年 · 洛阳 ）
-              </a>
-            </span>
-          </span>
+          spring 2 + view3 기반
         </p>
-      </div>
-      <div class="app-qr-box">
-        <div class="app-qr">
-          <img :src="zhuoda" />
-          <span class="qr-desc"> 加微信，骚扰卓大 :) </span>
-        </div>
-        <div class="app-qr">
-          <img :src="xiaozhen" />
-          <span class="qr-desc"> 关注：小镇程序员 </span>
-        </div>
       </div>
     </div>
     <div class="box-item login">
       <img class="login-qr" :src="loginQR" />
-      <div class="login-title">账号登录</div>
+      <div class="login-title">로그인</div>
       <a-form ref="formRef" class="login-form" :model="loginForm" :rules="rules">
         <a-form-item name="loginName">
-          <a-input v-model:value.trim="loginForm.loginName" placeholder="请输入用户名" />
+          <a-input v-model:value.trim="loginForm.loginName" placeholder="사용자 이름을 입력하세요." />
         </a-form-item>
         <a-form-item name="password">
           <a-input-password
             v-model:value="loginForm.password"
             autocomplete="on"
             :type="showPassword ? 'text' : 'password'"
-            placeholder="请输入密码"
+            placeholder="비밀번호를 입력하세요."
           />
         </a-form-item>
         <a-form-item name="captchaCode">
-          <a-input class="captcha-input" v-model:value.trim="loginForm.captchaCode" placeholder="请输入验证码" />
+          <a-input class="captcha-input" v-model:value.trim="loginForm.captchaCode" placeholder="오른쪽 숫자를 입력하세요" />
           <img class="captcha-img" :src="captchaBase64Image" @click="getCaptcha" />
         </a-form-item>
         <a-form-item>
-          <a-checkbox v-model:checked="rememberPwd">记住密码</a-checkbox>
+          <a-checkbox v-model:checked="rememberPwd">비밀번호 기억하기</a-checkbox>
         </a-form-item>
         <a-form-item>
-          <div class="btn" @click="onLogin">登录</div>
+          <div class="btn" @click="onLogin">로그인</div>
         </a-form-item>
       </a-form>
       <div class="more">
         <div class="title-box">
           <p class="line"></p>
-          <p class="title">其他方式登录</p>
+          <p class="title">SNS 로그인</p>
           <p class="line"></p>
         </div>
         <div class="login-type">
-          <img :src="aliLogin" />
-          <img :src="qqLogin" />
+<!--          <img :src="aliLogin" />-->
+<!--          <img :src="qqLogin" />-->
           <img :src="googleLogin" />
-          <img :src="weiboLogin" />
+<!--          <img :src="weiboLogin" />-->
         </div>
       </div>
     </div>
@@ -122,9 +93,9 @@
     loginDevice: LOGIN_DEVICE_ENUM.PC.value,
   });
   const rules = {
-    loginName: [{ required: true, message: '用户名不能为空' }],
-    password: [{ required: true, message: '密码不能为空' }],
-    captchaCode: [{ required: true, message: '验证码不能为空' }],
+    loginName: [{ required: true, message: '사용자 이름은 비워 둘 수 없습니다.' }],
+    password: [{ required: true, message: '비밀번호는 비워 둘 수 없습니다.' }],
+    captchaCode: [{ required: true, message: '캡차는 비워둘 수 없습니다.' }],
   };
 
   const showPassword = ref(false);
@@ -152,10 +123,10 @@
         const res = await loginApi.login(loginForm);
         stopRefrestCaptchaInterval();
         saveTokenToCookie(res.data.token ? res.data.token : '');
-        message.success('登录成功');
-        //更新用户信息到pinia
+        message.success('로그인 성공');
+        // 핀니아에 사용자 정보 업데이트
         useUserStore().setUserLoginInfo(res.data);
-        //构建系统的路由
+        //시스템의 라우팅 구축
         buildRoutes();
         router.push('/home');
       } catch (e) {
@@ -170,7 +141,7 @@
     });
   }
 
-  //--------------------- 验证码 ---------------------------------
+  //---------------------인증 코드 ---------------------------------
 
   const captchaBase64Image = ref('');
   async function getCaptcha() {

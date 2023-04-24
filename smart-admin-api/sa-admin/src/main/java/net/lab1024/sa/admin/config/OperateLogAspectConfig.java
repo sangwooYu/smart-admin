@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 public class OperateLogAspectConfig extends OperateLogAspect{
 
     /**
-     * 配置信息
+     * Configuration Information
      * @return
      */
     @Override

@@ -12,7 +12,7 @@ import org.springframework.security.config.annotation.method.configuration.Globa
 import org.springframework.security.core.Authentication;
 
 /**
- * 1、以类名加方法名为权限字符串的校验模式 <br>
+ * 1、클래스 이름과 메서드 이름을 권한 문자열로 사용하는 체크섬 모드 <br>
  * 2、重写MethodSecurityMetadataSource将优化security配置，只需在方法上加上@saAuth注解，方法上就会存在权限（权限字符串为类名加方法名），而无需另外手动设置，减轻后端开发成本<br>
  * 3、security将不再依据权限字符串进行权限控制，<br>
  * 4、security将依据对应权限字符串下的接口权限进行控制 <br>

@@ -12,37 +12,37 @@
  */
 export interface PageResultModel<T> {
   /**
-   * 是否为空
+   * 비어 있음
    * @type {boolean}
    * @memberof PageResultModel
    */
   emptyFlag?: boolean;
   /**
-   * 结果集
+   * 결과 집합
    * @type {Array<T>}
    * @memberof PageResultModel
    */
   list: Array<T>;
   /**
-   * 当前页
+   * 현재 페이지
    * @type {number}
    * @memberof PageResultModel
    */
   pageNum?: number;
   /**
-   * 每页的数量
+   * 페이지당 페이지 수
    * @type {number}
    * @memberof PageResultModel
    */
   pageSize?: number;
   /**
-   * 总页数
+   * 총 페이지 수
    * @type {number}
    * @memberof PageResultModel
    */
   pages?: number;
   /**
-   * 总记录数
+   * 총 레코드 수
    * @type {number}
    * @memberof PageResultModel
    */

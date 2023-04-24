@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Configuration;
 public class JweAspectConfig {
 
     /**
-     * 配置信息
+     * Configuration Information
      */
     @Bean
     public JweAspect jweConfig() {
