@@ -1,24 +1,24 @@
 <template>
-  <a-modal v-model:visible="visible" title="新建快捷入口" @close="onClose">
+  <a-modal v-model:visible="visible" title="새로운 바로 가기 포털" @close="onClose">
     <a-form ref="formRef" :model="form" :rules="rules">
-      <a-form-item label="图标" name="icon">
+      <a-form-item label="아이콘" name="icon">
         <IconSelect @updateIcon="selectIcon">
           <template #iconSelect>
-            <a-input v-model:value="form.icon" placeholder="请输入菜单图标" style="width: 200px"/>
+            <a-input v-model:value="form.icon" placeholder="메뉴 아이콘을 입력하세요." style="width: 200px"/>
             <component :is="$antIcons[form.icon]" class="smart-margin-left15" style="font-size: 20px"/>
           </template>
         </IconSelect>
       </a-form-item>
-      <a-form-item label="标题" name="title">
-        <a-input v-model:value="form.title" placeholder="请输入标题"/>
+      <a-form-item label="제목" name="title">
+        <a-input v-model:value="form.title" placeholder="제목을 입력하세요."/>
       </a-form-item>
-      <a-form-item label="路径" name="path">
-        <a-input v-model:value="form.path" placeholder="请输入路径"/>
+      <a-form-item label="경로" name="path">
+        <a-input v-model:value="form.path" placeholder="경로를 입력하세요."/>
       </a-form-item>
     </a-form>
     <template #footer>
-      <a-button @click="onClose">取消</a-button>
-      <a-button type="primary" @click="onSubmit">提交</a-button>
+      <a-button @click="onClose">취소</a-button>
+      <a-button type="primary" @click="onSubmit">제출하기</a-button>
     </template>
   </a-modal>
 </template>
@@ -44,9 +44,9 @@ const formDefault = {
 };
 let form = reactive({...formDefault});
 const rules = {
-  icon: [{required: true, message: "请选择图标"}],
-  title: [{required: true, message: "标题不能为空"}],
-  path: [{required: true, message: "路径不能为空"}],
+  icon: [{required: true, message: "아이콘을 선택하세요."}],
+  title: [{required: true, message: "제목은 비워 둘 수 없습니다."}],
+  path: [{required: true, message: "경로는 비어 있을 수 없습니다."}],
 };
 
 const visible = ref(false);
@@ -73,7 +73,7 @@ function onSubmit() {
       })
       .catch((error) => {
         console.log("error", error);
-        message.error("参数验证错误，请仔细填写表单数据!");
+        message.error("파라미터 유효성 검사 오류가 발생했습니다. 양식 데이터를 신중하게 입력하세요!");
       });
 }
 

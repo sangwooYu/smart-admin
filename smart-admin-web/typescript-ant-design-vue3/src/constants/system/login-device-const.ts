@@ -13,15 +13,15 @@ import { SmartEnum } from '/@/types/smart-enum';
 export const LOGIN_DEVICE_ENUM: SmartEnum<number> = {
   PC: {
     value: 1,
-    desc: '电脑端',
+    desc: '컴퓨터 측',
   },
   ANDROID: {
     value: 2,
-    desc: '安卓',
+    desc: 'Android',
   },
   APPLE: {
     value: 3,
-    desc: '苹果',
+    desc: 'Apple',
   },
   H5: {
     value: 3,

@@ -11,22 +11,22 @@
 
 <template>
   <span>
-    <a-tooltip title="全屏" v-if="!fullScreenFlag">
+    <a-tooltip title="전체 화면" v-if="!fullScreenFlag">
       <a-button type="text" @click="fullScreen" size="small">
         <template #icon><fullscreen-outlined /></template>
       </a-button>
     </a-tooltip>
-    <a-tooltip title="取消全屏" v-if="fullScreenFlag">
+    <a-tooltip title="전체 화면 취소" v-if="fullScreenFlag">
       <a-button type="text" @click="fullScreen" size="small">
         <template #icon><fullscreen-exit-outlined /></template>
       </a-button>
     </a-tooltip>
-    <a-tooltip title="刷新">
+    <a-tooltip title="새로 고침">
       <a-button type="text" @click="props.refresh" size="small">
         <template #icon><redo-outlined /></template>
       </a-button>
     </a-tooltip>
-    <a-tooltip title="列设置">
+    <a-tooltip title="열 설정">
       <a-button type="text" @click="showModal" size="small">
         <template #icon><setting-outlined /></template>
       </a-button>
@@ -116,7 +116,7 @@
     } else if (element.msRequestFullscreen) {
       element.msRequestFullscreen();
     } else {
-      message.error('当前浏览器不支持部分全屏！');
+      message.error('현재 브라우저는 부분 전체 화면을 지원하지 않습니다!');
     }
   }
   //判断各种浏览器 -退出全屏
@@ -139,7 +139,7 @@
     smartTableColumnModal.value.show(originalColumn, props.tableId);
   }
 
-  // 将弹窗修改的列数据，赋值给原表格 列数组
+  // 팝업 창에서 수정한 열 데이터를 원래 테이블 열 배열에 할당합니다.
   function updateColumn(changeColumnArray) {
     //合并列
     const newColumns = mergeColumn(_.cloneDeep(originalColumn), changeColumnArray);

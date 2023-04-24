@@ -11,32 +11,32 @@
   <!---------- 查询表单form begin ----------->
   <a-form class="smart-query-form">
     <a-row class="smart-query-form-row" v-privilege="'goods:query'">
-      <a-form-item label="商品分类" class="smart-query-form-item">
+      <a-form-item label="제품 카테고리" class="smart-query-form-item">
         <category-tree
           width="150px"
           v-model:value="queryForm.categoryId"
-          placeholder="请选择商品分类"
+          placeholder="제품 카테고리를 선택하세요."
           :categoryType="CATEGORY_TYPE_ENUM.GOODS.value"
         />
       </a-form-item>
 
-      <a-form-item label="商品名称" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.searchWord" placeholder="商品名称" />
+      <a-form-item label="제품 이름" class="smart-query-form-item">
+        <a-input style="width: 200px" v-model:value="queryForm.searchWord" placeholder="제품 이름" />
       </a-form-item>
 
-      <a-form-item label="产地" name="place" class="smart-query-form-item">
+      <a-form-item label="원산지" name="place" class="smart-query-form-item">
         <DictSelect key-code="GODOS_PLACE" v-model:value="queryForm.place" width="120px" />
       </a-form-item>
 
-      <a-form-item label="商品状态" name="goodsStatus" class="smart-query-form-item">
+      <a-form-item label="제품 상태" name="goodsStatus" class="smart-query-form-item">
         <SmartEnumSelect enum-name="GOODS_STATUS_ENUM" v-model:value="queryForm.goodsStatus" width="160px" />
       </a-form-item>
 
-      <a-form-item label="快速筛选" class="smart-query-form-item">
+      <a-form-item label="빠른 심사" class="smart-query-form-item">
         <a-radio-group v-model:value="queryForm.shelvesFlag" @change="queryData">
-          <a-radio-button :value="undefined">全部</a-radio-button>
-          <a-radio-button :value="true">上架</a-radio-button>
-          <a-radio-button :value="false">下架</a-radio-button>
+          <a-radio-button :value="undefined">모두</a-radio-button>
+          <a-radio-button :value="true">선반으로 이동</a-radio-button>
+          <a-radio-button :value="false">내려놓기</a-radio-button>
         </a-radio-group>
       </a-form-item>
 
@@ -45,13 +45,13 @@
           <template #icon>
             <ReloadOutlined />
           </template>
-          查询
+          문의
         </a-button>
         <a-button @click="resetQuery" class="smart-margin-left10" v-privilege="'goods:query'">
           <template #icon>
             <SearchOutlined />
           </template>
-          重置
+          초기화
         </a-button>
       </a-form-item>
     </a-row>
@@ -66,14 +66,14 @@
           <template #icon>
             <PlusOutlined />
           </template>
-          新建
+          신규 건설
         </a-button>
 
         <a-button @click="confirmBatchDelete" type="danger" size="small" :disabled="selectedRowKeyList.length == 0" v-privilege="'goods:batchDelete'">
           <template #icon>
             <DeleteOutlined />
           </template>
-          批量删除
+          일괄 삭제
         </a-button>
       </div>
       <div class="smart-table-setting-block">
@@ -99,12 +99,12 @@
           <span>{{ $smartEnumPlugin.getDescByValue('GOODS_STATUS_ENUM', text) }}</span>
         </template>
         <template v-if="column.dataIndex === 'shelvesFlag'">
-          <span>{{ text ? '上架' : '下架' }}</span>
+          <span>{{ text ? '선반에 있음' : '선반에서 제외됨' }}</span>
         </template>
         <template v-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="addGoods(record)" type="link" v-privilege="'goods:update'">编辑</a-button>
-            <a-button @click="deleteGoods(record)" danger type="link" v-privilege="'goods:delete'">删除</a-button>
+            <a-button @click="addGoods(record)" type="link" v-privilege="'goods:update'">편집기</a-button>
+            <a-button @click="deleteGoods(record)" danger type="link" v-privilege="'goods:delete'">삭제</a-button>
           </div>
         </template>
       </template>
@@ -122,7 +122,7 @@
         :total="total"
         @change="queryData"
         @showSizeChange="queryData"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `합계: ${total}`"
       />
     </div>
 
@@ -149,40 +149,40 @@
 
   const columns = ref([
     {
-      title: '商品分类',
+      title: '제품 카테고리',
       dataIndex: 'categoryName',
     },
     {
-      title: '商品名称',
+      title: '제품 이름',
       dataIndex: 'goodsName',
     },
     {
-      title: '商品状态',
+      title: '제품 상태',
       dataIndex: 'goodsStatus',
     },
     {
-      title: '产地',
+      title: '원산지',
       dataIndex: 'place',
     },
     {
-      title: '商品价格',
+      title: '제품 가격',
       dataIndex: 'price',
     },
     {
-      title: '上架状态',
+      title: '선반 상태',
       dataIndex: 'shelvesFlag',
     },
     {
-      title: '备注',
+      title: '비고',
       dataIndex: 'remark',
     },
     {
-      title: '创建时间',
+      title: '생성 시간',
       dataIndex: 'createTime',
       width: 150,
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'action',
       fixed: 'right',
       width: 100,
@@ -245,14 +245,14 @@
 
   function deleteGoods(goodsData) {
     Modal.confirm({
-      title: '提示',
-      content: '确定要删除【' + goodsData.goodsName + '】吗?',
-      okText: '删除',
+      title: '팁',
+      content: '삭제할 항목이 있는지 확인합니다. 【' + goodsData.goodsName + '】 맞나요?',
+      okText: '삭제',
       okType: 'danger',
       onOk() {
         singleDelete(goodsData);
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }
@@ -261,7 +261,7 @@
     try {
       SmartLoading.show();
       await goodsApi.deleteGoods(goodsData.goodsId);
-      message.success('删除成功');
+      message.success('성공적으로 삭제됨');
       queryData();
     } catch (e) {
       smartSentry.captureError(e);
@@ -282,14 +282,14 @@
   // 批量删除
   function confirmBatchDelete() {
     Modal.confirm({
-      title: '提示',
-      content: '确定要删除选中商品吗?',
-      okText: '删除',
+      title: '팁',
+      content: '선택한 항목을 삭제하시겠습니까?',
+      okText: '삭제',
       okType: 'danger',
       onOk() {
         batchDelete();
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }
@@ -298,7 +298,7 @@
     try {
       SmartLoading.show();
       await goodsApi.batchDelete(selectedRowKeyList.value);
-      message.success('删除成功');
+      message.success('성공적으로 삭제됨');
       queryData();
     } catch (e) {
       smartSentry.captureError(e);

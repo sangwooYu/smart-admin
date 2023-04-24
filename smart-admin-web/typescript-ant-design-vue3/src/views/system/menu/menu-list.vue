@@ -11,15 +11,15 @@
   <div>
     <a-form class="smart-query-form">
       <a-row class="smart-query-form-row">
-        <a-form-item label="关键字" class="smart-query-form-item">
-          <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="菜单名称/路由地址/组件路径/权限字符串" />
+        <a-form-item label="핵심 단어" class="smart-query-form-item">
+          <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="메뉴 이름 / 라우팅 주소 / 구성 요소 경로 / 권한 문자열" />
         </a-form-item>
 
-        <a-form-item label="类型" class="smart-query-form-item">
-          <SmartEnumSelect width="120px" v-model:value="queryForm.menuType" placeholder="请选择类型" enum-name="MENU_TYPE_ENUM" />
+        <a-form-item label="유형" class="smart-query-form-item">
+          <SmartEnumSelect width="120px" v-model:value="queryForm.menuType" placeholder="유형을 선택하세요." enum-name="MENU_TYPE_ENUM" />
         </a-form-item>
 
-        <a-form-item label="禁用" class="smart-query-form-item">
+        <a-form-item label="사용 금지" class="smart-query-form-item">
           <SmartEnumSelect width="120px" enum-name="FLAG_NUMBER_ENUM" v-model:value="queryForm.disabledFlag" />
         </a-form-item>
 
@@ -28,34 +28,34 @@
             <template #icon>
               <ReloadOutlined />
             </template>
-            查询
+            문의
           </a-button>
 
           <a-button @click="resetQuery">
             <template #icon>
               <SearchOutlined />
             </template>
-            重置
+            초기화
           </a-button>
           <a-button class="smart-margin-left20" @click="moreQueryConditionFlag = !moreQueryConditionFlag">
             <template #icon>
               <MoreOutlined />
             </template>
-            {{ moreQueryConditionFlag ? '收起' : '展开' }}
+            {{ moreQueryConditionFlag ? '치우기' : '펼치기' }}
           </a-button>
         </a-form-item>
       </a-row>
 
       <a-row class="smart-query-form-row" v-show="moreQueryConditionFlag">
-        <a-form-item label="外链" class="smart-query-form-item">
+        <a-form-item label="외부 링크" class="smart-query-form-item">
           <SmartEnumSelect width="120px" enum-name="FLAG_NUMBER_ENUM" v-model:value="queryForm.frameFlag" />
         </a-form-item>
 
-        <a-form-item label="缓存" class="smart-query-form-item">
+        <a-form-item label="캐시" class="smart-query-form-item">
           <SmartEnumSelect width="120px" enum-name="FLAG_NUMBER_ENUM" v-model:value="queryForm.cacheFlag" />
         </a-form-item>
 
-        <a-form-item label="显示" class="smart-query-form-item">
+        <a-form-item label="표시" class="smart-query-form-item">
           <SmartEnumSelect width="120px" enum-name="FLAG_NUMBER_ENUM" v-model:value="queryForm.visibleFlag" />
         </a-form-item>
       </a-row>
@@ -68,14 +68,14 @@
             <template #icon>
               <PlusOutlined />
             </template>
-            添加菜单
+            메뉴 추가
           </a-button>
 
           <a-button v-privilege="'system:menu:batch:delete'" type="primary" danger size="small" @click="batchDelete" :disabled="!hasSelected">
             <template #icon>
               <DeleteOutlined />
             </template>
-            批量删除
+            일괄 삭제
           </a-button>
         </div>
         <div class="smart-table-setting-block">
@@ -129,8 +129,8 @@
 
           <template v-if="column.dataIndex === 'operate'">
             <div class="smart-table-operate">
-              <a-button v-privilege="'system:menu:update'" type="link" size="small" @click="showDrawer(record)">编辑</a-button>
-              <a-button v-privilege="'system:menu:delete'" danger type="link" @click="singleDelete(record)">删除</a-button>
+              <a-button v-privilege="'system:menu:update'" type="link" size="small" @click="showDrawer(record)">편집기</a-button>
+              <a-button v-privilege="'system:menu:delete'" danger type="link" @click="singleDelete(record)">삭제</a-button>
             </div>
           </template>
         </template>
@@ -168,7 +168,7 @@
     disabledFlag: undefined,
   };
   const queryForm = reactive({ ...queryFormState });
-  //展开更多查询参数
+  //더 많은 검색 매개변수 확장
   const moreQueryConditionFlag = ref(true);
 
   // ------------------------ table表格数据和查询方法 ------------------------
@@ -219,10 +219,10 @@
   function confirmBatchDelete(menuArray) {
     const menuNameArray = menuArray.map((e) => e.menuName);
     Modal.confirm({
-      title: '确定要删除如下菜单吗?',
+      title: '다음 메뉴를 삭제하시겠습니까?',
       icon: createVNode(ExclamationCircleOutlined),
       content: _.join(menuNameArray, '、'),
-      okText: '删除',
+      okText: '삭제',
       okType: 'danger',
       onOk() {
         console.log('OK');
@@ -230,7 +230,7 @@
         requestBatchDelete(menuIdList);
         selectedRows = [];
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
 
@@ -238,7 +238,7 @@
       SmartLoading.show();
       try {
         await menuApi.batchDeleteMenu(menuIdList);
-        message.success('删除成功!');
+        message.success('성공적으로 삭제되었습니다!');
         query();
       } catch (e) {
         smartSentry.captureError(e);

@@ -8,24 +8,24 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal :visible="visible" :title="form.invoiceId ? '编辑' : '添加'" ok-text="确认" cancel-text="取消" @ok="onSubmit" @cancel="onClose">
+  <a-modal :visible="visible" :title="form.invoiceId ? '편집' : '추가'" ok-text="확인" cancel-text="취소" @ok="onSubmit" @cancel="onClose">
     <a-form ref="formRef" :model="form" :rules="rules" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
-      <a-form-item label="开票抬头" name="invoiceHeads">
-        <a-input v-model:value="form.invoiceHeads" placeholder="请输入开票抬头" />
+      <a-form-item label="송장 수취인" name="invoiceHeads">
+        <a-input v-model:value="form.invoiceHeads" placeholder="지불할 청구서를 다음 주소로 입력하세요." />
       </a-form-item>
-      <a-form-item label="纳税人识别号" name="taxpayerIdentificationNumber">
-        <a-input v-model:value="form.taxpayerIdentificationNumber" placeholder="请输入纳税人识别号" />
+      <a-form-item label="납세자 식별 번호" name="taxpayerIdentificationNumber">
+        <a-input v-model:value="form.taxpayerIdentificationNumber" placeholder="납세자 식별 번호를 입력하세요." />
       </a-form-item>
-      <a-form-item label="银行账号" name="accountNumber">
-        <a-input v-model:value="form.accountNumber" placeholder="请输入银行账号" />
+      <a-form-item label="은행 계좌 번호" name="accountNumber">
+        <a-input v-model:value="form.accountNumber" placeholder="은행 계좌 번호를 입력하세요." />
       </a-form-item>
-      <a-form-item label="开户行" name="bankName">
-        <a-input v-model:value="form.bankName" placeholder="请输入开户行" />
+      <a-form-item label="계좌 개설 은행" name="bankName">
+        <a-input v-model:value="form.bankName" placeholder="계좌 개설 은행을 입력하세요." />
       </a-form-item>
-      <a-form-item label="启用状态" name="disabledFlag">
+      <a-form-item label="상태 활성화" name="disabledFlag">
         <a-switch v-model:checked="enabledChecked" @change="enabledCheckedChange" />
       </a-form-item>
-      <a-form-item label="备注" name="remark">
+      <a-form-item label="비고" name="remark">
         <a-textarea v-model:value="form.remark" :rows="2" />
       </a-form-item>
     </a-form>
@@ -48,7 +48,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
   const emit = defineEmits(['reloadList']);
 
   // --------------------- modal 显示与隐藏 ---------------------
-  // 是否展示
+  // 표시 또는 표시 안 함
   const visible = ref(false);
   const enabledChecked = ref(true);
 
@@ -89,10 +89,10 @@ import { smartSentry } from '/@/lib/smart-sentry';
   };
   let form = reactive({ ...formDefault });
   const rules = {
-    invoiceHeads: [{ required: true, message: '请输入开票抬头' }],
-    taxpayerIdentificationNumber: [{ required: true, message: '请输入纳税人识别号' }],
-    accountNumber: [{ required: true, message: '请输入银行账号' }],
-    bankName: [{ required: true, message: '请输入开户行' }],
+    invoiceHeads: [{ required: true, message: '지불할 청구서를 다음 주소로 입력하세요.' }],
+    taxpayerIdentificationNumber: [{ required: true, message: '납세자 식별 번호를 입력하세요.' }],
+    accountNumber: [{ required: true, message: '은행 계좌 번호를 입력하세요.' }],
+    bankName: [{ required: true, message: '계좌 은행을 입력하세요.' }],
   };
 
   function onSubmit() {
@@ -106,7 +106,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
           } else {
             await invoiceApi.create(form);
           }
-          message.success(`${form.invoiceId ? '修改' : '添加'}成功`);
+          message.success(`${form.invoiceId ? '수정 사항' : '추가'}성공`);
           emit('reloadList');
           onClose();
         } catch (error) {
@@ -117,7 +117,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
       })
       .catch((error) => {
         console.log('error', error);
-        message.error('参数验证错误，请仔细填写表单数据!');
+        message.error('파라미터 유효성 검사 오류가 발생했습니다. 양식 데이터를 신중하게 입력하세요!');
       });
   }
 

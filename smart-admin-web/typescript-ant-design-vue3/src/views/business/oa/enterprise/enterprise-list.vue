@@ -10,11 +10,11 @@
 <template>
   <a-form class="smart-query-form" v-privilege="'enterprise:query'">
     <a-row class="smart-query-form-row">
-      <a-form-item label="关键字" class="smart-query-form-item">
-        <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="企业名称/联系人/联系电话" />
+      <a-form-item label="핵심 단어" class="smart-query-form-item">
+        <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="업체명/연락처/연락처 번호" />
       </a-form-item>
 
-      <a-form-item label="创建时间" class="smart-query-form-item">
+      <a-form-item label="생성 시간" class="smart-query-form-item">
         <a-space direction="vertical" :size="12">
           <a-range-picker v-model:value="searchDate" @change="dateChange" />
         </a-space>
@@ -25,13 +25,13 @@
           <template #icon>
             <SearchOutlined />
           </template>
-          查询
+          문의
         </a-button>
         <a-button @click="resetQuery">
           <template #icon>
             <ReloadOutlined />
           </template>
-          重置
+          초기화
         </a-button>
       </a-form-item>
     </a-row>
@@ -44,7 +44,7 @@
           <template #icon>
             <PlusOutlined />
           </template>
-          新建企业
+          신규 비즈니스
         </a-button>
       </div>
       <div class="smart-table-setting-block">
@@ -64,7 +64,7 @@
     >
       <template #bodyCell="{ column, record, text }">
         <template v-if="column.dataIndex === 'disabledFlag'">
-          {{ text ? '禁用' : '启用' }}
+          {{ text ? '사용 금지' : '사용' }}
         </template>
         <template v-if="column.dataIndex === 'enterpriseName'">
           <a @click="detail(record.enterpriseId)">{{ record.enterpriseName }}</a>
@@ -74,8 +74,8 @@
         </template>
         <template v-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="update(record.enterpriseId)" v-privilege="'enterprise:edit'" type="link">编辑</a-button>
-            <a-button @click="confirmDelete(record.enterpriseId)" danger v-privilege="'enterprise:delete'" type="link">删除</a-button>
+            <a-button @click="update(record.enterpriseId)" v-privilege="'enterprise:edit'" type="link">편집</a-button>
+            <a-button @click="confirmDelete(record.enterpriseId)" danger v-privilege="'enterprise:delete'" type="link">삭제</a-button>
           </div>
         </template>
       </template>
@@ -93,7 +93,7 @@
         :total="total"
         @change="ajaxQuery"
         @showSizeChange="ajaxQuery"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `합계: ${total}`"
       />
     </div>
     <EnterpriseOperate ref="operateRef" @refresh="ajaxQuery" />
@@ -115,57 +115,57 @@
 
   const columns = ref([
     {
-      title: '企业名称',
+      title: '회사 이름',
       dataIndex: 'enterpriseName',
       minWidth: 180,
       ellipsis: true,
     },
     {
-      title: '统一社会信用代码',
+      title: '통합 소셜 신용 코드',
       dataIndex: 'unifiedSocialCreditCode',
       minWidth: 170,
       ellipsis: true,
     },
     {
-      title: '企业类型',
+      title: '비즈니스 유형',
       dataIndex: 'type',
       width: 100,
     },
     {
-      title: '联系人',
+      title: '담당자',
       width: 100,
       dataIndex: 'contact',
       ellipsis: true,
     },
     {
-      title: '联系人电话',
+      title: '연락처 전화',
       width: 120,
       dataIndex: 'contactPhone',
       ellipsis: true,
     },
     {
-      title: '邮箱',
+      title: '이메일',
       minWidth: 100,
       dataIndex: 'email',
       ellipsis: true,
     },
     {
-      title: '状态',
+      title: '상태',
       width: 50,
       dataIndex: 'disabledFlag',
     },
     {
-      title: '创建人',
+      title: '작성자',
       width: 60,
       dataIndex: 'createUserName',
     },
     {
-      title: '创建时间',
+      title: '생성 시간',
       dataIndex: 'createTime',
       width: 150,
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'action',
       fixed: 'right',
       width: 100,
@@ -219,14 +219,14 @@
 
   function confirmDelete(enterpriseId) {
     Modal.confirm({
-      title: '确定要删除吗？',
-      content: '删除后，该信息将不可恢复',
-      okText: '删除',
+      title: '정말 삭제하시겠습니까?',
+      content: '삭제 후에는 정보를 복구할 수 없습니다.',
+      okText: '삭제',
       okType: 'danger',
       onOk() {
         del(enterpriseId);
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }
@@ -235,7 +235,7 @@
     try {
       SmartLoading.show();
       await enterpriseApi.delete(enterpriseId);
-      message.success('删除成功');
+      message.success('성공적으로 삭제됨');
       ajaxQuery();
     } catch (e) {
       smartSentry.captureError(e);

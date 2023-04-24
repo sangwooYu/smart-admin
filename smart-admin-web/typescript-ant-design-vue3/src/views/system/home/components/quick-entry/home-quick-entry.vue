@@ -1,6 +1,6 @@
 <template>
   <default-home-card
-      :extra="`${editFlag ? '完成' : '编辑'}`"
+      :extra="`${editFlag ? 'Finish' : 'Edit'}`"
       icon="ThunderboltTwoTone"
       title="快捷入口"
       @extraClick="editFlag = !editFlag"

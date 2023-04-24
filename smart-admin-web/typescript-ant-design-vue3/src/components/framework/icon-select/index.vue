@@ -13,13 +13,13 @@
       <template #title>
         <a-form-item-rest>
           <a-radio-group @change="updateSelectIconArray" v-model:value="iconStyle" style="margin: 8px">
-            <a-radio-button value="outlined">线框风格</a-radio-button>
-            <a-radio-button value="filled">实底风格</a-radio-button>
-            <a-radio-button value="twoTone">双色风格</a-radio-button>
+            <a-radio-button value="outlined">와이어프레임 스타일</a-radio-button>
+            <a-radio-button value="filled">견고한 기본 스타일</a-radio-button>
+            <a-radio-button value="twoTone">투톤 스타일</a-radio-button>
           </a-radio-group>
         </a-form-item-rest>
         <a-form-item-rest>
-          <a-input-search v-model:value="searchValue" placeholder="输入英文关键词进行搜索" @change="updateSelectIconArray" />
+          <a-input-search v-model:value="searchValue" placeholder="영어 키워드를 입력하여 검색" @change="updateSelectIconArray" />
         </a-form-item-rest>
       </template>
 
@@ -29,7 +29,7 @@
             <component :is="$antIcons[item]" />
           </div>
           <div v-show="showMoreIndex > 0">
-            <a-button type="link" @click="showMore">点击展开更多图标（因图标较多，可能会卡一小会）</a-button>
+            <a-button type="link" @click="showMore">아이콘을 더 확장하려면 클릭하세요(아이콘 수가 많아서 잠시 멈출 수 있음).</a-button>
           </div>
         </div>
       </template>

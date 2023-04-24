@@ -10,11 +10,11 @@
 <template>
   <a-form class="smart-query-form">
     <a-row class="smart-query-form-row">
-      <a-form-item label="关键字" class="smart-query-form-item">
-        <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="开户银行/账户名称/账户/创建人" />
+      <a-form-item label="핵심 단어" class="smart-query-form-item">
+        <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="계좌 은행 / 계좌 이름 / 계좌 / 작성자" />
       </a-form-item>
 
-      <a-form-item label="创建时间" class="smart-query-form-item">
+      <a-form-item label="생성 시간" class="smart-query-form-item">
         <a-space direction="vertical" :size="12">
           <a-range-picker v-model:value="searchDate" @change="dateChange" />
         </a-space>
@@ -25,20 +25,20 @@
           <template #icon>
             <SearchOutlined />
           </template>
-          查询
+          문의
         </a-button>
         <a-button @click="resetQuery">
           <template #icon>
             <ReloadOutlined />
           </template>
-          重置
+          초기화
         </a-button>
 
         <a-button @click="addOrUpdate()" type="primary" class="smart-margin-left20">
           <template #icon>
             <PlusOutlined />
           </template>
-          新建账户
+          새 계정 만들기
         </a-button>
       </a-form-item>
     </a-row>
@@ -51,15 +51,15 @@
     <a-table :scroll="{ x: 1300 }" size="small" :dataSource="tableData" bordered :columns="columns" rowKey="bankId" :pagination="false">
       <template #bodyCell="{ record, column }">
         <template v-if="column.dataIndex === 'disabledFlag'">
-          {{ record.disabledFlag ? '禁用' : '启用' }}
+          {{ record.disabledFlag ? '사용 금지' : '사용' }}
         </template>
         <template v-else-if="column.dataIndex === 'businessFlag'">
-          {{ record.businessFlag ? '是' : '否' }}
+          {{ record.businessFlag ? 'yes' : 'no' }}
         </template>
         <template v-else-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="addOrUpdate(record)" type="link">编辑</a-button>
-            <a-button @click="confirmDelete(record.bankId)" danger type="link">删除</a-button>
+            <a-button @click="addOrUpdate(record)" type="link">편집기</a-button>
+            <a-button @click="confirmDelete(record.bankId)" danger type="link">삭제</a-button>
           </div>
         </template>
       </template>
@@ -77,7 +77,7 @@
         :total="total"
         @change="ajaxQuery"
         @showSizeChange="ajaxQuery"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `합계: ${total}`"
       />
     </div>
     <!--新建编辑modal-->
@@ -104,47 +104,47 @@
 
   const columns = ref([
     {
-      title: '开户银行',
+      title: '계좌 개설 은행',
       dataIndex: 'bankName',
     },
     {
-      title: '账户名称',
+      title: '계정 이름',
       dataIndex: 'accountName',
       ellipsis: true,
     },
     {
-      title: '账号',
+      title: '계정 번호',
       width: 100,
       dataIndex: 'accountNumber',
       ellipsis: true,
     },
     {
-      title: '是否对公',
+      title: '대중이',
       width: 120,
       dataIndex: 'businessFlag',
     },
     {
-      title: '状态',
+      title: '상태',
       width: 80,
       dataIndex: 'disabledFlag',
     },
     {
-      title: '备注',
+      title: '비고',
       width: 100,
       dataIndex: 'remark',
     },
     {
-      title: '创建人',
+      title: '작성자',
       width: 100,
       dataIndex: 'createUserName',
     },
     {
-      title: '创建时间',
+      title: '생성 시간',
       dataIndex: 'createTime',
       width: 150,
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'action',
       fixed: 'right',
       width: 100,
@@ -196,14 +196,14 @@
 
   function confirmDelete(bankId) {
     Modal.confirm({
-      title: '确定要删除吗？',
-      content: '删除后，该信息将不可恢复',
-      okText: '删除',
+      title: '정말 삭제하시겠습니까?',
+      content: '삭제 후에는 정보를 복구할 수 없습니다.',
+      okText: '삭제',
       okType: 'danger',
       onOk() {
         del(bankId);
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }
@@ -211,7 +211,7 @@
     try {
       SmartLoading.show();
       await bankApi.delete(bankId);
-      message.success('删除成功');
+      message.success('성공적으로 삭제됨');
       ajaxQuery();
     } catch (e) {
       smartSentry.captureError(e);

@@ -11,8 +11,8 @@
 <template>
   <a-form class="smart-query-form">
     <a-row class="smart-query-form-row">
-      <a-form-item label="关键字" class="smart-query-form-item">
-        <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="变更内容" />
+      <a-form-item label="핵심 단어" class="smart-query-form-item">
+        <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="변경 사항" />
       </a-form-item>
 
       <a-form-item class="smart-query-form-item smart-margin-left10">
@@ -21,13 +21,13 @@
             <template #icon>
               <SearchOutlined />
             </template>
-            查询
+            문의
           </a-button>
           <a-button @click="onReload">
             <template #icon>
               <ReloadOutlined />
             </template>
-            重置
+            초기화
           </a-button>
         </a-button-group>
       </a-form-item>
@@ -50,7 +50,7 @@
           <div class="operate-content" v-html="record.content"></div>
         </template>
         <template v-else-if="column.dataIndex === 'action'">
-          <a-button v-if="record.diffOld || record.diffNew" @click="showDetail(record)" type="link">详情 </a-button>
+          <a-button v-if="record.diffOld || record.diffNew" @click="showDetail(record)" type="link">세부 정보 </a-button>
         </template>
       </template>
     </a-table>
@@ -67,10 +67,10 @@
         :total="total"
         @change="onSearch"
         @showSizeChange="onSearch"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `합계: ${total}`"
       />
     </div>
-    <a-modal v-model:visible="visibleDiff" width="90%" title="数据比对" :footer="null">
+    <a-modal v-model:visible="visibleDiff" width="90%" title="데이터 비교" :footer="null">
       <div v-html="prettyHtml"></div>
     </a-modal>
   </a-card>
@@ -98,17 +98,17 @@
 
   const columns = reactive([
     {
-      title: '序号',
+      title: '일련 번호',
       dataIndex: 'dataTracerId',
       width: 50,
     },
     {
-      title: '操作时间',
+      title: '작동 시간',
       dataIndex: 'createTime',
       width: 150,
     },
     {
-      title: '操作人',
+      title: '연산자',
       dataIndex: 'userName',
       width: 100,
       ellipsis: true,
@@ -120,17 +120,17 @@
       width: 100,
     },
     {
-      title: '客户端',
+      title: '클라이언트',
       dataIndex: 'userAgent',
       ellipsis: true,
       width: 150,
     },
     {
-      title: '操作内容',
+      title: '작업 내용',
       dataIndex: 'content',
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'action',
       fixed: 'right',
       width: 80,
@@ -201,7 +201,7 @@
     let diffNew = record.diffNew.replaceAll('<br/>','\r\n');
     console.log(diffOld)
     console.log(diffNew)
-    const args = ['', diffOld, diffNew, '变更前', '变更后'];
+    const args = ['', diffOld, diffNew, '변경 전', '변경 후'];
 
     let diffPatch = Diff.createPatch(...args);
     let html = Diff2Html.html(diffPatch, {

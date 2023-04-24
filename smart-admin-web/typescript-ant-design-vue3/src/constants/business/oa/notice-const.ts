@@ -12,11 +12,11 @@ import { SmartEnum } from '/@/types/smart-enum';
 export const NOTICE_VISIBLE_RANGE_DATA_TYPE_ENUM: SmartEnum<number> = {
   EMPLOYEE: {
     value: 1,
-    desc: '员工',
+    desc: '직원',
   },
   DEPARTMENT: {
     value: 2,
-    desc: '部门',
+    desc: '섹터',
   },
 };
 

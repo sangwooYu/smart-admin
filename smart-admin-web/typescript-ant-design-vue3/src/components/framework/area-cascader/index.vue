@@ -40,7 +40,7 @@
     },
     placeholder: {
       type: String,
-      default: '请选择地区',
+      default: '지역을 선택하세요.',
     },
     size: {
       type: String,

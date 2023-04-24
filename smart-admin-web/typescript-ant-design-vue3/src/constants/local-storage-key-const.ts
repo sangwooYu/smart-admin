@@ -24,8 +24,8 @@ export default {
   USER_TAG_NAV: `${KEY_PREFIX}user_tag_nav`,
   // app config 配置信息
   APP_CONFIG: `${KEY_PREFIX}app_config`,
-  // 首页快捷入口
+  // 홈페이지에 빠르게 액세스
   HOME_QUICK_ENTRY: `${KEY_PREFIX}home_quick_entry`,
-  // 通知信息已读
+  // 알림 메시지를 읽었습니다.
   NOTICE_READ: `${KEY_PREFIX}notice_read`,
 };

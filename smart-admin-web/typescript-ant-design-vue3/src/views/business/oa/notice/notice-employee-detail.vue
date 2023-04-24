@@ -16,21 +16,21 @@
           {{ noticeDetail.title }}
         </div>
         <div class="content-header-info">
-          <span v-show="noticeDetail.author">作者：{{ noticeDetail.author }}</span>
-          <span v-show="noticeDetail.source">来源：{{ noticeDetail.source }}</span>
-          <span>发布时间：{{ noticeDetail.publishTime }}</span>
-          <span>阅读量：{{ noticeDetail.pageViewCount }}</span>
-          <span @click="print">【打印本页】</span>
+          <span v-show="noticeDetail.author">작성자：{{ noticeDetail.author }}</span>
+          <span v-show="noticeDetail.source">출처：{{ noticeDetail.source }}</span>
+          <span>릴리스 날짜：{{ noticeDetail.publishTime }}</span>
+          <span>독자층：{{ noticeDetail.pageViewCount }}</span>
+          <span @click="print">【이 페이지 인쇄】</span>
         </div>
       </div>
       <div class="content-html" v-html="noticeDetail.contentHtml"></div>
       <!--endprint-->
     </div>
     <a-divider />
-    <div>附件：<file-preview :fileList="noticeDetail.attachment" /></div>
+    <div>부록：<file-preview :fileList="noticeDetail.attachment" /></div>
   </a-card>
 
-  <a-card title="记录" size="small" class="smart-margin-top10">
+  <a-card title="기록" size="small" class="smart-margin-top10">
     <NoticeViewRecordList ref="noticeViewRecordList" :noticeId="route.query.noticeId" />
   </a-card>
 

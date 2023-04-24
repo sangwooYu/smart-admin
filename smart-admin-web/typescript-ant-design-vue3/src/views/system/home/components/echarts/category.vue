@@ -1,5 +1,5 @@
 <template>
-  <default-home-card icon="ProfileTwoTone" title="【1024创新实验室】人员饭量">
+  <default-home-card icon="ProfileTwoTone" title="[테스트]">
     <div class="echarts-box">
       <div class="category-main" id="category-main"></div>
     </div>
@@ -18,7 +18,7 @@
     let option = {
       xAxis: {
         type: 'category',
-        data: ['周一', '周二', '周三', '周四', '周五'],
+        data: ['월요일', '화요일', '수요일', '목요일', '금요일'],
       },
       yAxis: {
         type: 'value',
@@ -38,7 +38,7 @@
       },
       series: [
         {
-          name: '善逸',
+          name: '우수한 편의성',
           data: [120, 200, 150, 80, 70, 110, 130],
           type: 'bar',
           backgroundStyle: {
@@ -46,7 +46,7 @@
           },
         },
         {
-          name: '胡克',
+          name: '후커',
           data: [100, 80, 120, 77, 52, 22, 190],
           type: 'bar',
           backgroundStyle: {
@@ -54,7 +54,7 @@
           },
         },
         {
-          name: '开云',
+          name: '카이운',
           data: [200, 110, 85, 99, 120, 145, 180],
           type: 'bar',
           backgroundStyle: {
@@ -62,7 +62,7 @@
           },
         },
         {
-          name: '初晓',
+          name: '첫 새벽',
           data: [80, 70, 90, 110, 200, 44, 80],
           type: 'bar',
           backgroundStyle: {

@@ -44,7 +44,7 @@
     },
     placeholder: {
       type: String,
-      default: '请选择',
+      default: '선택하세요',
     },
     size: {
       type: String,
@@ -84,7 +84,7 @@
 
   onMounted(queryDict);
 
-  // -------------------------- 选中 相关、事件 --------------------------
+  // -------------------------- 관련, 이벤트 확인란을 선택합니다. --------------------------
 
   const selectValue = ref(props.value);
   watch(

@@ -14,15 +14,15 @@ import { SmartEnum } from '/@/types/smart-enum';
 export const DATA_TRACER_TYPE_ENUM: SmartEnum<number> = {
   GOODS: {
     value: 1,
-    desc: '商品',
+    desc: '상품',
   },
   OA_NOTICE: {
     value: 2,
-    desc: 'OA-通知公告',
+    desc: 'OA 공지사항',
   },
   OA_ENTERPRISE: {
     value: 3,
-    desc: 'OA-企业信息',
+    desc: 'OA - 기업 정보',
   },
 };
 

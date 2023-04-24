@@ -6,13 +6,13 @@
  * @LastEditors: zhuoda
  */
 
-//system系统功能表格初始化id
+//시스템 기능 양식 초기화 ID
 let systemInitTableId = 10000;
 
-//support支撑功能表格初始化id
+//지원 기능 양식 초기화 ID
 let supportInitTableId = 20000;
 
-//业务表格初始化id
+//비즈니스 양식 초기화 ID
 let businessOAInitTableId = 30000;
 
 let businessERPInitTableId = 40000;
@@ -23,35 +23,35 @@ export const TABLE_ID_CONST = {
    */
   BUSINESS: {
     OA: {
-      NOTICE: businessOAInitTableId + 1, //通知公告
-      ENTERPRISE: businessOAInitTableId + 2, //企业信息
-      ENTERPRISE_EMPLOYEE: businessOAInitTableId + 3, //企业员工
-      ENTERPRISE_BANK: businessOAInitTableId + 4, //企业银行
-      ENTERPRISE_INVOICE: businessOAInitTableId + 5, //企业发票
+      NOTICE: businessOAInitTableId + 1, //공지 사항
+      ENTERPRISE: businessOAInitTableId + 2, //기업 정보
+      ENTERPRISE_EMPLOYEE: businessOAInitTableId + 3, //기업 직원
+      ENTERPRISE_BANK: businessOAInitTableId + 4, // 기업 뱅킹
+      ENTERPRISE_INVOICE: businessOAInitTableId + 5, // 기업 송장
     },
     ERP: {
-      GOODS: businessERPInitTableId + 1, //商品管理
+      GOODS: businessERPInitTableId + 1, //상품 관리
     },
   },
 
   /**
-   * 系统
+   * 시스템
    */
   SYSTEM: {
-    EMPLOYEE: systemInitTableId + 1, //员工
-    MENU: systemInitTableId + 2, //菜单
+    EMPLOYEE: systemInitTableId + 1, //직원
+    MENU: systemInitTableId + 2, //메뉴
   },
   /**
-   * 支撑
+   * 기반
    */
   SUPPORT: {
-    CONFIG: supportInitTableId + 1, //参数配置
-    DICT: supportInitTableId + 2, //字典
-    SERIAL_NUMBER: supportInitTableId + 3, //单号
-    OPERATE_LOG: supportInitTableId + 4, //请求监控
-    HEART_BEAT: supportInitTableId + 5, //心跳
-    LOGIN_LOG: supportInitTableId + 6, //登录日志
+    CONFIG: supportInitTableId + 1, //매개변수 구성
+    DICT: supportInitTableId + 2, //사전
+    SERIAL_NUMBER: supportInitTableId + 3, //단일 번호
+    OPERATE_LOG: supportInitTableId + 4, //모니터링 요청
+    HEART_BEAT: supportInitTableId + 5, //하트비트
+    LOGIN_LOG: supportInitTableId + 6, //로그인 로그
     RELOAD: supportInitTableId + 7, //reload
-    HELP_DOC: supportInitTableId + 8, //帮助文档
+    HELP_DOC: supportInitTableId + 8, //도움말 파일
   },
 };

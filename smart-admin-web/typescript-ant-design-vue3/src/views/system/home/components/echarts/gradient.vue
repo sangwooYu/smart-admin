@@ -1,5 +1,5 @@
 <template>
-  <default-home-card icon="FundTwoTone" title="【1024创新实验室】代码提交量">
+  <default-home-card icon="FundTwoTone" title="[테스트] 코드 제출 현황">
     <div class="echarts-box">
       <div class="gradient-main" id="gradient-main"></div>
     </div>
@@ -27,7 +27,7 @@ function init(){
       }
     },
     legend: {
-      data: ['罗伊', '佩弦', '开云', '清野', '飞叶']
+      data: ['로이', '페이인', '카이윈', '키요노', '페이예']
     },
     grid: {
       left: '3%',
@@ -39,7 +39,7 @@ function init(){
       {
         type: 'category',
         boundaryGap: false,
-        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        data: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
       }
     ],
     yAxis: [
@@ -49,7 +49,7 @@ function init(){
     ],
     series: [
       {
-        name: '罗伊',
+        name: 'Roy',
         type: 'line',
         stack: 'Total',
         smooth: true,
@@ -76,7 +76,7 @@ function init(){
         data: [140, 232, 101, 264, 90, 340, 250]
       },
       {
-        name: '佩弦',
+        name: 'Peyote',
         type: 'line',
         stack: 'Total',
         smooth: true,
@@ -103,7 +103,7 @@ function init(){
         data: [120, 282, 111, 234, 220, 340, 310]
       },
       {
-        name: '开云',
+        name: '카이운',
         type: 'line',
         stack: 'Total',
         smooth: true,
@@ -130,7 +130,7 @@ function init(){
         data: [320, 132, 201, 334, 190, 130, 220]
       },
       {
-        name: '清野',
+        name: '키요노',
         type: 'line',
         stack: 'Total',
         smooth: true,
@@ -157,7 +157,7 @@ function init(){
         data: [220, 402, 231, 134, 190, 230, 120]
       },
       {
-        name: '飞叶',
+        name: '플라이리프',
         type: 'line',
         stack: 'Total',
         smooth: true,

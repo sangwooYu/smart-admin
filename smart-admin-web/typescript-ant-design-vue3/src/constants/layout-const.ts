@@ -13,10 +13,10 @@ import { SmartEnum } from '/@/types/smart-enum';
 export const LAYOUT_ENUM: SmartEnum<string> = {
   SIDE_EXPAND: {
     value: 'side-expand',
-    desc: '展开菜单',
+    desc: '메뉴 확장',
   },
   SIDE: {
     value: 'side',
-    desc: '传统菜单',
+    desc: '기존 메뉴',
   },
 };

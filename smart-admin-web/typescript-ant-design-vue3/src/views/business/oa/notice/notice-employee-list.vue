@@ -10,7 +10,7 @@
 <template>
   <a-form class="smart-query-form">
     <a-row class="smart-query-form-row">
-      <a-form-item label="分类" class="smart-query-form-item">
+      <a-form-item label="분류" class="smart-query-form-item">
         <a-select v-model:value="queryForm.noticeTypeId" style="width: 100px" :showSearch="true" :allowClear="true">
           <a-select-option v-for="item in noticeTypeList" :key="item.noticeTypeId" :value="item.noticeTypeId">
             {{ item.noticeTypeName }}
@@ -18,11 +18,11 @@
         </a-select>
       </a-form-item>
 
-      <a-form-item label="关键字" class="smart-query-form-item">
-        <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="标题、作者、来源、文号" />
+      <a-form-item label="핵심 단어" class="smart-query-form-item">
+        <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="제목, 작성자, 출처, 문서 번호" />
       </a-form-item>
 
-      <a-form-item label="发布时间" class="smart-query-form-item">
+      <a-form-item label="릴리스 날짜" class="smart-query-form-item">
         <a-range-picker v-model:value="publishDate" @change="publishDateChange" style="width: 220px" />
       </a-form-item>
 
@@ -32,13 +32,13 @@
             <template #icon>
               <SearchOutlined />
             </template>
-            查询
+            문의
           </a-button>
           <a-button @click="onReload">
             <template #icon>
               <ReloadOutlined />
             </template>
-            重置
+            초기화
           </a-button>
         </a-button-group>
       </a-form-item>
@@ -47,8 +47,8 @@
 
   <a-card size="small" :bordered="false">
     <a-tabs @change="changeNotViewFlag" size="small">
-      <a-tab-pane :key="0" tab="全部" />
-      <a-tab-pane :key="1" tab="未读" />
+      <a-tab-pane :key="0" tab="모두" />
+      <a-tab-pane :key="1" tab="읽지 않음" />
     </a-tabs>
 
     <a-table
@@ -64,16 +64,16 @@
       <template #bodyCell="{ column, record, text }">
         <template v-if="column.dataIndex === 'title'">
           <span v-show="record.viewFlag">
-            <a @click="toDetail(record.noticeId)" style="color: #666">【{{ record.noticeTypeName }}】{{ text }}（已读）</a>
+            <a @click="toDetail(record.noticeId)" style="color: #666">【{{ record.noticeTypeName }}】{{ text }}（읽기）</a>
           </span>
           <span v-show="!record.viewFlag">
             <a @click="toDetail(record.noticeId)"
               >【{{ record.noticeTypeName }}】{{ text }}
-              <span style="color: red">（未读）</span>
+              <span style="color: red">（읽지 않음）</span>
             </a>
           </span>
         </template>
-        <template v-if="column.dataIndex === 'pageViewCount'"> {{ record.userViewCount }}人 / {{ record.pageViewCount }}次 </template>
+        <template v-if="column.dataIndex === 'pageViewCount'"> {{ record.userViewCount }}인 / {{ record.pageViewCount }}횟수 </template>
       </template>
     </a-table>
 
@@ -89,7 +89,7 @@
         :total="total"
         @change="queryNoticeList"
         @showSizeChange="queryNoticeList"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `합계: ${total}`"
       />
     </div>
   </a-card>
@@ -106,38 +106,38 @@ import { smartSentry } from '/@/lib/smart-sentry';
 
   const tableColumns = reactive([
     {
-      title: `标题`,
+      title: `제목`,
       dataIndex: 'title',
       width: 300,
       ellipsis: true,
     },
 
     {
-      title: `文号`,
+      title: `문서 번호`,
       dataIndex: 'documentNumber',
       width: 100,
       ellipsis: true,
     },
 
     {
-      title: `作者`,
+      title: `작성자`,
       dataIndex: 'author',
       width: 40,
       ellipsis: true,
     },
     {
-      title: `来源`,
+      title: `출처`,
       dataIndex: 'source',
       width: 90,
       ellipsis: true,
     },
     {
-      title: '发布时间',
+      title: '릴리스 날짜',
       dataIndex: 'publishTime',
       width: 140,
     },
     {
-      title: '用户/页面浏览量',
+      title: '사용자/페이지 조회수',
       dataIndex: 'pageViewCount',
       width: 90,
     },

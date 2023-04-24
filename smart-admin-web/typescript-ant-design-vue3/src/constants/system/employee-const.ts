@@ -13,15 +13,15 @@ import { SmartEnum } from '/@/types/smart-enum';
 export const GENDER_ENUM: SmartEnum<number> = {
   UNKNOWN: {
     value: 0,
-    desc: '未知',
+    desc: '알 수 없음',
   },
   MAN: {
     value: 1,
-    desc: '男',
+    desc: '남',
   },
   WOMAN: {
     value: 2,
-    desc: '女',
+    desc: '녀',
   },
 };
 

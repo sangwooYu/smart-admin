@@ -9,10 +9,10 @@
   *
 -->
 <template>
-  <a-modal :width="700" :visible="visible" title="设置列" :destroyOnClose="true" :closable="false">
+  <a-modal :width="700" :visible="visible" title="열 설정" :destroyOnClose="true" :closable="false">
     <a-alert type="info" show-icon class="smart-margin-bottom10">
       <template #icon><smile-outlined /></template>
-      <template #message> 可以通过拖拽行直接修改顺序哦；（ <pushpin-outlined />为固定列，不可拖拽 ）</template>
+      <template #message> 행을 끌어다 놓아 순서를 직접 변경할 수 있습니다.；（ <pushpin-outlined />는 고정 열이며 끌어서 놓을 수 없습니다. ）</template>
     </a-alert>
     <a-table
       id="smartTableColumnModalTable"
@@ -46,9 +46,9 @@
     </a-table>
 
     <template #footer>
-      <a-button key="back" @click="hide">取消</a-button>
-      <a-button key="submit" type="primary" :loading="submitLoading" @click="save">保存</a-button>
-      <a-button key="back" :loading="submitLoading" @click="reset" danger style="margin-left: 20px">恢复默认</a-button>
+      <a-button key="back" @click="hide">취소</a-button>
+      <a-button key="submit" type="primary" :loading="submitLoading" @click="save">저장</a-button>
+      <a-button key="back" :loading="submitLoading" @click="reset" danger style="margin-left: 20px">기본값 복원</a-button>
     </template>
   </a-modal>
 </template>
@@ -121,16 +121,16 @@
 
   const tableColumns = [
     {
-      title: '列',
+      title: '열',
       dataIndex: 'title',
     },
     {
-      title: '宽度(像素)',
+      title: '너비(픽셀)',
       dataIndex: 'width',
       width: 150,
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'operate',
       width: 150,
       rowDrag: true,
@@ -202,16 +202,16 @@
   //重置
   function reset() {
     Modal.confirm({
-      title: '确定要恢复默认吗？',
-      content: '确定恢复默认后，该信息将不可恢复',
-      okText: '确定恢复',
+      title: '기본값으로 복원하시겠습니까?',
+      content: '기본값이 복원되었다고 판단한 후에는 이 정보를 복구할 수 없습니다.',
+      okText: '복구 결정',
       okType: 'danger',
       onOk() {
         (async () => {
           submitLoading.value = true;
           try {
             await tableColumnApi.deleteColumns(tableId);
-            message.success('恢复默认成功');
+            message.success('기본값 복원 성공');
             emit('change', []);
             hide();
           } catch (e) {
@@ -221,7 +221,7 @@
           }
         })();
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }
@@ -251,7 +251,7 @@
         columnList,
       });
 
-      message.success('保存成功');
+      message.success('저장 성공');
       emit('change', columnList);
       hide();
     } catch (e) {

@@ -11,24 +11,24 @@
   <a-card style="margin-bottom: 15px" size="small">
     <a-descriptions :title="noticeDetail.title" :columns="4" size="small">
       <template #extra>
-        <a-button v-if="!noticeDetail.publishFlag" type="primary" size="small" @click="onEdit">编辑</a-button>
+        <a-button v-if="!noticeDetail.publishFlag" type="primary" size="small" @click="onEdit">편집</a-button>
       </template>
-      <a-descriptions-item label="分类">{{ noticeDetail.noticeTypeName }}</a-descriptions-item>
-      <a-descriptions-item label="文号">{{ noticeDetail.documentNumber }}</a-descriptions-item>
-      <a-descriptions-item label="来源">{{ noticeDetail.source }}</a-descriptions-item>
-      <a-descriptions-item label="作者">{{ noticeDetail.author }}</a-descriptions-item>
-      <a-descriptions-item label="页面浏览量">{{ noticeDetail.pageViewCount }}</a-descriptions-item>
-      <a-descriptions-item label="用户浏览量">{{ noticeDetail.userViewCount }}</a-descriptions-item>
-      <a-descriptions-item label="创建时间">{{ noticeDetail.createTime }}</a-descriptions-item>
-      <a-descriptions-item label="发布时间">{{ noticeDetail.publishTime }}</a-descriptions-item>
-      <a-descriptions-item label="定时发布">{{ noticeDetail.publishFlag ? '已发布' : '待发布' }}</a-descriptions-item>
-      <a-descriptions-item label="删除状态">{{ noticeDetail.deletedFlag ? '已删除' : '未删除' }}</a-descriptions-item>
+      <a-descriptions-item label="분류">{{ noticeDetail.noticeTypeName }}</a-descriptions-item>
+      <a-descriptions-item label="문서 번호">{{ noticeDetail.documentNumber }}</a-descriptions-item>
+      <a-descriptions-item label="출처">{{ noticeDetail.source }}</a-descriptions-item>
+      <a-descriptions-item label="작성자">{{ noticeDetail.author }}</a-descriptions-item>
+      <a-descriptions-item label="페이지 조회수">{{ noticeDetail.pageViewCount }}</a-descriptions-item>
+      <a-descriptions-item label="사용자 보기">{{ noticeDetail.userViewCount }}</a-descriptions-item>
+      <a-descriptions-item label="생성 시간">{{ noticeDetail.createTime }}</a-descriptions-item>
+      <a-descriptions-item label="릴리스 날짜">{{ noticeDetail.publishTime }}</a-descriptions-item>
+      <a-descriptions-item label="시간 제한 릴리스">{{ noticeDetail.publishFlag ? 'Published' : '게시 예정' }}</a-descriptions-item>
+      <a-descriptions-item label="상태 삭제">{{ noticeDetail.deletedFlag ? '삭제됨' : '삭제되지 않음' }}</a-descriptions-item>
       <a-descriptions-item v-if="!$lodash.isEmpty(noticeDetail.attachmentFile)" label="附件">
         <div class="file-list">
           <a class="file-item" v-for="item in noticeDetail.attachmentFile" :key="item.fileId" @click="onPrevFile(item)">{{ item.fileName }}</a>
         </div>
       </a-descriptions-item>
-      <a-descriptions-item label="可见范围" :span="2">
+      <a-descriptions-item label="가시 범위" :span="2">
         <template v-if="noticeDetail.allVisibleFlag">全部可见</template>
         <div class="visible-list">
           <div class="visible-item" v-for="item in noticeDetail.visibleRangeList" :key="item.dataId">
@@ -41,13 +41,13 @@
 
   <a-card size="small">
     <a-tabs v-model:activeKey="activeKey" size="small">
-      <a-tab-pane :key="1" tab="内容">
+      <a-tab-pane :key="1" tab="콘텐츠">
         <div class="content-html" v-html="noticeDetail.contentHtml"></div>
       </a-tab-pane>
-      <a-tab-pane :key="2" tab="查看记录" force-render>
+      <a-tab-pane :key="2" tab="기록 보기" force-render>
         <NoticeViewRecordList ref="noticeViewRecordList" :noticeId="route.query.noticeId" />
       </a-tab-pane>
-      <a-tab-pane :key="3" tab="操作记录" />
+      <a-tab-pane :key="3" tab="작업 로그" />
     </a-tabs>
   </a-card>
 

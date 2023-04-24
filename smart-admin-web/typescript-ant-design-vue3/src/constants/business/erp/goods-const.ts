@@ -12,15 +12,15 @@ import { SmartEnum } from '/@/types/smart-enum';
 export const GOODS_STATUS_ENUM: SmartEnum<number> = {
   APPOINTMENT: {
     value: 1,
-    desc: '预约中',
+    desc: '설정 안 됨',
   },
   SELL: {
     value: 2,
-    desc: '售卖中',
+    desc: '판매 중',
   },
   SELL_OUT: {
     value: 3,
-    desc: '售罄',
+    desc: '매진',
   },
 };
 export default {

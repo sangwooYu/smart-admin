@@ -13,34 +13,34 @@ import { SmartEnum } from '/@/types/smart-enum';
 export const MENU_TYPE_ENUM: SmartEnum<number> = {
   CATALOG: {
     value: 1,
-    desc: '目录',
+    desc: '카탈로그',
   },
   MENU: {
     value: 2,
-    desc: '菜单',
+    desc: '메뉴',
   },
   POINTS: {
     value: 3,
-    desc: '按钮',
+    desc: '버튼',
   },
 };
 
 /**
- * 权限类型
+ * 권한 유형
  */
 export const MENU_PERMS_TYPE_ENUM: SmartEnum<number> = {
   SPRING_SECURITY: {
     value: 1,
-    desc: 'Security模式',
+    desc: '보안 모드',
   },
   URL: {
     value: 2,
-    desc: 'URL模式',
+    desc: 'URL 모드',
   },
 };
 
 /**
- * 默认的顶级菜单id为0
+ * 기본 상단 메뉴 ID는 0입니다.
  */
 export const MENU_DEFAULT_PARENT_ID = 0;
 

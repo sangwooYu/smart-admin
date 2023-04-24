@@ -8,31 +8,31 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
 -->
 <template>
-  <a-drawer :title="form.goodsId ? '编辑' : '添加'" :width="500" :visible="visible" :body-style="{ paddingBottom: '80px' }" @close="onClose">
+  <a-drawer :title="form.goodsId ? '편집' : '추가'" :width="500" :visible="visible" :body-style="{ paddingBottom: '80px' }" @close="onClose">
     <a-form ref="formRef" :model="form" :rules="rules" :label-col="{ span: 5 }">
-      <a-form-item label="商品分类" name="categoryId">
-        <CategoryTree v-model:value="form.categoryId" placeholder="请选择商品分类" :categoryType="CATEGORY_TYPE_ENUM.GOODS.value" />
+      <a-form-item label="제품 카테고리" name="categoryId">
+        <CategoryTree v-model:value="form.categoryId" placeholder="제품 카테고리를 선택하세요." :categoryType="CATEGORY_TYPE_ENUM.GOODS.value" />
       </a-form-item>
-      <a-form-item label="商品名称" name="goodsName">
-        <a-input v-model:value="form.goodsName" placeholder="请输入商品名称" />
+      <a-form-item label="제품 이름" name="goodsName">
+        <a-input v-model:value="form.goodsName" placeholder="제품 이름을 입력하세요." />
       </a-form-item>
-      <a-form-item label="商品状态" name="goodsStatus">
+      <a-form-item label="제품 상태" name="goodsStatus">
         <SmartEnumSelect enum-name="GOODS_STATUS_ENUM" v-model:value="form.goodsStatus" />
       </a-form-item>
-      <a-form-item label="产地" name="place">
+      <a-form-item label="원산지" name="place">
         <DictSelect key-code="GODOS_PLACE" v-model:value="form.place" />
       </a-form-item>
-      <a-form-item label="上架状态" name="shelvesFlag">
+      <a-form-item label="선반 상태" name="shelvesFlag">
         <a-radio-group v-model:value="form.shelvesFlag">
           <a-radio :value="true">上架</a-radio>
           <a-radio :value="false">下架</a-radio>
         </a-radio-group>
       </a-form-item>
-      <a-form-item label="商品价格" name="price">
-        <a-input-number style="width: 100%" placeholder="请输入商品价格" v-model:value="form.price" :min="0" />
+      <a-form-item label="제품 가격" name="price">
+        <a-input-number style="width: 100%" placeholder="제품가격을 입력하세요" v-model:value="form.price" :min="0" />
       </a-form-item>
-      <a-form-item label="备注" name="remark">
-        <a-input style="width: 100%" placeholder="请输入备注" v-model:value="form.remark" />
+      <a-form-item label="비고" name="remark">
+        <a-input style="width: 100%" placeholder="메모를 입력하세요." v-model:value="form.remark" />
       </a-form-item>
     </a-form>
     <div
@@ -48,8 +48,8 @@
         zIndex: 1,
       }"
     >
-      <a-button style="margin-right: 8px" @click="onClose">取消</a-button>
-      <a-button type="primary" @click="onSubmit">提交</a-button>
+      <a-button style="margin-right: 8px" @click="onClose">취소</a-button>
+      <a-button type="primary" @click="onSubmit">제출하기</a-button>
     </div>
   </a-drawer>
 </template>
@@ -92,11 +92,11 @@
   };
   let form = reactive({ ...formDefault });
   const rules = {
-    categoryId: [{ required: true, message: '请选择商品分类' }],
-    goodsName: [{ required: true, message: '商品名称不能为空' }],
-    goodsStatus: [{ required: true, message: '商品状态不能为空' }],
-    price: [{ required: true, message: '商品价格不能为空' }],
-    place: [{ required: true, message: '产地不能为空' }],
+    categoryId: [{ required: true, message: '제품 카테고리를 선택하세요.' }],
+    goodsName: [{ required: true, message: '제품 이름은 비워 둘 수 없습니다.' }],
+    goodsStatus: [{ required: true, message: '제품 상태는 비어 있을 수 없습니다.' }],
+    price: [{ required: true, message: '제품 가격은 비워 둘 수 없습니다.' }],
+    place: [{ required: true, message: '출발지는 비어 있을 수 없습니다.' }],
   };
   // 是否展示抽屉
   const visible = ref(false);
@@ -129,7 +129,7 @@
           } else {
             await goodsApi.addGoods(form);
           }
-          message.success(`${form.goodsId ? '修改' : '添加'}成功`);
+          message.success(`${form.goodsId ? '수정' : '추가'}성공`);
           onClose();
           emit('reloadList');
         } catch (error) {
@@ -140,7 +140,7 @@
       })
       .catch((error) => {
         console.log('error', error);
-        message.error('参数验证错误，请仔细填写表单数据!');
+        message.error('파라미터 유효성 검사 오류가 발생했습니다. 양식 데이터를 신중하게 입력하세요!');
       });
   }
 

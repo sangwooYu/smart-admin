@@ -1,54 +1,54 @@
 <template>
-  <a-modal :visible="visible" title="添加" :width="700" forceRender ok-text="确认" cancel-text="取消" @ok="onSubmit" @cancel="onClose">
+  <a-modal :visible="visible" title="추가" :width="700" forceRender ok-text="확인" cancel-text="취소" @ok="onSubmit" @cancel="onClose">
     <a-form ref="formRef" :model="form" :rules="rules" :label-col="{ span: 6 }">
-      <a-form-item label="企业名称" name="enterpriseName">
-        <a-input v-model:value="form.enterpriseName" placeholder="请输入企业名称" />
+      <a-form-item label="회사 이름" name="enterpriseName">
+        <a-input v-model:value="form.enterpriseName" placeholder="비즈니스 이름을 입력하세요." />
       </a-form-item>
 
-      <a-form-item label="企业logo" name="enterpriseLogo">
+      <a-form-item label="기업 로고" name="enterpriseLogo">
         <Upload
           accept=".jpg,.jpeg,.png,.gif"
           :maxUploadSize="1"
-          buttonText="点击上传企业logo"
+          buttonText="기업 로고를 업로드하려면 클릭하세요."
           :default-file-list="form.enterpriseLogo"
           @change="enterpriseLogoChange"
         />
       </a-form-item>
 
-      <a-form-item label="统一社会信用代码" name="unifiedSocialCreditCode">
-        <a-input v-model:value="form.unifiedSocialCreditCode" placeholder="请输入统一社会信用代码" />
+      <a-form-item label="통합 소셜 신용 코드" name="unifiedSocialCreditCode">
+        <a-input v-model:value="form.unifiedSocialCreditCode" placeholder="통합 소셜 신용 코드를 입력하세요." />
       </a-form-item>
 
-      <a-form-item label="类型" name="type">
-        <SmartEnumSelect width="100%" v-model:value="form.type" placeholder="请选择类型" enum-name="ENTERPRISE_TYPE_ENUM" />
+      <a-form-item label="유형" name="type">
+        <SmartEnumSelect width="100%" v-model:value="form.type" placeholder="유형을 선택하세요." enum-name="ENTERPRISE_TYPE_ENUM" />
       </a-form-item>
 
-      <a-form-item label="联系人" name="contact">
-        <a-input v-model:value="form.contact" placeholder="请输入联系人" />
+      <a-form-item label="담당자" name="contact">
+        <a-input v-model:value="form.contact" placeholder="담당자를 입력하세요." />
       </a-form-item>
-      <a-form-item label="联系人电话" name="contactPhone">
-        <a-input v-model:value="form.contactPhone" placeholder="请输入联系人电话" />
-      </a-form-item>
-
-      <a-form-item label="所在城市" name="provinceCityDistrict">
-        <AreaCascader type="province_city_district" style="width: 100%" v-model:value="area" placeholder="请选择所在城市" @change="changeArea" />
-      </a-form-item>
-      <a-form-item label="详细地址" name="address">
-        <a-input v-model:value="form.address" placeholder="请输入详细地址" />
+      <a-form-item label="연락처 전화" name="contactPhone">
+        <a-input v-model:value="form.contactPhone" placeholder="연락처 전화를 입력하세요." />
       </a-form-item>
 
-      <a-form-item label="邮箱" name="email">
-        <a-input v-model:value="form.email" placeholder="请输入邮箱" />
+      <a-form-item label="거주 도시" name="provinceCityDistrict">
+        <AreaCascader type="province_city_district" style="width: 100%" v-model:value="area" placeholder="도시를 선택하세요." @change="changeArea" />
       </a-form-item>
-      <a-form-item label="启用状态" name="disabledFlag">
+      <a-form-item label="주소 세부 정보" name="address">
+        <a-input v-model:value="form.address" placeholder="전체 주소를 입력하세요." />
+      </a-form-item>
+
+      <a-form-item label="이메일" name="email">
+        <a-input v-model:value="form.email" placeholder="이메일을 입력하세요" />
+      </a-form-item>
+      <a-form-item label="상태 활성화" name="disabledFlag">
         <a-switch v-model:checked="enabledChecked" @change="enabledCheckedChange" />
       </a-form-item>
 
-      <a-form-item label="营业执照" name="businessLicense">
+      <a-form-item label="비즈니스 라이선스" name="businessLicense">
         <Upload
           accept=".jpg,.jpeg,.png,.gif"
           :maxUploadSize="1"
-          buttonText="点击上传营业执照"
+          buttonText="비즈니스 라이선스를 업로드하려면 클릭하세요."
           :default-file-list="form.businessLicense"
           @change="businessLicenseChange"
         />
@@ -148,14 +148,14 @@
   };
   let form = reactive({ ...formDefault });
   const rules = {
-    enterpriseName: [{ required: true, message: '请输入企业名称' }],
-    unifiedSocialCreditCode: [{ required: true, message: '请输入统一社会信用代码' }],
-    contact: [{ required: true, message: '请输入联系人' }],
+    enterpriseName: [{ required: true, message: '비즈니스 이름을 입력하세요.' }],
+    unifiedSocialCreditCode: [{ required: true, message: '통합 소셜 신용 코드를 입력하세요.' }],
+    contact: [{ required: true, message: '담당자를 입력하세요.' }],
     contactPhone: [
-      { required: true, message: '请输入联系人电话' },
-      { pattern: regular.phone, message: '请输入正确的联系人电话', trigger: 'blur' },
+      { required: true, message: '연락처를 입력하세요.' },
+      { pattern: regular.phone, message: '정확한 연락처 전화번호를 입력하세요.', trigger: 'blur' },
     ],
-    type: [{ required: true, message: '请选择类型' }],
+    type: [{ required: true, message: '유형을 선택하세요.' }],
   };
 
   function onSubmit() {
@@ -169,7 +169,7 @@
           } else {
             await enterpriseApi.create(form);
           }
-          message.success(`${form.enterpriseId ? '修改' : '添加'}成功`);
+          message.success(`${form.enterpriseId ? '수정 사항' : '추가'}성공`);
           emit('refresh');
           onClose();
         } catch (error) {
@@ -180,7 +180,7 @@
       })
       .catch((error) => {
         console.log('error', error);
-        message.error('参数验证错误，请仔细填写表单数据!');
+        message.error('파라미터 유효성 검사 오류가 발생했습니다. 양식 데이터를 신중하게 입력하세요!');
       });
   }
 

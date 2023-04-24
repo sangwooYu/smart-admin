@@ -13,15 +13,15 @@ import { SmartEnum } from '/@/types/smart-enum';
 export const LOGIN_RESULT_ENUM: SmartEnum<number> = {
   LOGIN_SUCCESS: {
     value: 0,
-    desc: '登录成功',
+    desc: '로그인 성공',
   },
   LOGIN_FAIL: {
     value: 1,
-    desc: '登录失败',
+    desc: '로그인 실패',
   },
   LOGIN_OUT: {
     value: 2,
-    desc: '退出登录',
+    desc: '로그아웃',
   },
 };
 

@@ -9,23 +9,23 @@
  */
 
 import { SmartEnum } from '/@/types/smart-enum';
-// 文件上传类型
+// 파일 업로드 유형
 export const FILE_FOLDER_TYPE_ENUM: SmartEnum<number> = {
   COMMON: {
     value: 1,
-    desc: '通用',
+    desc: '일반',
   },
   NOTICE: {
     value: 2,
-    desc: '公告',
+    desc: '공지 사항',
   },
   HELP_DOC: {
     value: 3,
-    desc: '帮助中心',
+    desc: '도움말 센터',
   },
   FEEDBACK: {
     value: 4,
-    desc: '意见反馈',
+    desc: '피드백',
   },
 };
 export default {

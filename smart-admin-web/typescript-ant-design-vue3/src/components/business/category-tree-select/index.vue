@@ -29,7 +29,7 @@
     value: Number,
     placeholder: {
       type: String,
-      default: '请选择',
+      default: '선택하세요',
     },
     categoryType: Number,
     width: {

@@ -1,27 +1,27 @@
 export default [
     {
         icon: 'CopyrightTwoTone',
-        title: '菜单',
+        title: '메뉴',
         path: '/menu/list'
     },
     {
         icon: 'ExperimentTwoTone',
-        title: '请求',
+        title: '요청',
         path: '/log/operate-log/list'
     },
     {
         icon: 'FireTwoTone',
-        title: '缓存',
+        title: '캐시',
         path: '/support/cache/cache-list'
     },
     {
         icon: 'HourglassTwoTone',
-        title: '字典',
+        title: '사전',
         path: '/setting/dict'
     },
     {
         icon: 'MessageTwoTone',
-        title: '单号',
+        title: '단일 번호',
         path: '/support/serial-number/serial-number-list'
     }
 ]

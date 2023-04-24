@@ -9,7 +9,7 @@
 -->
 <template>
   <a-drawer
-    :title="formData.noticeId ? '编辑' : '新建'"
+    :title="formData.noticeId ? '편집' : '신규'"
     :visible="visibleFlag"
     :width="1000"
     :footerStyle="{ textAlign: 'right' }"
@@ -17,33 +17,33 @@
     :destroyOnClose="true"
   >
     <a-form ref="formRef" :model="formData" :rules="formRules" :label-col="{ span: 3 }" :wrapper-col="{ span: 20 }">
-      <a-form-item label="公告标题" name="title">
-        <a-input v-model:value="formData.title" placeholder="请输入公告标题" />
+      <a-form-item label="게시판 제목" name="title">
+        <a-input v-model:value="formData.title" placeholder="게시판 제목을 입력하세요." />
       </a-form-item>
-      <a-form-item label="分类" name="noticeTypeId">
+      <a-form-item label="분류" name="noticeTypeId">
         <a-select v-model:value="formData.noticeTypeId" style="width: 100%" :showSearch="true" :allowClear="true">
           <a-select-option v-for="item in noticeTypeList" :key="item.noticeTypeId" :value="item.noticeTypeId">
             {{ item.noticeTypeName }}
           </a-select-option>
         </a-select>
       </a-form-item>
-      <a-form-item label="文号">
-        <a-input v-model:value="formData.documentNumber" placeholder="文号，如：1024创新实验室发〔2022〕字第36号" />
+      <a-form-item label="문서 번호">
+        <a-input v-model:value="formData.documentNumber" placeholder="문서 번호(예: 1024 이노베이션 랩 발행 [2022] 워드 번호 36)" />
       </a-form-item>
-      <a-form-item label="作者" name="author">
-        <a-input v-model:value="formData.author" placeholder="请输入作者" />
+      <a-form-item label="작성자" name="author">
+        <a-input v-model:value="formData.author" placeholder="작성자를 입력하세요." />
       </a-form-item>
-      <a-form-item label="来源" name="source">
-        <a-input v-model:value="formData.source" placeholder="请输入来源" />
+      <a-form-item label="출처" name="source">
+        <a-input v-model:value="formData.source" placeholder="소스를 입력하세요." />
       </a-form-item>
-      <a-form-item label="可见范围" name="allVisibleFlag">
-        <a-select v-model:value="formData.allVisibleFlag" placeholder="请选择可见范围">
-          <a-select-option :value="1">全部可见</a-select-option>
-          <a-select-option :value="0">部分可见</a-select-option>
+      <a-form-item label="가시 범위" name="allVisibleFlag">
+        <a-select v-model:value="formData.allVisibleFlag" placeholder="표시 범위를 선택하세요.">
+          <a-select-option :value="1">모두 표시됨</a-select-option>
+          <a-select-option :value="0">부분적으로 표시됨</a-select-option>
         </a-select>
       </a-form-item>
-      <a-form-item v-show="!formData.allVisibleFlag" label="可见员工/部门">
-        <a-button type="primary" @click="showNoticeVisibleModal">选择</a-button>
+      <a-form-item v-show="!formData.allVisibleFlag" label="표시되는 직원/부서">
+        <a-button type="primary" @click="showNoticeVisibleModal">선택</a-button>
         <div class="visible-list">
           <div class="visible-item" v-for="(item, index) in formData.visibleRangeList" :key="item.dataId">
             <a-tag>
@@ -53,36 +53,36 @@
           </div>
         </div>
       </a-form-item>
-      <a-form-item label="定时发布">
+      <a-form-item label="시간 제한 릴리스">
         <a-switch
           v-model:checked="formData.scheduledPublishFlag"
-          checked-children="开"
-          un-checked-children="关"
+          checked-children="열기"
+          un-checked-children="꺼짐"
           @change="changesSheduledPublishFlag"
         />
       </a-form-item>
-      <a-form-item v-show="formData.scheduledPublishFlag" label="发布时间">
+      <a-form-item v-show="formData.scheduledPublishFlag" label="릴리스 날짜">
         <a-date-picker
           v-model:value="releaseTime"
           :format="timeFormat"
           showTime
           :allowClear="false"
-          placeholder="请选择发布时间"
+          placeholder="릴리스 날짜를 선택하세요."
           style="width: 200px"
           @change="changeTime"
         />
       </a-form-item>
-      <a-form-item label="公告内容" name="contentHtml">
+      <a-form-item label="게시판 콘텐츠" name="contentHtml">
         <SmartWangeditor ref="contentRef" :modelValue="formData.contentHtml" :height="300" />
       </a-form-item>
-      <a-form-item label="附件">
+      <a-form-item label="부록">
         <Upload
           :defaultFileList="defaultFileList"
           :maxUploadSize="10"
           :folder="FILE_FOLDER_TYPE_ENUM.NOTICE.value"
-          buttonText="上传附件"
+          buttonText="첨부 파일 업로드"
           listType="text"
-          extraMsg="最多上传10个附件"
+          extraMsg="최대 10개의 첨부 파일 업로드"
           @change="changeAttachment"
         />
       </a-form-item>
@@ -90,8 +90,8 @@
 
     <template #footer>
       <a-space>
-        <a-button @click="onClose">取消</a-button>
-        <a-button type="primary" @click="onSubmit">保存</a-button>
+        <a-button @click="onClose">취소</a-button>
+        <a-button type="primary" @click="onSubmit">저장</a-button>
       </a-space>
     </template>
   </a-drawer>
@@ -164,12 +164,12 @@
   const formData = reactive({ ...defaultFormData });
 
   const formRules = {
-    title: [{ required: true, message: '请输入' }],
-    noticeTypeId: [{ required: true, message: '请选择分类' }],
-    allVisibleFlag: [{ required: true, message: '请选择' }],
-    source: [{ required: true, message: '请输入来源' }],
-    author: [{ required: true, message: '请输入作者' }],
-    contentHtml: [{ required: true, message: '请输入内容' }],
+    title: [{ required: true, message: '입력하세요' }],
+    noticeTypeId: [{ required: true, message: '카테고리를 선택하세요.' }],
+    allVisibleFlag: [{ required: true, message: '선택하세요' }],
+    source: [{ required: true, message: '소스를 입력하세요.' }],
+    author: [{ required: true, message: '작성자를 입력하세요.' }],
+    contentHtml: [{ required: true, message: '콘텐츠를 입력하세요.' }],
   };
 
   // 查询详情
@@ -203,7 +203,7 @@
       await formRef.value.validateFields();
       save();
     } catch (err) {
-      message.error('参数验证错误，请仔细填写表单数据!');
+      message.error('파라미터 유효성 검사 오류가 발생했습니다. 양식 데이터를 신중하게 입력하세요!');
     }
   }
 
@@ -222,7 +222,7 @@
       } else {
         await noticeApi.addNotice(formData);
       }
-      message.success('保存成功');
+      message.success('저장 성공');
       emits('reloadList');
       onClose();
     } catch (err) {
@@ -263,8 +263,8 @@
   // 移除某个员工/部门
   function removeVisibleItem(index) {
     Modal.confirm({
-      title: '提示',
-      content: '确定移除吗？',
+      title: '팁',
+      content: '제거하시겠습니까?',
       onOk() {
         formData.visibleRangeList.splice(index, 1);
       },

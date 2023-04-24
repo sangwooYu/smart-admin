@@ -54,7 +54,7 @@
     value: String,
     buttonText: {
       type: String,
-      default: '点击上传附件',
+      default: '첨부파일을 업로드하려면 클릭하세요.',
     },
     showUploadBtn: {
       type: Boolean,
@@ -165,7 +165,7 @@
   function beforeUpload(file) {
     const isLimitSize = file.size / 1024 / 1024 < props.maxSize;
     if (!isLimitSize) {
-      return message.error(`上传的文件必须小于${props.maxSize}Mb`);
+      return message.error(`업로드된 파일은 다음보다 작아야 합니다.${props.maxSize}Mb`);
     }
     return isLimitSize;
   }

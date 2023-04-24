@@ -34,7 +34,7 @@
     value: [Array, String],
     placeholder: {
       type: String,
-      default: '请选择字典',
+      default: '사전을 선택해 주세요.',
     },
     width: {
       type: String,

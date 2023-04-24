@@ -11,7 +11,7 @@
 <template>
   <a-config-provider :locale="antdLocale">
     <!---全局loading--->
-    <a-spin :spinning="spinning" tip="稍等片刻，我在拼命加载中..." size="large">
+    <a-spin :spinning="spinning" tip="잠시만요, 필사적으로 로드중입니다.." size="large">
       <!--- 路由 -->
       <RouterView />
     </a-spin>

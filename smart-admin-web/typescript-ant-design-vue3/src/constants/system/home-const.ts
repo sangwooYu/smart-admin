@@ -8,8 +8,8 @@
  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
  */
 
-//首页页面名字
+//홈페이지 이름
 export const HOME_PAGE_NAME = 'Home';
 
-//首页页面路径
+// 홈 페이지 경로
 export const HOME_PAGE_PATH = '/home';

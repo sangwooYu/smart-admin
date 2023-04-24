@@ -7,7 +7,7 @@
  * @FilePath: /smart-admin/src/views/system/home/components/gauge.vue
 -->
 <template>
-  <default-home-card icon="RocketTwoTone" title="业绩完成度">
+  <default-home-card icon="RocketTwoTone" title="성능 완료">
     <div class="echarts-box">
       <div id="gauge-main" class="gauge-main"></div>
     </div>
@@ -77,7 +77,7 @@ function init() {
         data: [
           {
             value: props.percent,
-            name: "完成度",
+            name: "수료 등급",
             title: {
               offsetCenter: ["0%", "-10%"],
             },

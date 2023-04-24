@@ -1,5 +1,5 @@
 <template>
-  <default-home-card icon="PieChartTwoTone" title="【1024创新实验室】上班摸鱼次数">
+  <default-home-card icon="PieChartTwoTone" title="[테스트] 물고기 터치 횟수">
     <div class="echarts-box">
       <div class="pie-main" id="pie-main"></div>
     </div>
@@ -25,7 +25,7 @@ function init(){
     },
     series: [
       {
-        name: '摸鱼次数',
+        name: '물고기 터치 횟수',
         type: 'pie',
         radius: ['40%', '70%'],
         avoidLabelOverlap: false,
@@ -49,10 +49,10 @@ function init(){
           show: false
         },
         data: [
-          { value: 10, name: '初晓' },
-          { value: 8, name: '善逸' },
-          { value: 3, name: '胡克' },
-          { value: 1, name: '罗伊' },
+          { value: 10, name: '첫 새벽' },
+          { value: 8, name: '우수한 편의성' },
+          { value: 3, name: '후커' },
+          { value: 1, name: 'Roy' },
         ]
       }
     ]

@@ -17,9 +17,9 @@ export const regular = {
   isLandlineOrPhone: /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/, // 验证 座机 或者手机
   account: /^[a-z0-9]{3,16}$/, // 请输入3-16位(小写字母|数字)的账号
   mobileAccount: /^[a-z0-9]{6,16}$/, // 请输入6-16位(小写字母|数字)的账号(和移动端保持一致)
-  accountDesc: '请输入3-16位(小写字母|数字)的账号',
+  accountDesc: '계정 번호는 3~16자리(소문자|숫자)를 입력하세요.',
   pwd: /^[A-Za-z0-9._]{6,16}$/, // 请输入6-16位(大小写字母|数字|小数点|下划线)的密码
-  pwdDesc: '请输入6-16位(大小写字母|数字|小数点|下划线)的密码',
+  pwdDesc: '6~16자리 비밀번호(대/소문자|숫자|소수점|밑줄)를 입력해 주세요.',
   delBlankSpace: /\s+/g, // 删除空格
   isPdfReg: new RegExp(/\.(pdf|PDF)/),
   isElseFileReg: new RegExp(/\.(doc|docx|xls|xlsx|txt|ppt|pptx|pps|ppxs)/),

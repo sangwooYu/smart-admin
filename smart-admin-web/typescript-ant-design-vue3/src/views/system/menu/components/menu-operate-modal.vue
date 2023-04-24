@@ -11,88 +11,88 @@
   <a-drawer
     :body-style="{ paddingBottom: '80px' }"
     :maskClosable="true"
-    :title="form.menuId ? '编辑' : '添加'"
+    :title="form.menuId ? '편집' : '추가'"
     :visible="visible"
     :width="550"
     @close="onClose"
   >
     <a-form ref="formRef" :labelCol="{ span: labelColSpan }" :labelWrap="true" :model="form" :rules="rules">
-      <a-form-item label="菜单类型" name="menuType">
+      <a-form-item label="메뉴 유형" name="menuType">
         <a-radio-group v-model:value="form.menuType" button-style="solid">
           <a-radio-button v-for="item in MENU_TYPE_ENUM" :key="item.value" :value="item.value">
             {{ item.desc }}
           </a-radio-button>
         </a-radio-group>
       </a-form-item>
-      <a-form-item :label="form.menuType === MENU_TYPE_ENUM.CATALOG.value ? '上级目录' : '上级菜单'">
+      <a-form-item :label="form.menuType === MENU_TYPE_ENUM.CATALOG.value ? '상위 디렉토리' : '상위 메뉴'">
         <MenuTreeSelect ref="parentMenuTreeSelect" v-model:value="form.parentId" />
       </a-form-item>
       <!--      目录 菜单 start   -->
       <template v-if="form.menuType == MENU_TYPE_ENUM.CATALOG.value || form.menuType == MENU_TYPE_ENUM.MENU.value">
-        <a-form-item label="菜单名称" name="menuName">
-          <a-input v-model:value="form.menuName" placeholder="请输入菜单名称" />
+        <a-form-item label="메뉴 이름" name="menuName">
+          <a-input v-model:value="form.menuName" placeholder="메뉴 이름을 입력하세요." />
         </a-form-item>
-        <a-form-item label="菜单图标" name="icon">
+        <a-form-item label="메뉴 아이콘" name="icon">
           <IconSelect @updateIcon="selectIcon">
             <template #iconSelect>
-              <a-input v-model:value="form.icon" placeholder="请输入菜单图标" style="width: 200px" />
+              <a-input v-model:value="form.icon" placeholder="메뉴 아이콘을 입력하세요." style="width: 200px" />
               <component :is="$antIcons[form.icon]" class="smart-margin-left15" style="font-size: 20px" />
             </template>
           </IconSelect>
         </a-form-item>
-        <a-form-item v-if="form.menuType == MENU_TYPE_ENUM.MENU.value" label="路由地址" name="path">
-          <a-input v-model:value="form.path" placeholder="请输入路由地址" />
+        <a-form-item v-if="form.menuType == MENU_TYPE_ENUM.MENU.value" label="라우팅 주소" name="path">
+          <a-input v-model:value="form.path" placeholder="라우팅 주소를 입력하세요." />
         </a-form-item>
-        <a-form-item label="排序" name="sort">
-          <a-input-number v-model:value="form.sort" :min="0" placeholder="请输入排序" style="width: 100%" />
-          <h6 style="color: #ababab">值越小越靠前</h6>
+        <a-form-item label="정렬 기준" name="sort">
+          <a-input-number v-model:value="form.sort" :min="0" placeholder="정렬기준을 입력하세요." style="width: 100%" />
+          <h6 style="color: #ababab">값이 작을수록 우선 순위가 높아집니다.</h6>
         </a-form-item>
         <template v-if="form.menuType == MENU_TYPE_ENUM.MENU.value">
-          <a-form-item v-if="form.frameFlag" label="外链地址" name="frameUrl">
-            <a-input v-model:value="form.frameUrl" placeholder="请输入外链地址" />
+          <a-form-item v-if="form.frameFlag" label="외부 링크 주소" name="frameUrl">
+            <a-input v-model:value="form.frameUrl" placeholder="외부 링크 주소를 입력하세요." />
           </a-form-item>
           <a-form-item v-else label="组件地址" name="component">
-            <a-input v-model:value="form.component" placeholder="请输入组件地址 默认带有开头/@/views" />
+            <a-input v-model:value="form.component" placeholder="기본적으로 컴포넌트 주소는 시작 부분으로 입력하세요./@/views" />
           </a-form-item>
         </template>
 
-        <a-form-item v-if="form.menuType == MENU_TYPE_ENUM.MENU.value" label="是否缓存" name="cacheFlag">
-          <a-switch v-model:checked="form.cacheFlag" checked-children="开启缓存" un-checked-children="不缓存" />
+        <a-form-item v-if="form.menuType == MENU_TYPE_ENUM.MENU.value" label="캐시 여부" name="cacheFlag">
+          <a-switch v-model:checked="form.cacheFlag" checked-children="캐싱 켜기" un-checked-children="캐시 없음" />
         </a-form-item>
-        <a-form-item v-if="form.menuType == MENU_TYPE_ENUM.MENU.value" label="是否外链" name="frameFlag">
-          <a-switch v-model:checked="form.frameFlag" checked-children="是外链" un-checked-children="不是外链" />
+        <a-form-item v-if="form.menuType == MENU_TYPE_ENUM.MENU.value" label="외부 링크 여부" name="frameFlag">
+          <a-switch v-model:checked="form.frameFlag" checked-children="외부 링크입니다." un-checked-children="외부 링크가 아닙니다." />
         </a-form-item>
-        <a-form-item label="显示状态" name="frameFlag">
-          <a-switch v-model:checked="form.visibleFlag" checked-children="显示" un-checked-children="不显示" />
+        <a-form-item label="상태 표시" name="frameFlag">
+          <a-switch v-model:checked="form.visibleFlag" checked-children="표시" un-checked-children="표시되지 않음" />
         </a-form-item>
-        <a-form-item label="禁用状态" name="frameFlag">
-          <a-switch v-model:checked="form.disabledFlag" checked-children="启用" un-checked-children="禁用" />
+        <a-form-item label="비활성화 상태" name="frameFlag">
+          <a-switch v-model:checked="form.disabledFlag" checked-children="사용" un-checked-children="사용 금지" />
         </a-form-item>
       </template>
       <!--      目录 菜单 end   -->
       <!--      按钮 start   -->
       <template v-if="form.menuType == MENU_TYPE_ENUM.POINTS.value">
-        <a-form-item label="功能点名称" name="menuName">
-          <a-input v-model:value="form.menuName" placeholder="请输入功能点名称" />
+        <a-form-item label="함수 포인트 이름" name="menuName">
+          <a-input v-model:value="form.menuName" placeholder="함수 포인트의 이름을 입력하세요." />
         </a-form-item>
-        <a-form-item label="功能点关联菜单">
+        <a-form-item label="함수 포인트 연결 메뉴">
           <MenuTreeSelect ref="contextMenuTreeSelect" v-model:value="form.contextMenuId" />
         </a-form-item>
-        <a-form-item label="功能点状态" name="frameFlag">
-          <a-switch v-model:checked="form.disabledFlag" checked-children="启用" un-checked-children="禁用" />
+        <a-form-item label="기능 포인트 상태" name="frameFlag">
+          <a-switch v-model:checked="form.disabledFlag" checked-children="사용" un-checked-children="사용 금지" />
         </a-form-item>
-        <a-form-item label="权限类型" name="permsType">
+        <a-form-item label="권한 유형" name="permsType">
           <a-radio-group v-model:value="form.permsType" >
             <a-radio v-for="item in MENU_PERMS_TYPE_ENUM" :key="item.value" :value="item.value">
               {{ item.desc }}
             </a-radio>
           </a-radio-group>
         </a-form-item>
-        <a-form-item :label="form.permsType === MENU_PERMS_TYPE_ENUM.SPRING_SECURITY.value ? '权限字符' : '前端权限字符'" name="webPerms">
-          <a-input v-model:value="form.webPerms" placeholder="请输入权限字符" />
+        <a-form-item :label="form.permsType === MENU_PERMS_TYPE_ENUM.SPRING_SECURITY.value ? '권한 문자' : '프런트엔드 권한 문자'" name="webPerms">
+          <a-input v-model:value="form.webPerms" placeholder="권한 문자를 입력하세요." />
         </a-form-item>
-        <a-form-item label="权限URL" name="apiPermsList" v-if="form.permsType === MENU_PERMS_TYPE_ENUM.URL.value">
-          <a-select v-model:value="form.apiPermsList" mode="multiple" placeholder="请选择接口权限" style="width: 100%">
+        <a-form-item label="권한 URL" name="apiPermsList" v-if="form.permsType === MENU_PERMS_TYPE_ENUM.URL.value">
+          <a-select v-model:value="form.apiPermsList" mode="multiple" placeholder="인터페이스 권한을 선택하세요." style="width: 100%">
             <a-select-option v-for="item in allUrlData" :key="item.name">{{ item.url }} </a-select-option>
           </a-select>
         </a-form-item>
@@ -100,9 +100,9 @@
       <!--      按钮 end   -->
     </a-form>
     <div class="footer">
-      <a-button style="margin-right: 8px" @click="onClose">取消</a-button>
-      <a-button style="margin-right: 8px" type="primary" @click="onSubmit(false)">提交 </a-button>
-      <a-button v-if="!form.menuId" type="primary" @click="onSubmit(true)">提交并添加下一个 </a-button>
+      <a-button style="margin-right: 8px" @click="onClose">취소</a-button>
+      <a-button style="margin-right: 8px" type="primary" @click="onSubmit(false)">제출하기</a-button>
+      <a-button v-if="!form.menuId" type="primary" @click="onSubmit(true)">제출하고 다음 </a-button>
     </div>
   </a-drawer>
 </template>
@@ -223,21 +223,21 @@
   }
 
   const rules = {
-    menuType: [{ required: true, message: '菜单类型不能为空' }],
-    permsType: [{ required: true, message: '权限类型不能为空' }],
+    menuType: [{ required: true, message: '메뉴 유형은 비워둘 수 없습니다.' }],
+    permsType: [{ required: true, message: '권한 유형은 비워 둘 수 없습니다.' }],
     menuName: [
-      { required: true, message: '菜单名称不能为空' },
-      { max: 20, message: '菜单名称不能大于20个字符', trigger: 'blur' },
+      { required: true, message: '메뉴 이름은 비워둘 수 없습니다.' },
+      { max: 20, message: '메뉴 이름은 20자를 초과할 수 없습니다.', trigger: 'blur' },
     ],
     frameUrl: [
-      { required: true, message: '外链地址不能为空' },
-      { max: 500, message: '外链地址不能大于500个字符', trigger: 'blur' },
+      { required: true, message: '외부 링크 주소는 비워둘 수 없습니다.' },
+      { max: 500, message: '외부 링크 주소는 500자를 넘지 않아야 합니다.', trigger: 'blur' },
     ],
     path: [
-      { required: true, message: '路由地址不能为空' },
-      { max: 100, message: '路由地址不能大于100个字符', trigger: 'blur' },
+      { required: true, message: '라우팅 주소는 비어 있을 수 없습니다.' },
+      { max: 100, message: '라우팅 주소는 100자를 초과할 수 없습니다.', trigger: 'blur' },
     ],
-    webPerms: [{ required: true, message: '前端权限字符不能为空' }],
+    webPerms: [{ required: true, message: '프런트엔드 권한 문자는 비워둘 수 없습니다.' }],
   };
 
   function validateForm(formRef) {
@@ -256,7 +256,7 @@
   const onSubmit = async (continueFlag) => {
     let validateFormRes = await validateForm(formRef.value);
     if (!validateFormRes) {
-      message.error('参数验证错误，请仔细填写表单数据!');
+      message.error('파라미터 유효성 검사 오류가 발생했습니다. 양식 데이터를 신중하게 입력하세요!');
       return;
     }
     SmartLoading.show();
@@ -271,7 +271,7 @@
       } else {
         await menuApi.addMenu(params);
       }
-      message.success(`${params.menuId ? '修改' : '添加'}成功`);
+      message.success(`${params.menuId ? '수정' : '추가'}성공`);
       if (continueFlag) {
         continueResetForm();
       } else {

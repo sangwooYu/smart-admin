@@ -10,73 +10,73 @@
 import { ref } from 'vue';
 export const columns = ref([
   {
-    title: '名称',
+    title: '이름',
     dataIndex: 'menuName',
     key: 'ID',
     width: 200,
   },
   {
-    title: '类型',
+    title: '타입',
     dataIndex: 'menuType',
     width: 80,
   },
   {
-    title: '图标',
+    title: '아이콘',
     dataIndex: 'icon',
     width: 50,
   },
   {
-    title: '路径',
+    title: '경로',
     dataIndex: 'path',
     ellipsis: true,
   },
   {
-    title: '组件',
+    title: '컴포넌트',
     dataIndex: 'component',
     ellipsis: true,
   },
   {
-    title: '权限模式',
+    title: '권한 모드',
     dataIndex: 'permsType',
     width: 100,
   },
   {
-    title: '后端权限',
+    title: '백엔드 권한',
     dataIndex: 'apiPerms',
     ellipsis: true,
   },
   {
-    title: '前端权限',
+    title: '프런트엔드 권한',
     dataIndex: 'webPerms',
     ellipsis: true,
   },
   {
-    title: '外链',
+    title: '외부 링크',
     dataIndex: 'frameFlag',
     width: 45,
   },
   {
-    title: '缓存',
+    title: '캐시',
     dataIndex: 'cacheFlag',
     width: 45,
   },
   {
-    title: '显示',
+    title: '표시',
     dataIndex: 'visibleFlag',
     width: 45,
   },
   {
-    title: '禁用',
+    title: '사용 금지',
     dataIndex: 'disabledFlag',
     width: 45,
   },
   {
-    title: '顺序',
+    title: '주문',
     dataIndex: 'sort',
     width: 80,
   },
   {
-    title: '操作',
+    title: '운영',
     dataIndex: 'operate',
     width: 100,
   },

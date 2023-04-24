@@ -9,12 +9,12 @@
   *
 -->
 <template>
-  <a-modal title="文件预览" v-model:visible="visibleFlag" :width="768" @cancel="onClose">
+  <a-modal title="문서 미리 보기" v-model:visible="visibleFlag" :width="768" @cancel="onClose">
     <div class="container">
       <img class="img-prev" :src="previewUrl" />
     </div>
     <template #footer>
-      <a-button @click="onClose">关闭</a-button>
+      <a-button @click="onClose">닫기</a-button>
     </template>
   </a-modal>
 </template>

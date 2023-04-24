@@ -37,21 +37,21 @@ export const FLAG_NUMBER_ENUM: SmartEnum<number> = {
 export const GENDER_ENUM: SmartEnum<number> = {
   UNKNOWN: {
     value: 0,
-    desc: '未知',
+    desc: '알 수 없음',
   },
   MAN: {
     value: 1,
-    desc: '男',
+    desc: '남성',
   },
   WOMAN: {
     value: 2,
-    desc: '女',
+    desc: '여성',
   },
 };
 
 export const USER_TYPE_ENUM: SmartEnum<number> = {
   ADMIN_EMPLOYEE: {
     value: 1,
-    desc: '员工',
+    desc: '직원',
   },
 };

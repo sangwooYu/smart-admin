@@ -8,25 +8,25 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal :visible="visible" :title="form.bankId ? '编辑' : '添加'" ok-text="确认" cancel-text="取消" @ok="onSubmit"
+  <a-modal :visible="visible" :title="form.bankId ? '편집기' : '추가'" ok-text="확인" cancel-text="취소" @ok="onSubmit"
            @cancel="onClose">
     <a-form ref="formRef" :model="form" :rules="rules" :label-col="{ span: 5 }" :wrapper-col="{ span: 18 }">
-      <a-form-item label="开户银行" name="bankName">
-        <a-input v-model:value="form.bankName" placeholder="请输入开户银行"/>
+      <a-form-item label="계좌 개설 은행" name="bankName">
+        <a-input v-model:value="form.bankName" placeholder="은행을 입력하세요."/>
       </a-form-item>
-      <a-form-item label="账户名称" name="accountName">
-        <a-input v-model:value="form.accountName" placeholder="请输入账户名称"/>
+      <a-form-item label="계정 이름" name="accountName">
+        <a-input v-model:value="form.accountName" placeholder="계정 이름을 입력하세요."/>
       </a-form-item>
-      <a-form-item label="账号" name="accountNumber">
-        <a-input v-model:value="form.accountNumber" placeholder="请输入账号"/>
+      <a-form-item label="계정 번호" name="accountNumber">
+        <a-input v-model:value="form.accountNumber" placeholder="계정 번호를 입력하세요."/>
       </a-form-item>
-      <a-form-item label="是否对公" name="businessFlag">
+      <a-form-item label="대중이" name="businessFlag">
         <a-switch v-model:checked="businessFlagChecked" @change="businessFlagCheckedChange"/>
       </a-form-item>
-      <a-form-item label="启用状态" name="disabledFlag">
+      <a-form-item label="상태 활성화" name="disabledFlag">
         <a-switch v-model:checked="enabledChecked" @change="enabledCheckedChange"/>
       </a-form-item>
-      <a-form-item label="备注" name="remark">
+      <a-form-item label="비고" name="remark">
         <a-textarea v-model:value="form.remark" :rows="2"/>
       </a-form-item>
     </a-form>
@@ -85,9 +85,9 @@ const formDefault = {
 };
 let form = reactive({...formDefault});
 const rules = {
-  bankName: [{required: true, message: '请输入开户银行'}],
-  accountName: [{required: true, message: '请输入账户名称'}],
-  accountNumber: [{required: true, message: '请输入账号'}],
+  bankName: [{required: true, message: '은행을 입력하세요.'}],
+  accountName: [{required: true, message: '계정 이름을 입력하세요.'}],
+  accountNumber: [{required: true, message: '계정 번호를 입력하세요.'}],
 };
 
 const businessFlagChecked = ref(false);
@@ -111,7 +111,7 @@ function onSubmit() {
           } else {
             await bankApi.create(form);
           }
-          message.success(`${form.bankId ? '修改' : '添加'}成功`);
+          message.success(`${form.bankId ? '수정 사항' : '추가'}성공`);
           emit('reloadList');
           onClose();
         } catch (error) {
@@ -123,7 +123,7 @@ function onSubmit() {
       .catch((error) => {
         debugger
         console.log('error', error);
-        message.error('参数验证错误，请仔细填写表单数据!');
+        message.error('파라미터 유효성 검사 오류가 발생했습니다. 양식 데이터를 신중하게 입력하세요!');
       });
 }
 

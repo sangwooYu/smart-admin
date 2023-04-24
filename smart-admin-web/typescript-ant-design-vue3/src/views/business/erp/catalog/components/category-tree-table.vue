@@ -15,7 +15,7 @@
           <template #icon>
             <PlusOutlined />
           </template>
-          新建
+          신규 건설
         </a-button>
       </div>
       <div class="smart-table-setting-block"></div>
@@ -35,9 +35,9 @@
       <template #bodyCell="{ record, column }">
         <template v-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="addCategory(record.categoryId)" type="link" v-privilege="`${privilegePrefix}Category:addChild`">增加子分类</a-button>
-            <a-button @click="addCategory(undefined, record)" type="link" v-privilege="`${privilegePrefix}Category:edit`">编辑</a-button>
-            <a-button @click="confirmDeleteCategory(record.categoryId)" danger type="link" v-privilege="`${privilegePrefix}Category:delete`">删除</a-button>
+            <a-button @click="addCategory(record.categoryId)" type="link" v-privilege="`${privilegePrefix}Category:addChild`">하위 카테고리 추가</a-button>
+            <a-button @click="addCategory(undefined, record)" type="link" v-privilege="`${privilegePrefix}Category:edit`">편집기</a-button>
+            <a-button @click="confirmDeleteCategory(record.categoryId)" danger type="link" v-privilege="`${privilegePrefix}Category:delete`">삭제</a-button>
           </div>
         </template>
       </template>
@@ -57,11 +57,11 @@
   const columnNameList = [
     {
       categoryType: CATEGORY_TYPE_ENUM.GOODS.value,
-      columnName: '商品分类',
+      columnName: '제품 카테고리',
     },
     {
       categoryType: CATEGORY_TYPE_ENUM.DEMO.value,
-      columnName: '演示分类',
+      columnName: '프레젠테이션 카테고리',
     },
   ];
   const columName = computed(() => {
@@ -87,7 +87,7 @@
       dataIndex: 'categoryName',
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'action',
       width: 200,
     },
@@ -137,14 +137,14 @@
 
   function confirmDeleteCategory(categoryId) {
     Modal.confirm({
-      title: '提示',
-      content: '确定要删除当前分类吗?',
-      okText: '确定',
+      title: '팁',
+      content: '현재 카테고리를 삭제하시겠습니까?',
+      okText: '결정',
       okType: 'danger',
       async onOk() {
         deleteCategory(categoryId);
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }
@@ -152,7 +152,7 @@
     try {
       SmartLoading.show();
       await categoryApi.deleteCategoryById(categoryId);
-      message.success('撤销成功');
+      message.success('출금 성공');
       queryList();
     } catch (e) {
       smartSentry.captureError(e);

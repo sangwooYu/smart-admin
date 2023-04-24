@@ -8,10 +8,10 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal :visible="visible" :title="form.categoryId ? '编辑' : '添加'" ok-text="确认" cancel-text="取消" @ok="onSubmit" @cancel="onClose">
+  <a-modal :visible="visible" :title="form.categoryId ? '편집' : '추가'" ok-text="확인" cancel-text="취소" @ok="onSubmit" @cancel="onClose">
     <a-form ref="formRef" :model="form" :rules="rules" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
-      <a-form-item label="分类名称" name="categoryName">
-        <a-input v-model:value="form.categoryName" placeholder="请输入分类名称" />
+      <a-form-item label="분류 이름" name="categoryName">
+        <a-input v-model:value="form.categoryName" placeholder="카테고리 이름을 입력하세요." />
       </a-form-item>
     </a-form>
   </a-modal>
@@ -61,7 +61,7 @@
   };
   let form = reactive({ ...formDefault });
   const rules = {
-    categoryName: [{ required: true, message: '请输入分类名称' }],
+    categoryName: [{ required: true, message: '카테고리 이름을 입력하세요.' }],
   };
 
   function onSubmit() {
@@ -75,7 +75,7 @@
           } else {
             await categoryApi.addCategory(form);
           }
-          message.success(`${form.categoryId ? '修改' : '添加'}成功`);
+          message.success(`${form.categoryId ? '수정' : '추가'}성공`);
           emit('reloadList', form.parentId);
           onClose();
         } catch (error) {
@@ -86,7 +86,7 @@
       })
       .catch((error) => {
         console.log('error', error);
-        message.error('参数验证错误，请仔细填写表单数据!');
+        message.error('파라미터 유효성 검사 오류가 발생했습니다. 양식 데이터를 신중하게 입력하세요!');
       });
   }
 

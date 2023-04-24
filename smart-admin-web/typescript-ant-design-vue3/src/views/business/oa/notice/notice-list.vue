@@ -11,35 +11,35 @@
 <template>
   <a-form class="smart-query-form" v-privilege="'notice:query'">
     <a-row class="smart-query-form-row">
-      <a-form-item label="分类" class="smart-query-form-item">
-        <a-select v-model:value="queryForm.noticeTypeId" style="width: 100px" :showSearch="true" :allowClear="true" placeholder="分类">
+      <a-form-item label="분류" class="smart-query-form-item">
+        <a-select v-model:value="queryForm.noticeTypeId" style="width: 100px" :showSearch="true" :allowClear="true" placeholder="분류">
           <a-select-option v-for="item in noticeTypeList" :key="item.noticeTypeId" :value="item.noticeTypeId">
             {{ item.noticeTypeName }}
           </a-select-option>
         </a-select>
       </a-form-item>
 
-      <a-form-item label="关键字" class="smart-query-form-item">
-        <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="标题、作者、来源" />
+      <a-form-item label="핵심 단어" class="smart-query-form-item">
+        <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="제목, 저자, 출처" />
       </a-form-item>
 
-      <a-form-item label="文号" class="smart-query-form-item">
-        <a-input style="width: 150px" v-model:value="queryForm.documentNumber" placeholder="文号" />
+      <a-form-item label="문서 번호" class="smart-query-form-item">
+        <a-input style="width: 150px" v-model:value="queryForm.documentNumber" placeholder="문서 번호" />
       </a-form-item>
 
-      <a-form-item label="创建人" class="smart-query-form-item">
-        <a-input style="width: 100px" v-model:value="queryForm.createUserId" placeholder="创建人" />
+      <a-form-item label="작성자" class="smart-query-form-item">
+        <a-input style="width: 100px" v-model:value="queryForm.createUserId" placeholder="작성자" />
       </a-form-item>
 
-      <a-form-item label="是否删除" class="smart-query-form-item">
+      <a-form-item label="삭제하기 또는 삭제하지 않기" class="smart-query-form-item">
         <SmartBooleanSelect v-model:value="queryForm.deletedFlag" style="width: 70px" />
       </a-form-item>
 
-      <a-form-item label="发布时间" class="smart-query-form-item">
+      <a-form-item label="릴리스 날짜" class="smart-query-form-item">
         <a-range-picker v-model:value="publishDate" @change="publishDateChange" style="width: 220px" />
       </a-form-item>
 
-      <a-form-item label="创建时间" class="smart-query-form-item">
+      <a-form-item label="생성 시간" class="smart-query-form-item">
         <a-range-picker v-model:value="createDate" @change="createDateChange" style="width: 220px" />
       </a-form-item>
 
@@ -49,13 +49,13 @@
             <template #icon>
               <SearchOutlined />
             </template>
-            查询
+            문의
           </a-button>
           <a-button @click="onReload">
             <template #icon>
               <ReloadOutlined />
             </template>
-            重置
+            초기화
           </a-button>
         </a-button-group>
       </a-form-item>
@@ -69,7 +69,7 @@
           <template #icon>
             <PlusOutlined />
           </template>
-          新建
+          신규 건설
         </a-button>
       </div>
       <div class="smart-table-setting-block">
@@ -91,18 +91,18 @@
         <template v-if="column.dataIndex === 'title'">
           <a @click="toDetail(record.noticeId)">{{ text }}</a>
         </template>
-        <template v-else-if="column.dataIndex === 'allVisibleFlag'"> {{ text ? '全部可见' : '部分可见' }} </template>
+        <template v-else-if="column.dataIndex === 'allVisibleFlag'"> {{ text ? '모두 표시' : '부분적으로 표시' }} </template>
         <template v-else-if="column.dataIndex === 'publishFlag'">
-          {{ text ? '已发布' : '待发布' }}
+          {{ text ? 'Published' : '게시 예정' }}
         </template>
         <template v-else-if="column.dataIndex === 'deletedFlag'">
-          <a-tag v-show="text" color="error">已删除</a-tag>
-          <a-tag v-show="!text" color="success">未删除</a-tag>
+          <a-tag v-show="text" color="error">삭제됨</a-tag>
+          <a-tag v-show="!text" color="success">삭제되지 않음</a-tag>
         </template>
         <template v-else-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button type="link" @click="addOrUpdate(record.noticeId)" v-privilege="'notice:edit'">编辑</a-button>
-            <a-button type="link" @click="onDelete(record.noticeId)" v-privilege="'notice:delete'" danger>删除</a-button>
+            <a-button type="link" @click="addOrUpdate(record.noticeId)" v-privilege="'notice:edit'">편집기</a-button>
+            <a-button type="link" @click="onDelete(record.noticeId)" v-privilege="'notice:delete'" danger>삭제</a-button>
           </div>
         </template>
       </template>
@@ -120,7 +120,7 @@
         :total="total"
         @change="queryNoticeList"
         @showSizeChange="queryNoticeList"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `합계: ${total}`"
       />
     </div>
   </a-card>
@@ -158,79 +158,79 @@
 
   const tableColumns = ref([
     {
-      title: `标题`,
+      title: `제목`,
       dataIndex: 'title',
       width: 300,
       ellipsis: true,
     },
     {
-      title: `文号`,
+      title: `문서 번호`,
       dataIndex: 'documentNumber',
       width: 100,
       ellipsis: true,
     },
     {
-      title: '分类',
+      title: '분류',
       dataIndex: 'noticeTypeName',
       width: 60,
       ellipsis: true,
     },
     {
-      title: `作者`,
+      title: `작성자`,
       dataIndex: 'author',
       width: 80,
       ellipsis: true,
     },
     {
-      title: `来源`,
+      title: `출처`,
       dataIndex: 'source',
       width: 90,
       ellipsis: true,
     },
 
     {
-      title: '可见范围',
+      title: '가시 범위',
       dataIndex: 'allVisibleFlag',
       width: 90,
       ellipsis: true,
     },
     {
-      title: '发布',
+      title: '게시',
       dataIndex: 'publishFlag',
       width: 80,
     },
     {
-      title: '删除',
+      title: '삭제',
       dataIndex: 'deletedFlag',
       width: 80,
     },
     {
-      title: '发布时间',
+      title: '릴리스 날짜',
       dataIndex: 'publishTime',
       width: 150,
     },
     {
-      title: '页面浏览量',
+      title: '페이지 조회수',
       dataIndex: 'pageViewCount',
       width: 90,
     },
     {
-      title: '用户浏览量',
+      title: '사용자 보기',
       dataIndex: 'userViewCount',
       width: 90,
     },
     {
-      title: '创建人',
+      title: '작성자',
       dataIndex: 'createUserName',
       width: 80,
     },
     {
-      title: '创建时间',
+      title: '생성 시간',
       dataIndex: 'createTime',
       width: 150,
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'action',
       fixed: 'right',
       width: 90,
@@ -315,8 +315,8 @@
   // 删除
   function onDelete(noticeId) {
     Modal.confirm({
-      title: '提示',
-      content: '确认删除此数据吗?',
+      title: '팁',
+      content: '이 데이터의 삭제를 확인하시겠습니까?',
       onOk() {
         deleteNotice(noticeId);
       },
@@ -328,7 +328,7 @@
     try {
       tableLoading.value = true;
       await noticeApi.deleteNotice(noticeId);
-      message.success('删除成功');
+      message.success('성공적으로 삭제됨');
       queryNoticeList();
     } catch (err) {
       smartSentry.captureError(err);

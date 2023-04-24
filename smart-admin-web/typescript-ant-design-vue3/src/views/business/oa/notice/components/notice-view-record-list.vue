@@ -11,10 +11,10 @@
   <div>
     <a-form class="smart-query-form">
       <a-row class="smart-query-form-row">
-        <a-form-item label="部门" class="smart-query-form-item" style="width: 280px; margin-right: 20px">
+        <a-form-item label="섹터" class="smart-query-form-item" style="width: 280px; margin-right: 20px">
           <DepartmentTreeSelect v-model:value="queryForm.departmentId" width="100%" />
         </a-form-item>
-        <a-form-item label="关键字" class="smart-query-form-item" style="width: 280px">
+        <a-form-item label="핵심 단어" class="smart-query-form-item" style="width: 280px">
           <a-input v-model:value="queryForm.keywords" placeholder="姓名/IP/设备" />
         </a-form-item>
         <a-form-item class="smart-query-form-item smart-margin-left10">
@@ -23,13 +23,13 @@
               <template #icon>
                 <SearchOutlined />
               </template>
-              查询
+              문의
             </a-button>
             <a-button @click="resetQuery">
               <template #icon>
                 <ReloadOutlined />
               </template>
-              重置
+              초기화
             </a-button>
           </a-button-group>
         </a-form-item>
@@ -54,7 +54,7 @@
         :total="total"
         @change="queryViewRecord"
         @showSizeChange="queryViewRecord"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `합계: ${total}`"
       />
     </div>
   </div>
@@ -78,27 +78,27 @@ defineExpose({
 
 const tableColumns = [
   {
-    title: '姓名',
+    title: '이름',
     dataIndex: 'employeeName',
   },
   {
-    title: '查看次数',
+    title: '시간 보기',
     dataIndex: 'pageViewCount',
   },
   {
-    title: '首次查看设备',
+    title: '장비 처음 보기',
     dataIndex: 'firstIp',
   },
   {
-    title: '首次查看时间',
+    title: '첫 조회 시간',
     dataIndex: 'createTime',
   },
   {
-    title: '最后一次查看设备',
+    title: '마지막으로 본 장비',
     dataIndex: 'lastIp',
   },
   {
-    title: '最后一次查看时间',
+    title: '마지막으로 본 시간',
     dataIndex: 'updateTime',
     with: 80,
   },

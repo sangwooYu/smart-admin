@@ -8,12 +8,12 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal title="选择部门" v-model:visible="visibleFlag" :maskClosable="false" :width="768" @ok="onSubmit" @cancel="onClose">
+  <a-modal title="섹터 선택" v-model:visible="visibleFlag" :maskClosable="false" :width="768" @ok="onSubmit" @cancel="onClose">
     <a-tabs v-model:activeKey="activeKey">
-      <a-tab-pane :key="1" tab="选择员工">
+      <a-tab-pane :key="1" tab="직원 선택">
         <NoticeFormVisibleTransferEmployee :employeeList="employeeList" @onChange="onChangeEmployee" />
       </a-tab-pane>
-      <a-tab-pane :key="2" tab="选择部门">
+      <a-tab-pane :key="2" tab="섹터 선택">
         <NoticeFormVisibleTransferDepartment :departmentList="departmentList" @onChange="onChangeDepartment" />
       </a-tab-pane>
     </a-tabs>

@@ -11,19 +11,19 @@
   <div class="detail-header">
     <a-page-header :title="detail.enterpriseName" :avatar="{ src: logo }">
       <template #extra>
-        <a-button @click="showUpdate" type="primary">编辑</a-button>
+        <a-button @click="showUpdate" type="primary">편집기</a-button>
       </template>
       <div>
         <a-descriptions size="small" :column="3">
-          <a-descriptions-item label="统一社会信用代码">{{ detail.unifiedSocialCreditCode }}</a-descriptions-item>
-          <a-descriptions-item label="联系人">{{ detail.contact }}</a-descriptions-item>
-          <a-descriptions-item label="联系人电话">{{ detail.contactPhone }}</a-descriptions-item>
-          <a-descriptions-item label="邮箱">{{ detail.email }}</a-descriptions-item>
-          <a-descriptions-item label="所在城市">{{ area }}</a-descriptions-item>
-          <a-descriptions-item label="详细地址">{{ detail.address }}</a-descriptions-item>
-          <a-descriptions-item label="创建时间">{{ detail.createTime }}</a-descriptions-item>
-          <a-descriptions-item label="创建人">{{ detail.createUserName }}</a-descriptions-item>
-          <a-descriptions-item label="营业执照">
+          <a-descriptions-item label="통합 소셜 신용 코드">{{ detail.unifiedSocialCreditCode }}</a-descriptions-item>
+          <a-descriptions-item label="담당자">{{ detail.contact }}</a-descriptions-item>
+          <a-descriptions-item label="연락처 전화">{{ detail.contactPhone }}</a-descriptions-item>
+          <a-descriptions-item label="이메일">{{ detail.email }}</a-descriptions-item>
+          <a-descriptions-item label="거주 도시">{{ area }}</a-descriptions-item>
+          <a-descriptions-item label="주소 세부 정보">{{ detail.address }}</a-descriptions-item>
+          <a-descriptions-item label="생성 시간">{{ detail.createTime }}</a-descriptions-item>
+          <a-descriptions-item label="작성자">{{ detail.createUserName }}</a-descriptions-item>
+          <a-descriptions-item label="비즈니스 라이선스">
             <FilePreview :default-file-list="detail.businessLicense" />
           </a-descriptions-item>
         </a-descriptions>
@@ -32,16 +32,16 @@
   </div>
   <a-card class="smart-margin-top10" size="small">
     <a-tabs>
-      <a-tab-pane key="employee" tab="员工信息">
+      <a-tab-pane key="employee" tab="직원 정보">
         <EmployeeList :enterpriseId="enterpriseId" />
       </a-tab-pane>
-      <a-tab-pane key="bank" tab="银行信息">
+      <a-tab-pane key="bank" tab="은행 정보">
         <BankList :enterpriseId="enterpriseId" />
       </a-tab-pane>
-      <a-tab-pane key="invoice" tab="发票信息">
+      <a-tab-pane key="invoice" tab="송장 정보">
         <InvoiceList :enterpriseId="enterpriseId" />
       </a-tab-pane>
-      <a-tab-pane key="dataTracer" tab="变更记录">
+      <a-tab-pane key="dataTracer" tab="변경 로그">
         <DataTracer :dataId="enterpriseId" :type="DATA_TRACER_TYPE_ENUM.OA_ENTERPRISE.value" />
       </a-tab-pane>
     </a-tabs>
