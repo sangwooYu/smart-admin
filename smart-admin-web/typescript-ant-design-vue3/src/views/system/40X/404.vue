@@ -8,7 +8,7 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-result status="403" title="对不起，您访问的内容不存在！">
+  <a-result status="403" title="방문하신 콘텐츠가 존재하지 않습니다!">
     <template #extra>
       <a-button type="primary" @click="goHome">返回首页</a-button>
     </template>

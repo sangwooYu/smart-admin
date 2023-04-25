@@ -8,24 +8,24 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal :visible="visible" title="生成单号" ok-text="生成" cancel-text="关闭" @ok="onSubmit" @cancel="onClose">
+  <a-modal :visible="visible" title="주문 번호 생성" ok-text="OK" cancel-text="취소" @ok="onSubmit" @cancel="onClose">
     <a-form ref="formRef" :model="form" :rules="rules" :label-col="{ span: 5 }">
-      <a-form-item label="业务">
+      <a-form-item label="운영">
         <a-input v-model:value="form.businessName" :disabled="true" />
       </a-form-item>
-      <a-form-item label="格式">
+      <a-form-item label="형식">
         <a-input v-model:value="form.format" :disabled="true" />
       </a-form-item>
-      <a-form-item label="循环周期">
+      <a-form-item label="주기 시간">
         <a-input v-model:value="form.ruleType" :disabled="true" />
       </a-form-item>
-      <a-form-item label="上次产生单号">
+      <a-form-item label="마지막으로 생성된 주문 번호">
         <a-input v-model:value="form.lastNumber" :disabled="true" />
       </a-form-item>
-      <a-form-item label="生成数量" name="count">
+      <a-form-item label="발전기 수" name="count">
         <a-input-number v-model:value="form.count" />
       </a-form-item>
-      <a-form-item label="生成结果">
+      <a-form-item label="결과 생성">
         <a-textarea v-model:value="generateResult" :rows="2" />
       </a-form-item>
     </a-form>
@@ -66,7 +66,7 @@
 
   // ----------------------- 表单 ------------------------
   const rules = {
-    count: [{ required: true, message: '请输入数量' }],
+    count: [{ required: true, message: '수량을 입력하세요.' }],
   };
 
   //生成结果
@@ -91,7 +91,7 @@
         SmartLoading.show();
         try {
           let res = await serialNumberApi.generate(form);
-          message.success('生成成功');
+          message.success('성공적으로 생성됨');
           generateResult.value = _.join(res.data, ', ');
         } catch (error) {
           smartSentry.captureError(error);
@@ -101,7 +101,7 @@
       })
       .catch((error) => {
         console.log('error', error);
-        message.error('参数验证错误，请仔细填写表单数据!');
+        message.error('파라미터 유효성 검사 오류가 발생했습니다. 양식 데이터를 신중하게 입력하세요!');
       });
   }
 </script>

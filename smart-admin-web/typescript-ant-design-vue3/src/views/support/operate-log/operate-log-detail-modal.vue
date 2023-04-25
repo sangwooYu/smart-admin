@@ -8,37 +8,37 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal :visible="visible" title="请求详情" width="60%" :footer="null" @cancel="close">
+  <a-modal :visible="visible" title="세부 정보 요청" width="60%" :footer="null" @cancel="close">
     <div class="info-box">
       <a-row class="smart-margin-top10">
         <a-col :span="16">
           <a-row class="detail-info">
-            <a-col :span="12"> 请求地址： {{ detail.url }}</a-col>
-            <a-col :span="12"> 请求日期： {{ detail.createTime }}</a-col>
+            <a-col :span="12"> 요청 주소: {{ detail.url }}</a-col>
+            <a-col :span="12"> 요청 날짜: {{ detail.createTime }}</a-col>
           </a-row>
           <a-row class="detail-info">
-            <a-col> 请求方法： {{ detail.method }}</a-col>
+            <a-col> 요청 방법: {{ detail.method }}</a-col>
           </a-row>
           <a-row class="detail-info">
-            <a-col :span="12"> 用户id：{{ detail.operateUserId }}</a-col>
-            <a-col :span="12"> 用户名称： {{ detail.operateUserName }}</a-col>
-            <a-col :span="12"> 请求内容： {{ detail.module }} - {{ detail.content }}</a-col>
+            <a-col :span="12"> 사용자 아이디: {{ detail.operateUserId }}</a-col>
+            <a-col :span="12"> 사용자 이름: {{ detail.operateUserName }}</a-col>
+            <a-col :span="12"> 요청 내용: {{ detail.module }} - {{ detail.content }}</a-col>
           </a-row>
         </a-col>
         <a-col :span="8">
           <p class="detail-right-title">请求状态</p>
           <p :class="['detail-right', detail.successFlag ? 'success' : 'error']">
-            {{ detail.successFlag ? '成功' : '失败' }}
+            {{ detail.successFlag ? '성공' : '실패' }}
           </p>
         </a-col>
       </a-row>
     </div>
     <div class="info-box">
-      <h4>请求参数：</h4>
+      <h4>요청 매개변수:</h4>
       <JsonViewer :value="detail.param ? JSON.parse(detail.param) : ''" theme="jv-dark" copyable boxed sort />
     </div>
     <div class="info-box">
-      <h4>请求参数：</h4>
+      <h4>요청 매개변수:</h4>
       <div>
         {{ detail.failReason }}
       </div>

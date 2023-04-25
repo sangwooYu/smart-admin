@@ -8,18 +8,18 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal :visible="visible" :title="form.configId ? '编辑' : '添加'" ok-text="确认" cancel-text="取消" @ok="onSubmit" @cancel="onClose">
+  <a-modal :visible="visible" :title="form.configId ? '편집' : '추가'" ok-text="OK" cancel-text="취소" @ok="onSubmit" @cancel="onClose">
     <a-form ref="formRef" :model="form" :rules="rules" :label-col="{ span: 5 }">
-      <a-form-item label="参数Key" name="configKey">
+      <a-form-item label="매개변수 키" name="configKey">
         <a-input v-model:value="form.configKey" placeholder="请输入参数Key" />
       </a-form-item>
-      <a-form-item label="参数名称" name="configName">
+      <a-form-item label="매개변수 이름" name="configName">
         <a-input v-model:value="form.configName" placeholder="请输入参数名称" />
       </a-form-item>
-      <a-form-item label="参数值" name="configValue">
+      <a-form-item label="매개변수 값" name="configValue">
         <a-input v-model:value="form.configValue" placeholder="请输入参数值" />
       </a-form-item>
-      <a-form-item label="备注" name="remark">
+      <a-form-item label="비고" name="remark">
         <textarea v-model="form.remark" style="width: 100%; height: 100px; outline: none"></textarea>
       </a-form-item>
     </a-form>
@@ -47,9 +47,9 @@
   };
   let form = reactive({ ...formDefault });
   const rules = {
-    configKey: [{ required: true, message: '请输入参数key' }],
-    configName: [{ required: true, message: '请输入参数名称' }],
-    configValue: [{ required: true, message: '请输入参数值' }],
+    configKey: [{ required: true, message: '파라미터 키를 입력하세요.' }],
+    configName: [{ required: true, message: '매개변수 이름을 입력하세요.' }],
+    configValue: [{ required: true, message: '파라미터 값을 입력하세요.' }],
   };
   // 是否展示
   const visible = ref(false);
@@ -78,7 +78,7 @@
           } else {
             await configApi.addConfig(form);
           }
-          message.success(`${form.configId ? '修改' : '添加'}成功`);
+          message.success(`${form.configId ? '수정' : '추가'}성공`);
           emit('reloadList');
           onClose();
         } catch (error) {
@@ -89,7 +89,7 @@
       })
       .catch((error) => {
         console.log('error', error);
-        message.error('参数验证错误，请仔细填写表单数据!');
+        message.error('파라미터 유효성 검사 오류가 발생했습니다. 양식 데이터를 신중하게 입력하세요!');
       });
   }
 

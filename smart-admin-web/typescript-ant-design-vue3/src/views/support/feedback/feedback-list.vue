@@ -10,10 +10,10 @@
 <template>
   <a-form class="smart-query-form">
     <a-row class="smart-query-form-row">
-      <a-form-item label="关键字" class="smart-query-form-item" style="margin-right: 20px">
-        <a-input style="width: 240px" v-model:value.trim="queryForm.searchWord" placeholder="反馈内容/创建人" />
+      <a-form-item label="핵심 단어" class="smart-query-form-item" style="margin-right: 20px">
+        <a-input style="width: 240px" v-model:value.trim="queryForm.searchWord" placeholder="피드백 / 작성자" />
       </a-form-item>
-      <a-form-item label="创建日期" class="smart-query-form-item" style="margin-right: 20px">
+      <a-form-item label="생성 날짜" class="smart-query-form-item" style="margin-right: 20px">
         <a-range-picker
           v-model:value="chooseTimeRange"
           @change="changeCreateDate"
@@ -28,13 +28,13 @@
             <template #icon>
               <SearchOutlined />
             </template>
-            查询
+            문의
           </a-button>
           <a-button @click="onReset">
             <template #icon>
               <ReloadOutlined />
             </template>
-            重置
+            초기화
           </a-button>
         </a-button-group>
       </a-form-item>
@@ -82,30 +82,30 @@
   // ----------------------- 表格列 --------------------------------------
   const tableColumns = reactive([
     {
-      title: '编号',
+      title: '피드백ID',
       dataIndex: 'feedbackId',
       width: 80,
     },
     {
-      title: '反馈内容',
+      title: '피드백내용',
       dataIndex: 'feedbackContent',
     },
     {
-      title: '反馈图片',
+      title: '피드백 이미지',
       dataIndex: 'feedbackAttachment',
     },
     {
-      title: '反馈人',
+      title: '피드백 작성자',
       dataIndex: 'userName',
       width: 100,
     },
     {
-      title: '反馈人类型',
+      title: '피드백 유형',
       dataIndex: 'userType',
       width: 100,
     },
     {
-      title: '反馈时间',
+      title: '피드백 시간',
       dataIndex: 'createTime',
       width: 150,
     },

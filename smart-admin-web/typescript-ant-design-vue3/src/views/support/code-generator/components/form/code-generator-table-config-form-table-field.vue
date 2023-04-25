@@ -31,7 +31,7 @@
       </template>
 
       <template v-if="column.dataIndex === 'ellipsisFlag'">
-        <a-switch v-model:checked="record.ellipsisFlag" checked-children="自动省略" un-checked-children="换行显示" />
+        <a-switch v-model:checked="record.ellipsisFlag" checked-children="자동 생략" un-checked-children="라인 피드 디스플레이" />
       </template>
     </template>
   </a-table>
@@ -48,40 +48,40 @@ import { convertLowerCamel } from '/@/utils/str-util';
 
   const columns = ref([
     {
-      title: '序号',
+      title: '일련 번호',
       dataIndex: 'no',
       width: 60,
     },
     {
-      title: '列名',
+      title: '리스팅',
       dataIndex: 'columnName',
       width: 120,
       ellipsis: true,
     },
     {
-      title: '列描述',
+      title: '열 설명',
       dataIndex: 'columnComment',
       width: 120,
       ellipsis: true,
     },
     {
-      title: '显示',
+      title: '표시',
       dataIndex: 'showFlag',
       width: 50,
     },
     {
-      title: '字段名词',
+      title: '필드 명사',
       dataIndex: 'label',
       width: 120,
     },
     {
-      title: '字段命名',
+      title: '필드 이름 지정',
       dataIndex: 'fieldName',
       width: 120,
     },
 
     {
-      title: '宽度',
+      title: '너비',
       dataIndex: 'width',
       width: 80,
     },

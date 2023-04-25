@@ -10,15 +10,15 @@
 <template>
   <a-card class="tree-container" size="small">
     <a-row>
-      <a-input v-model:value.trim="keywords" placeholder="请输入目录名称" />
+      <a-input v-model:value.trim="keywords" placeholder="카탈로그 이름을 입력하세요." />
     </a-row>
     <a-row class="sort-flag-row" v-if="props.showMenu">
       <span>
         排序
-        <template v-if="showSortFlag"> （越小越靠前） </template>
+        <template v-if="showSortFlag"> (작을수록 좋습니다) </template>
         ：<a-switch v-model:checked="showSortFlag" />
       </span>
-      <a-button type="primary" @click="addTop" size="small" v-privilege="'helpDocCatalog:addCategory'">新建</a-button>
+      <a-button type="primary" @click="addTop" size="small" v-privilege="'helpDocCatalog:addCategory'">신규 생성</a-button>
     </a-row>
     <a-tree
       v-if="!_.isEmpty(helpDocCatalogTreeData)"
@@ -40,14 +40,14 @@
         <a-popover placement="right" v-if="props.showMenu">
           <template #content>
             <div style="display: flex; flex-direction: column">
-              <a-button type="text" @click="addHelpDocCatalog(item.dataRef)" v-privilege="'helpDocCatalog:addCategory'">添加下级</a-button>
-              <a-button type="text" @click="updateHelpDocCatalog(item.dataRef)" v-privilege="'helpDocCatalog:edit'">修改</a-button>
+              <a-button type="text" @click="addHelpDocCatalog(item.dataRef)" v-privilege="'helpDocCatalog:addCategory'">하위 항목 추가</a-button>
+              <a-button type="text" @click="updateHelpDocCatalog(item.dataRef)" v-privilege="'helpDocCatalog:edit'">수정 사항</a-button>
               <a-button
                 type="text"
                 v-if="item.helpDocCatalogId != topHelpDocCatalogId"
                 @click="deleteHelpDocCatalog(item.helpDocCatalogId)"
                 v-privilege="'helpDocCatalog:delete'"
-                >删除</a-button
+                >삭제</a-button
               >
             </div>
           </template>
@@ -60,7 +60,7 @@
         <div v-else>{{ item.name }}</div>
       </template>
     </a-tree>
-    <div class="no-data" v-else>暂无结果</div>
+    <div class="no-data" v-else>아직 결과 없음</div>
     <!-- 添加编辑目录弹窗 -->
     <HelpDocCatalogFormModal ref="helpDocCatalogFormModal" @refresh="refresh" />
   </a-card>
@@ -277,10 +277,10 @@ import { smartSentry } from '/@/lib/smart-sentry';
   // 删除
   function deleteHelpDocCatalog(id) {
     Modal.confirm({
-      title: '提醒',
+      title: '알림',
       icon: createVNode(ExclamationCircleOutlined),
-      content: '确定要删除该目录吗?',
-      okText: '删除',
+      content: '정말 디렉토리를 삭제하시겠습니까?',
+      okText: '삭제',
       okType: 'danger',
       async onOk() {
         SmartLoading.show();
@@ -308,7 +308,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
           SmartLoading.hide();
         }
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }

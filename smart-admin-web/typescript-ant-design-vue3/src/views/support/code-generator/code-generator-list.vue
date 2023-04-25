@@ -11,8 +11,8 @@
   <div>
     <a-form class="smart-query-form">
       <a-row class="smart-query-form-row">
-        <a-form-item label="表名" class="smart-query-form-item">
-          <a-input style="width: 300px" v-model:value="queryForm.tableNameKeywords" placeholder="请输入表名关键字" />
+        <a-form-item label="테이블 이름" class="smart-query-form-item">
+          <a-input style="width: 300px" v-model:value="queryForm.tableNameKeywords" placeholder="테이블 이름 키워드를 입력하세요." />
         </a-form-item>
 
         <a-form-item class="smart-query-form-item smart-margin-left10">
@@ -20,13 +20,13 @@
             <template #icon>
               <ReloadOutlined />
             </template>
-            查询
+            문의
           </a-button>
           <a-button @click="resetQuery">
             <template #icon>
               <SearchOutlined />
             </template>
-            重置
+            초기화
           </a-button>
         </a-form-item>
       </a-row>
@@ -44,9 +44,9 @@
           </template>
           <template v-if="column.dataIndex === 'action'">
             <div class="smart-table-operate">
-              <a-button @click="showConfig(record)" type="link">代码配置</a-button>
-              <a-button @click="showPreview(record)" type="link">代码预览</a-button>
-              <a-button @click="download(record)" type="link">下载代码</a-button>
+              <a-button @click="showConfig(record)" type="link">코드 구성</a-button>
+              <a-button @click="showPreview(record)" type="link">코드 미리보기</a-button>
+              <a-button @click="download(record)" type="link">코드 다운로드</a-button>
             </div>
           </template>
         </template>
@@ -64,7 +64,7 @@
           :total="total"
           @change="ajaxQuery"
           @showSizeChange="ajaxQuery"
-          :show-total="(total) => `共${total}条`"
+          :show-total="(total) => `합계: ${total}`"
         />
       </div>
     </a-card>
@@ -85,37 +85,37 @@
 
   const columns = ref([
     {
-      title: '序号',
+      title: '일련 번호',
       width: 50,
       dataIndex: 'seq',
     },
     {
-      title: '表名',
+      title: '테이블 이름',
       dataIndex: 'tableName',
     },
     {
-      title: '备注',
+      title: '비고',
       dataIndex: 'tableComment',
       ellipsis: true,
     },
     {
-      title: '代码配置',
+      title: '코드 구성',
       dataIndex: 'configTime',
       width: 150,
     },
     {
-      title: '表创建时间',
+      title: '테이블 생성 시간',
       dataIndex: 'createTime',
       width: 150,
     },
     {
-      title: '表修改时间',
+      title: '테이블 수정 시간',
       dataIndex: 'updateTime',
       width: 150,
     },
 
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'action',
       fixed: 'right',
       width: 210,

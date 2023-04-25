@@ -9,7 +9,7 @@
 -->
 <template>
   <a-drawer
-    title="代码配置"
+    title="코드 구성"
     style=""
     :visible="visibleFlag"
     :width="1000"
@@ -23,7 +23,7 @@
         <template #tab>
           <span>
             <info-circle-outlined />
-            1.基础命名
+            1.기본 이름 지정
           </span>
         </template>
         <CodeGeneratorTableConfigFormBasic ref="basicRef" />
@@ -32,7 +32,7 @@
         <template #tab>
           <span>
             <unordered-list-outlined />
-            2.字段列表
+            2.필드 목록
           </span>
         </template>
         <CodeGeneratorTableConfigFormField ref="fieldRef" />
@@ -41,7 +41,7 @@
         <template #tab>
           <span>
             <save-outlined />
-            3.增加、修改
+            3.추가, 수정
           </span>
         </template>
         <CodeGeneratorTableConfigFormInsertAndUpdate ref="insertAndUpdateRef" />
@@ -50,7 +50,7 @@
         <template #tab>
           <span>
             <delete-outlined />
-            4.删除
+            4.삭제
           </span>
         </template>
         <CodeGeneratorTableConfigFormDelete ref="deleteRef" />
@@ -59,7 +59,7 @@
         <template #tab>
           <span>
             <file-search-outlined />
-            5、查询条件
+            5、검색 기준
           </span>
         </template>
         <CodeGeneratorTableConfigFormQueryField ref="queryRef" />
@@ -68,7 +68,7 @@
         <template #tab>
           <span>
             <table-outlined />
-            6、列表
+            6、목록
           </span>
         </template>
         <CodeGeneratorTableConfigFormTableField ref="tableFieldRef" />
@@ -195,7 +195,7 @@
         tableFields,
       });
 
-      message.success('保存成功');
+      message.success('저장 성공');
       emits('reloadList');
       onClose();
     } catch (e) {

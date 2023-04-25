@@ -7,7 +7,7 @@
 -->
 <template>
   <a-modal
-    :title="form.changeLogId ? '编辑' : '添加'"
+    :title="form.changeLogId ? '편집' : '추가'"
     width="600px"
     :closable="true"
     :visible="visibleFlag"
@@ -17,30 +17,30 @@
     :destroyOnClose="true"
   >
     <a-form ref="formRef" :model="form" :rules="rules" :label-col="{ span: 5 }">
-      <a-form-item label="版本" name="version">
-        <a-input style="width: 100%" v-model:value="form.version" placeholder="版本" />
+      <a-form-item label="버전" name="version">
+        <a-input style="width: 100%" v-model:value="form.version" placeholder="버전" />
       </a-form-item>
-      <a-form-item label="更新类型" name="type">
-        <SmartEnumSelect width="100%" v-model:value="form.type" enumName="CHANGE_LOG_TYPE_ENUM" placeholder="更新类型" />
+      <a-form-item label="업데이트 유형" name="type">
+        <SmartEnumSelect width="100%" v-model:value="form.type" enumName="CHANGE_LOG_TYPE_ENUM" placeholder="업데이트 유형" />
       </a-form-item>
-      <a-form-item label="发布人" name="publishAuthor">
-        <a-input style="width: 100%" v-model:value="form.publishAuthor" placeholder="发布人" />
+      <a-form-item label="게시자" name="publishAuthor">
+        <a-input style="width: 100%" v-model:value="form.publishAuthor" placeholder="게시자" />
       </a-form-item>
-      <a-form-item label="发布日期" name="publicDate">
-        <a-date-picker valueFormat="YYYY-MM-DD" v-model:value="form.publicDate" style="width: 100%" placeholder="发布日期" />
+      <a-form-item label="릴리스 날짜" name="publicDate">
+        <a-date-picker valueFormat="YYYY-MM-DD" v-model:value="form.publicDate" style="width: 100%" placeholder="릴리스 날짜" />
       </a-form-item>
-      <a-form-item label="跳转链接" name="link">
-        <a-input style="width: 100%" v-model:value="form.link" placeholder="跳转链接" />
+      <a-form-item label="링크 이동" name="link">
+        <a-input style="width: 100%" v-model:value="form.link" placeholder="링크 이동" />
       </a-form-item>
-      <a-form-item label="更新内容" name="content">
-        <a-textarea style="width: 100%" :rows="15"  v-model:value="form.content" placeholder="更新内容" />
+      <a-form-item label="업데이트" name="content">
+        <a-textarea style="width: 100%" :rows="15"  v-model:value="form.content" placeholder="업데이트" />
       </a-form-item>
     </a-form>
 
     <template #footer>
       <a-space>
-        <a-button @click="onClose">取消</a-button>
-        <a-button type="primary" @click="onSubmit">保存</a-button>
+        <a-button @click="onClose">취소</a-button>
+        <a-button type="primary" @click="onSubmit">저장</a-button>
       </a-space>
     </template>
   </a-modal>
@@ -96,11 +96,11 @@
   let form = reactive({ ...formDefault });
 
   const rules = {
-    version: [{ required: true, message: '版本 必填' }],
-    type: [{ required: true, message: '更新类型:[1:特大版本功能更新;2:功能更新;3:bug修复] 必填' }],
-    publishAuthor: [{ required: true, message: '发布人 必填' }],
-    publicDate: [{ required: true, message: '发布日期 必填' }],
-    content: [{ required: true, message: '更新内容 必填' }],
+    version: [{ required: true, message: '필요한 버전' }],
+    type: [{ required: true, message: '업데이트 유형:[1:메가 버전 기능 업데이트, 2:기능 업데이트, 3:버그 수정] 필수 입력란' }],
+    publishAuthor: [{ required: true, message: '게시자 작성자 필수 필드' }],
+    publicDate: [{ required: true, message: '게시 날짜 필수 필드' }],
+    content: [{ required: true, message: '업데이트 필수' }],
   };
 
   // 点击确定，验证表单
@@ -109,7 +109,7 @@
       await formRef.value.validateFields();
       save();
     } catch (err) {
-      message.error('参数验证错误，请仔细填写表单数据!');
+      message.error('파라미터 유효성 검사 오류가 발생했습니다. 양식 데이터를 신중하게 입력하세요!');
     }
   }
 
@@ -122,7 +122,7 @@
       } else {
         await changeLogApi.add(form);
       }
-      message.success('操作成功');
+      message.success('성공적인 작동');
       emits('reloadList');
       onClose();
     } catch (err) {

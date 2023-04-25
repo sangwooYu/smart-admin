@@ -8,15 +8,15 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal :visible="visible" title="每日生成结果记录" width="60%" :footer="null" @cancel="onClose">
+  <a-modal :visible="visible" title="매일 생성되는 결과 기록" width="60%" :footer="null" @cancel="onClose">
     <a-table size="small" :dataSource="tableData" :columns="columns" bordered :pagination="false">
       <template #bodyCell="{ text, record, column }">
         <template v-if="column.dataIndex === 'successFlag'">
-          <a-tag :color="text ? 'success' : 'error'">{{ text ? '成功' : '失败' }}</a-tag>
+          <a-tag :color="text ? 'success' : 'error'">{{ text ? '성공' : '실패' }}</a-tag>
         </template>
 
         <template v-else-if="column.dataIndex === 'action'">
-          <a-button @click="showDetail(record.operateLogId)" type="link">详情</a-button>
+          <a-button @click="showDetail(record.operateLogId)" type="link">세부 정보</a-button>
         </template>
       </template>
     </a-table>
@@ -33,7 +33,7 @@
         :total="total"
         @change="ajaxQuery"
         @showSizeChange="ajaxQuery"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `합계: ${total}`"
       />
     </div>
   </a-modal>
@@ -67,24 +67,24 @@ import { smartSentry } from '/@/lib/smart-sentry';
   // ----------------------- 表格 ------------------------
   const columns = reactive([
     {
-      title: '单号ID',
+      title: '단일 ID',
       dataIndex: 'serialNumberId',
       width: 70,
     },
     {
-      title: '日期',
+      title: '날짜',
       dataIndex: 'recordDate',
     },
     {
-      title: '生成数量',
+      title: '발전기 수',
       dataIndex: 'count',
     },
     {
-      title: '最后更新值',
+      title: '마지막으로 업데이트된 값',
       dataIndex: 'lastNumber',
     },
     {
-      title: '上次生成时间',
+      title: '마지막 세대 시간',
       dataIndex: 'lastTime',
     },
   ]);

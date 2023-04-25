@@ -11,20 +11,20 @@
   <a-card size="small" :bordered="false" :hoverable="true">
     <a-alert>
       <template v-slot:message>
-        <h4>Smart-Reload 心跳服务介绍：</h4>
+        <h4>Smart-Reload 하트비트 서비스 소개：</h4>
       </template>
       <template v-slot:description>
         <pre>
-简介：SmartReload是一个可以在不重启进程的情况下动态重新加载配置或者执行某些预先设置的代码。
+소개: SmartReload는 프로세스를 다시 시작하지 않고도 구성을 동적으로 다시 로드하거나 미리 설정된 특정 설정을 실행할 수 있는 코드입니다.
 
-原理：
-- Java后端会在项目启动的时候开启一个Daemon线程，这个Daemon线程会每隔几秒轮询t_smart_item表的状态。
-- 如果【状态标识】与【上次状态标识】比较发生变化，会将参数传入SmartReload实现类，进行自定义操作。
-用途：
-· 用于刷新内存中的缓存
-· 用于执行某些后门代码
-· 用于进行Java热加载（前提是类结构不发生变化）
-· 其他不能重启服务的应用
+원리:
+- Java 백엔드는 프로젝트가 시작되면 데몬 스레드를 엽니다. 이 데몬 스레드는 몇 초마다 t_smart_item 테이블의 상태를 폴링합니다.
+- 상태 식별자]가 [마지막 상태 식별자]와 비교하여 변경되면 사용자 지정 작업을 위해 매개변수가 SmartReload 구현 클래스로 전달됩니다.
+용도:
+- 메모리의 캐시를 플러시하는 데 사용
+- 특정 백도어 코드를 실행하는 데 사용
+- Java 핫 로딩을 수행하는 데 사용(클래스 구조가 변경되지 않는 경우)
+- 서비스를 다시 시작할 수 없는 기타 애플리케이션
 </pre
         >
       </template>
@@ -47,8 +47,8 @@
       <template #bodyCell="{ text, record, index, column }">
         <template v-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="doReload(record.tag)" v-privilege="'reload:execute'" type="link">执行</a-button>
-            <a-button @click="showResultList(record.tag)" v-privilege="'reload:result'" type="link">查看结果</a-button>
+            <a-button @click="doReload(record.tag)" v-privilege="'reload:execute'" type="link">구현</a-button>
+            <a-button @click="showResultList(record.tag)" v-privilege="'reload:result'" type="link">결과 보기</a-button>
           </div>
         </template>
       </template>
@@ -71,30 +71,30 @@
 
   const columns = ref([
     {
-      title: '标签',
+      title: '태그',
       dataIndex: 'tag',
       width: 200,
     },
     {
-      title: '运行标识',
+      title: '운영 식별',
       dataIndex: 'identification',
     },
     {
-      title: '参数',
+      title: '매개변수',
       dataIndex: 'args',
     },
     {
-      title: '更新时间',
+      title: '업데이트 시간',
       dataIndex: 'updateTime',
       width: 150,
     },
     {
-      title: '创建时间',
+      title: '생성 시간',
       dataIndex: 'createTime',
       width: 150,
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'action',
       fixed: 'right',
       width: 150,

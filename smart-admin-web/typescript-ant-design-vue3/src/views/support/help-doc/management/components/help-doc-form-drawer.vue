@@ -17,32 +17,32 @@
     :destroyOnClose="true"
   >
     <a-form ref="formRef" :model="formData" :rules="formRules" :label-col="{ span: 3 }" :wrapper-col="{ span: 20 }">
-      <a-form-item label="标题" name="title">
-        <a-input v-model:value="formData.title" placeholder="请输入标题" />
+      <a-form-item label="제목" name="title">
+        <a-input v-model:value="formData.title" placeholder="제목을 입력하세요." />
       </a-form-item>
-      <a-form-item label="目录" name="helpDocCatalogId">
+      <a-form-item label="카탈로그" name="helpDocCatalogId">
         <HelpDocCatalogTreeSelect v-model:value="formData.helpDocCatalogId" style="width: 100%" />
       </a-form-item>
-      <a-form-item label="作者" name="author">
-        <a-input v-model:value="formData.author" placeholder="请输入作者" />
+      <a-form-item label="작성자" name="author">
+        <a-input v-model:value="formData.author" placeholder="작성자를 입력하세요." />
       </a-form-item>
-      <a-form-item label="排序" name="sort">
-        <a-input-number v-model:value="formData.sort" placeholder="值越小越靠前" />（值越小越靠前）
+      <a-form-item label="정렬 기준" name="sort">
+        <a-input-number v-model:value="formData.sort" placeholder="값이 작을수록 우선 순위가 높아집니다." />(값이 작을수록 순위가 높습니다.)
       </a-form-item>
-      <a-form-item label="关联菜单">
+      <a-form-item label="관련 메뉴">
         <MenuTreeSelect v-model:value="formData.relationIdList" ref="menuTreeSelect" />
       </a-form-item>
-      <a-form-item label="公告内容" name="contentHtml">
+      <a-form-item label="게시판 콘텐츠" name="contentHtml">
         <Wangeditor ref="contentRef" :modelValue="formData.contentHtml" :height="300" />
       </a-form-item>
-      <a-form-item label="附件">
+      <a-form-item label="부록">
         <Upload
           :defaultFileList="defaultFileList"
           :maxUploadSize="10"
           :folder="FILE_FOLDER_TYPE_ENUM.HELP_DOC.value"
-          buttonText="上传附件"
+          buttonText="첨부 파일 업로드"
           listType="text"
-          extraMsg="最多上传10个附件"
+          extraMsg="최대 10개의 첨부 파일 업로드"
           @change="changeAttachment"
         />
       </a-form-item>
@@ -50,8 +50,8 @@
 
     <template #footer>
       <a-space>
-        <a-button @click="onClose">取消</a-button>
-        <a-button type="primary" @click="onSubmit">保存</a-button>
+        <a-button @click="onClose">취소</a-button>
+        <a-button type="primary" @click="onSubmit">저장</a-button>
       </a-space>
     </template>
   </a-drawer>
@@ -115,11 +115,11 @@ import { smartSentry } from '/@/lib/smart-sentry';
   const formData = reactive({ ...defaultFormData });
 
   const formRules = {
-    title: [{ required: true, message: '请输入' }],
-    helpDocCatalogId: [{ required: true, message: '请选择目录' }],
-    author: [{ required: true, message: '请输入作者' }],
-    sort: [{ required: true, message: '请输入排序' }],
-    contentHtml: [{ required: true, message: '请输入内容' }],
+    title: [{ required: true, message: '입력하세요' }],
+    helpDocCatalogId: [{ required: true, message: '카탈로그를 선택하세요.' }],
+    author: [{ required: true, message: '작성자를 입력하세요.' }],
+    sort: [{ required: true, message: '정렬을 입력하세요.' }],
+    contentHtml: [{ required: true, message: '콘텐츠를 입력하세요.' }],
   };
 
   // 查询详情
@@ -150,7 +150,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
       await formRef.value.validateFields();
       save();
     } catch (err) {
-      message.error('参数验证错误，请仔细填写表单数据!');
+      message.error('파라미터 유효성 검사 오류가 발생했습니다. 양식 데이터를 신중하게 입력하세요!');
     }
   }
 
@@ -169,7 +169,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
       } else {
         await helpDocApi.add(param);
       }
-      message.success('保存成功');
+      message.success('저장 성공');
       emits('reloadList');
       onClose();
     } catch (err) {

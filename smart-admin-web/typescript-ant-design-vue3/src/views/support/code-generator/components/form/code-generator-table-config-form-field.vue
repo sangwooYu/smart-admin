@@ -26,10 +26,10 @@
       <template v-if="column.dataIndex === 'columnName'">
         <span>
           <template v-if="record.primaryKeyFlag">
-            <a-tag color="#f50" style="line-height: 12px">主键</a-tag>
+            <a-tag color="#f50" style="line-height: 12px">기본 키</a-tag>
           </template>
           <template v-if="record.autoIncreaseFlag">
-            <a-tag color="#f50" style="line-height: 12px">自增</a-tag>
+            <a-tag color="#f50" style="line-height: 12px">자체 증가</a-tag>
           </template>
           <br />
           {{ text }}
@@ -37,7 +37,7 @@
       </template>
 
       <template v-if="column.dataIndex === 'nullableFlag'">
-        <a-tag color="error" v-if="text">非空</a-tag>
+        <a-tag color="error" v-if="text">비어 있지 않음</a-tag>
       </template>
 
       <template v-if="column.dataIndex === 'fieldName'">
@@ -85,56 +85,55 @@
 
   const columns = ref([
     {
-      title: '列名',
+      title: '컬럼이름',
       dataIndex: 'columnName',
       width: 120,
       ellipsis: true,
     },
     {
-      title: '列描述',
+      title: '컬럼코멘트',
       dataIndex: 'columnComment',
       width: 120,
       ellipsis: true,
     },
     {
-      title: '列类型',
+      title: '데이터타입',
       dataIndex: 'dataType',
       width: 100,
       ellipsis: true,
     },
     {
-      title: '非空',
+      title: '비지않음',
       dataIndex: 'nullableFlag',
       width: 60,
     },
-
     {
-      title: '字段命名',
+      title: '필드 이름 지정',
       dataIndex: 'fieldName',
       width: 150,
     },
     {
-      title: '字段名词',
+      title: '필드 명사',
       dataIndex: 'label',
       width: 150,
     },
     {
-      title: 'Java类型',
+      title: 'Java 유형',
       dataIndex: 'javaType',
       width: 150,
     },
     {
-      title: '前端类型',
+      title: '프런트 엔드 유형',
       dataIndex: 'jsType',
       width: 130,
     },
     {
-      title: '字典',
+      title: '사전',
       dataIndex: 'dict',
       width: 150,
     },
     {
-      title: '枚举',
+      title: '열거형',
       dataIndex: 'enumName',
       width: 150,
     },

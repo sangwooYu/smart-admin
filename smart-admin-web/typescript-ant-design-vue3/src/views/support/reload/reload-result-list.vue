@@ -8,7 +8,7 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal :visible="visible" title="reload结果列表" width="60%" :footer="null" @cancel="onClose">
+  <a-modal :visible="visible" title="reload결과 목록" width="60%" :footer="null" @cancel="onClose">
     <a-button type="primary" @click="ajaxQuery" size="small">
       <template #icon>
         <ReloadOutlined />
@@ -18,7 +18,7 @@
     <a-table :scroll="{ y: 350 }" size="small" bordered rowKey="id" class="smart-margin-top10" :dataSource="tableData" :columns="columns">
       <template #bodyCell="{ text, column }">
         <template v-if="column.dataIndex === 'result'">
-          <a-tag :color="text ? 'success' : 'error'">{{ text ? '成功' : '失败' }}</a-tag>
+          <a-tag :color="text ? 'success' : 'error'">{{ text ? '성공' : '실패' }}</a-tag>
         </template>
       </template>
       <template #expandedRowRender="{ record }">
@@ -76,24 +76,24 @@ import { smartSentry } from '/@/lib/smart-sentry';
 
   const columns = reactive([
     {
-      title: '标签',
+      title: '태그',
       dataIndex: 'tag',
     },
     {
-      title: '参数',
+      title: '매개변수',
       dataIndex: 'args',
     },
     {
-      title: '运行结果',
+      title: '실행 결과',
       dataIndex: 'result',
     },
     {
-      title: '异常',
+      title: '예외',
       dataIndex: 'exception',
       ellipsis: true,
     },
     {
-      title: '创建时间',
+      title: '생성 시간',
       dataIndex: 'createTime',
     },
   ]);

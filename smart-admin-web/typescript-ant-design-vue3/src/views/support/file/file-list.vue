@@ -9,22 +9,22 @@
   <!---------- 查询表单form begin ----------->
   <a-form class="smart-query-form" v-privilege="'support:file:query'">
     <a-row class="smart-query-form-row">
-      <a-form-item label="文件夹类型" class="smart-query-form-item">
-        <SmartEnumSelect width="150px" v-model:value="queryForm.folderType" enumName="FILE_FOLDER_TYPE_ENUM" placeholder="文件夹类型" />
+      <a-form-item label="폴더 유형" class="smart-query-form-item">
+        <SmartEnumSelect width="150px" v-model:value="queryForm.folderType" enumName="FILE_FOLDER_TYPE_ENUM" placeholder="폴더 유형" />
       </a-form-item>
-      <a-form-item label="文件名" class="smart-query-form-item">
-        <a-input style="width: 150px" v-model:value="queryForm.fileName" placeholder="文件名" />
+      <a-form-item label="파일 이름" class="smart-query-form-item">
+        <a-input style="width: 150px" v-model:value="queryForm.fileName" placeholder="파일 이름" />
       </a-form-item>
-      <a-form-item label="文件Key" class="smart-query-form-item">
-        <a-input style="width: 150px" v-model:value="queryForm.fileKey" placeholder="文件Key" />
+      <a-form-item label="문서 키" class="smart-query-form-item">
+        <a-input style="width: 150px" v-model:value="queryForm.fileKey" placeholder="문서 키" />
       </a-form-item>
-      <a-form-item label="文件类型" class="smart-query-form-item">
-        <a-input style="width: 150px" v-model:value="queryForm.fileType" placeholder="文件类型" />
+      <a-form-item label="문서 유형" class="smart-query-form-item">
+        <a-input style="width: 150px" v-model:value="queryForm.fileType" placeholder="문서 유형" />
       </a-form-item>
-      <a-form-item label="创建人" class="smart-query-form-item">
-        <a-input style="width: 150px" v-model:value="queryForm.creatorName" placeholder="创建人" />
+      <a-form-item label="작성자" class="smart-query-form-item">
+        <a-input style="width: 150px" v-model:value="queryForm.creatorName" placeholder="작성자" />
       </a-form-item>
-      <a-form-item label="创建时间" class="smart-query-form-item">
+      <a-form-item label="생성 시간" class="smart-query-form-item">
         <a-range-picker v-model:value="queryForm.createTime" :ranges="defaultTimeRanges" style="width: 220px" @change="onChangeCreateTime" />
       </a-form-item>
       <a-form-item class="smart-query-form-item">
@@ -32,13 +32,13 @@
           <template #icon>
             <ReloadOutlined />
           </template>
-          查询
+          문의
         </a-button>
         <a-button @click="resetQuery" class="smart-margin-left10">
           <template #icon>
             <SearchOutlined />
           </template>
-          重置
+          초기화
         </a-button>
       </a-form-item>
     </a-row>
@@ -53,7 +53,7 @@
           <template #icon>
             <cloud-upload-outlined />
           </template>
-          上传文件
+          파일 업로드
         </a-button>
       </div>
       <div class="smart-table-setting-block">
@@ -73,8 +73,8 @@
         </template>
         <template v-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="view(record)" type="link">查看</a-button>
-            <a-button @click="download(record)" type="link">下载</a-button>
+            <a-button @click="view(record)" type="link">보기</a-button>
+            <a-button @click="download(record)" type="link">다운로드</a-button>
           </div>
         </template>
       </template>
@@ -93,17 +93,17 @@
         :total="total"
         @change="queryData"
         @showSizeChange="queryData"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `합계:${total}`"
       />
     </div>
 
     <FilePreviewModal ref="filePreviewModalRef" />
 
-    <a-modal v-model:visible="uploadModalFlag" title="上传文件" @onCancel="hideUploadModal" @ok="hideUploadModal">
+    <a-modal v-model:visible="uploadModalFlag" title="파일 업로드" @onCancel="hideUploadModal" @ok="hideUploadModal">
       <FileUpload
         list-type="text"
         :maxUploadSize="5"
-        buttonText="点击上传文件"
+        buttonText="클릭하여 파일 업로드"
         :defaultFileList="[]"
         :multiple="true"
         :folder="FILE_FOLDER_TYPE_ENUM.COMMON.value"
@@ -126,60 +126,60 @@
 
   const columns = ref([
     {
-      title: '主键ID',
+      title: '기본 키 ID',
       dataIndex: 'fileId',
       ellipsis: true,
       width: 70,
     },
     {
-      title: '文件夹',
+      title: '폴더',
       dataIndex: 'folderType',
       ellipsis: true,
       width: 100,
     },
     {
-      title: '文件名称',
+      title: '파일 이름',
       dataIndex: 'fileName',
       ellipsis: true,
       width: 200,
     },
     {
-      title: '文件大小',
+      title: '파일 크기',
       dataIndex: 'fileSize',
       ellipsis: true,
       width: 100,
     },
     {
-      title: '文件key',
+      title: '파일key',
       dataIndex: 'fileKey',
       ellipsis: true,
     },
     {
-      title: '文件类型',
+      title: '문서 유형',
       dataIndex: 'fileType',
       ellipsis: true,
       width: 80,
     },
     {
-      title: '上传人',
+      title: '업로더',
       dataIndex: 'creatorName',
       ellipsis: true,
       width: 100,
     },
     {
-      title: '人类型',
+      title: '사람 유형',
       dataIndex: 'creatorUserType',
       ellipsis: true,
       width: 100,
     },
     {
-      title: '上传时间',
+      title: '업로드 시간',
       dataIndex: 'createTime',
       ellipsis: true,
       width: 150,
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'action',
       width: 120,
     },

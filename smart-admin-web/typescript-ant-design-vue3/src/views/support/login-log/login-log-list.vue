@@ -10,15 +10,15 @@
 <template>
   <a-form class="smart-query-form" v-privilege="'loginLog:query'">
     <a-row class="smart-query-form-row">
-      <a-form-item label="用户名称" class="smart-query-form-item">
-        <a-input style="width: 300px" v-model:value="queryForm.userName" placeholder="用户名称" />
+      <a-form-item label="사용자 이름" class="smart-query-form-item">
+        <a-input style="width: 300px" v-model:value="queryForm.userName" placeholder="사용자 이름" />
       </a-form-item>
 
-      <a-form-item label="用户IP" class="smart-query-form-item">
+      <a-form-item label="사용자 IP" class="smart-query-form-item">
         <a-input style="width: 120px" v-model:value="queryForm.ip" placeholder="IP" />
       </a-form-item>
 
-      <a-form-item label="时间" class="smart-query-form-item">
+      <a-form-item label="시간" class="smart-query-form-item">
         <a-range-picker @change="changeCreateDate" v-model:value="createDateRange" :ranges="defaultChooseTimeRange" style="width: 240px" />
       </a-form-item>
 
@@ -27,13 +27,13 @@
           <template #icon>
             <ReloadOutlined />
           </template>
-          查询
+          문의
         </a-button>
         <a-button @click="resetQuery">
           <template #icon>
             <SearchOutlined />
           </template>
-          重置
+          초기화
         </a-button>
       </a-form-item>
     </a-row>
@@ -47,13 +47,13 @@
       <template #bodyCell="{ text, record, column }">
         <template v-if="column.dataIndex === 'loginResult'">
           <template v-if="text === LOGIN_RESULT_ENUM.LOGIN_SUCCESS.value">
-            <a-tag color="success">登录成功</a-tag>
+            <a-tag color="success">로그인 성공</a-tag>
           </template>
           <template v-if="text === LOGIN_RESULT_ENUM.LOGIN_FAIL.value">
-            <a-tag color="error">登录失败</a-tag>
+            <a-tag color="error">로그인 실패</a-tag>
           </template>
           <template v-if="text === LOGIN_RESULT_ENUM.LOGIN_OUT.value">
-            <a-tag color="processing">退出登录</a-tag>
+            <a-tag color="processing">로그아웃</a-tag>
           </template>
         </template>
 
@@ -79,7 +79,7 @@
         :total="total"
         @change="ajaxQuery"
         @showSizeChange="ajaxQuery"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `합계:${total}`"
       />
     </div>
   </a-card>
@@ -97,17 +97,17 @@
 
   const columns = ref([
     {
-      title: '用户ID',
+      title: '사용자 ID',
       dataIndex: 'userId',
       width: 70,
     },
     {
-      title: '用户名',
+      title: '사용자 이름',
       dataIndex: 'userName',
       ellipsis: true,
     },
     {
-      title: '类型',
+      title: '유형',
       dataIndex: 'userType',
       width: 50,
       ellipsis: true,
@@ -118,22 +118,22 @@
       ellipsis: true,
     },
     {
-      title: '设备信息',
+      title: '장비 정보',
       dataIndex: 'userAgent',
       ellipsis: true,
     },
     {
-      title: '结果',
+      title: '결과',
       dataIndex: 'loginResult',
       ellipsis: true,
     },
     {
-      title: '备注',
+      title: '비고',
       dataIndex: 'remark',
       ellipsis: true,
     },
     {
-      title: '时间',
+      title: '시간',
       dataIndex: 'createTime',
       width: 150,
     },

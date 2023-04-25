@@ -10,8 +10,8 @@
 <template>
   <a-form class="smart-query-form">
     <a-row class="smart-query-form-row">
-      <a-form-item label="关键字" class="smart-query-form-item">
-        <a-input style="width: 300px" v-model:value="queryForm.searchWord" placeholder="关键字" />
+      <a-form-item label="핵심 단어" class="smart-query-form-item">
+        <a-input style="width: 300px" v-model:value="queryForm.searchWord" placeholder="핵심 단어" />
       </a-form-item>
 
       <a-form-item class="smart-query-form-item smart-margin-left10">
@@ -19,13 +19,13 @@
           <template #icon>
             <ReloadOutlined />
           </template>
-          查询
+          문의
         </a-button>
         <a-button @click="resetQuery">
           <template #icon>
             <SearchOutlined />
           </template>
-          重置
+          초기화
         </a-button>
       </a-form-item>
     </a-row>
@@ -38,21 +38,21 @@
           <template #icon>
             <PlusOutlined />
           </template>
-          新建
+          신규 건설
         </a-button>
 
         <a-button @click="confirmBatchDelete" v-privilege="'support:dict:batch:delete'" type="danger" size="small" :disabled="selectedRowKeyList.length == 0">
           <template #icon>
             <DeleteOutlined />
           </template>
-          批量删除
+          일괄 삭제
         </a-button>
 
         <a-button @click="cacheRefresh" v-privilege="'support:dict:refresh'" type="primary" size="small">
           <template #icon>
             <cloud-sync-outlined />
           </template>
-          缓存刷新
+          캐시 새로 고침
         </a-button>
       </div>
       <div class="smart-table-setting-block">
@@ -76,7 +76,7 @@
         </template>
         <template v-else-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="addOrUpdateKey(record)" v-privilege="'support:dict:update'" type="link">编辑</a-button>
+            <a-button @click="addOrUpdateKey(record)" v-privilege="'support:dict:update'" type="link">편집기</a-button>
           </div>
         </template>
       </template>
@@ -94,7 +94,7 @@
         :total="total"
         @change="ajaxQuery"
         @showSizeChange="ajaxQuery"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `합계: ${total}`"
       />
     </div>
 
@@ -122,19 +122,19 @@
       dataIndex: 'dictKeyId',
     },
     {
-      title: '编码',
+      title: '코딩',
       dataIndex: 'keyCode',
     },
     {
-      title: '名称',
+      title: '이름',
       dataIndex: 'keyName',
     },
     {
-      title: '备注',
+      title: '비고',
       dataIndex: 'remark',
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'action',
       fixed: 'right',
       width: 50,
@@ -189,7 +189,7 @@
     try {
       SmartLoading.show();
       await dictApi.cacheRefresh();
-      message.success('缓存刷新成功');
+      message.success('캐시 플러시 성공');
       ajaxQuery();
     } catch (e) {
       smartSentry.captureError(e);
@@ -202,14 +202,14 @@
 
   function confirmBatchDelete() {
     Modal.confirm({
-      title: '提示',
-      content: '确定要删除选中Key吗?',
-      okText: '删除',
+      title: '팁',
+      content: '선택한 키를 삭제하시겠습니까?',
+      okText: '삭제',
       okType: 'danger',
       onOk() {
         batchDelete();
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }
@@ -218,7 +218,7 @@
     try {
       SmartLoading.show();
       await dictApi.keyDelete(selectedRowKeyList.value);
-      message.success('删除成功');
+      message.success('성공적으로 삭제됨');
       ajaxQuery();
     } catch (e) {
       smartSentry.captureError(e);

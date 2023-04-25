@@ -16,21 +16,21 @@
           {{ helpDocDetail.title }}
         </div>
         <div class="content-header-info">
-          <span>阅读量：{{ helpDocDetail.pageViewCount }}</span>
-          <span v-show="helpDocDetail.author">作者：{{ helpDocDetail.author }}</span>
-          <span>发布于：{{ helpDocDetail.createTime }}</span>
-          <span>修改于：{{ helpDocDetail.updateTime }}</span>
-          <span @click="print">【打印本页】</span>
+          <span>독자층：{{ helpDocDetail.pageViewCount }}</span>
+          <span v-show="helpDocDetail.author">작성자：{{ helpDocDetail.author }}</span>
+          <span>에 게시됨：{{ helpDocDetail.createTime }}</span>
+          <span>에 수정됨：{{ helpDocDetail.updateTime }}</span>
+          <span @click="print">[이 페이지 인쇄]</span>
         </div>
       </div>
       <div class="content-html" v-html="helpDocDetail.contentHtml"></div>
       <!--endprint-->
     </div>
     <a-divider v-if="helpDocDetail.attachment && helpDocDetail.attachment.length > 0" />
-    <div v-if="helpDocDetail.attachment && helpDocDetail.attachment.length > 0">附件：<FilePreview :fileList="helpDocDetail.attachment" /></div>
+    <div v-if="helpDocDetail.attachment && helpDocDetail.attachment.length > 0">부록:<FilePreview :fileList="helpDocDetail.attachment" /></div>
   </a-card>
 
-  <a-card title="阅读记录" size="small" class="smart-margin-top10" :bordered="false">
+  <a-card title="읽기 로그" size="small" class="smart-margin-top10" :bordered="false">
     <HelpDocViewRecordList ref="helpDocViewRecordListRef" :helpDocId="route.query.helpDocId" />
   </a-card>
 

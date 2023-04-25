@@ -11,29 +11,29 @@
   <a-card size="small" :bordered="false" :hoverable="true">
     <a-alert>
       <template v-slot:message>
-        <h4>Smart-Heart-Beat 心跳服务介绍：</h4>
+        <h4>스마트 하트비트 하트비트 서비스 소개:</h4>
       </template>
       <template v-slot:description>
         <pre>
-简介：Smart-Heart-Beat 是心跳服务，用于监测Java应用的状态等其他信息。
-原理：Java后端会在项目启动的时候开启一个线程，每隔一段时间将该应用的IP、进程号更新到数据库t_heart_beat_record表中。
+소개: Smart-Heart-Beat는 Java 애플리케이션의 상태 및 기타 정보를 모니터링하는 데 사용되는 하트비트 서비스입니다.
+원리: Java 백엔드는 프로젝트가 시작될 때 스레드를 열고 애플리케이션의 IP와 프로세스 번호를 데이터베이스 t_heart_beat_record 테이블에 가끔씩 업데이트합니다.
 
-用途：
-1）在各个环境（无论开发、测试、生产）能统一看到所有启动的服务列表；
-2）检测Java应用是否存活；
-3）当某些业务只允许有一个服务启动的时候，用于排查是否别人也启动的服务；
-4） ※强烈推荐※</pre
+용도:
+1) 각 환경(개발, 테스트, 프로덕션 등)에서 시작된 모든 서비스의 목록을 일괄적으로 확인할 수 있습니다;
+2) Java 애플리케이션이 살아 있는지 여부를 감지하기 위해;
+3) 특정 비즈니스에서 하나의 서비스만 시작할 수 있는 경우 다른 사람이 서비스를 시작했는지 확인하기 위해;
+4) *강조※</pre
         >
       </template>
     </a-alert>
 
     <a-form class="smart-query-form">
       <a-row class="smart-query-form-row">
-        <a-form-item label="关键字" class="smart-query-form-item">
-          <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="关键字" />
+        <a-form-item label="핵심 단어" class="smart-query-form-item">
+          <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="핵심 단어" />
         </a-form-item>
 
-        <a-form-item label="心跳时间" class="smart-query-form-item">
+        <a-form-item label="심장 박동 시간" class="smart-query-form-item">
           <a-range-picker @change="changeCreateDate" v-model:value="createDateRange" :ranges="defaultChooseTimeRange" style="width: 240px" />
         </a-form-item>
 
@@ -42,13 +42,13 @@
             <template #icon>
               <ReloadOutlined />
             </template>
-            查询
+            문의
           </a-button>
           <a-button @click="resetQuery">
             <template #icon>
               <SearchOutlined />
             </template>
-            重置
+            초기화
           </a-button>
         </a-form-item>
       </a-row>
@@ -105,27 +105,27 @@
 
   const columns = ref([
     {
-      title: '项目路径',
+      title: '프로젝트 경로',
       dataIndex: 'projectPath',
       ellipsis: true,
     },
     {
-      title: '服务器ip',
+      title: '서버 IP',
       dataIndex: 'serverIp',
       ellipsis: true,
     },
     {
-      title: '进程号',
+      title: '프로세스 번호',
       dataIndex: 'processNo',
       width:100
     },
     {
-      title: '进程开启时间',
+      title: '프로세스 시작 시간',
       dataIndex: 'processStartTime',
       width:150
     },
     {
-      title: '心跳当前时间',
+      title: '현재 심장 박동 시간',
       dataIndex: 'heartBeatTime',
       width:150
     },

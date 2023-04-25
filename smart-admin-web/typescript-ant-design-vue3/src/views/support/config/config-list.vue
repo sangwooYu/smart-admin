@@ -11,8 +11,8 @@
   <div>
     <a-form class="smart-query-form">
       <a-row class="smart-query-form-row">
-        <a-form-item label="参数Key" class="smart-query-form-item">
-          <a-input style="width: 300px" v-model:value="queryForm.configKey" placeholder="请输入key" />
+        <a-form-item label="매개변수 키" class="smart-query-form-item">
+          <a-input style="width: 300px" v-model:value="queryForm.configKey" placeholder="키를 입력하세요." />
         </a-form-item>
 
         <a-form-item class="smart-query-form-item smart-margin-left10">
@@ -20,20 +20,20 @@
             <template #icon>
               <ReloadOutlined />
             </template>
-            查询
+            문의
           </a-button>
           <a-button @click="resetQuery" v-privilege="'support:config:query'">
             <template #icon>
               <SearchOutlined />
             </template>
-            重置
+            초기화
           </a-button>
 
           <a-button @click="toEditOrAdd()" v-privilege="'support:config:add'" type="primary" class="smart-margin-left20">
             <template #icon>
               <PlusOutlined />
             </template>
-            新建
+            신규 건설
           </a-button>
         </a-form-item>
       </a-row>
@@ -48,7 +48,7 @@
         <template #bodyCell="{ record, column }">
           <template v-if="column.dataIndex === 'action'">
             <div class="smart-table-operate">
-              <a-button @click="toEditOrAdd(record)" v-privilege="'support:config:update'" type="link">编辑</a-button>
+              <a-button @click="toEditOrAdd(record)" v-privilege="'support:config:update'" type="link">편집기</a-button>
             </div>
           </template>
         </template>
@@ -66,7 +66,7 @@
           :total="total"
           @change="ajaxQuery"
           @showSizeChange="ajaxQuery"
-          :show-total="(total) => `共${total}条`"
+          :show-total="(total) => `합계:${total}`"
         />
       </div>
     </a-card>
@@ -89,39 +89,39 @@
       dataIndex: 'configId',
     },
     {
-      title: '参数key',
+      title: '매개변수 키',
       dataIndex: 'configKey',
       ellipsis: true,
     },
     {
-      title: '参数名称',
+      title: '매개변수 이름',
       dataIndex: 'configName',
       ellipsis: true,
     },
     {
-      title: '参数值',
+      title: '매개변수 값',
       dataIndex: 'configValue',
       ellipsis: true,
     },
     {
-      title: '备注',
+      title: '비고',
       dataIndex: 'remark',
       ellipsis: true,
       width: 150,
     },
     {
-      title: '创建时间',
+      title: '생성 시간',
       dataIndex: 'createTime',
       width: 150,
     },
     {
-      title: '修改时间',
+      title: '시간 수정',
       dataIndex: 'updateTime',
       width: 150,
     },
 
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'action',
       fixed: 'right',
       width: 60,

@@ -15,7 +15,7 @@
     show-search
     style="width: 100%"
     :dropdown-style="{ maxHeight: '400px', overflow: 'auto' }"
-    placeholder="请选择目录"
+    placeholder="카탈로그를 선택하세요."
     allow-clear
     tree-default-expand-all
     :multiple="props.multiple"

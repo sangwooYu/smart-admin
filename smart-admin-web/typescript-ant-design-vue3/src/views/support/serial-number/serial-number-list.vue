@@ -11,14 +11,14 @@
   <a-card size="small" :bordered="false" :hoverable="true">
     <a-alert>
       <template v-slot:message>
-        <h4>SerialNumber 单号生成器介绍：</h4>
+        <h4>일련번호 단일 번호 생성기 소개:</h4>
       </template>
       <template v-slot:description>
         <pre>
-简介：SerialNumber是一个可以根据不同的日期、规则生成一系列特别单号的功能，比如订单号、合同号、采购单号等等。
-原理：内部有三种实现方式： 1) 基于内存锁实现 （不支持分布式和集群）；  2) 基于redis锁实现 ；  3) 基于Mysql 锁for update 实现
-- 支持随机生成和查询生成记录
-- 支持动态配置
+소개: SerialNumber는 주문 번호, 계약 번호, 구매 주문 번호 등 다양한 날짜와 규칙에 따라 일련의 특수 주문 번호를 생성할 수 있는 함수입니다.
+원리: 내부 구현에는 세 가지가 있습니다: 1) 인메모리 잠금 기반(분산 및 클러스터링은 지원되지 않음), 2) redis 잠금 기반, 3) 업데이트용 Mysql 잠금 기반.
+- 레코드의 랜덤 및 쿼리 생성 지원
+- 동적 구성 지원
 </pre
         >
       </template>
@@ -41,8 +41,8 @@
       <template #bodyCell="{ record, column }">
         <template v-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="generate(record)" v-privilege="'support:serial:number:generate'" type="link">生成</a-button>
-            <a-button @click="showRecord(record.serialNumberId)" v-privilege="'support:serial:number:record'" type="link">查看记录</a-button>
+            <a-button @click="generate(record)" v-privilege="'support:serial:number:generate'" type="link">생성</a-button>
+            <a-button @click="showRecord(record.serialNumberId)" v-privilege="'support:serial:number:record'" type="link">기록 보기</a-button>
           </div>
         </template>
       </template>
@@ -72,39 +72,39 @@ import { smartSentry } from '/@/lib/smart-sentry';
       dataIndex: 'serialNumberId',
     },
     {
-      title: '业务',
+      title: '운영',
       dataIndex: 'businessName',
     },
     {
-      title: '格式',
+      title: '형식',
       dataIndex: 'format',
     },
     {
-      title: '循环周期',
+      title: '주기 시간',
       dataIndex: 'ruleType',
     },
     {
-      title: '初始值',
+      title: '초기 값',
       dataIndex: 'initNumber',
     },
     {
-      title: '随机增量',
+      title: '무작위 증가',
       dataIndex: 'stepRandomRange',
     },
     {
-      title: '备注',
+      title: '비고',
       dataIndex: 'remark',
     },
     {
-      title: '上次产生单号',
+      title: '마지막으로 생성된 주문 번호',
       dataIndex: 'lastNumber',
     },
     {
-      title: '上次产生时间',
+      title: '마지막으로 생성된 시간',
       dataIndex: 'lastTime',
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'action',
       fixed: 'right',
       width: 140,

@@ -11,15 +11,15 @@
   <a-card size="small" :bordered="false" :hoverable="true">
     <a-alert>
       <template v-slot:message>
-        <h4>缓存 介绍：</h4>
+        <h4>캐시 소개:</h4>
       </template>
       <template v-slot:description>
         <pre>
-简介：SmartAdmin使用的是SpringCache进行管理缓存，SpringCache有多种实现方式，本项目默认采用的是caffeine。
-Caffeine ：
-- Caffeine是一个进程内部缓存框架，使用了Java 8最新的[StampedLock]乐观锁技术，极大提高缓存并发吞吐量，一个高性能的 Java 缓存库，被称为最快缓存。
-其他：
-· 对于分布式、集群等应用实现方式可以改为 Redis、CouchBase等
+소개: SmartAdmin은 SpringCache를 사용하여 캐시를 관리하며, SpringCache의 다양한 구현이 있으며, 이 프로젝트의 기본값은 카페인입니다.
+Caffeine:
+- Caffeine은 가장 빠른 캐시로 알려진 고성능 Java 캐싱 라이브러리인 캐시 동시성 처리량을 크게 향상시키기 위해 최신 Java 8 [StampedLock] 낙관적 잠금 기술을 사용하는 인프로세스 캐싱 프레임워크입니다.
+기타:
+- 분산, 클러스터링 및 기타 애플리케이션 구현의 경우 Redis, CouchBase 등으로 변경할 수 있습니다.
 </pre
         >
       </template>
@@ -29,8 +29,8 @@ Caffeine ：
       <template #bodyCell="{ record, column }">
         <template v-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="remove(record.key)" v-privilege="'support:cache:delete'" type="link">清除</a-button>
-            <a-button @click="getAllKeys(record.key)" v-privilege="'support:cache:keys'" type="link">获取所有key</a-button>
+            <a-button @click="remove(record.key)" v-privilege="'support:cache:delete'" type="link">캐시클리어</a-button>
+            <a-button @click="getAllKeys(record.key)" v-privilege="'support:cache:keys'" type="link">모든 키 가져오기</a-button>
           </div>
         </template>
       </template>
@@ -51,7 +51,7 @@ Caffeine ：
   async function remove(key) {
     try {
       await cacheApi.remove(key);
-      message.success('删除成功');
+      message.success('성공적으로 삭제됨');
       ajaxQuery();
     } catch (e) {
       smartSentry.captureError(e);
@@ -65,7 +65,7 @@ Caffeine ：
       let res = await cacheApi.getKeys(cacheName);
       SmartLoading.hide();
       Modal.info({
-        title: '所有Key:' + cacheName,
+        title: '모든 키:' + cacheName,
         content: h('div', {}, [h('p', _.join(res.data, ' , '))]),
         onOk() {
           ajaxQuery();
@@ -86,7 +86,7 @@ Caffeine ：
       dataIndex: 'key',
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'action',
       fixed: 'right',
       width: 160,

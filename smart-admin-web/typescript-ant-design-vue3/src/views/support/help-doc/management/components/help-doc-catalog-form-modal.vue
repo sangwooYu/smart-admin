@@ -8,16 +8,16 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal v-model:visible="visible" :title="formState.helpDocCatalogId ? '编辑目录' : '添加目录'" @ok="handleOk" destroyOnClose>
+  <a-modal v-model:visible="visible" :title="formState.helpDocCatalogId ? '카탈로그 편집' : '카탈로그 추가'" @ok="handleOk" destroyOnClose>
     <a-form ref="formRef" :model="formState" :rules="rules" layout="vertical">
-      <a-form-item label="上级目录" name="parentId" v-if="formState.parentId != 0">
+      <a-form-item label="이전 카탈로그" name="parentId" v-if="formState.parentId != 0">
         <HelpDocCatalogTreeSelect ref="helpDocCatalogTreeSelect" v-model:value="formState.parentId" :defaultValueFlag="false" width="100%" />
       </a-form-item>
-      <a-form-item label="目录名称" name="name">
-        <a-input v-model:value.trim="formState.name" placeholder="请输入目录名称" />
+      <a-form-item label="카탈로그 이름" name="name">
+        <a-input v-model:value.trim="formState.name" placeholder="카탈로그 이름을 입력하세요." />
       </a-form-item>
-      <a-form-item label="目录排序 （值越小越靠前！）" name="sort">
-        <a-input-number style="width: 100%" v-model:value="formState.sort" :min="0" placeholder="请输入目录名称" />
+      <a-form-item label="목차 정렬(값이 작을수록 높습니다!)" name="sort">
+        <a-input-number style="width: 100%" v-model:value="formState.sort" :min="0" placeholder="카탈로그 이름을 입력하세요." />
       </a-form-item>
     </a-form>
   </a-modal>
@@ -65,10 +65,10 @@ import { smartSentry } from '/@/lib/smart-sentry';
   });
   // 表单校验规则
   const rules = {
-    parentId: [{ required: true, message: '上级目录不能为空' }],
+    parentId: [{ required: true, message: '상위 디렉터리는 비어 있을 수 없습니다.' }],
     name: [
-      { required: true, message: '目录名称不能为空' },
-      { max: 50, message: '目录名称不能大于20个字符', trigger: 'blur' },
+      { required: true, message: '디렉토리 이름은 비워둘 수 없습니다.' },
+      { max: 50, message: '디렉토리 이름은 20자를 초과할 수 없습니다.', trigger: 'blur' },
     ],
   };
   // 更新表单数据
@@ -93,7 +93,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
         addHelpDocCatalog();
       }
     } catch (error) {
-      message.error('参数验证错误，请仔细填写表单数据!');
+      message.error('파라미터 유효성 검사 오류가 발생했습니다. 양식 데이터를 신중하게 입력하세요!');
     }
   }
 
@@ -117,7 +117,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
     SmartLoading.show();
     try {
       if (formState.parentId == formState.helpDocCatalogId) {
-        message.warning('上级菜单不能为自己');
+        message.warning('상급 메뉴는 그 자체로 존재할 수 없습니다.');
         return;
       }
       await helpDocCatalogApi.update(formState);

@@ -9,7 +9,7 @@
 -->
 <template>
   <a-row>
-    <a-button type="primary" @click="addQuery">添加查询条件</a-button>
+    <a-button type="primary" @click="addQuery">검색 기준 추가</a-button>
   </a-row>
   <a-table
     size="small"
@@ -30,7 +30,7 @@
       </template>
 
       <template v-if="column.dataIndex === 'label'">
-        <a-input v-model:value="record.label"  placeholder="关键字查询"/>
+        <a-input v-model:value="record.label"  placeholder="키워드 검색"/>
       </template>
 
       <template v-if="column.dataIndex === 'fieldName'">
@@ -67,7 +67,7 @@
 
       <template v-if="column.dataIndex === 'operate'">
         <div class="smart-table-operate">
-          <a-button type="link" @click="onDelete(index)" danger>删除</a-button>
+          <a-button type="link" @click="onDelete(index)" danger>삭제</a-button>
         </div>
       </template>
     </template>
@@ -90,36 +90,36 @@
 
   const columns = ref([
     {
-      title: '拖拽',
+      title: '드래그 앤 드롭',
       dataIndex: 'drag',
       width: 60,
     },
     {
-      title: '列',
+      title: '열',
       dataIndex: 'columnNameList',
     },
     {
-      title: '查询类型',
+      title: '문의 유형',
       dataIndex: 'queryTypeEnum',
       width: 130,
     },
     {
-      title: '条件名称',
+      title: '조건 이름',
       dataIndex: 'label',
       width: 150,
     },
     {
-      title: '字段命名',
+      title: '필드 이름 지정',
       dataIndex: 'fieldName',
       width: 150,
     },
     {
-      title: '宽度',
+      title: '너비',
       dataIndex: 'width',
       width: 150,
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'operate',
       width: 60,
     },

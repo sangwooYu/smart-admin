@@ -10,12 +10,12 @@
 
     <div>
       <pre>{{ content }}</pre>
-      <div v-if="link">链接：<a :href="link" target="_blank">{{ link }}</a></div>
+      <div v-if="link">링크：<a :href="link" target="_blank">{{ link }}</a></div>
     </div>
 
     <template #footer>
       <a-space>
-        <a-button type="primary" @click="onClose">关闭</a-button>
+        <a-button type="primary" @click="onClose">닫기</a-button>
       </a-space>
     </template>
 

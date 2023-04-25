@@ -10,11 +10,11 @@
 <template>
   <a-form class="smart-query-form" v-privilege="'helpDoc:query'">
     <a-row class="smart-query-form-row">
-      <a-form-item label="关键字" class="smart-query-form-item">
-        <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="标题、作者" />
+      <a-form-item label="핵심 단어" class="smart-query-form-item">
+        <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="제목, 작성자" />
       </a-form-item>
 
-      <a-form-item label="创建时间" class="smart-query-form-item">
+      <a-form-item label="생성 시간" class="smart-query-form-item">
         <a-range-picker v-model:value="createDate" @change="createDateChange" style="width: 220px" />
       </a-form-item>
 
@@ -24,13 +24,13 @@
             <template #icon>
               <SearchOutlined />
             </template>
-            查询
+            문의
           </a-button>
           <a-button @click="onReload">
             <template #icon>
               <ReloadOutlined />
             </template>
-            重置
+            초기화
           </a-button>
         </a-button-group>
       </a-form-item>
@@ -44,7 +44,7 @@
           <template #icon>
             <PlusOutlined />
           </template>
-          新建
+          신규 건설
         </a-button>
       </div>
       <div class="smart-table-setting-block">
@@ -70,8 +70,8 @@
         </template>
         <template v-else-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button type="link" @click="addOrUpdate(record.helpDocId)" v-privilege="'helpDoc:update'">编辑</a-button>
-            <a-button type="link" danger @click="onDelete(record.helpDocId)" v-privilege="'helpDoc:delete'">删除</a-button>
+            <a-button type="link" @click="addOrUpdate(record.helpDocId)" v-privilege="'helpDoc:update'">편집기</a-button>
+            <a-button type="link" danger @click="onDelete(record.helpDocId)" v-privilege="'helpDoc:delete'">삭제</a-button>
           </div>
         </template>
       </template>
@@ -89,7 +89,7 @@
         :total="total"
         @change="queryHelpDocList"
         @showSizeChange="queryHelpDocList"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `합계: ${total}`"
       />
     </div>
   </a-card>
@@ -124,44 +124,44 @@
 
   const tableColumns = ref([
     {
-      title: `标题`,
+      title: `제목`,
       dataIndex: 'title',
       ellipsis: true,
     },
     {
-      title: '目录',
+      title: '카탈로그',
       dataIndex: 'helpDocCatalogName',
       width: 120,
       ellipsis: true,
     },
     {
-      title: `作者`,
+      title: `작성자`,
       dataIndex: 'author',
       width: 110,
       ellipsis: true,
     },
     {
-      title: '排序',
+      title: '정렬 기준',
       dataIndex: 'sort',
       width: 90,
     },
     {
-      title: '页面浏览量',
+      title: '페이지 조회수',
       dataIndex: 'pageViewCount',
       width: 90,
     },
     {
-      title: '用户浏览量',
+      title: '사용자 보기',
       dataIndex: 'userViewCount',
       width: 90,
     },
     {
-      title: '创建时间',
+      title: '생성 시간',
       dataIndex: 'createTime',
       width: 150,
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'action',
       fixed: 'right',
       width: 90,
@@ -232,8 +232,8 @@
   // 删除
   function onDelete(helpDocId) {
     Modal.confirm({
-      title: '提示',
-      content: '确认删除此数据吗?',
+      title: '팁',
+      content: '이 데이터의 삭제를 확인하시겠습니까?',
       onOk() {
         deleteHelpDoc(helpDocId);
       },
@@ -245,7 +245,7 @@
     try {
       tableLoading.value = true;
       await helpDocApi.delete(helpDocId);
-      message.success('删除成功');
+      message.success('성공적으로 삭제됨');
       queryHelpDocList();
     } catch (err) {
       smartSentry.captureError(err);

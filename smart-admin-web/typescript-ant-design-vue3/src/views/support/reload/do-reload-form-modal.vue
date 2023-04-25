@@ -8,16 +8,16 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal :visible="visible" title="执行Reload" ok-text="确认" cancel-text="取消" @ok="onSubmit" @cancel="onClose">
+  <a-modal :visible="visible" title="다시 로드 실행" ok-text="OK" cancel-text="취소" @ok="onSubmit" @cancel="onClose">
     <a-form ref="formRef" :model="form" :rules="rules" :label-col="{ span: 5 }">
-      <a-form-item label="标签">
+      <a-form-item label="태그">
         <a-input v-model:value="form.tag" :disabled="true" />
       </a-form-item>
-      <a-form-item label="运行标识" name="identification">
-        <a-input v-model:value="form.identification" placeholder="请输入运行标识" />
+      <a-form-item label="운영 식별" name="identification">
+        <a-input v-model:value="form.identification" placeholder="러닝 로고를 입력하세요." />
       </a-form-item>
-      <a-form-item label="参数" name="args">
-        <a-input v-model:value="form.args" placeholder="请输入参数" />
+      <a-form-item label="매개변수" name="args">
+        <a-input v-model:value="form.args" placeholder="매개변수를 입력하세요." />
       </a-form-item>
     </a-form>
   </a-modal>
@@ -60,8 +60,8 @@ import { smartSentry } from '/@/lib/smart-sentry';
   };
   let form = reactive({ ...formDefault });
   const rules = {
-    identification: [{ required: true, message: '请输入运行标识' }],
-    args: [{ required: true, message: '请输入参数值' }],
+    identification: [{ required: true, message: '러닝 로고를 입력하세요.' }],
+    args: [{ required: true, message: '파라미터 값을 입력하세요.' }],
   };
 
   // ----------------------- 提交 ------------------------
@@ -73,7 +73,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
         SmartLoading.show();
         try {
           await reloadApi.reload(form);
-          message.success('reload成功');
+          message.success('reload성공');
           emit('refresh');
           onClose();
         } catch (error) {
@@ -84,7 +84,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
       })
       .catch((error) => {
         console.log('error', error);
-        message.error('参数验证错误，请仔细填写表单数据!');
+        message.error('파라미터 유효성 검사 오류가 발생했습니다. 양식 데이터를 신중하게 입력하세요!');
       });
   }
 </script>

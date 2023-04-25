@@ -10,15 +10,15 @@
 <template>
   <a-form class="smart-query-form" v-privilege="'operateLog:query'">
     <a-row class="smart-query-form-row">
-      <a-form-item label="用户名称" class="smart-query-form-item">
-        <a-input style="width: 300px" v-model:value="queryForm.userName" placeholder="用户名称" />
+      <a-form-item label="사용자 이름" class="smart-query-form-item">
+        <a-input style="width: 300px" v-model:value="queryForm.userName" placeholder="사용자 이름" />
       </a-form-item>
 
-      <a-form-item label="请求时间" class="smart-query-form-item">
+      <a-form-item label="요청 시간" class="smart-query-form-item">
         <a-range-picker @change="changeCreateDate" v-model:value="createDateRange" :ranges="defaultChooseTimeRange" style="width: 240px" />
       </a-form-item>
 
-      <a-form-item label="快速筛选" class="smart-query-form-item">
+      <a-form-item label="빠른 심사" class="smart-query-form-item">
         <a-radio-group v-model:value="queryForm.successFlag" @change="ajaxQuery">
           <a-radio-button :value="undefined">全部</a-radio-button>
           <a-radio-button :value="true">成功</a-radio-button>
@@ -31,13 +31,13 @@
           <template #icon>
             <ReloadOutlined />
           </template>
-          查询
+          문의
         </a-button>
         <a-button @click="resetQuery">
           <template #icon>
             <SearchOutlined />
           </template>
-          重置
+          초기화
         </a-button>
       </a-form-item>
     </a-row>
@@ -50,7 +50,7 @@
     <a-table size="small" :loading="tableLoading" :dataSource="tableData" :columns="columns" bordered rowKey="operateLogId" :pagination="false" >
       <template #bodyCell="{ text, record, column }">
         <template v-if="column.dataIndex === 'successFlag'">
-          <a-tag :color="text ? 'success' : 'error'">{{ text ? '成功' : '失败' }}</a-tag>
+          <a-tag :color="text ? 'success' : 'error'">{{ text ? '성공' : '실패' }}</a-tag>
         </template>
 
         <template v-if="column.dataIndex === 'userAgent'">
@@ -63,7 +63,7 @@
 
         <template v-else-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="showDetail(record.operateLogId)" type="link" v-privilege="'operateLog:detail'">详情</a-button>
+            <a-button @click="showDetail(record.operateLogId)" type="link" v-privilege="'operateLog:detail'">세부 정보</a-button>
           </div>
         </template>
       </template>
@@ -81,7 +81,7 @@
         :total="total"
         @change="ajaxQuery"
         @showSizeChange="ajaxQuery"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `합계: ${total}条`"
       />
     </div>
 
@@ -101,28 +101,28 @@
 
   const columns = ref([
     {
-      title: '用户',
+      title: '사용자',
       dataIndex: 'operateUserName',
       width: 70,
     },
     {
-      title: '类型',
+      title: '유형',
       dataIndex: 'operateUserType',
       width: 50,
       ellipsis: true,
     },
     {
-      title: '操作模块',
+      title: '운영 모듈',
       dataIndex: 'module',
       ellipsis: true,
     },
     {
-      title: '操作内容',
+      title: '작업 내용',
       dataIndex: 'content',
       ellipsis: true,
     },
     {
-      title: '请求路径',
+      title: '요청 경로',
       dataIndex: 'url',
       ellipsis: true,
     },
@@ -132,27 +132,27 @@
       ellipsis: true,
     },
     {
-      title: '客户端',
+      title: '클라이언트',
       dataIndex: 'userAgent',
       ellipsis: true,
     },
     {
-      title: '请求方法',
+      title: '요청 방법',
       dataIndex: 'method',
       ellipsis: true,
     },
     {
-      title: '请求结果',
+      title: '요청 결과',
       dataIndex: 'successFlag',
       width: 80,
     },
     {
-      title: '时间',
+      title: '시간',
       dataIndex: 'createTime',
       width: 150,
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'action',
       fixed: 'right',
       width: 60,

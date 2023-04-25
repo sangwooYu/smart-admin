@@ -150,7 +150,7 @@
           if (copyButton != null) {
             copyButton.onclick = function () {
               copy(resultCode.value);
-              message.success('复制成功！');
+              message.success('복제 성공!');
             };
           }
         });

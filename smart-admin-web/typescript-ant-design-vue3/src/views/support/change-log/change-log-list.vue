@@ -9,16 +9,16 @@
   <!---------- 查询表单form begin ----------->
   <a-form class="smart-query-form" v-privilege="'changeLog:query'">
     <a-row class="smart-query-form-row">
-      <a-form-item label="更新类型" class="smart-query-form-item">
-        <SmartEnumSelect width="200px" v-model:value="queryForm.type" enumName="CHANGE_LOG_TYPE_ENUM" placeholder="更新类型" />
+      <a-form-item label="업데이트 유형" class="smart-query-form-item">
+        <SmartEnumSelect width="200px" v-model:value="queryForm.type" enumName="CHANGE_LOG_TYPE_ENUM" placeholder="업데이트 유형" />
       </a-form-item>
-      <a-form-item label="关键字" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="关键字" />
+      <a-form-item label="핵심 단어" class="smart-query-form-item">
+        <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="핵심 단어" />
       </a-form-item>
-      <a-form-item label="发布日期" class="smart-query-form-item">
+      <a-form-item label="릴리스 날짜" class="smart-query-form-item">
         <a-range-picker v-model:value="queryForm.publicDate" :ranges="defaultTimeRanges" style="width: 240px" @change="onChangePublicDate" />
       </a-form-item>
-      <a-form-item label="创建时间" class="smart-query-form-item">
+      <a-form-item label="생성 시간" class="smart-query-form-item">
         <a-date-picker valueFormat="YYYY-MM-DD" v-model:value="queryForm.createTime" style="width: 150px" />
       </a-form-item>
       <a-form-item class="smart-query-form-item">
@@ -26,13 +26,13 @@
           <template #icon>
             <ReloadOutlined />
           </template>
-          查询
+          문의
         </a-button>
         <a-button @click="resetQuery" class="smart-margin-left10">
           <template #icon>
             <SearchOutlined />
           </template>
-          重置
+          초기화
         </a-button>
       </a-form-item>
     </a-row>
@@ -47,13 +47,13 @@
           <template #icon>
             <PlusOutlined />
           </template>
-          新建
+          신규 건설
         </a-button>
         <a-button @click="confirmBatchDelete" type="danger" size="small" :disabled="selectedRowKeyList.length == 0" v-privilege="'changeLog:batchDelete'">
           <template #icon>
             <DeleteOutlined />
           </template>
-          批量删除
+          일괄 삭제
         </a-button>
       </div>
       <div class="smart-table-setting-block">
@@ -86,8 +86,8 @@
         </template>
         <template v-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="showForm(record)" type="link" v-privilege="'changeLog:update'">编辑</a-button>
-            <a-button @click="onDelete(record)" danger type="link" v-privilege="'changeLog:delete'">删除</a-button>
+            <a-button @click="showForm(record)" type="link" v-privilege="'changeLog:update'">편집</a-button>
+            <a-button @click="onDelete(record)" danger type="link" v-privilege="'changeLog:delete'">삭제</a-button>
           </div>
         </template>
       </template>
@@ -106,7 +106,7 @@
         :total="total"
         @change="queryData"
         @showSizeChange="queryData"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `합계: ${total}`"
       />
     </div>
 
@@ -132,47 +132,47 @@
 
   const columns = ref([
     {
-      title: '版本',
+      title: '버전',
       dataIndex: 'version',
       ellipsis: true,
     },
     {
-      title: '更新类型',
+      title: '업데이트 유형',
       dataIndex: 'type',
       ellipsis: true,
     },
     {
-      title: '发布人',
+      title: '게시자',
       dataIndex: 'publishAuthor',
       ellipsis: true,
     },
     {
-      title: '发布日期',
+      title: '릴리스 날짜',
       dataIndex: 'publicDate',
       ellipsis: true,
     },
     {
-      title: '更新内容',
+      title: '업데이트',
       dataIndex: 'content',
       ellipsis: true,
     },
     {
-      title: '跳转链接',
+      title: '링크 이동',
       dataIndex: 'link',
       ellipsis: true,
     },
     {
-      title: '创建时间',
+      title: '생성 시간',
       dataIndex: 'createTime',
       ellipsis: true,
     },
     {
-      title: '更新时间',
+      title: '업데이트 시간',
       dataIndex: 'updateTime',
       ellipsis: true,
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'action',
       fixed: 'right',
       width: 90,
@@ -248,14 +248,14 @@
   //确认删除
   function onDelete(data) {
     Modal.confirm({
-      title: '提示',
-      content: '确定要删除选吗?',
-      okText: '删除',
+      title: '팁',
+      content: '선택 항목을 제거하시겠습니까?',
+      okText: 'OK',
       okType: 'danger',
       onOk() {
         requestDelete(data);
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }
@@ -268,7 +268,7 @@
         goodsIdList: selectedRowKeyList.value,
       };
       await changeLogApi.delete(data.changeLogId);
-      message.success('删除成功');
+      message.success('성공적으로 삭제됨');
       queryData();
     } catch (e) {
       smartSentry.captureError(e);
@@ -289,14 +289,14 @@
   // 批量删除
   function confirmBatchDelete() {
     Modal.confirm({
-      title: '提示',
-      content: '确定要批量删除这些数据吗?',
-      okText: '删除',
+      title: '팁',
+      content: '이 데이터를 일괄 삭제하시겠습니까?',
+      okText: 'OK',
       okType: 'danger',
       onOk() {
         requestBatchDelete();
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }
@@ -306,7 +306,7 @@
     try {
       SmartLoading.show();
       await changeLogApi.batchDelete(selectedRowKeyList.value);
-      message.success('删除成功');
+      message.success('성공적으로 삭제됨');
       queryData();
     } catch (e) {
       smartSentry.captureError(e);

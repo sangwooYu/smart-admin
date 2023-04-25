@@ -11,23 +11,23 @@
   <a-row class="smart-margin-top10">
     <a-col flex="350px">
       <a-form ref="formRef" :model="formData" style="width: 350px" :rules="formRules" :label-col="{ span: 5 }" :wrapper-col="{ span: 16 }">
-        <a-form-item label="是否支持" name="isSupportInsertAndUpdate">
+        <a-form-item label="다음을 지원합니까?" name="isSupportInsertAndUpdate">
           <a-radio-group v-model:value="formData.isSupportInsertAndUpdate" button-style="solid">
             <a-radio-button :value="true">支持</a-radio-button>
             <a-radio-button :value="false">不支持添加、修改</a-radio-button>
           </a-radio-group>
         </a-form-item>
-        <a-form-item label="页面方式" name="pageType" v-if="formData.isSupportInsertAndUpdate">
+        <a-form-item label="페이지 메서드" name="pageType" v-if="formData.isSupportInsertAndUpdate">
           <a-radio-group v-model:value="formData.pageType" button-style="solid">
             <a-radio-button :value="CODE_INSERT_AND_UPDATE_PAGE_ENUM.MODAL.value">{{CODE_INSERT_AND_UPDATE_PAGE_ENUM.MODAL.desc}}</a-radio-button>
             <a-radio-button :value="CODE_INSERT_AND_UPDATE_PAGE_ENUM.DRAWER.value">{{CODE_INSERT_AND_UPDATE_PAGE_ENUM.DRAWER.desc}}</a-radio-button>
           </a-radio-group>
         </a-form-item>
-        <a-form-item label="页面宽度" v-show="formData.pageType !== CODE_INSERT_AND_UPDATE_PAGE_ENUM.PAGE.value" name="width" v-if="formData.isSupportInsertAndUpdate">
-          <a-input v-model:value="formData.width" placeholder="Modal或者Drawer的width属性 " />
+        <a-form-item label="페이지 너비" v-show="formData.pageType !== CODE_INSERT_AND_UPDATE_PAGE_ENUM.PAGE.value" name="width" v-if="formData.isSupportInsertAndUpdate">
+          <a-input v-model:value="formData.width" placeholder="모달 또는 서랍의 너비 속성 " />
         </a-form-item>
-        <a-form-item label="每行数量" name="countPerLine" v-if="formData.isSupportInsertAndUpdate">
-          <a-input-number style="width: 100%" :max="24" v-model:value="formData.countPerLine" placeholder="请输入 每行数量 " />
+        <a-form-item label="당 행 수" name="countPerLine" v-if="formData.isSupportInsertAndUpdate">
+          <a-input-number style="width: 100%" :max="24" v-model:value="formData.countPerLine" placeholder="줄당 번호를 입력하세요." />
         </a-form-item>
       </a-form>
     </a-col>
@@ -35,17 +35,17 @@
       <div class="form-preview">
         <a-row :gutter="20" justify="space-around">
           <a-col class="form-item" :span="spanPerLine" v-for="i of formData.countPerLine" :key="i">
-            <div class="gutter-box">字段</div>
+            <div class="gutter-box">필드</div>
           </a-col>
         </a-row>
         <a-row :gutter="20" class="smart-margin-top10" justify="space-around">
           <a-col class="form-item" :span="spanPerLine" v-for="i of formData.countPerLine" :key="i">
-            <div class="gutter-box">字段</div>
+            <div class="gutter-box">필드</div>
           </a-col>
         </a-row>
         <a-row :gutter="20" class="smart-margin-top10" justify="space-around">
           <a-col class="form-item" :span="spanPerLine" v-for="i of formData.countPerLine" :key="i">
-            <div class="gutter-box">字段</div>
+            <div class="gutter-box">필드</div>
           </a-col>
         </a-row>
       </div>
@@ -61,10 +61,10 @@
       <template v-if="column.dataIndex === 'columnName'">
         <span>
           <template v-if="record.primaryKeyFlag">
-            <a-tag color="#f50" style="line-height: 12px">主键</a-tag>
+            <a-tag color="#f50" style="line-height: 12px">기본 키</a-tag>
           </template>
           <template v-if="record.autoIncreaseFlag">
-            <a-tag color="#f50" style="line-height: 12px">自增</a-tag>
+            <a-tag color="#f50" style="line-height: 12px">자체 증가</a-tag>
           </template>
           <br />
           {{ text }}
@@ -72,7 +72,7 @@
       </template>
 
       <template v-if="column.dataIndex === 'nullableFlag'">
-        <a-tag color="error" v-if="text">非空</a-tag>
+        <a-tag color="error" v-if="text">비어 있지 않음</a-tag>
       </template>
 
       <template v-if="column.dataIndex === 'required'">
@@ -120,10 +120,10 @@
   const formData = reactive({ ...defaultFormData });
 
   const formRules = {
-    isSupportInsertAndUpdate: [{ required: true, message: '请输入 是否允许增加、删除' }],
-    pageType: [{ required: true, message: '请输入 页面方式' }],
-    width: [{ required: true, message: '请输入 宽度' }],
-    countPerLine: [{ required: true, message: '请输入 每行数量' }],
+    isSupportInsertAndUpdate: [{ required: true, message: '추가, 삭제 허용 여부를 입력하세요.' }],
+    pageType: [{ required: true, message: '페이지 방법을 입력하세요.' }],
+    width: [{ required: true, message: '너비를 입력하세요.' }],
+    countPerLine: [{ required: true, message: '줄당 번호를 입력하세요.' }],
   };
 
   // ------------- 预览 -------------
@@ -136,45 +136,45 @@
 
   const columns = ref([
     {
-      title: '列名',
+      title: '리스팅',
       dataIndex: 'columnName',
       width: 120,
       ellipsis: true,
     },
     {
-      title: '列描述',
+      title: '열 설명',
       dataIndex: 'columnComment',
       width: 120,
       ellipsis: true,
     },
     {
-      title: '列类型',
+      title: '열 유형',
       dataIndex: 'dataType',
       width: 100,
       ellipsis: true,
     },
     {
-      title: '非空',
+      title: '비어 있지 않음',
       dataIndex: 'nullableFlag',
       width: 60,
     },
     {
-      title: '必填',
+      title: '필수 필드',
       dataIndex: 'required',
       width: 35,
     },
     {
-      title: '新增',
+      title: '신규',
       dataIndex: 'insertFlag',
       width: 35,
     },
     {
-      title: '更新',
+      title: '통신',
       dataIndex: 'updateFlag',
       width: 35,
     },
     {
-      title: '前端组件',
+      title: '프런트엔드 구성 요소',
       dataIndex: 'frontComponent',
       width: 100,
     },
@@ -265,7 +265,7 @@
           resolve(true);
         })
         .catch((error) => {
-          message.error('基础命名表单 参数验证错误!');
+          message.error('기본 명명 양식 매개변수 유효성 검사 오류!');
           reject(error);
         });
     });

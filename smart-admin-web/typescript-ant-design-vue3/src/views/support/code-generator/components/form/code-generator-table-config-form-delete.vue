@@ -9,25 +9,25 @@
 -->
 <template>
   <a-form ref="formRef" :model="formData" :rules="formRules" :label-col="{ span: 6 }" style="width: 600px">
-    <a-form-item label="数据库表名词"> {{ tableInfo.tableName }} </a-form-item>
-    <a-form-item label="数据库表备注"> {{ tableInfo.tableComment }} </a-form-item>
-    <a-form-item label="是否允许删除" name="isSupportDelete">
+    <a-form-item label="데이터베이스 테이블 명사"> {{ tableInfo.tableName }} </a-form-item>
+    <a-form-item label="데이터베이스 테이블 비고"> {{ tableInfo.tableComment }} </a-form-item>
+    <a-form-item label="삭제 허용 여부" name="isSupportDelete">
       <a-radio-group v-model:value="formData.isSupportDelete" button-style="solid">
-        <a-radio-button :value="true">支持删除</a-radio-button>
-        <a-radio-button :value="false">不允许删除</a-radio-button>
+        <a-radio-button :value="true">삭제 지원</a-radio-button>
+        <a-radio-button :value="false">삭제 불가</a-radio-button>
       </a-radio-group>
     </a-form-item>
-    <a-form-item label="是否为物理删除" name="isPhysicallyDeleted" v-if="formData.isSupportDelete">
+    <a-form-item label="물리적으로 삭제되나요?" name="isPhysicallyDeleted" v-if="formData.isSupportDelete">
       <a-radio-group v-model:value="formData.isPhysicallyDeleted" button-style="solid">
-        <a-radio-button :value="true">物理删除</a-radio-button>
-        <a-radio-button :value="false">假删</a-radio-button>
+        <a-radio-button :value="true">물리적 삭제</a-radio-button>
+        <a-radio-button :value="false">잘못된 삭제</a-radio-button>
       </a-radio-group>
       <div class="smart-margin-top10" v-if="!formData.isPhysicallyDeleted">
-        <span v-if="deleteFlagColumnName"> 假删字段为：{{ deleteFlagColumnName }} </span>
-        <span stlye="color:red" v-else> 系统未检测出假删字段，假删字段名词应该为 ： <strong>deleted_flag</strong> </span>
+        <span v-if="deleteFlagColumnName"> 잘못된 삭제 필드 읽기：{{ deleteFlagColumnName }} </span>
+        <span stlye="color:red" v-else> 시스템이 잘못된 삭제 필드를 감지하지 못했습니다. 잘못된 삭제 필드 명사는 다음과 같아야 합니다. ： <strong>deleted_flag</strong> </span>
       </div>
     </a-form-item>
-    <a-form-item label="删除类型" name="deleteEnum" v-if="formData.isSupportDelete">
+    <a-form-item label="삭제 유형" name="deleteEnum" v-if="formData.isSupportDelete">
       <SmartEnumSelect enumName="CODE_DELETE_ENUM" v-model:value="formData.deleteEnum" width="200px" />
     </a-form-item>
   </a-form>
@@ -56,9 +56,9 @@
   const formData = reactive({ ...defaultFormData });
 
   const formRules = {
-    isSupportDelete: [{ required: true, message: '请输入 isSupportDelete' }],
-    isPhysicallyDeleted: [{ required: true, message: '请输入 是否为物理删除' }],
-    deleteEnum: [{ required: true, message: '请输入 删除类型' }],
+    isSupportDelete: [{ required: true, message: '입력하세요 isSupportDelete' }],
+    isPhysicallyDeleted: [{ required: true, message: '물리적으로 삭제하는 경우 입력하세요.' }],
+    deleteEnum: [{ required: true, message: '삭제 유형을 입력하세요.' }],
   };
 
   //初始化设置数据
@@ -101,7 +101,7 @@
           resolve(true);
         })
         .catch((error) => {
-          message.error('删除表单 参数验证错误!');
+          message.error('양식 삭제 매개변수 유효성 검사 오류!');
           reject(error);
         });
     });
