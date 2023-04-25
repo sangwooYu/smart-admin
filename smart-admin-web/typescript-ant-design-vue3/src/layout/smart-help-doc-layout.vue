@@ -20,7 +20,7 @@
       <a-row class="layout-header-title">
           <img class="logo-img" :src="logoImg" />
           <div class="title">{{ websiteName }}</div>
-          <div class="title">帮助文档</div>
+          <div class="title">도움말 파일</div>
         <a-col class="avatar">
           <HeaderAvatar />
         </a-col>

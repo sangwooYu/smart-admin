@@ -22,12 +22,12 @@
       <div>
         <a-spin :spinning="loading">
           <a-tabs class="dropdown-tabs" centered :tabBarStyle="{ textAlign: 'center' }" style="width: 300px">
-            <a-tab-pane tab="通知" key="1">
+            <a-tab-pane tab="알림" key="1">
               <a-list class="tab-pane" size="small">
                 <a-list-item>
-                  <a-list-item-meta description="7天前">
+                  <a-list-item-meta description="7일전">
                     <template #title>
-                      <a href="#">今天洛阳天气39°c，洛阳变各阳...</a>
+                      <a href="#">테스트</a>
                     </template>
                     <template #avatar>
                       <a-avatar src="https://zhuoda.vip/images/blog/profile-128-128.jpg" />
@@ -35,9 +35,9 @@
                   </a-list-item-meta>
                 </a-list-item>
                 <a-list-item>
-                  <a-list-item-meta description="7天前">
+                  <a-list-item-meta description="7일전">
                     <template #title>
-                      <a href="#">六月的雨　就是无情的你...</a>
+                      <a href="#">테스트</a>
                     </template>
                     <template #avatar>
                       <a-avatar src="https://zhuoda.vip/images/blog/profile-128-128.jpg" />
@@ -45,9 +45,9 @@
                   </a-list-item-meta>
                 </a-list-item>
                 <a-list-item>
-                  <a-list-item-meta description="7天前">
+                  <a-list-item-meta description="7일전">
                     <template #title>
-                      <a href="#">今年河南天气炎热，河南变可南...</a>
+                      <a href="#">테스트</a>
                     </template>
                     <template #avatar>
                       <a-avatar src="https://zhuoda.vip/images/blog/profile-128-128.jpg" />
@@ -56,10 +56,10 @@
                 </a-list-item>
               </a-list>
             </a-tab-pane>
-            <a-tab-pane tab="消息" key="2">
+            <a-tab-pane tab="뉴스" key="2">
               <a-list class="tab-pane" />
             </a-tab-pane>
-            <a-tab-pane tab="待办" key="3">
+            <a-tab-pane tab="완료할 작업" key="3">
               <a-list class="tab-pane" />
             </a-tab-pane>
           </a-tabs>

@@ -9,8 +9,8 @@
 -->
 <template>
   <div class="version" >
-    <a target="_blank" href="https://www.1024lab.net">
-      SmartAdmin V2.x @copyright 【1024创新实验室】 Since 2012-{{ currentYear }}
+    <a target="_blank" href="https://iskra.world/">
+      iskra 내부 게임 관리를 위한 admin
     </a>
   </div>
 </template>

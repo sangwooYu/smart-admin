@@ -8,16 +8,16 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal :visible="visible" title="意见反馈" :closable="false" :maskClosable="true" >
+  <a-modal :visible="visible" title="피드백" :closable="false" :maskClosable="true" >
     <a-form :labelCol="{ span: 6 }">
-      <a-form-item label="我要吐槽/建议：">
-        <a-textarea v-model:value="form.feedbackContent" placeholder="请输入让您不满意的点，我们争取做到更好～" :rows="3"/>
+      <a-form-item label="불만/제안을 하고 싶습니다:">
+        <a-textarea v-model:value="form.feedbackContent" placeholder="만족스럽지 못한 점을 입력해주시면 개선하도록 노력하겠습니다~." :rows="3"/>
       </a-form-item>
-      <a-form-item label="反馈图片：">
+      <a-form-item label="피드백 이미지:">
         <Upload
             accept=".jpg,.jpeg,.png,.gif"
             :maxUploadSize="3"
-            buttonText="点击上传反馈图片"
+            buttonText="피드백 이미지를 업로드하려면 클릭하세요."
             :default-file-list="form.feedbackAttachment || []"
             listType="picture-card"
             @change="changeAttachment"
@@ -26,8 +26,8 @@
       </a-form-item>
     </a-form>
     <template #footer>
-      <a-button @click="hide">取消</a-button>
-      <a-button type="primary" @click="submit">提交</a-button>
+      <a-button @click="hide">취소</a-button>
+      <a-button type="primary" @click="submit">제출하기</a-button>
     </template>
   </a-modal>
 </template>
@@ -66,11 +66,11 @@ async function submit () {
   try {
     SmartLoading.show();
     if(!form.feedbackContent){
-      message.warn('请填写具体内容');
+      message.warn('세부 정보를 입력하세요.');
       return;
     }
     await feedbackApi.addFeedback(form);
-    message.success('提交成功');
+    message.success('제출 성공');
     hide();
   } catch (e) {
     smartSentry.captureError(e);

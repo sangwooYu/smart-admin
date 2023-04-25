@@ -9,7 +9,7 @@
 -->
 <template>
   <a-drawer
-    :title="formData.helpDocId ? '编辑' : '新建'"
+    :title="formData.helpDocId ? '편집' : 'NEW'"
     :visible="visibleFlag"
     :width="1000"
     :footerStyle="{ textAlign: 'right' }"

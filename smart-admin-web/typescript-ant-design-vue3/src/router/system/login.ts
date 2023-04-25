@@ -15,7 +15,7 @@ export const loginRouters: Array<RouteRecordRaw> = [
     name: 'Login',
     component: () => import('/@/views/system/login/login.vue'),
     meta: {
-      title: '登录',
+      title: '로그인',
       hideInMenu: true,
     },
   },

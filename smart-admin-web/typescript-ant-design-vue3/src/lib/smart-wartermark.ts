@@ -85,7 +85,7 @@ const watermark = {
   set: function (id: string, str: string): void {
     // 如果存在水印，则不允许再调用了
     if (document.getElementById(WATER_MARK_DOM_ID) !== null) {
-      alert('已经添加过全局水印了，请不要再重复添加!');
+      alert('글로벌 워터마크가 이미 추가되었으므로 다시 추가하지 마세요!');
       return;
     }
 

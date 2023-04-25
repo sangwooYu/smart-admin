@@ -11,7 +11,7 @@
   <div class="help-doc-wrapper">
     <!-----头部---->
     <div class="help-doc-header">
-      <strong>帮助文档</strong>
+      <strong>도움말 파일</strong>
       <strong class="help-doc-close" @click="hideHelpDoc"><close-outlined /></strong>
     </div>
 
@@ -21,8 +21,8 @@
         <phone-outlined style="font-size: 23px; line-height: 50px; margin-top: 5px" />
       </div>
       <div class="help-doc-contact-right">
-        <a>联系客服</a>
-        <div class="help-doc-contac-time">9:00-17:00 5x7小时</div>
+        <a>고객 서비스 문의</a>
+        <div class="help-doc-contac-time">9:00 - 17:00 5x7시간</div>
       </div>
     </div>
 
@@ -30,11 +30,11 @@
 
     <!-----意见反馈---->
     <div class="feedback">
-      <div>反馈让您不满意的点，我们争取做到更好<smile-outlined style="margin-left: 5px" /></div>
+      <div>만족스럽지 않은 점에 대한 피드백을 보내주시면 더 나은 서비스를 제공하기 위해 노력하겠습니다.<smile-outlined style="margin-left: 5px" /></div>
       <div class="feedback-message-list">
         <div v-for="item in feedbackMessageList" :key="item.feedbackId" class="feedback-message">{{ item.feedbackContent }}</div>
       </div>
-      <a @click="feedbackModal.show">我也要反馈</a>
+      <a @click="feedbackModal.show">나도 피드백을 주고 싶어요</a>
     </div>
 
     <a-divider />
@@ -42,7 +42,7 @@
     <!-----文档列表---->
     <div class="help-doc-list">
       <div class="help-doc-item-all">
-        <router-link tag="a" target="_blank" :to="{ path: '/help-doc/detail' }">查看全部文档 >></router-link>
+        <router-link tag="a" target="_blank" :to="{ path: '/help-doc/detail' }">모든 문서 보기 >></router-link>
       </div>
       <div class="help-doc-item" v-for="item in helpDocList" :key="item.helpDocId">
         <router-link tag="a" target="_blank" :to="{ path: '/help-doc/detail', query: { helpDocId: item.helpDocId } }">{{ item.title }}</router-link>
@@ -127,7 +127,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
   }
 
   const feedbackModal = ref();
-  // ----------------- 帮助文档列表 -------------------
+  // ----------------- 도움말 파일 목록 -------------------
   let currentRoute = useRoute();
   let helpDocList = ref([]);
   // 获取关联的文档集合

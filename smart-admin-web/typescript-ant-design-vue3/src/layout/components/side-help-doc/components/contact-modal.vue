@@ -8,28 +8,28 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal :visible="visible" width="600px" title="联系客服人员" :closable="false" :maskClosable="true">
-    <a-row><div style="margin-left: 180px">客服(卓大)电话：18637925892 ;</div> </a-row>
-    <br />
-    <div class="app-qr-box">
-      <div class="app-qr">
-        <img :src="zhuoda" />
-        <span class="qr-desc strong"> 卓大的微信号！ </span>
-        <span class="qr-desc"> 骚扰卓大 :) </span>
-      </div>
-      <div class="app-qr">
-        <img :src="xiaozhen" />
-        <span class="qr-desc strong"> 关注：小镇程序员 </span>
-        <span class="qr-desc"> 程序员的工作生活 </span>
-      </div>
-      <div class="app-qr">
-        <img :src="lab1024" />
-        <span class="qr-desc strong"> 1024创新实验室 </span>
-        <span class="qr-desc"> 官方账号 </span>
-      </div>
-    </div>
+  <a-modal :visible="visible" width="600px" title="고객 서비스 문의" :closable="false" :maskClosable="true">
+    <a-row><div style="margin-left: 180px">담당자 이메일 : sw.yu@iskra.world </div> </a-row>
+<!--    <br />-->
+<!--    <div class="app-qr-box">-->
+<!--      <div class="app-qr">-->
+<!--        <img :src="zhuoda" />-->
+<!--        <span class="qr-desc strong"> qr테스트 </span>-->
+<!--        <span class="qr-desc"> qr테스트 </span>-->
+<!--      </div>-->
+<!--      <div class="app-qr">-->
+<!--        <img :src="xiaozhen" />-->
+<!--        <span class="qr-desc strong"> qr테스트 </span>-->
+<!--        <span class="qr-desc"> qr테스트 </span>-->
+<!--      </div>-->
+<!--      <div class="app-qr">-->
+<!--        <img :src="lab1024" />-->
+<!--        <span class="qr-desc strong"> qr테스트 </span>-->
+<!--        <span class="qr-desc"> Qr테스트 </span>-->
+<!--      </div>-->
+<!--    </div>-->
     <template #footer>
-      <a-button type="primary" @click="hide">知道了</a-button>
+      <a-button type="primary" @click="hide">알겠습니다.</a-button>
     </template>
   </a-modal>
 </template>

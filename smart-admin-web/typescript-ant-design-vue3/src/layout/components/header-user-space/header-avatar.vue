@@ -1,13 +1,3 @@
-<!--
-  * 头像
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-06 20:02:01 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
--->
-
 <template>
   <a-dropdown class="header-trigger">
     <div class="wrapper">
@@ -19,13 +9,13 @@
     <template #overlay>
       <a-menu :class="['avatar-menu']">
         <a-menu-item @click="onRefresh">
-          <span>刷新权限</span>
+          <span>권한 새로 고침</span>
         </a-menu-item>
         <a-menu-item @click="showUpdatePwdModal">
-          <span>修改密码</span>
+          <span>비밀번호 변경</span>
         </a-menu-item>
         <a-menu-item @click="onLogout">
-          <span>退出登录</span>
+          <span>로그아웃</span>
         </a-menu-item>
       </a-menu>
     </template>

@@ -26,7 +26,7 @@
               <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
             </span>
             <a-tooltip placement="bottom">
-              <template #title>首页</template>
+              <template #title>홈</template>
               <span class="home-button" @click="goHome">
                 <home-outlined class="trigger" />
               </span>

@@ -29,12 +29,12 @@ public class AdminStartupRunner implements CommandLineRunner {
         // 初始化状态码
         int codeCount = ErrorCodeRegister.initialize();
 
-        //TODO <卓大> ：根据实际情况来决定是否开启定时任务
-        String destroySchedules = "Spring 定时任务 @Schedule 已启动";
+        //TODO <卓大> ：시간 제한 작업을 설정할지 여부는 실제 상황에 따라 다릅니다.
+        String destroySchedules = "봄 시간 지정 작업 @Schedule이 시작되었습니다.";
 //        destroySchedules = scheduleConfig.destroy();
 
-        log.info("\n ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： {}个！---------------" +
-                 "\n ---------------【1024创新实验室 温馨提示：】 {}---------------\n", codeCount, destroySchedules);
+        log.info("\n --------------- [1024 이노베이션 랩 웜 팁:] 오류코드 총 초기화 완료: {}개! ---------------" +
+                 "\n --------------- [1024 이노베이션 랩 웜 팁:] {}---------------\n", codeCount, destroySchedules);
 
     }
 }
