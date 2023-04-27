@@ -11,12 +11,12 @@
 <template>
   <div>
     <div class="btn-group">
-      <a-button class="button-style" type="primary" @click="updateDataScope" v-privilege="'system:role:dataScope:update'"> 保存 </a-button>
-      <a-button class="button-style" @click="getDataScope" v-privilege="'role:query'"> 刷新 </a-button>
+      <a-button class="button-style" type="primary" @click="updateDataScope" v-privilege="'system:role:dataScope:update'"> 저장 </a-button>
+      <a-button class="button-style" @click="getDataScope" v-privilege="'role:query'"> 새로 고침 </a-button>
     </div>
     <a-row class="header">
-      <a-col class="tab-margin" :span="4">业务单据</a-col>
-      <a-col class="tab-data" :span="8">查看数据范围</a-col>
+      <a-col class="tab-margin" :span="4">비즈니스 문서</a-col>
+      <a-col class="tab-data" :span="8">데이터 범위 보기</a-col>
       <a-col class="tab-margin" :span="12" />
     </a-row>
     <div class="data-container">
@@ -108,7 +108,7 @@
         dataScopeItemList: selectedDataScopeList.value.filter((e) => !_.isUndefined(e.viewType)),
       };
       await roleApi.updateRoleDataScopeList(data);
-      message.success('保存成功');
+      message.success('저장 성공');
       getDataScope();
     } catch (e) {
       smartSentry.captureError(e);

@@ -9,19 +9,19 @@
   *
 -->
 <template>
-  <a-modal :title="form.roleId ? '编辑角色' : '添加角色'" :width="600" :visible="modalVisible" @cancel="onClose" :footer="null">
+  <a-modal :title="form.roleId ? '역할 수정' : '역할 추가'" :width="600" :visible="modalVisible" @cancel="onClose" :footer="null">
     <a-form ref="formRef" :model="form" :rules="rules" :labelCol="{ span: 4 }">
-      <a-form-item label="角色名称" name="roleName">
-        <a-input style="width: 100%" placeholder="请输入角色名称" v-model:value="form.roleName" />
+      <a-form-item label="롤 이름" name="roleName">
+        <a-input style="width: 100%" placeholder="롤 이름을 입력하세요." v-model:value="form.roleName" />
       </a-form-item>
-      <a-form-item label="角色备注">
-        <a-input style="width: 100%" placeholder="请输入角色备注" v-model:value="form.remark" />
+      <a-form-item label="롤 비고">
+        <a-input style="width: 100%" placeholder="캐릭터 메모를 입력하세요." v-model:value="form.remark" />
       </a-form-item>
     </a-form>
 
     <div class="footer">
-      <a-button style="margin-right: 8px" @click="onClose">取消</a-button>
-      <a-button type="primary" @click="submitForm">提交</a-button>
+      <a-button style="margin-right: 8px" @click="onClose">취소</a-button>
+      <a-button type="primary" @click="submitForm">제출</a-button>
     </div>
   </a-modal>
 </template>
@@ -69,7 +69,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
 
   // 表单规则
   const rules = {
-    roleName: [{ required: true, message: '请输入角色名称' }],
+    roleName: [{ required: true, message: '캐릭터 이름을 입력하세요.' }],
   };
 
   // 提交表单
@@ -84,7 +84,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
           } else {
             await roleApi.addRole(form);
           }
-          message.info(`${form.roleId ? '编辑' : '添加'}成功`);
+          message.info(`${form.roleId ? '편집' : '추가'}성공`);
           emits('refresh');
           onClose();
         } catch (e) {
@@ -94,7 +94,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
         }
       })
       .catch((error) => {
-        message.error('参数验证错误，请仔细填写表单数据!');
+        message.error('파라미터 유효성 검사 오류가 발생했습니다. 양식 데이터를 신중하게 입력하세요!');
       });
   }
 </script>

@@ -9,17 +9,17 @@
   *
 -->
 <template>
-  <a-card title="角色列表" class="role-container" style="padding: 0">
+  <a-card title="역할 목록" class="role-container" style="padding: 0">
     <template #extra>
-      <a-button type="primary" size="small" @click="showRoleFormModal" v-privilege="'system:role:add'">添加</a-button>
+      <a-button type="primary" size="small" @click="showRoleFormModal" v-privilege="'system:role:add'">추가</a-button>
     </template>
     <a-menu mode="vertical" v-model:selectedKeys="selectedKeys">
       <a-menu-item v-for="item in roleList" :key="item.roleId">
         <a-popover placement="right">
           <template #content>
             <div style="display: flex; flex-direction: column">
-              <a-button type="text" @click="deleteRole(item.roleId)" v-privilege="'system:role:delete'">删除</a-button>
-              <a-button type="text" @click="showRoleFormModal(item)" v-privilege="'system:role:update'">编辑</a-button>
+              <a-button type="text" @click="deleteRole(item.roleId)" v-privilege="'system:role:delete'">삭제</a-button>
+              <a-button type="text" @click="showRoleFormModal(item)" v-privilege="'system:role:update'">편집기</a-button>
             </div>
           </template>
           {{ item.roleName }}
@@ -73,15 +73,15 @@
       return;
     }
     Modal.confirm({
-      title: '提示',
-      content: '确定要删除该角色么？',
-      okText: '确定',
+      title: '팁',
+      content: '정말 롤을 삭제하시겠습니까?',
+      okText: 'OK',
       okType: 'danger',
       async onOk() {
         SmartLoading.show();
         try {
           await roleApi.deleteRole(roleId);
-          message.info('删除成功');
+          message.info('성공적으로 삭제됨');
           queryAllRole();
         } catch (e) {
           smartSentry.captureError(e);
@@ -89,7 +89,7 @@
           SmartLoading.hide();
         }
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }

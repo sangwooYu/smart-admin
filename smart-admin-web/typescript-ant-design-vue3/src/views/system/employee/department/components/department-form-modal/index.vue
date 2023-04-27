@@ -8,19 +8,19 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal v-model:visible="visible" :title="formState.departmentId ? '编辑部门' : '添加部门'" @ok="handleOk" destroyOnClose>
+  <a-modal v-model:visible="visible" :title="formState.departmentId ? '부서 편집' : '부서 추가'" @ok="handleOk" destroyOnClose>
     <a-form ref="formRef" :model="formState" :rules="rules" layout="vertical">
-      <a-form-item label="上级部门" name="parentId" v-if="formState.parentId != 0">
+      <a-form-item label="상급 기관" name="parentId" v-if="formState.parentId != 0">
         <DepartmentTreeSelect ref="departmentTreeSelect" v-model:value="formState.parentId" :defaultValueFlag="false" width="100%" />
       </a-form-item>
-      <a-form-item label="部门名称" name="name">
-        <a-input v-model:value.trim="formState.name" placeholder="请输入部门名称" />
+      <a-form-item label="부서 이름" name="name">
+        <a-input v-model:value.trim="formState.name" placeholder="부서 이름을 입력하세요." />
       </a-form-item>
-      <a-form-item label="部门负责人" name="managerId">
-        <EmployeeSelect ref="employeeSelect" placeholder="请选择部门负责人" width="100%" v-model:value="formState.managerId" :leaveFlag="false" />
+      <a-form-item label="부서장" name="managerId">
+        <EmployeeSelect ref="employeeSelect" placeholder="부서장을 선택해 주세요." width="100%" v-model:value="formState.managerId" :leaveFlag="false" />
       </a-form-item>
-      <a-form-item label="部门排序 （值越大越靠前！）" name="sort">
-        <a-input-number style="width: 100%" v-model:value="formState.sort" :min="0" placeholder="请输入部门名称" />
+      <a-form-item label="섹터 정렬(값이 높을수록 순위가 높아집니다!)" name="sort">
+        <a-input-number style="width: 100%" v-model:value="formState.sort" :min="0" placeholder="부서 이름을 입력하세요." />
       </a-form-item>
     </a-form>
   </a-modal>

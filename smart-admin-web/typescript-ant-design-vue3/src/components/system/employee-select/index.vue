@@ -35,7 +35,7 @@
     value: [Number, Array],
     placeholder: {
       type: String,
-      default: '请选择',
+      default: '선택하세요',
     },
     width: {
       type: String,

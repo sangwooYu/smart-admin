@@ -12,19 +12,19 @@
   <div>
     <div class="header">
       <div>
-        关键字：
-        <a-input style="width: 250px" v-model:value="queryForm.keywords" placeholder="姓名/手机号/登录账号" />
+        핵심 단어：
+        <a-input style="width: 250px" v-model:value="queryForm.keywords" placeholder="이름/휴대폰 번호/로그인 계정" />
 
-        <a-button class="button-style" v-if="selectRoleId" type="primary" @click="queryRoleEmployee">搜索</a-button>
-        <a-button class="button-style" v-if="selectRoleId" type="default" @click="resetQueryRoleEmployee">重置</a-button>
+        <a-button class="button-style" v-if="selectRoleId" type="primary" @click="queryRoleEmployee">검색</a-button>
+        <a-button class="button-style" v-if="selectRoleId" type="default" @click="resetQueryRoleEmployee">초기화</a-button>
       </div>
 
       <div>
         <a-button class="button-style" v-if="selectRoleId" type="primary" @click="addRoleEmployee" v-privilege="'system:role:employee:add'"
-          >添加员工</a-button
+          >직원 추가</a-button
         >
         <a-button class="button-style" v-if="selectRoleId" type="primary" danger @click="batchDelete" v-privilege="'system:role:employee:batch:delete'"
-          >批量移除</a-button
+          >일괄 제거</a-button
         >
       </div>
     </div>
@@ -41,13 +41,13 @@
     >
       <template #bodyCell="{ text, record, column }">
         <template v-if="column.dataIndex === 'disabledFlag'">
-          <a-tag :color="text ? 'error' : 'processing'">{{ text ? '禁用' : '启用' }}</a-tag>
+          <a-tag :color="text ? 'error' : 'processing'">{{ text ? '사용 금지' : '사용' }}</a-tag>
         </template>
         <template v-else-if="column.dataIndex === 'gender'">
           <span>{{ $smartEnumPlugin.getDescByValue('GENDER_ENUM', text) }}</span>
         </template>
         <template v-if="column.dataIndex === 'operate'">
-          <a @click="deleteEmployeeRole(record.employeeId)" v-privilege="'system:role:employee:delete'">移除</a>
+          <a @click="deleteEmployeeRole(record.employeeId)" v-privilege="'system:role:employee:delete'">제거</a>
         </template>
       </template>
     </a-table>
@@ -126,27 +126,27 @@
 
   const columns = reactive([
     {
-      title: '姓名',
+      title: '이름',
       dataIndex: 'actualName',
     },
     {
-      title: '手机号',
+      title: '휴대폰 번호',
       dataIndex: 'phone',
     },
     {
-      title: '登录账号',
+      title: '로그인 계정',
       dataIndex: 'loginName',
     },
     {
-      title: '部门',
+      title: '섹터',
       dataIndex: 'departmentName',
     },
     {
-      title: '状态',
+      title: '상태',
       dataIndex: 'disabledFlag',
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'operate',
       width: 60,
     },
@@ -163,7 +163,7 @@
 
   async function selectData(list) {
     if (_.isEmpty(list)) {
-      message.warning('请选择角色人员');
+      message.warning('역할 담당자를 선택하세요.');
       return;
     }
     SmartLoading.show();
@@ -173,7 +173,7 @@
         roleId: selectRoleId.value,
       };
       await roleApi.batchAddRoleEmployee(params);
-      message.success('添加成功');
+      message.success('추가 성공');
       await queryRoleEmployee();
     } catch (e) {
       smartSentry.captureError(e);
@@ -186,15 +186,15 @@
   // 删除角色成员方法
   async function deleteEmployeeRole(employeeId) {
     Modal.confirm({
-      title: '提示',
-      content: '确定要删除该角色成员么？',
-      okText: '确定',
+      title: '팁',
+      content: '역할 멤버를 삭제하시겠습니까?',
+      okText: 'OK',
       okType: 'danger',
       async onOk() {
         SmartLoading.show();
         try {
           await roleApi.deleteEmployeeRole(employeeId, selectRoleId.value);
-          message.success('移除成功');
+          message.success('제거 성공');
           await queryRoleEmployee();
         } catch (e) {
           smartSentry.captureError(e);
@@ -202,7 +202,7 @@
           SmartLoading.hide();
         }
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }
@@ -219,13 +219,13 @@
   // 批量移除
   function batchDelete() {
     if (!hasSelected.value) {
-      message.warning('请选择要删除的角色成员');
+      message.warning('삭제할 역할 구성원을 선택하세요.');
       return;
     }
     Modal.confirm({
-      title: '提示',
-      content: '确定移除这些角色成员吗？',
-      okText: '确定',
+      title: '팁',
+      content: '이러한 역할 구성원을 제거하시겠습니까?',
+      okText: 'OK',
       okType: 'danger',
       async onOk() {
         SmartLoading.show();
@@ -235,7 +235,7 @@
             roleId: selectRoleId.value,
           };
           await roleApi.batchRemoveRoleEmployee(params);
-          message.success('移除成功');
+          message.success('제거 성공');
           selectedRowKeyList.value = [];
           await queryRoleEmployee();
         } catch (e) {
@@ -244,7 +244,7 @@
           SmartLoading.hide();
         }
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }

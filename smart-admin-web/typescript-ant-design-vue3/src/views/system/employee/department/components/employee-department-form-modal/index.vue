@@ -8,11 +8,11 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal v-model:visible="visible" title="调整部门" :footer="null" destroyOnClose>
+  <a-modal v-model:visible="visible" title="부문 구조 조정" :footer="null" destroyOnClose>
     <DepartmentTree ref="departmentTree" :height="400" :showMenu="false" />
     <div class="footer">
-      <a-button style="margin-right: 8px" @click="closeModal">取消</a-button>
-      <a-button type="primary" @click="handleOk">提交</a-button>
+      <a-button style="margin-right: 8px" @click="closeModal">취소</a-button>
+      <a-button type="primary" @click="handleOk">제출</a-button>
     </div>
   </a-modal>
 </template>
@@ -51,11 +51,11 @@ import { SmartLoading } from '/@/components/framework/smart-loading';
     SmartLoading.show();
     try {
       if (_.isEmpty(employeeIdList.value)) {
-        message.warning('请选择要调整的员工');
+        message.warning('조정할 직원을 선택하세요.');
         return;
       }
       if (_.isEmpty(departmentTree.value.selectedKeys)) {
-        message.warning('请选择要调整的部门');
+        message.warning('조정할 부서를 선택하세요.');
         return;
       }
       let departmentId = departmentTree.value.selectedKeys[0];
@@ -64,7 +64,7 @@ import { SmartLoading } from '/@/components/framework/smart-loading';
         departmentId: departmentId,
       };
       await employeeApi.batchUpdateDepartmentEmployee(params);
-      message.success('操作成功');
+      message.success('성공적으로 실행');
       emit('refresh');
       closeModal();
     } catch (error) {

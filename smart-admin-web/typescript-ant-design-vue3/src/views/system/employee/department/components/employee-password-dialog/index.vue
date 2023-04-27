@@ -8,21 +8,21 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal v-model:visible="visible" :zIndex="9999" :width="500" title="提示" :closable="false" :maskClosable="false">
+  <a-modal v-model:visible="visible" :zIndex="9999" :width="500" title="팁" :closable="false" :maskClosable="false">
     <!--  -->
     <ul>
-      <li>登录名: {{ showLoginName }}</li>
-      <li>密码: {{ showLoginPassword }}</li>
+      <li>로그인 이름: {{ showLoginName }}</li>
+      <li>비밀번호: {{ showLoginPassword }}</li>
     </ul>
     <template #footer>
       <a-button
         type="primary"
         class="account-copy"
-        :data-clipboard-text="`登录名：${showLoginName} 
-密码：${showLoginPassword}`"
+        :data-clipboard-text="`로그인 이름：${showLoginName}
+비밀번호：${showLoginPassword}`"
         size="middle"
         @click="copy"
-        >复制密码并关闭</a-button
+        >비밀번호 복사 및 닫기</a-button
       >
     </template>
   </a-modal>
@@ -48,14 +48,14 @@
   function handleCopy() {
     let clipboard = new Clipboard('.account-copy');
     clipboard.on('success', (e) => {
-      message.info('复制成功');
-      console.log('复制成功');
+      message.info('복제 성공');
+      console.log('복제 성공');
       //  释放内存
       clipboard.destroy();
     });
     clipboard.on('error', (e) => {
       // 不支持复制
-      message.error('浏览器不支持复制，请您手动选择复制');
+      message.error('브라우저가 복사를 지원하지 않으므로 수동 복사를 선택하세요.');
       // 释放内存
       clipboard.destroy();
     });

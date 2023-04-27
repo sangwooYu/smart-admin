@@ -9,7 +9,7 @@
 -->
 <template>
   <a-drawer
-    :title="form.employeeId ? '编辑' : '添加'"
+    :title="form.employeeId ? '편집' : '추가'"
     :width="600"
     :visible="visible"
     :body-style="{ paddingBottom: '80px' }"
@@ -17,38 +17,38 @@
     destroyOnClose
   >
     <a-form ref="formRef" :model="form" :rules="rules" layout="vertical">
-      <a-form-item label="姓名" name="actualName">
-        <a-input v-model:value.trim="form.actualName" placeholder="请输入姓名" />
+      <a-form-item label="성명" name="actualName">
+        <a-input v-model:value.trim="form.actualName" placeholder="성명을 입력하세요" />
       </a-form-item>
-      <a-form-item label="手机号" name="phone">
-        <a-input v-model:value.trim="form.phone" placeholder="请输入手机号" />
+      <a-form-item label="핸드폰 번호" name="phone">
+        <a-input v-model:value.trim="form.phone" placeholder="핸드폰 번호를 입력하세요" />
       </a-form-item>
-      <a-form-item label="部门" name="departmentId">
+      <a-form-item label="섹터" name="departmentId">
         <DepartmentTreeSelect ref="departmentTreeSelect" width="100%" :init="false" v-model:value="form.departmentId" />
       </a-form-item>
-      <a-form-item label="登录名" name="loginName">
-        <a-input v-model:value.trim="form.loginName" placeholder="请输入登录名" />
-        <p class="hint">初始密码默认为：随机</p>
+      <a-form-item label="로그인 이름" name="loginName">
+        <a-input v-model:value.trim="form.loginName" placeholder="로그인 이름을 입력하세요." />
+        <p class="hint">초기 비밀번호 기본값: 무작위</p>
       </a-form-item>
-      <a-form-item label="性别" name="gender">
-        <smart-enum-select style="width: 100%" v-model:value="form.gender" placeholder="请选择性别" enum-name="GENDER_ENUM" />
+      <a-form-item label="성별" name="gender">
+        <smart-enum-select style="width: 100%" v-model:value="form.gender" placeholder="성별을 선택해 주세요." enum-name="GENDER_ENUM" />
       </a-form-item>
-      <a-form-item label="状态" name="disabledFlag">
-        <a-select v-model:value="form.disabledFlag" placeholder="请选择状态">
-          <a-select-option :value="0">启用</a-select-option>
-          <a-select-option :value="1">禁用</a-select-option>
+      <a-form-item label="상태" name="disabledFlag">
+        <a-select v-model:value="form.disabledFlag" placeholder="상태를 선택하세요.">
+          <a-select-option :value="0">사용</a-select-option>
+          <a-select-option :value="1">사용 금지</a-select-option>
         </a-select>
       </a-form-item>
-      <a-form-item label="角色" name="roleIdList">
-        <a-select mode="multiple" v-model:value="form.roleIdList" optionFilterProp="title" placeholder="请选择角色">
+      <a-form-item label="역할" name="roleIdList">
+        <a-select mode="multiple" v-model:value="form.roleIdList" optionFilterProp="title" placeholder="역할을 선택해 주세요.">
           <a-select-option v-for="item in roleList" :key="item.roleId" :title="item.roleName">{{ item.roleName }}</a-select-option>
         </a-select>
       </a-form-item>
     </a-form>
     <div class="footer">
-      <a-button style="margin-right: 8px" @click="onClose">取消</a-button>
-      <a-button type="primary" style="margin-right: 8px" @click="onSubmit(false)">保存</a-button>
-      <a-button v-if="!form.employeeId" type="primary" @click="onSubmit(true)">保存并继续添加</a-button>
+      <a-button style="margin-right: 8px" @click="onClose">취소</a-button>
+      <a-button type="primary" style="margin-right: 8px" @click="onSubmit(false)">저장</a-button>
+      <a-button v-if="!form.employeeId" type="primary" @click="onSubmit(true)">저장하고 계속 추가</a-button>
     </div>
   </a-drawer>
 </template>
@@ -120,21 +120,21 @@ import { smartSentry } from '/@/lib/smart-sentry';
   // 表单规则
   const rules = {
     actualName: [
-      { required: true, message: '姓名不能为空' },
-      { max: 30, message: '姓名不能大于30个字符', trigger: 'blur' },
+      { required: true, message: '이름은 비워 둘 수 없습니다.' },
+      { max: 30, message: '이름은 30자를 초과할 수 없습니다.', trigger: 'blur' },
     ],
     phone: [
-      { required: true, message: '手机号不能为空' },
-      { pattern: regular.phone, message: '请输入正确的手机号码', trigger: 'blur' },
+      { required: true, message: '휴대폰 번호는 비워 둘 수 없습니다.' },
+      { pattern: regular.phone, message: '올바른 휴대폰 번호를 입력하세요.', trigger: 'blur' },
     ],
     loginName: [
-      { required: true, message: '登录账号不能为空' },
-      { max: 30, message: '登录账号不能大于30个字符', trigger: 'blur' },
+      { required: true, message: '로그인 계정은 비어 있을 수 없습니다.' },
+      { max: 30, message: '로그인 계정은 30자를 초과할 수 없습니다.', trigger: 'blur' },
     ],
-    gender: [{ required: true, message: '性别不能为空' }],
-    departmentId: [{ required: true, message: '部门不能为空' }],
-    disabledFlag: [{ required: true, message: '状态不能为空' }],
-    leaveFlag: [{ required: true, message: '在职状态不能为空' }],
+    gender: [{ required: true, message: '성별은 비워 둘 수 없습니다.' }],
+    departmentId: [{ required: true, message: '부서는 비어 있을 수 없습니다.' }],
+    disabledFlag: [{ required: true, message: '상태는 비어있을 수 없습니다.' }],
+    leaveFlag: [{ required: true, message: '서비스 중 상태는 비어 있을 수 없습니다.' }],
   };
 
   // 校验表单
@@ -155,7 +155,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
   async function onSubmit(keepAdding) {
     let validateFormRes = await validateForm(formRef.value);
     if (!validateFormRes) {
-      message.error('参数验证错误，请仔细填写表单数据!');
+      message.error('파라미터 유효성 검사 오류가 발생했습니다. 양식 데이터를 신중하게 입력하세요!');
       return;
     }
     SmartLoading.show();
@@ -169,7 +169,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
   async function addEmployee(keepAdding) {
     try {
       let { data } = await employeeApi.addEmployee(form);
-      message.success('添加成功');
+      message.success('추가 성공');
       emit('show-account', form.loginName, data);
       if (keepAdding) {
         reset();
@@ -186,7 +186,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
   async function updateEmployee(keepAdding) {
     try {
       let result = await employeeApi.updateEmployee(form);
-      message.success('更新成功');
+      message.success('업데이트 성공');
       if (keepAdding) {
         reset();
       } else {

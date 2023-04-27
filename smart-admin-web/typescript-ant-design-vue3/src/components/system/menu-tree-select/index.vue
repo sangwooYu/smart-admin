@@ -16,7 +16,7 @@
     tree-checkable
     style="width: 100%"
     :dropdown-style="{ maxHeight: '400px', overflow: 'auto' }"
-    placeholder="请选择菜单"
+    placeholder="메뉴를 선택하세요."
     allow-clear
     tree-default-expand-all
     @change="onSelectChange"

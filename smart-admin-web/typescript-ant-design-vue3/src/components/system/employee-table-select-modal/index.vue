@@ -8,19 +8,19 @@
   * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
 -->
 <template>
-  <a-modal v-model:visible="visible" :width="900" title="选择人员" @cancel="closeModal" @ok="onSelectEmployee">
+  <a-modal v-model:visible="visible" :width="900" title="직원 선택" @cancel="closeModal" @ok="onSelectEmployee">
     <a-form class="smart-query-form">
       <a-row class="smart-query-form-row">
-        <a-form-item label="关键字" class="smart-query-form-item">
-          <a-input style="width: 150px" v-model:value="params.keyword" placeholder="关键字" />
+        <a-form-item label="핵심 단어" class="smart-query-form-item">
+          <a-input style="width: 150px" v-model:value="params.keyword" placeholder="핵심 단어" />
         </a-form-item>
-        <a-form-item label="部门" class="smart-query-form-item">
+        <a-form-item label="섹터" class="smart-query-form-item">
           <DepartmentTreeSelect style="width: 200px" ref="departmentTreeSelect" v-model:value="params.departmentId" />
         </a-form-item>
-        <a-form-item label="状态" class="smart-query-form-item">
-          <a-select style="width: 120px" v-model:value="params.disabledFlag" placeholder="请选择状态" allowClear>
-            <a-select-option :key="1"> 禁用 </a-select-option>
-            <a-select-option :key="0"> 启用 </a-select-option>
+        <a-form-item label="상태" class="smart-query-form-item">
+          <a-select style="width: 120px" v-model:value="params.disabledFlag" placeholder="상태를 선택하세요." allowClear>
+            <a-select-option :key="1"> 사용 금지 </a-select-option>
+            <a-select-option :key="0"> 사용 </a-select-option>
           </a-select>
         </a-form-item>
         <a-form-item class="smart-query-form-item smart-margin-left10">
@@ -28,13 +28,13 @@
             <template #icon>
               <SearchOutlined />
             </template>
-            查询
+            문의
           </a-button>
           <a-button @click="reset" class="smart-margin-left10">
             <template #icon>
               <ReloadOutlined />
             </template>
-            重置
+            초기화
           </a-button>
         </a-form-item>
       </a-row>
@@ -52,7 +52,7 @@
     >
       <template #bodyCell="{ text, column }">
         <template v-if="column.dataIndex === 'disabledFlag'">
-          <a-tag :color="text ? 'error' : 'processing'">{{ text ? '禁用' : '启用' }}</a-tag>
+          <a-tag :color="text ? 'error' : 'processing'">{{ text ? 'Disable' : 'Enable' }}</a-tag>
         </template>
 
         <template v-if="column.dataIndex === 'gender'">
@@ -72,7 +72,7 @@
         :total="total"
         @change="queryEmployee"
         @showSizeChange="queryEmployee"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `합계: ${total}`"
       />
     </div>
   </a-modal>
@@ -147,7 +147,7 @@
 
   function onSelectEmployee() {
     if (!hasSelected.value) {
-      message.warning('请选择角色人员');
+      message.warning('역할 담당자를 선택하세요.');
       return;
     }
     emits('selectData', selectedRowKeyList.value);
@@ -159,23 +159,23 @@
   //字段
   const columns = [
     {
-      title: '姓名',
+      title: '성명',
       dataIndex: 'actualName',
     },
     {
-      title: '手机号',
+      title: '핸드폰번호',
       dataIndex: 'phone',
     },
     {
-      title: '性别',
+      title: '성별',
       dataIndex: 'gender',
     },
     {
-      title: '登录账号',
+      title: '로그인이름',
       dataIndex: 'loginName',
     },
     {
-      title: '状态',
+      title: '상태',
       dataIndex: 'disabledFlag',
     },
   ];

@@ -16,7 +16,7 @@
     show-search
     style="width: 100%"
     :dropdown-style="{ maxHeight: '400px', overflow: 'auto' }"
-    placeholder="请选择部门"
+    placeholder="부서를 선택하세요."
     allow-clear
     tree-default-expand-all
     :multiple="props.multiple"

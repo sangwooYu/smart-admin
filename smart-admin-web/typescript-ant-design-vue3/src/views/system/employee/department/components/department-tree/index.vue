@@ -10,11 +10,11 @@
 <template>
   <a-card class="tree-container">
     <a-row>
-      <a-input v-model:value.trim="keywords" placeholder="请输入部门名称" />
+      <a-input v-model:value.trim="keywords" placeholder="부서 이름을 입력하세요." />
     </a-row>
     <a-row class="sort-flag-row" v-if="props.showMenu">
-      显示排序字段
-      <template v-if="showSortFlag"> （值越大越靠前） </template>
+      정렬된 필드 표시
+      <template v-if="showSortFlag"> (값이 높을수록 순위가 높아집니다.) </template>
       ：<a-switch v-model:checked="showSortFlag" />
     </a-row>
     <a-tree
@@ -37,14 +37,14 @@
         <a-popover placement="right" v-if="props.showMenu">
           <template #content>
             <div style="display: flex; flex-direction: column">
-              <a-button type="text" @click="addDepartment(item.dataRef)" v-privilege="'system:department:add'">添加下级</a-button>
-              <a-button type="text" @click="updateDepartment(item.dataRef)" v-privilege="'system:department:update'">修改</a-button>
+              <a-button type="text" @click="addDepartment(item.dataRef)" v-privilege="'system:department:add'">하위 항목 추가</a-button>
+              <a-button type="text" @click="updateDepartment(item.dataRef)" v-privilege="'system:department:update'">수정 사항</a-button>
               <a-button
                 type="text"
                 v-if="item.departmentId != topDepartmentId"
                 @click="deleteDepartment(item.departmentId)"
                 v-privilege="'system:department:delete'"
-                >删除</a-button
+                >삭제</a-button
               >
             </div>
           </template>
@@ -57,7 +57,7 @@
         <div v-else>{{ item.name }}</div>
       </template>
     </a-tree>
-    <div class="no-data" v-else>暂无结果</div>
+    <div class="no-data" v-else>아직 결과 없음</div>
     <!-- 添加编辑部门弹窗 -->
     <DepartmentFormModal ref="departmentFormModal" @refresh="refresh" />
   </a-card>
@@ -264,10 +264,10 @@
   // 删除
   function deleteDepartment(id) {
     Modal.confirm({
-      title: '提醒',
+      title: '알림',
       icon: createVNode(ExclamationCircleOutlined),
-      content: '确定要删除该部门吗?',
-      okText: '删除',
+      content: '정말 부서를 삭제하시겠습니까?',
+      okText: '삭제',
       okType: 'danger',
       async onOk() {
         SmartLoading.show();
@@ -295,7 +295,7 @@
           SmartLoading.hide();
         }
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }

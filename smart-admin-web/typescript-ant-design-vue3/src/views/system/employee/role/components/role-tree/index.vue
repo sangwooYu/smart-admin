@@ -11,7 +11,7 @@
 <template>
   <div>
     <div class="tree-header">
-      <p>设置角色对应的功能操作、后台管理权限</p>
+      <p>기능 작동, 백그라운드 관리 권한에 해당하는 역할 설정</p>
       <a-button v-if="selectRoleId" type="primary" @click="saveChange" v-privilege="'system:role:menu:update'"> 保存 </a-button>
     </div>
     <!-- 功能权限勾选部分 -->
@@ -51,7 +51,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
   async function saveChange() {
     let checkedData = roleStore.checkedData;
     if (_.isEmpty(checkedData)) {
-      message.error('还未选择任何权限');
+      message.error('아직 선택된 권한이 없습니다.');
       return;
     }
     let params = {
@@ -61,7 +61,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
     SmartLoading.show();
     try {
       await roleMenuApi.updateRoleMenu(params);
-      message.success('保存成功');
+      message.success('저장 성공');
     } catch (error) {
       smartSentry.captureError(error);
     } finally {

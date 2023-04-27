@@ -10,20 +10,20 @@
 <template>
   <a-card class="employee-container">
     <div class="header">
-      <a-typography-title :level="5">部门人员</a-typography-title>
+      <a-typography-title :level="5">부서별 직원</a-typography-title>
       <div class="query-operate">
         <a-radio-group v-model:value="params.disabledFlag" style="margin: 8px; flex-shrink: 0" @change="queryEmployeeByKeyword(false)">
-          <a-radio-button :value="undefined">全部</a-radio-button>
-          <a-radio-button :value="false">启用</a-radio-button>
-          <a-radio-button :value="true">禁用</a-radio-button>
+          <a-radio-button :value="undefined">모두</a-radio-button>
+          <a-radio-button :value="false">사용</a-radio-button>
+          <a-radio-button :value="true">사용 금지</a-radio-button>
         </a-radio-group>
-        <a-input-search v-model:value.trim="params.keyword" placeholder="姓名/手机号/登录账号" @search="queryEmployeeByKeyword(true)">
+        <a-input-search v-model:value.trim="params.keyword" placeholder="이름/휴대폰 번호/로그인 계정" @search="queryEmployeeByKeyword(true)">
           <template #enterButton>
             <a-button style="margin-left: 8px" type="primary">
               <template #icon>
                 <SearchOutlined />
               </template>
-              查询
+              문의
             </a-button>
           </template>
         </a-input-search>
@@ -31,14 +31,14 @@
           <template #icon>
             <ReloadOutlined />
           </template>
-          重置
+          초기화
         </a-button>
       </div>
     </div>
     <div class="btn-group">
-      <a-button class="btn" type="primary" @click="showDrawer" v-privilege="'system:employee:add'" size="small">添加成员</a-button>
-      <a-button class="btn" size="small" @click="updateEmployeeDepartment" v-privilege="'system:employee:department:update'">调整部门</a-button>
-      <a-button class="btn" size="small" @click="batchDelete" v-privilege="'system:employee:delete'">批量删除</a-button>
+      <a-button class="btn" type="primary" @click="showDrawer" v-privilege="'system:employee:add'" size="small">멤버 추가하기</a-button>
+      <a-button class="btn" size="small" @click="updateEmployeeDepartment" v-privilege="'system:employee:department:update'">부문 구조 조정</a-button>
+      <a-button class="btn" size="small" @click="batchDelete" v-privilege="'system:employee:delete'">일괄 삭제</a-button>
 
       <span class="smart-table-column-operate">
         <TableOperator v-model="columns" :tableId="TABLE_ID_CONST.SYSTEM.EMPLOYEE" :refresh="queryEmployee" />
@@ -58,14 +58,14 @@
     >
       <template #bodyCell="{ text, record, index, column }">
         <template v-if="column.dataIndex === 'disabledFlag'">
-          <a-tag :color="text ? 'error' : 'processing'">{{ text ? '禁用' : '启用' }}</a-tag>
+          <a-tag :color="text ? 'error' : 'processing'">{{ text ? 'Disable' : 'Enable' }}</a-tag>
         </template>
         <template v-else-if="column.dataIndex === 'gender'">
           <span>{{ $smartEnumPlugin.getDescByValue('GENDER_ENUM', text) }}</span>
         </template>
         <template v-else-if="column.dataIndex === 'operate'">
           <div class="smart-table-operate">
-            <a-button v-privilege="'system:employee:update'" type="link" size="small" @click="showDrawer(record)">编辑</a-button>
+            <a-button v-privilege="'system:employee:update'" type="link" size="small" @click="showDrawer(record)">편집</a-button>
             <a-button
               v-privilege="'system:employee:password:reset'"
               type="link"
@@ -74,7 +74,7 @@
               >重置密码</a-button
             >
             <a-button v-privilege="'system:employee:disabled'" type="link" @click="updateDisabled(record.employeeId, record.disabledFlag)">{{
-              record.disabledFlag ? '启用' : '禁用'
+              record.disabledFlag ? '활성화' : '비활성화'
             }}</a-button>
           </div>
         </template>
@@ -133,43 +133,43 @@
   //字段
   const columns = ref([
     {
-      title: '姓名',
+      title: '이름',
       dataIndex: 'actualName',
       width: 85,
     },
     {
-      title: '手机号',
+      title: '휴대폰 번호',
       dataIndex: 'phone',
       width: 80,
     },
     {
-      title: '性别',
+      title: '성별',
       dataIndex: 'gender',
       width: 40,
     },
     {
-      title: '登录账号',
+      title: '로그인 계정',
       dataIndex: 'loginName',
       width: 100,
     },
     {
-      title: '状态',
+      title: '상태',
       dataIndex: 'disabledFlag',
       width: 60,
     },
     {
-      title: '角色',
+      title: '역할',
       dataIndex: 'roleNameList',
       width: 100,
     },
     {
-      title: '部门',
+      title: '섹터',
       dataIndex: 'departmentName',
       ellipsis: true,
       width: 200,
     },
     {
-      title: '操作',
+      title: '운영',
       dataIndex: 'operate',
       width: 120,
     },
@@ -258,22 +258,22 @@
   // 批量删除员工
   function batchDelete() {
     if (!hasSelected.value) {
-      message.warning('请选择要删除的员工');
+      message.warning('삭제할 직원을 선택하세요.');
       return;
     }
     const actualNameArray = selectedRows.value.map((e) => e.actualName);
     const employeeIdArray = selectedRows.value.map((e) => e.employeeId);
     Modal.confirm({
-      title: '确定要删除如下员工吗?',
+      title: '다음 직원을 삭제하시겠습니까?',
       icon: createVNode(ExclamationCircleOutlined),
       content: _.join(actualNameArray, ','),
-      okText: '删除',
+      okText: '삭제',
       okType: 'danger',
       async onOk() {
         SmartLoading.show();
         try {
           await employeeApi.batchDeleteEmployee(employeeIdArray);
-          message.success('删除成功');
+          message.success('성공적으로 삭제됨');
           queryEmployee();
           selectedRowKeys.value = [];
           selectedRows.value = [];
@@ -283,7 +283,7 @@
           SmartLoading.hide();
         }
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }
@@ -293,7 +293,7 @@
 
   function updateEmployeeDepartment() {
     if (!hasSelected.value) {
-      message.warning('请选择要调整部门的员工');
+      message.warning('조정할 부서의 직원을 선택하세요.');
       return;
     }
     const employeeIdArray = selectedRows.value.map((e) => e.employeeId);
@@ -319,16 +319,16 @@
   // 重置密码
   function resetPassword(id, name) {
     Modal.confirm({
-      title: '提醒',
+      title: '알림',
       icon: createVNode(ExclamationCircleOutlined),
-      content: '确定要重置密码吗?',
-      okText: '确定',
+      content: '비밀번호 재설정을 정말 원하시나요?',
+      okText: '확인',
       okType: 'danger',
       async onOk() {
         SmartLoading.show();
         try {
           let { data: passWord } = await employeeApi.resetPassword(id);
-          message.success('重置成功');
+          message.success('재설정 성공');
           employeePasswordDialog.value.showModal(name, passWord);
           queryEmployee();
         } catch (error) {
@@ -337,7 +337,7 @@
           SmartLoading.hide();
         }
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }
@@ -345,16 +345,16 @@
   // 禁用 / 启用
   function updateDisabled(id, disabledFlag) {
     Modal.confirm({
-      title: '提醒',
+      title: '알림',
       icon: createVNode(ExclamationCircleOutlined),
-      content: `确定要${disabledFlag ? '启用' : '禁用'}吗?`,
-      okText: '确定',
+      content: `${disabledFlag ? '활성화' : '비활성화'} 합니까?`,
+      okText: '결정',
       okType: 'danger',
       async onOk() {
         SmartLoading.show();
         try {
           await employeeApi.updateDisabled(id);
-          message.success(`${disabledFlag ? '启用' : '禁用'}成功`);
+          message.success(`${disabledFlag ? '활성화' : '비활성화'} 성공`);
           queryEmployee();
         } catch (error) {
           smartSentry.captureError(error);
@@ -362,7 +362,7 @@
           SmartLoading.hide();
         }
       },
-      cancelText: '取消',
+      cancelText: '취소',
       onCancel() {},
     });
   }

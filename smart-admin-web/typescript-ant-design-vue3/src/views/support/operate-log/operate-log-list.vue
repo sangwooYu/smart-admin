@@ -18,11 +18,11 @@
         <a-range-picker @change="changeCreateDate" v-model:value="createDateRange" :ranges="defaultChooseTimeRange" style="width: 240px" />
       </a-form-item>
 
-      <a-form-item label="빠른 심사" class="smart-query-form-item">
+      <a-form-item label="빠른 찾기" class="smart-query-form-item">
         <a-radio-group v-model:value="queryForm.successFlag" @change="ajaxQuery">
-          <a-radio-button :value="undefined">全部</a-radio-button>
-          <a-radio-button :value="true">成功</a-radio-button>
-          <a-radio-button :value="false">失败</a-radio-button>
+          <a-radio-button :value="undefined">모두</a-radio-button>
+          <a-radio-button :value="true">성공</a-radio-button>
+          <a-radio-button :value="false">실패</a-radio-button>
         </a-radio-group>
       </a-form-item>
 
