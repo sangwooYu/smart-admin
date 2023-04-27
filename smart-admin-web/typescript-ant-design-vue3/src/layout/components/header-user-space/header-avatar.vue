@@ -24,7 +24,7 @@
 </template>
 <script setup lang="ts">
   import { computed, ref, onMounted } from 'vue';
-  import { loginApi } from '/@/api/system/login/login-api';
+  import { loginApi } from '/@/api/system/login/login-api.js';
   import { useUserStore } from '/@/store/modules/system/user';
   import { clearAllCoolies } from '/@/utils/cookie-util';
   import { localClear } from '/@/utils/local-util';
@@ -77,7 +77,7 @@
   }
 
   /**
-   * 通过计算固定字符串的hash，来选择颜色，这也每次登录的颜色是相同的
+   * 색상은 고정 문자열의 해시를 계산하여 선택되며, 로그인할 때마다 동일한 색상이 적용됩니다.
    */
   function hashcode(str) {
     let hash = 1,
