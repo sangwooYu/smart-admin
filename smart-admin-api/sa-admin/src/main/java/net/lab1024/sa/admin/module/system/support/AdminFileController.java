@@ -33,7 +33,7 @@ public class AdminFileController extends SupportBaseController {
     @Autowired
     private FileService fileService;
 
-    @ApiOperation("分页查询 @author 1024创新实验室-主任-卓大")
+    @ApiOperation("페이징 쿼리 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('support:file:query')")
     @PostMapping("/file/queryPage")
     public ResponseDTO<PageResult<FileVO>> queryPage(@RequestBody @Valid FileQueryForm queryForm) {

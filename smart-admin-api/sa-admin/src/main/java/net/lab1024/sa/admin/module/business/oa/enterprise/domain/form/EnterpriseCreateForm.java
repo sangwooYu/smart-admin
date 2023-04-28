@@ -28,74 +28,74 @@ import javax.validation.constraints.Pattern;
 @Data
 public class EnterpriseCreateForm {
 
-    @ApiModelProperty("企业名称")
-    @NotBlank(message = "企业名称不能为空")
-    @Length(max = 200, message = "企业名称最多200字符")
+    @ApiModelProperty("회사 이름")
+    @NotBlank(message = "비즈니스 이름은 비워 둘 수 없습니다.")
+    @Length(max = 200, message = "비즈니스 이름 최대 200자")
     private String enterpriseName;
 
-    @ApiModelProperty("企业logo")
+    @ApiModelProperty("기업 로고")
     @JsonSerialize(using = FileKeyVoSerializer.class)
     @JsonDeserialize(using = FileKeyVoDeserializer.class)
     private String enterpriseLogo;
 
-    @ApiModelProperty("统一社会信用代码")
-    @NotBlank(message = "统一社会信用代码不能为空")
-    @Length(max = 200, message = "统一社会信用代码最多200字符")
+    @ApiModelProperty("통합 소셜 신용 코드")
+    @NotBlank(message = "통합 소셜 신용 코드는 비어 있을 수 없습니다.")
+    @Length(max = 200, message = "최대 200자의 통합 소셜 신용 코드")
     private String unifiedSocialCreditCode;
 
-    @ApiModelProperty("联系人")
-    @NotBlank(message = "联系人不能为空")
-    @Length(max = 100, message = "联系人最多100字符")
+    @ApiModelProperty("담당자")
+    @NotBlank(message = "연락처는 비워 둘 수 없습니다.")
+    @Length(max = 100, message = "최대 100자까지 연락처 입력")
     private String contact;
 
-    @ApiModelProperty("联系人电话")
-    @NotBlank(message = "联系人电话不能为空")
-    @Pattern(regexp = SmartVerificationUtil.PHONE_REGEXP, message = "手机号格式不正确")
+    @ApiModelProperty("휴대폰 번호")
+    @NotBlank(message = "휴대폰 번호는 비워 둘 수 없습니다.")
+    @Pattern(regexp = SmartVerificationUtil.PHONE_REGEXP, message = "잘못된 휴대폰 번호 형식")
     private String contactPhone;
 
-    @ApiModelPropertyEnum(desc = "类型", value = EnterpriseTypeEnum.class)
-    @CheckEnum(message = "类型不正确", value = EnterpriseTypeEnum.class)
+    @ApiModelPropertyEnum(desc = "유형", value = EnterpriseTypeEnum.class)
+    @CheckEnum(message = "잘못된 유형", value = EnterpriseTypeEnum.class)
     private Integer type;
 
-    @ApiModelProperty("邮箱")
-    @Pattern(regexp = SmartVerificationUtil.EMAIL, message = "邮箱格式不正确")
+    @ApiModelProperty("이메일")
+    @Pattern(regexp = SmartVerificationUtil.EMAIL, message = "잘못된 이메일 형식")
     private String email;
 
-    @ApiModelProperty("省份")
+    @ApiModelProperty("주")
     private Integer province;
 
-    @ApiModelProperty("省份名称")
+    @ApiModelProperty("주 이름")
     private String provinceName;
 
-    @ApiModelProperty("城市")
+    @ApiModelProperty("도시")
     private Integer city;
 
-    @ApiModelProperty("城市名称")
+    @ApiModelProperty("도시 이름")
     private String cityName;
 
-    @ApiModelProperty("区县")
+    @ApiModelProperty("지구 및 구역")
     private Integer district;
 
-    @ApiModelProperty("区县名称")
+    @ApiModelProperty("지구 및 구역 이름")
     private String districtName;
 
-    @ApiModelProperty("详细地址")
-    @Length(max = 500, message = "详细地址最多500字符")
+    @ApiModelProperty("주소 세부 정보")
+    @Length(max = 500, message = "최대 500자의 주소 세부 정보")
     private String address;
 
-    @ApiModelProperty("营业执照")
+    @ApiModelProperty("비즈니스 라이선스")
     @JsonSerialize(using = FileKeyVoSerializer.class)
     @JsonDeserialize(using = FileKeyVoDeserializer.class)
     private String businessLicense;
 
-    @ApiModelProperty("禁用状态")
-    @NotNull(message = "禁用状态不能为空")
+    @ApiModelProperty("비활성화 상태")
+    @NotNull(message = "비활성화 상태는 비워둘 수 없습니다.")
     private Boolean disabledFlag;
 
-    @ApiModelProperty(value = "创建人", hidden = true)
+    @ApiModelProperty(value = "작성자", hidden = true)
     private Long createUserId;
 
-    @ApiModelProperty(value = "创建人", hidden = true)
+    @ApiModelProperty(value = "작성자", hidden = true)
     private String createUserName;
 
 }

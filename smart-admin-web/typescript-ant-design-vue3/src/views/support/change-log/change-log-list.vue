@@ -12,8 +12,8 @@
       <a-form-item label="업데이트 유형" class="smart-query-form-item">
         <SmartEnumSelect width="200px" v-model:value="queryForm.type" enumName="CHANGE_LOG_TYPE_ENUM" placeholder="업데이트 유형" />
       </a-form-item>
-      <a-form-item label="핵심 단어" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="핵심 단어" />
+      <a-form-item label="키워드" class="smart-query-form-item">
+        <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="키워드" />
       </a-form-item>
       <a-form-item label="릴리스 날짜" class="smart-query-form-item">
         <a-range-picker v-model:value="queryForm.publicDate" :ranges="defaultTimeRanges" style="width: 240px" @change="onChangePublicDate" />

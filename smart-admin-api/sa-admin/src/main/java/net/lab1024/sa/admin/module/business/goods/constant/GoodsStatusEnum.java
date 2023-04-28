@@ -21,17 +21,17 @@ public enum GoodsStatusEnum implements BaseEnum {
     /**
      * 1 预约中
      */
-    APPOINTMENT(1, "预约中"),
+    APPOINTMENT(1, "예약 시"),
 
     /**
      * 2 售卖
      */
-    SELL(2, "售卖中"),
+    SELL(2, "판매 중"),
 
     /**
      * 3 售罄
      */
-    SELL_OUT(3, "售罄"),
+    SELL_OUT(3, "매진"),
 
 
     ;

@@ -119,7 +119,7 @@ public class NoticeService {
         // 校验资讯分类
         NoticeTypeVO noticeType = noticeTypeService.getByNoticeTypeId(form.getNoticeTypeId());
         if (noticeType == null) {
-            return ResponseDTO.userErrorParam("分类不存在");
+            return ResponseDTO.userErrorParam("분류가 존재하지 않습니다.");
         }
 
         if (form.getAllVisibleFlag()) {
@@ -132,7 +132,7 @@ public class NoticeService {
          */
         List<NoticeVisibleRangeForm> visibleRangeUpdateList = form.getVisibleRangeList();
         if (CollectionUtils.isEmpty(visibleRangeUpdateList)) {
-            return ResponseDTO.userErrorParam("未设置可见范围");
+            return ResponseDTO.userErrorParam("표시 범위 설정 없음");
         }
 
         // 校验可见范围-> 员工
@@ -145,7 +145,7 @@ public class NoticeService {
             List<Long> dbEmployeeIdList = employeeDao.selectBatchIds(employeeIdList).stream().map(EmployeeEntity::getEmployeeId).collect(Collectors.toList());
             Collection<Long> subtract = CollectionUtils.subtract(employeeIdList, dbEmployeeIdList);
             if (subtract.size() > 0) {
-                return ResponseDTO.userErrorParam("员工id不存在：" + subtract);
+                return ResponseDTO.userErrorParam("직원 ID가 존재하지 않습니다:" + subtract);
             }
         }
 
@@ -159,7 +159,7 @@ public class NoticeService {
             List<Long> dbDeptIdList = departmentDao.selectBatchIds(deptIdList).stream().map(DepartmentEntity::getDepartmentId).collect(Collectors.toList());
             Collection<Long> subtract = CollectionUtils.subtract(deptIdList, dbDeptIdList);
             if (subtract.size() > 0) {
-                return ResponseDTO.userErrorParam("部门id不存在：" + subtract);
+                return ResponseDTO.userErrorParam("부서 ID가 존재하지 않습니다:" + subtract);
             }
         }
         return ResponseDTO.ok();
@@ -176,7 +176,7 @@ public class NoticeService {
 
         NoticeEntity oldNoticeEntity = noticeDao.selectById(updateForm.getNoticeId());
         if (oldNoticeEntity == null) {
-            return ResponseDTO.userErrorParam("通知不存在");
+            return ResponseDTO.userErrorParam("공지가 존재하지 않습니다.");
         }
 
         // 校验并获取可见范围
@@ -201,7 +201,7 @@ public class NoticeService {
     public ResponseDTO<String> delete(Long noticeId) {
         NoticeEntity noticeEntity = noticeDao.selectById(noticeId);
         if (null == noticeEntity || noticeEntity.getDeletedFlag()) {
-            return ResponseDTO.userErrorParam("通知公告不存在");
+            return ResponseDTO.userErrorParam("알림 통지가 존재하지 않습니다.");
         }
         // 更新删除状态
         noticeDao.updateDeletedFlag(noticeId);

@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class InvoiceUpdateForm extends InvoiceAddForm {
 
-    @ApiModelProperty("发票信息ID")
-    @NotNull(message = "发票信息ID不能为空")
+    @ApiModelProperty("송장 정보 ID")
+    @NotNull(message = "인보이스 정보 ID는 비워 둘 수 없습니다.")
     private Long invoiceId;
 }

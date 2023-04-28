@@ -23,13 +23,13 @@
       <a-descriptions-item label="릴리스 날짜">{{ noticeDetail.publishTime }}</a-descriptions-item>
       <a-descriptions-item label="시간 제한 릴리스">{{ noticeDetail.publishFlag ? 'Published' : '게시 예정' }}</a-descriptions-item>
       <a-descriptions-item label="상태 삭제">{{ noticeDetail.deletedFlag ? '삭제됨' : '삭제되지 않음' }}</a-descriptions-item>
-      <a-descriptions-item v-if="!$lodash.isEmpty(noticeDetail.attachmentFile)" label="附件">
+      <a-descriptions-item v-if="!$lodash.isEmpty(noticeDetail.attachmentFile)" label="부록">
         <div class="file-list">
           <a class="file-item" v-for="item in noticeDetail.attachmentFile" :key="item.fileId" @click="onPrevFile(item)">{{ item.fileName }}</a>
         </div>
       </a-descriptions-item>
       <a-descriptions-item label="가시 범위" :span="2">
-        <template v-if="noticeDetail.allVisibleFlag">全部可见</template>
+        <template v-if="noticeDetail.allVisibleFlag">모두 표시됨</template>
         <div class="visible-list">
           <div class="visible-item" v-for="item in noticeDetail.visibleRangeList" :key="item.dataId">
             {{ item.dataName }}

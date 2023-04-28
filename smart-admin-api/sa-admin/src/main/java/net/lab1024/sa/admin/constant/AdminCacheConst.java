@@ -16,27 +16,27 @@ public class AdminCacheConst extends CacheKeyConst {
     public static class Department {
 
         /**
-         * 部门列表
+         * 부서 목록
          */
         public static final String DEPARTMENT_LIST_CACHE = "department_list_cache";
 
         /**
-         * 部门map
+         * 섹터 맵
          */
         public static final String DEPARTMENT_MAP_CACHE = "department_map_cache";
 
         /**
-         * 部门树
+         * 섹터 트리
          */
         public static final String DEPARTMENT_TREE_CACHE = "department_tree_cache";
 
         /**
-         * 某个部门以及下级的id列表
+         * 부서 및 하위 부서의 ID 목록
          */
         public static final String DEPARTMENT_SELF_CHILDREN_CACHE = "department_self_children_cache";
 
         /**
-         * 部门路径 缓存
+         * 부서 경로 캐시
          */
         public static final String DEPARTMENT_PATH_CACHE = "department_path_cache";
 

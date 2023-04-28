@@ -117,17 +117,17 @@ public class CategoryService {
         Integer categoryType = categoryEntity.getCategoryType();
         if (null != parentId) {
             if (Objects.equals(categoryEntity.getCategoryId(), parentId)) {
-                return ResponseDTO.userErrorParam("父级类目怎么和自己相同了");
+                return ResponseDTO.userErrorParam("상위 카테고리가 내 카테고리와 동일합니다");
             }
             if (!Objects.equals(parentId, NumberUtils.LONG_ZERO)) {
                 Optional<CategoryEntity> optional = categoryQueryService.queryCategory(parentId);
                 if (!optional.isPresent()) {
-                    return ResponseDTO.error(UserErrorCode.DATA_NOT_EXIST, "父级类目不存在~");
+                    return ResponseDTO.error(UserErrorCode.DATA_NOT_EXIST, "상위 카테고리가 존재하지 않습니다~");
                 }
 
                 CategoryEntity parent = optional.get();
                 if (!Objects.equals(categoryType, parent.getCategoryType())) {
-                    return ResponseDTO.userErrorParam("与父级类目类型不一致");
+                    return ResponseDTO.userErrorParam("상위 카테고리 유형과 일치하지 않음");
                 }
             }
 
@@ -146,10 +146,10 @@ public class CategoryService {
         if (null != queryEntity) {
             if (isUpdate) {
                 if (!Objects.equals(queryEntity.getCategoryId(), categoryEntity.getCategoryId())) {
-                    return ResponseDTO.userErrorParam("同级下已存在相同类目~");
+                    return ResponseDTO.userErrorParam("같은 레벨에 같은 카테고리가 이미 존재합니다~.");
                 }
             } else {
-                return ResponseDTO.userErrorParam("同级下已存在相同类目~");
+                return ResponseDTO.userErrorParam("같은 레벨에 같은 카테고리가 이미 존재합니다~.");
             }
         }
         return ResponseDTO.ok();
@@ -180,7 +180,7 @@ public class CategoryService {
     public ResponseDTO<List<CategoryTreeVO>> queryTree(CategoryTreeQueryForm queryForm) {
         if (null == queryForm.getParentId()) {
             if (null == queryForm.getCategoryType()) {
-                return ResponseDTO.userErrorParam("类目类型不能为空");
+                return ResponseDTO.userErrorParam("카테고리 유형은 비워둘 수 없습니다.");
             }
             queryForm.setParentId(NumberUtils.LONG_ZERO);
         }
@@ -203,7 +203,7 @@ public class CategoryService {
 
         List<Long> categorySubId = categoryQueryService.queryCategorySubId(Lists.newArrayList(categoryId));
         if (CollectionUtils.isNotEmpty(categorySubId)) {
-            return ResponseDTO.userErrorParam("请先删除子级类目");
+            return ResponseDTO.userErrorParam("먼저 하위 카테고리를 삭제하세요.");
         }
 
         // 更新数据

@@ -19,11 +19,11 @@ import java.util.List;
 @Data
 public class EnterpriseEmployeeForm {
 
-    @ApiModelProperty("企业id")
-    @NotNull(message = "企业id不能为空")
+    @ApiModelProperty("회사 ID")
+    @NotNull(message = "회사 ID는 비워둘 수 없습니다.")
     private Long enterpriseId;
 
-    @ApiModelProperty("员工信息id")
-    @NotEmpty(message = "员工信息id不能为空")
+    @ApiModelProperty("직원 정보 ID")
+    @NotEmpty(message = "직원 정보 ID는 비워둘 수 없습니다.")
     private List<Long> employeeIdList;
 }

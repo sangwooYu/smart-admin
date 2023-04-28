@@ -19,12 +19,12 @@ import java.util.List;
 @Data
 public class EmployeeUpdateRoleForm {
 
-    @ApiModelProperty("员工id")
-    @NotNull(message = "员工id不能为空")
+    @ApiModelProperty("직원 ID")
+    @NotNull(message = "직원 ID는 비워둘 수 없습니다.")
     private Long employeeId;
 
-    @ApiModelProperty("角色ids")
-    @Size(max = 99, message = "角色最多99")
+    @ApiModelProperty("역할 ID")
+    @Size(max = 99, message = "최대 99자까지 글자 수")
     private List<Long> roleIdList;
 
 }

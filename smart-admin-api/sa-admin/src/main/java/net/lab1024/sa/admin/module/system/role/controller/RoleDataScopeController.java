@@ -33,13 +33,13 @@ public class RoleDataScopeController extends AdminBaseController {
     @Autowired
     private RoleDataScopeService roleDataScopeService;
 
-    @ApiOperation(value = "获取某角色所设置的数据范围 @author 卓大")
+    @ApiOperation(value = "역할별로 데이터 집합의 범위 가져오기 @author ysw")
     @GetMapping("/role/dataScope/getRoleDataScopeList/{roleId}")
     public ResponseDTO<List<RoleDataScopeVO>> dataScopeListByRole(@PathVariable Long roleId) {
         return roleDataScopeService.getRoleDataScopeList(roleId);
     }
 
-    @ApiOperation(value = "批量设置某角色数据范围 @author 卓大")
+    @ApiOperation(value = "역할에 대한 데이터 범위의 일괄 설정 @author ysw")
     @PostMapping("/role/dataScope/updateRoleDataScopeList")
     @PreAuthorize("@saAuth.checkPermission('system:role:dataScope:update')")
     public ResponseDTO<String> updateRoleDataScopeList(@RequestBody @Valid RoleDataScopeUpdateForm roleDataScopeUpdateForm) {

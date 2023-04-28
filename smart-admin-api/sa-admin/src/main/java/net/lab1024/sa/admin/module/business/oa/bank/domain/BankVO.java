@@ -17,42 +17,42 @@ import java.time.LocalDateTime;
 @Data
 public class BankVO {
 
-    @ApiModelProperty("银行信息ID")
+    @ApiModelProperty("은행 정보 ID")
     private Long bankId;
 
-    @ApiModelProperty("开户银行")
+    @ApiModelProperty("계좌 은행")
     private String bankName;
 
-    @ApiModelProperty("账户名称")
+    @ApiModelProperty("계정 이름")
     private String accountName;
 
-    @ApiModelProperty("账号")
+    @ApiModelProperty("계정 번호")
     private String accountNumber;
 
-    @ApiModelProperty("备注")
+    @ApiModelProperty("비고")
     private String remark;
 
-    @ApiModelProperty("是否对公")
+    @ApiModelProperty("대중이")
     private Boolean businessFlag;
 
-    @ApiModelProperty("企业ID")
+    @ApiModelProperty("기업 ID")
     private Long enterpriseId;
 
-    @ApiModelProperty("企业名称")
+    @ApiModelProperty("회사 이름")
     private String enterpriseName;
 
-    @ApiModelProperty("禁用状态")
+    @ApiModelProperty("비활성화 상태")
     private Boolean disabledFlag;
 
-    @ApiModelProperty("创建人ID")
+    @ApiModelProperty("크리에이터 ID")
     private Long createUserId;
 
-    @ApiModelProperty("创建人名称")
+    @ApiModelProperty("제작자 이름")
     private String createUserName;
 
-    @ApiModelProperty("创建时间")
+    @ApiModelProperty("생성 시간")
     private LocalDateTime createTime;
 
-    @ApiModelProperty("更新时间")
+    @ApiModelProperty("업데이트 시간")
     private LocalDateTime updateTime;
 }

@@ -15,10 +15,10 @@ import lombok.Data;
 @Data
 public class NoticeTypeVO {
 
-    @ApiModelProperty("通知类型id")
+    @ApiModelProperty("알림 유형 ID")
     private Long noticeTypeId;
 
-    @ApiModelProperty("通知类型-名称")
+    @ApiModelProperty("통지 유형 - 이름")
     private String noticeTypeName;
 
 }

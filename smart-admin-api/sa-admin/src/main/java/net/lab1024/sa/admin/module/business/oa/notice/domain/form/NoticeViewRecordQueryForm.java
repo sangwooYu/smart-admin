@@ -18,14 +18,14 @@ import javax.validation.constraints.NotNull;
 @Data
 public class NoticeViewRecordQueryForm extends PageParam {
 
-    @ApiModelProperty("通知公告id")
-    @NotNull(message = "通知公告id不能为空")
+    @ApiModelProperty("알림 ID")
+    @NotNull(message = "알림 ID는 비워둘 수 없습니다.")
     private Long noticeId;
 
-    @ApiModelProperty("部门id")
+    @ApiModelProperty("부서 ID")
     private Long departmentId;
 
-    @ApiModelProperty("关键字")
+    @ApiModelProperty("핵심 단어")
     private String keywords;
 
 

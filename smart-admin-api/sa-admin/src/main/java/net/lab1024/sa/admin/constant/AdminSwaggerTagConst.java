@@ -14,41 +14,41 @@ import net.lab1024.sa.common.constant.SwaggerTagConst;
 public class AdminSwaggerTagConst extends SwaggerTagConst {
 
     public static class Business {
-        public static final String MANAGER_CATEGORY = "ERP进销存-分类管理";
+        public static final String MANAGER_CATEGORY = "ERP 송장-카테고리 관리";
 
-        public static final String MANAGER_GOODS = "ERP进销存-商品管理";
+        public static final String MANAGER_GOODS = "ERP 인보이스-상품 관리";
 
-        public static final String OA_BANK = "OA办公-银行卡信息";
+        public static final String OA_BANK = "OA 사무소-은행 카드 정보";
 
-        public static final String OA_ENTERPRISE = "OA办公-企业";
+        public static final String OA_ENTERPRISE = "OA 사무실-기업";
 
-        public static final String OA_INVOICE = "OA办公-发票信息";
+        public static final String OA_INVOICE = "OA 사무소 - 인보이스 정보";
 
-        public static final String OA_NOTICE = "OA办公-通知公告";
+        public static final String OA_NOTICE = "OA사무국 공지사항 공지";
     }
 
 
     public static class System {
 
-        public static final String SYSTEM_LOGIN = "系统-员工登录";
+        public static final String SYSTEM_LOGIN = "시스템 - 직원 로그인";
 
-        public static final String SYSTEM_EMPLOYEE = "系统-员工管理";
+        public static final String SYSTEM_EMPLOYEE = "시스템 - 직원 관리";
 
-        public static final String SYSTEM_DEPARTMENT = "系统-部门管理";
+        public static final String SYSTEM_DEPARTMENT = "시스템 - 부서 관리";
 
-        public static final String SYSTEM_MENU = "系统-菜单";
+        public static final String SYSTEM_MENU = "시스템 - 메뉴";
 
-        public static final String SYSTEM_DATA_SCOPE = "系统-系统-数据范围";
+        public static final String SYSTEM_DATA_SCOPE = "시스템 - 시스템 - 데이터 범위";
 
-        public static final String SYSTEM_ROLE = "系统-角色";
+        public static final String SYSTEM_ROLE = "시스템 - 역할";
 
-        public static final String SYSTEM_ROLE_DATA_SCOPE = "系统-角色-数据范围";
+        public static final String SYSTEM_ROLE_DATA_SCOPE = "시스템 - 역할 - 데이터 범위";
 
-        public static final String SYSTEM_ROLE_EMPLOYEE = "系统-角色-员工";
+        public static final String SYSTEM_ROLE_EMPLOYEE = "시스템 - 역할 - 직원";
 
-        public static final String SYSTEM_ROLE_MENU = "系统-角色-菜单";
+        public static final String SYSTEM_ROLE_MENU = "시스템 - 역할 - 메뉴";
 
-        public static final String SYSTEM_DATA_TRACER = "系统-";
+        public static final String SYSTEM_DATA_TRACER = "시스템";
     }
 
 

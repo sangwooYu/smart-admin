@@ -94,7 +94,7 @@ public class EnterpriseService {
         // 验证企业名称是否重复
         EnterpriseEntity validateEnterprise = enterpriseDao.queryByEnterpriseName(createVO.getEnterpriseName(), null, Boolean.FALSE);
         if (Objects.nonNull(validateEnterprise)) {
-            return ResponseDTO.userErrorParam("企业名称重复");
+            return ResponseDTO.userErrorParam("중복된 비즈니스 이름");
         }
         // 数据插入
         EnterpriseEntity insertEnterprise = SmartBeanUtil.copy(createVO, EnterpriseEntity.class);
@@ -115,12 +115,12 @@ public class EnterpriseService {
         // 校验企业是否存在
         EnterpriseEntity enterpriseDetail = enterpriseDao.selectById(enterpriseId);
         if (Objects.isNull(enterpriseDetail) || enterpriseDetail.getDeletedFlag()) {
-            return ResponseDTO.userErrorParam("企业不存在");
+            return ResponseDTO.userErrorParam("비즈니스가 존재하지 않습니다.");
         }
         // 验证企业名称是否重复
         EnterpriseEntity validateEnterprise = enterpriseDao.queryByEnterpriseName(updateVO.getEnterpriseName(), enterpriseId, Boolean.FALSE);
         if (Objects.nonNull(validateEnterprise)) {
-            return ResponseDTO.userErrorParam("企业名称重复");
+            return ResponseDTO.userErrorParam("중복된 비즈니스 이름");
         }
         // 数据编辑
         EnterpriseEntity updateEntity = SmartBeanUtil.copy(enterpriseDetail, EnterpriseEntity.class);
@@ -131,7 +131,7 @@ public class EnterpriseService {
         DataTracerForm dataTracerForm = DataTracerForm.builder()
                 .dataId(updateVO.getEnterpriseId())
                 .type(DataTracerTypeEnum.OA_ENTERPRISE)
-                .content("修改企业信息")
+                .content("기업 정보 변경")
                 .diffOld(dataTracerService.getChangeContent(enterpriseDetail))
                 .diffNew(dataTracerService.getChangeContent(updateEntity))
                 .build();
@@ -152,7 +152,7 @@ public class EnterpriseService {
         // 校验企业是否存在
         EnterpriseEntity enterpriseDetail = enterpriseDao.selectById(enterpriseId);
         if (Objects.isNull(enterpriseDetail) || enterpriseDetail.getDeletedFlag()) {
-            return ResponseDTO.userErrorParam("企业不存在");
+            return ResponseDTO.userErrorParam("비즈니스가 존재하지 않습니다.");
         }
         enterpriseDao.deleteEnterprise(enterpriseId, Boolean.TRUE);
         dataTracerService.delete(enterpriseId, DataTracerTypeEnum.OA_ENTERPRISE);

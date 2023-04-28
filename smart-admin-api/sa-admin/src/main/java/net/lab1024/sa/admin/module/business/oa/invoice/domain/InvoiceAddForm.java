@@ -19,41 +19,41 @@ import javax.validation.constraints.NotNull;
 @Data
 public class InvoiceAddForm {
 
-    @ApiModelProperty("开票抬头")
-    @NotBlank(message = "开票抬头不能为空")
-    @Length(max = 200, message = "开票抬头最多200字符")
+    @ApiModelProperty("송장 수취인")
+    @NotBlank(message = "인보이스 헤더는 비워 둘 수 없습니다.")
+    @Length(max = 200, message = "최대 200자의 인보이스 헤더")
     private String invoiceHeads;
 
-    @ApiModelProperty("纳税人识别号")
-    @NotBlank(message = "纳税人识别号不能为空")
-    @Length(max = 200, message = "纳税人识别号最多200字符")
+    @ApiModelProperty("납세자 식별 번호")
+    @NotBlank(message = "납세자 식별 번호는 비워 둘 수 없습니다.")
+    @Length(max = 200, message = "납세자 식별 번호 최대 200자")
     private String taxpayerIdentificationNumber;
 
-    @ApiModelProperty("银行账户")
-    @NotBlank(message = "银行账户不能为空")
-    @Length(max = 200, message = "银行账户最多200字符")
+    @ApiModelProperty("은행 계좌")
+    @NotBlank(message = "은행 계좌는 비어 있을 수 없습니다.")
+    @Length(max = 200, message = "은행 계좌 최대 200자")
     private String accountNumber;
 
-    @ApiModelProperty("开户行")
-    @NotBlank(message = "开户行不能为空")
-    @Length(max = 200, message = "开户行最多200字符")
+    @ApiModelProperty("계좌 개설 은행")
+    @NotBlank(message = "계좌 개설 은행은 비어있을 수 없습니다.")
+    @Length(max = 200, message = "은행 개설 시 최대 200자")
     private String bankName;
 
-    @ApiModelProperty("启用状态")
-    @NotNull(message = "启用状态不能为空")
+    @ApiModelProperty("상태 활성화")
+    @NotNull(message = "사용 상태는 비어 있을 수 없습니다.")
     private Boolean disabledFlag;
 
-    @ApiModelProperty("备注")
-    @Length(max = 500, message = "备注最多500字符")
+    @ApiModelProperty("비고")
+    @Length(max = 500, message = "최대 500자의 메모")
     private String remark;
 
-    @ApiModelProperty("企业")
-    @NotNull(message = "企业不能为空")
+    @ApiModelProperty("기업")
+    @NotNull(message = "비즈니스는 비워둘 수 없습니다.")
     private Long enterpriseId;
 
-    @ApiModelProperty(value = "创建人", hidden = true)
+    @ApiModelProperty(value = "작성자", hidden = true)
     private Long createUserId;
 
-    @ApiModelProperty(value = "创建人名称", hidden = true)
+    @ApiModelProperty(value = "제작자 이름", hidden = true)
     private String createUserName;
 }

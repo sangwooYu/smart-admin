@@ -18,18 +18,18 @@ import java.time.LocalDate;
 @Data
 public class NoticeEmployeeQueryForm extends PageParam {
 
-    @ApiModelProperty("标题、作者、来源、文号")
+    @ApiModelProperty("제목, 작성자, 출처, 문서 번호")
     private String keywords;
 
-    @ApiModelProperty("分类")
+    @ApiModelProperty("분류")
     private Long noticeTypeId;
 
-    @ApiModelProperty("发布-开始时间")
+    @ApiModelProperty("릴리스 - 시작 시간")
     private LocalDate publishTimeBegin;
 
-    @ApiModelProperty("未读标识")
+    @ApiModelProperty("읽지 않은 로고")
     private Boolean notViewFlag;
 
-    @ApiModelProperty("发布-截止时间")
+    @ApiModelProperty("릴리스 - 마감일")
     private LocalDate publishTimeEnd;
 }

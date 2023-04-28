@@ -35,34 +35,34 @@ public class DepartmentController extends AdminBaseController {
     @Autowired
     private DepartmentService departmentService;
 
-    @ApiOperation(value = "查询部门树形列表 @author 卓大")
+    @ApiOperation(value = "부서별 트리 목록 쿼리하기 @author ysw")
     @GetMapping("/department/treeList")
     public ResponseDTO<List<DepartmentTreeVO>> departmentTree() {
         return departmentService.departmentTree();
     }
 
-    @ApiOperation(value = "添加部门 @author 卓大")
+    @ApiOperation(value = "부서 추가 @author ysw")
     @PostMapping("/department/add")
     @PreAuthorize("@saAuth.checkPermission('system:department:add')")
     public ResponseDTO<String> addDepartment(@Valid @RequestBody DepartmentAddForm createDTO) {
         return departmentService.addDepartment(createDTO);
     }
 
-    @ApiOperation(value = "更新部门 @author 卓大")
+    @ApiOperation(value = "섹터 갱신 @author ysw")
     @PostMapping("/department/update")
     @PreAuthorize("@saAuth.checkPermission('system:department:update')")
     public ResponseDTO<String> updateDepartment(@Valid @RequestBody DepartmentUpdateForm updateDTO) {
         return departmentService.updateDepartment(updateDTO);
     }
 
-    @ApiOperation(value = "删除部门 @author 卓大")
+    @ApiOperation(value = "부서 삭제 @author ysw")
     @GetMapping("/department/delete/{departmentId}")
     @PreAuthorize("@saAuth.checkPermission('system:department:delete')")
     public ResponseDTO<String> deleteDepartment(@PathVariable Long departmentId) {
         return departmentService.deleteDepartment(departmentId);
     }
 
-    @ApiOperation(value = "查询部门列表 @author 卓大")
+    @ApiOperation(value = "부서 목록 검색 @author ysw")
     @GetMapping("/department/listAll")
     public ResponseDTO<List<DepartmentVO>> listAll() {
         return ResponseDTO.ok(departmentService.listAll());

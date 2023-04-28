@@ -37,7 +37,7 @@ public class MenuController extends AdminBaseController {
     @Autowired
     private MenuService menuService;
 
-    @ApiOperation(value = "添加菜单 @author 卓大")
+    @ApiOperation(value = "메뉴 추가 @author ysw")
     @PostMapping("/menu/add")
     @PreAuthorize("@saAuth.checkPermission('system:menu:add')")
     public ResponseDTO<String> addMenu(@RequestBody @Valid MenuAddForm menuAddForm) {
@@ -45,7 +45,7 @@ public class MenuController extends AdminBaseController {
         return menuService.addMenu(menuAddForm);
     }
 
-    @ApiOperation(value = "更新菜单 @author 卓大")
+    @ApiOperation(value = "업데이트 메뉴 @author ysw")
     @PostMapping("/menu/update")
     @PreAuthorize("@saAuth.checkPermission('system:menu:update')")
     public ResponseDTO<String> updateMenu(@RequestBody @Valid MenuUpdateForm menuUpdateForm) {
@@ -53,32 +53,32 @@ public class MenuController extends AdminBaseController {
         return menuService.updateMenu(menuUpdateForm);
     }
 
-    @ApiOperation(value = "批量删除菜单 @author 卓大")
+    @ApiOperation(value = "일괄 삭제 메뉴 @author ysw")
     @GetMapping("/menu/batchDelete")
     @PreAuthorize("@saAuth.checkPermission('system:menu:delete,system:menu:batch:delete')")
     public ResponseDTO<String> batchDeleteMenu(@RequestParam("menuIdList") List<Long> menuIdList) {
         return menuService.batchDeleteMenu(menuIdList, SmartRequestUtil.getRequestUserId());
     }
 
-    @ApiOperation(value = "查询菜单列表 @author 卓大")
+    @ApiOperation(value = "메뉴 목록 검색 @author ysw")
     @GetMapping("/menu/query")
     public ResponseDTO<List<MenuVO>> queryMenuList() {
         return ResponseDTO.ok(menuService.queryMenuList(null));
     }
 
-    @ApiOperation(value = "查询菜单详情 @author 卓大")
+    @ApiOperation(value = "메뉴 세부 정보 확인 @author ysw")
     @GetMapping("/menu/detail/{menuId}")
     public ResponseDTO<MenuVO> getMenuDetail(@PathVariable Long menuId) {
         return menuService.getMenuDetail(menuId);
     }
 
-    @ApiOperation(value = "查询菜单树 @author 卓大")
+    @ApiOperation(value = "쿼리 메뉴 트리 @author ysw")
     @GetMapping("/menu/tree")
     public ResponseDTO<List<MenuTreeVO>> queryMenuTree(@RequestParam("onlyMenu") Boolean onlyMenu) {
         return menuService.queryMenuTree(onlyMenu);
     }
 
-    @ApiOperation(value = "获取所有请求路径 @author 卓大")
+    @ApiOperation(value = "모든 요청 경로 가져오기 @author ysw")
     @GetMapping("/menu/auth/url")
     public ResponseDTO<List<RequestUrlVO>> getAuthUrl() {
         return menuService.getAuthUrl();

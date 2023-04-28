@@ -24,61 +24,61 @@ public class NoticeDetailVO {
     @ApiModelProperty("id")
     private Long noticeId;
 
-    @ApiModelProperty("标题")
+    @ApiModelProperty("제목")
     private String title;
 
-    @ApiModelProperty("分类")
+    @ApiModelProperty("분류")
     private Long noticeTypeId;
 
-    @ApiModelProperty("分类名称")
+    @ApiModelProperty("분류 이름")
     private Long noticeTypeName;
 
-    @ApiModelProperty("是否全部可见")
-    @NotNull(message = "是否全部可见不能为空")
+    @ApiModelProperty("모두 표시됨")
+    @NotNull(message = "표시 여부와 상관없이 모두 비워둘 수 없습니다.")
     private Boolean allVisibleFlag;
 
-    @ApiModelProperty("是否定时发布")
-    @NotNull(message = "是否定时发布不能为空")
+    @ApiModelProperty("정기적으로 게시할지 여부")
+    @NotNull(message = "정기적으로 게시할지 여부는 비워 둘 수 없습니다.")
     private Boolean scheduledPublishFlag;
 
-    @ApiModelProperty("纯文本内容")
+    @ApiModelProperty("일반 텍스트 콘텐츠")
     private String contentText;
 
-    @ApiModelProperty("html内容")
+    @ApiModelProperty("HTML 콘텐츠")
     private String contentHtml;
 
-    @ApiModelProperty("附件")
+    @ApiModelProperty("부록")
     @JsonSerialize(using = FileKeyVoSerializer.class)
     private String attachment;
 
-    @ApiModelProperty("发布时间")
-    @NotNull(message = "发布时间不能为空")
+    @ApiModelProperty("릴리스 날짜")
+    @NotNull(message = "릴리스 날짜는 비워둘 수 없습니다")
     private LocalDateTime publishTime;
 
-    @ApiModelProperty("作者")
-    @NotBlank(message = "作者不能为空")
+    @ApiModelProperty("작성자")
+    @NotBlank(message = "작성자는 비어있을 수 없습니다.")
     private String author;
 
-    @ApiModelProperty("来源")
-    @NotBlank(message = "标题不能为空")
+    @ApiModelProperty("출처")
+    @NotBlank(message = "제목은 비워 둘 수 없습니다.")
     private String source;
 
-    @ApiModelProperty("文号")
+    @ApiModelProperty("문서 번호")
     private String documentNumber;
 
-    @ApiModelProperty("页面浏览量")
+    @ApiModelProperty("페이지 조회수")
     private Integer pageViewCount;
 
-    @ApiModelProperty("用户浏览量")
+    @ApiModelProperty("사용자 보기")
     private Integer userViewCount;
 
-    @ApiModelProperty("创建人名称")
+    @ApiModelProperty("제작자 이름")
     private Long createUserName;
 
-    @ApiModelProperty("创建时间")
+    @ApiModelProperty("생성 시간")
     private LocalDateTime createTime;
 
-    @ApiModelProperty("更新时间")
+    @ApiModelProperty("업데이트 시간")
     private LocalDateTime updateTime;
 
 }

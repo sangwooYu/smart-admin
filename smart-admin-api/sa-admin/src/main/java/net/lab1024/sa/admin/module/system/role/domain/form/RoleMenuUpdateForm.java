@@ -21,15 +21,15 @@ public class RoleMenuUpdateForm {
     /**
      * 角色id
      */
-    @ApiModelProperty("角色id")
-    @NotNull(message = "角色id不能为空")
+    @ApiModelProperty("캐릭터 ID")
+    @NotNull(message = "캐릭터 ID는 비어 있을 수 없습니다.")
     private Long roleId;
 
     /**
      * 菜单ID 集合
      */
-    @ApiModelProperty("菜单ID集合")
-    @NotNull(message = "菜单ID不能为空")
+    @ApiModelProperty("메뉴 ID 수집")
+    @NotNull(message = "메뉴 ID는 비워둘 수 없습니다.")
     private List<Long> menuIdList;
 
 }

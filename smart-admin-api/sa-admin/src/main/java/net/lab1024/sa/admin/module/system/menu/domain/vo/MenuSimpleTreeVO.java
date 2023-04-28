@@ -17,21 +17,21 @@ import java.util.List;
 @Data
 public class MenuSimpleTreeVO {
 
-    @ApiModelProperty("菜单ID")
+    @ApiModelProperty("메뉴 ID")
     private Long menuId;
 
-    @ApiModelProperty("菜单名称")
+    @ApiModelProperty("메뉴 이름")
     private String menuName;
 
-    @ApiModelProperty("功能点关联菜单ID")
+    @ApiModelProperty("기능 포인트 관련 메뉴 ID")
     private Long contextMenuId;
 
-    @ApiModelProperty("父级菜单ID")
+    @ApiModelProperty("상위 메뉴 ID")
     private Long parentId;
 
-    @ApiModelProperty("菜单类型")
+    @ApiModelProperty("메뉴 유형")
     private Integer menuType;
 
-    @ApiModelProperty("子菜单")
+    @ApiModelProperty("하위 메뉴")
     private List<MenuSimpleTreeVO> children;
 }

@@ -15,6 +15,6 @@ import lombok.Data;
 @Data
 public class RoleSelectedVO extends RoleVO {
 
-    @ApiModelProperty("角色名称")
+    @ApiModelProperty("캐릭터 이름")
     private Boolean selected;
 }

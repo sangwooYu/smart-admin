@@ -43,14 +43,14 @@ public class NoticeTypeService {
 
     public synchronized ResponseDTO<String> add(String name) {
         if (StrUtil.isBlank(name)) {
-            return ResponseDTO.userErrorParam("类型名称不能为空");
+            return ResponseDTO.userErrorParam("유형 이름은 비워둘 수 없습니다.");
         }
 
         List<NoticeTypeEntity> noticeTypeEntityList = noticeTypeDao.selectList(null);
         if (!CollectionUtils.isEmpty(noticeTypeEntityList)) {
             boolean exist = noticeTypeEntityList.stream().map(NoticeTypeEntity::getNoticeTypeName).collect(Collectors.toSet()).contains(name);
             if (exist) {
-                return ResponseDTO.userErrorParam("类型名称已经存在");
+                return ResponseDTO.userErrorParam("유형 이름이 이미 존재합니다.");
             }
         }
         noticeTypeDao.insert(NoticeTypeEntity.builder().noticeTypeName(name).build());
@@ -59,19 +59,19 @@ public class NoticeTypeService {
 
     public synchronized ResponseDTO<String> update(Long noticeTypeId, String name) {
         if (StrUtil.isBlank(name)) {
-            return ResponseDTO.userErrorParam("类型名称不能为空");
+            return ResponseDTO.userErrorParam("유형 이름은 비워둘 수 없습니다.");
         }
 
         NoticeTypeEntity noticeTypeEntity = noticeTypeDao.selectById(noticeTypeId);
         if (noticeTypeEntity == null) {
-            return ResponseDTO.userErrorParam("类型名称不存在");
+            return ResponseDTO.userErrorParam("유형 이름이 존재하지 않습니다.");
         }
 
         List<NoticeTypeEntity> noticeTypeEntityList = noticeTypeDao.selectList(null);
         if (!CollectionUtils.isEmpty(noticeTypeEntityList)) {
             Optional<NoticeTypeEntity> optionalNoticeTypeEntity = noticeTypeEntityList.stream().filter(e -> e.getNoticeTypeName().equals(name)).findFirst();
             if (optionalNoticeTypeEntity.isPresent() && !optionalNoticeTypeEntity.get().getNoticeTypeId().equals(noticeTypeId)) {
-                return ResponseDTO.userErrorParam("类型名称已经存在");
+                return ResponseDTO.userErrorParam("유형 이름이 이미 존재합니다.");
             }
         }
         noticeTypeEntity.setNoticeTypeName(name);

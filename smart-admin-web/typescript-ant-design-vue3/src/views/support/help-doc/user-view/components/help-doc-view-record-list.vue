@@ -11,7 +11,7 @@
   <div>
     <a-form class="smart-query-form">
       <a-row class="smart-query-form-row">
-        <a-form-item label="핵심 단어" class="smart-query-form-item" style="width: 280px">
+        <a-form-item label="키워드" class="smart-query-form-item" style="width: 280px">
           <a-input v-model:value="queryForm.keywords" placeholder="이름/IP/장치" />
         </a-form-item>
         <a-form-item class="smart-query-form-item smart-margin-left10">

@@ -14,11 +14,11 @@ import net.lab1024.sa.common.common.enumeration.BaseEnum;
  */
 public enum DataScopeWhereInTypeEnum implements BaseEnum {
 
-    EMPLOYEE(0, "以员工IN"),
+    EMPLOYEE(0, "직원과 함께"),
 
-    DEPARTMENT(1, "以部门IN"),
+    DEPARTMENT(1, "분야별 IN"),
 
-    CUSTOM_STRATEGY(2, "自定义策略");
+    CUSTOM_STRATEGY(2, "맞춤형 전략");
 
     private Integer value;
     private String desc;

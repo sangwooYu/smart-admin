@@ -32,20 +32,20 @@ public class AdminReloadController extends SupportBaseController {
     @Autowired
     private ReloadService reloadService;
 
-    @ApiOperation(value = "查询reload列表 @author 开云")
+    @ApiOperation(value = "쿼리 리로드 목록 @author ysw")
     @GetMapping("/reload/query")
     public ResponseDTO<List<ReloadItemVO>> query() {
         return reloadService.query();
     }
 
-    @ApiOperation(value = "获取reload result @author 开云")
+    @ApiOperation(value = "리로드 결과 가져오기 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('support:reload:result')")
     @GetMapping("/reload/result/{tag}")
     public ResponseDTO<List<ReloadResultVO>> queryReloadResult(@PathVariable("tag") String tag) {
         return reloadService.queryReloadItemResult(tag);
     }
 
-    @ApiOperation(value = "通过tag更新标识 @author 开云")
+    @ApiOperation(value = "태그별로 로고 업데이트하기 @author 카이운")
     @PreAuthorize("@saAuth.checkPermission('support:reload:execute')")
     @PostMapping("/reload/update")
     public ResponseDTO<String> updateByTag(@RequestBody @Valid ReloadForm reloadForm) {

@@ -15,9 +15,9 @@ import lombok.Data;
 @Data
 public class RoleDataScopeVO {
 
-    @ApiModelProperty("数据范围id")
+    @ApiModelProperty("데이터 범위 ID")
     private Integer dataScopeType;
 
-    @ApiModelProperty("可见范围")
+    @ApiModelProperty("가시 범위")
     private Integer viewType;
 }

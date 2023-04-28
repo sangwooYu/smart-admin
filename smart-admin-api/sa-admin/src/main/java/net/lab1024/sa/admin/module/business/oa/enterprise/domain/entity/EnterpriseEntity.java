@@ -32,19 +32,19 @@ public class EnterpriseEntity {
     /**
      * 企业名称
      */
-    @DataTracerFieldLabel("企业名称")
+    @DataTracerFieldLabel("회사 이름")
     private String enterpriseName;
 
     /**
      * 企业logo
      */
-    @DataTracerFieldLabel("企业logo")
+    @DataTracerFieldLabel("기업 로고")
     private String enterpriseLogo;
 
     /**
      * 统一社会信用代码
      */
-    @DataTracerFieldLabel("统一社会信用代码")
+    @DataTracerFieldLabel("통합 소셜 신용 코드")
     private String unifiedSocialCreditCode;
 
     /**
@@ -52,26 +52,26 @@ public class EnterpriseEntity {
      *
      * @see EnterpriseTypeEnum
      */
-    @DataTracerFieldLabel("类型")
+    @DataTracerFieldLabel("유형")
     @DataTracerFieldEnum(enumClass = EnterpriseTypeEnum.class)
     private Integer type;
 
     /**
      * 联系人
      */
-    @DataTracerFieldLabel("联系人")
+    @DataTracerFieldLabel("담당자")
     private String contact;
 
     /**
      * 联系人电话
      */
-    @DataTracerFieldLabel("联系人电话")
+    @DataTracerFieldLabel("연락처 전화")
     private String contactPhone;
 
     /**
      * 邮箱
      */
-    @DataTracerFieldLabel("邮箱")
+    @DataTracerFieldLabel("사서함")
     private String email;
 
     /**
@@ -82,7 +82,7 @@ public class EnterpriseEntity {
     /**
      * 省份名称
      */
-    @DataTracerFieldLabel("省份名称")
+    @DataTracerFieldLabel("주 이름")
     private String provinceName;
 
     /**
@@ -93,7 +93,7 @@ public class EnterpriseEntity {
     /**
      * 城市名称
      */
-    @DataTracerFieldLabel("城市名称")
+    @DataTracerFieldLabel("도시 이름")
     private String cityName;
 
     /**
@@ -104,31 +104,31 @@ public class EnterpriseEntity {
     /**
      * 区县名称
      */
-    @DataTracerFieldLabel("区县名称")
+    @DataTracerFieldLabel("지구 및 카운티 이름")
     private String districtName;
 
     /**
      * 详细地址
      */
-    @DataTracerFieldLabel("详细地址")
+    @DataTracerFieldLabel("주소 세부 정보")
     private String address;
 
     /**
      * 营业执照
      */
-    @DataTracerFieldLabel("营业执照")
+    @DataTracerFieldLabel("비즈니스 라이선스")
     private String businessLicense;
 
     /**
      * 禁用状态
      */
-    @DataTracerFieldLabel("禁用状态")
+    @DataTracerFieldLabel("비활성화 상태")
     private Boolean disabledFlag;
 
     /**
      * 删除状态
      */
-    @DataTracerFieldLabel("删除状态")
+    @DataTracerFieldLabel("상태 삭제")
     private Boolean deletedFlag;
 
     /**

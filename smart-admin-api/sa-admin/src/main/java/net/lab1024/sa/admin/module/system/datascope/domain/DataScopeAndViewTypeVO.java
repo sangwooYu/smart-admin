@@ -17,19 +17,19 @@ import java.util.List;
 @Data
 public class DataScopeAndViewTypeVO {
 
-    @ApiModelProperty("数据范围类型")
+    @ApiModelProperty("데이터 범위 유형")
     private Integer dataScopeType;
 
-    @ApiModelProperty("数据范围名称")
+    @ApiModelProperty("데이터 범위 이름")
     private String dataScopeTypeName;
 
-    @ApiModelProperty("描述")
+    @ApiModelProperty("설명")
     private String dataScopeTypeDesc;
 
-    @ApiModelProperty("顺序")
+    @ApiModelProperty("주문")
     private Integer dataScopeTypeSort;
 
-    @ApiModelProperty("可见范围列表")
+    @ApiModelProperty("표시 범위 목록")
     private List<DataScopeViewTypeVO> viewTypeList;
 
 }

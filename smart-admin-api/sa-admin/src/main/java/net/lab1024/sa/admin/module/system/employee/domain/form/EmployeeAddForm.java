@@ -24,33 +24,33 @@ import java.util.List;
 @Data
 public class EmployeeAddForm {
 
-    @ApiModelProperty("姓名")
-    @NotNull(message = "姓名不能为空")
-    @Length(max = 30, message = "姓名最多30字符")
+    @ApiModelProperty("이름")
+    @NotNull(message = "이름은 비워 둘 수 없습니다.")
+    @Length(max = 30, message = "최대 30자까지 이름 지정")
     private String actualName;
 
-    @ApiModelProperty("登录账号")
-    @NotNull(message = "登录账号不能为空")
-    @Length(max = 30, message = "登录账号最多30字符")
+    @ApiModelProperty("로그인 계정")
+    @NotNull(message = "로그인 계정은 비어 있을 수 없습니다.")
+    @Length(max = 30, message = "로그인 계정 최대 30자")
     private String loginName;
 
     @ApiModelPropertyEnum(GenderEnum.class)
-    @CheckEnum(value = GenderEnum.class, message = "性别错误")
+    @CheckEnum(value = GenderEnum.class, message = "성별 오류")
     private Integer gender;
 
-    @ApiModelProperty("部门id")
-    @NotNull(message = "部门id不能为空")
+    @ApiModelProperty("부서 ID")
+    @NotNull(message = "부서 ID는 비워둘 수 없습니다.")
     private Long departmentId;
 
-    @ApiModelProperty("是否启用")
-    @NotNull(message = "是否被禁用不能为空")
+    @ApiModelProperty("비활성화 여부")
+    @NotNull(message = "비활성화 여부는 비워둘 수 없습니다.")
     private Boolean disabledFlag;
 
-    @ApiModelProperty("手机号")
-    @NotNull(message = "手机号不能为空")
-    @Pattern(regexp = SmartVerificationUtil.PHONE_REGEXP, message = "手机号格式不正确")
+    @ApiModelProperty("휴대폰 번호")
+    @NotNull(message = "휴대폰 번호는 비워 둘 수 없습니다.")
+    @Pattern(regexp = SmartVerificationUtil.PHONE_REGEXP, message = "잘못된 휴대폰 번호 형식")
     private String phone;
 
-    @ApiModelProperty("角色列表")
+    @ApiModelProperty("캐릭터 목록")
     private List<Long> roleIdList;
 }

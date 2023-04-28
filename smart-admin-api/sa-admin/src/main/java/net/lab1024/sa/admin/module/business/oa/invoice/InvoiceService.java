@@ -74,7 +74,7 @@ public class InvoiceService {
         // 校验发票信息是否存在
         InvoiceVO invoiceVO = invoiceDao.getDetail(invoiceId, Boolean.FALSE);
         if (Objects.isNull(invoiceVO)) {
-            return ResponseDTO.userErrorParam("发票信息不存在");
+            return ResponseDTO.userErrorParam("인보이스 정보가 존재하지 않습니다.");
         }
         return ResponseDTO.ok(invoiceVO);
     }
@@ -91,17 +91,17 @@ public class InvoiceService {
         // 校验企业是否存在
         EnterpriseVO enterpriseVO = enterpriseService.getDetail(enterpriseId);
         if (Objects.isNull(enterpriseVO)) {
-            return ResponseDTO.userErrorParam("企业不存在");
+            return ResponseDTO.userErrorParam("비즈니스가 존재하지 않습니다.");
         }
         // 验证发票信息账号是否重复
         InvoiceEntity validateInvoice = invoiceDao.queryByAccountNumber(enterpriseId, createVO.getAccountNumber(), null, Boolean.FALSE);
         if (Objects.nonNull(validateInvoice)) {
-            return ResponseDTO.userErrorParam("发票信息账号重复");
+            return ResponseDTO.userErrorParam("중복 인보이스 정보 계정 번호");
         }
         // 数据插入
         InvoiceEntity insertInvoice = SmartBeanUtil.copy(createVO, InvoiceEntity.class);
         invoiceDao.insert(insertInvoice);
-        dataTracerService.addTrace(enterpriseId, DataTracerTypeEnum.OA_ENTERPRISE, "新增发票：" + DataTracerConst.HTML_BR + dataTracerService.getChangeContent(insertInvoice));
+        dataTracerService.addTrace(enterpriseId, DataTracerTypeEnum.OA_ENTERPRISE, "추가 인보이스:" + DataTracerConst.HTML_BR + dataTracerService.getChangeContent(insertInvoice));
         return ResponseDTO.ok();
     }
 
@@ -117,23 +117,23 @@ public class InvoiceService {
         // 校验企业是否存在
         EnterpriseVO enterpriseVO = enterpriseService.getDetail(enterpriseId);
         if (Objects.isNull(enterpriseVO)) {
-            return ResponseDTO.userErrorParam("企业不存在");
+            return ResponseDTO.userErrorParam("비즈니스가 존재하지 않습니다.");
         }
         Long invoiceId = updateVO.getInvoiceId();
         // 校验发票信息是否存在
         InvoiceEntity invoiceDetail = invoiceDao.selectById(invoiceId);
         if (Objects.isNull(invoiceDetail) || invoiceDetail.getDeletedFlag()) {
-            return ResponseDTO.userErrorParam("发票信息不存在");
+            return ResponseDTO.userErrorParam("인보이스 정보가 존재하지 않습니다.");
         }
         // 验证发票信息账号是否重复
         InvoiceEntity validateInvoice = invoiceDao.queryByAccountNumber(updateVO.getEnterpriseId(), updateVO.getAccountNumber(), invoiceId, Boolean.FALSE);
         if (Objects.nonNull(validateInvoice)) {
-            return ResponseDTO.userErrorParam("发票信息账号重复");
+            return ResponseDTO.userErrorParam("중복 인보이스 정보 계정 번호");
         }
         // 数据编辑
         InvoiceEntity updateInvoice = SmartBeanUtil.copy(updateVO, InvoiceEntity.class);
         invoiceDao.updateById(updateInvoice);
-        dataTracerService.addTrace(enterpriseId, DataTracerTypeEnum.OA_ENTERPRISE, "更新发票：" + DataTracerConst.HTML_BR + dataTracerService.getChangeContent(invoiceDetail, updateInvoice));
+        dataTracerService.addTrace(enterpriseId, DataTracerTypeEnum.OA_ENTERPRISE, "업데이트된 인보이스:" + DataTracerConst.HTML_BR + dataTracerService.getChangeContent(invoiceDetail, updateInvoice));
         return ResponseDTO.ok();
     }
 
@@ -149,7 +149,7 @@ public class InvoiceService {
         // 校验发票信息是否存在
         InvoiceEntity invoiceDetail = invoiceDao.selectById(invoiceId);
         if (Objects.isNull(invoiceDetail) || invoiceDetail.getDeletedFlag()) {
-            return ResponseDTO.userErrorParam("发票信息不存在");
+            return ResponseDTO.userErrorParam("인보이스 정보가 존재하지 않습니다.");
         }
         invoiceDao.deleteInvoice(invoiceId, Boolean.TRUE);
         dataTracerService.addTrace(invoiceDetail.getEnterpriseId(), DataTracerTypeEnum.OA_ENTERPRISE, "删除发票：" + DataTracerConst.HTML_BR + dataTracerService.getChangeContent(invoiceDetail));

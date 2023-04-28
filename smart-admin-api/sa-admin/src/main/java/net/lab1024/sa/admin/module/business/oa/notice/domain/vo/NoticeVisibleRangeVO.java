@@ -20,10 +20,10 @@ public class NoticeVisibleRangeVO {
     @ApiModelPropertyEnum(NoticeVisibleRangeDataTypeEnum.class)
     private Integer dataType;
 
-    @ApiModelProperty("员工/部门id")
+    @ApiModelProperty("직원/부서 ID")
     private Long dataId;
 
-    @ApiModelProperty("员工/部门 名称")
+    @ApiModelProperty("직원/부서 이름")
     private String dataName;
 
 }

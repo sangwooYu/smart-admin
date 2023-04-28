@@ -10,7 +10,7 @@
 <template>
   <a-form class="smart-query-form">
     <a-row class="smart-query-form-row">
-      <a-form-item label="핵심 단어" class="smart-query-form-item">
+      <a-form-item label="키워드" class="smart-query-form-item">
         <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="계좌 은행 / 계좌 이름 / 계좌 / 작성자" />
       </a-form-item>
 

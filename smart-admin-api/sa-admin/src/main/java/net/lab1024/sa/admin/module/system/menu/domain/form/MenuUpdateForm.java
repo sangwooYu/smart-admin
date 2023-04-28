@@ -17,8 +17,8 @@ import javax.validation.constraints.NotNull;
 @Data
 public class MenuUpdateForm extends MenuBaseForm {
 
-    @ApiModelProperty("菜单ID")
-    @NotNull(message = "菜单ID不能为空")
+    @ApiModelProperty("메뉴 ID")
+    @NotNull(message = "메뉴 ID는 비워둘 수 없습니다.")
     private Long menuId;
 
     @ApiModelProperty(hidden = true)

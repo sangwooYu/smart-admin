@@ -21,69 +21,69 @@ import java.time.LocalDateTime;
 @Data
 public class EnterpriseVO {
 
-    @ApiModelProperty("企业ID")
+    @ApiModelProperty("기업 ID")
     private Long enterpriseId;
 
-    @ApiModelProperty("企业名称")
+    @ApiModelProperty("회사 이름")
     private String enterpriseName;
 
-    @ApiModelProperty("企业logo")
+    @ApiModelProperty("기업 로고")
     @JsonSerialize(using = FileKeyVoSerializer.class)
     private String enterpriseLogo;
 
-    @ApiModelProperty("统一社会信用代码")
+    @ApiModelProperty("통합 소셜 신용 코드")
     private String unifiedSocialCreditCode;
 
-    @ApiModelPropertyEnum(desc = "类型", value = EnterpriseTypeEnum.class)
+    @ApiModelPropertyEnum(desc = "유형", value = EnterpriseTypeEnum.class)
     private Integer type;
 
-    @ApiModelProperty("联系人")
+    @ApiModelProperty("담당자")
     private String contact;
 
-    @ApiModelProperty("联系人电话")
+    @ApiModelProperty("연락처 전화")
     private String contactPhone;
 
-    @ApiModelProperty("邮箱")
+    @ApiModelProperty("이메일")
     private String email;
 
-    @ApiModelProperty("省份")
+    @ApiModelProperty("주")
     private Integer province;
 
-    @ApiModelProperty("省份名称")
+    @ApiModelProperty("주 이름")
     private String provinceName;
 
-    @ApiModelProperty("城市")
+    @ApiModelProperty("도시")
     private Integer city;
 
-    @ApiModelProperty("城市名称")
+    @ApiModelProperty("도시 이름")
     private String cityName;
 
-    @ApiModelProperty("区县")
+    @ApiModelProperty("지구 및 카운티")
     private Integer district;
 
-    @ApiModelProperty("区县名称")
+    @ApiModelProperty("지구 및 카운티 이름")
     private String districtName;
 
     @ApiModelProperty("详细地址")
     private String address;
 
-    @ApiModelProperty("营业执照")
+    @ApiModelProperty("비즈니스 라이선스")
     @JsonSerialize(using = FileKeyVoSerializer.class)
     private String businessLicense;
 
-    @ApiModelProperty("禁用状态")
+    @ApiModelProperty("비활성화 상태")
     private Boolean disabledFlag;
 
-    @ApiModelProperty("创建人ID")
+    @ApiModelProperty("createUserId")
     private Long createUserId;
 
-    @ApiModelProperty("创建人名称")
+    @ApiModelProperty("createUserName")
     private String createUserName;
 
-    @ApiModelProperty("创建时间")
+    @ApiModelProperty("생성 시간")
     private LocalDateTime createTime;
 
-    @ApiModelProperty("更新时间")
+    @ApiModelProperty("업데이트 시간")
     private LocalDateTime updateTime;
 
 }

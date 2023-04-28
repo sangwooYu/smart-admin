@@ -17,31 +17,31 @@ public class EnterpriseEmployeeVO {
 
     private Long enterpriseEmployeeId;
 
-    @ApiModelProperty("企业ID")
+    @ApiModelProperty("기업 ID")
     private Long enterpriseId;
 
-    @ApiModelProperty("企业名称")
+    @ApiModelProperty("회사 이름")
     private String enterpriseName;
 
-    @ApiModelProperty("员工")
+    @ApiModelProperty("직원ID")
     private Long employeeId;
 
-    @ApiModelProperty("登录账号")
+    @ApiModelProperty("로그인 계정")
     private String loginName;
 
-    @ApiModelProperty("员工名称")
+    @ApiModelProperty("직원 이름")
     private String actualName;
 
-    @ApiModelProperty("手机号码")
+    @ApiModelProperty("휴대폰 번호")
     private String phone;
 
-    @ApiModelProperty("部门id")
+    @ApiModelProperty("부서 ID")
     private Long departmentId;
 
-    @ApiModelProperty("是否被禁用")
+    @ApiModelProperty("장애인 여부")
     private Boolean disabledFlag;
 
-    @ApiModelProperty("部门名称")
+    @ApiModelProperty("부서 이름")
     private String departmentName;
 
 }

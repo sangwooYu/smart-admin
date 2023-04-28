@@ -102,7 +102,7 @@ public class GoodsService {
         Long categoryId = addForm.getCategoryId();
         Optional<CategoryEntity> optional = categoryQueryService.queryCategory(categoryId);
         if (!optional.isPresent() || !CategoryTypeEnum.GOODS.equalsValue(optional.get().getCategoryType())) {
-            return ResponseDTO.error(UserErrorCode.DATA_NOT_EXIST, "商品类目不存在~");
+            return ResponseDTO.error(UserErrorCode.DATA_NOT_EXIST, "제품 카테고리가 존재하지 않습니다~");
         }
 
         return ResponseDTO.ok();
@@ -115,11 +115,11 @@ public class GoodsService {
     public ResponseDTO<String> delete(Long goodsId) {
         GoodsEntity goodsEntity = goodsDao.selectById(goodsId);
         if (goodsEntity == null) {
-            return ResponseDTO.userErrorParam("商品不存在");
+            return ResponseDTO.userErrorParam("제품이 존재하지 않습니다.");
         }
 
         if (!goodsEntity.getGoodsStatus().equals(GoodsStatusEnum.SELL_OUT.getValue())) {
-            return ResponseDTO.userErrorParam("只有售罄的商品才可以删除");
+            return ResponseDTO.userErrorParam("품절된 품목만 삭제할 수 있습니다.");
         }
 
         batchDelete(Arrays.asList(goodsId));
@@ -128,7 +128,7 @@ public class GoodsService {
     }
 
     /**
-     * 批量删除
+     * 일괄 삭제
      */
     public ResponseDTO<String> batchDelete(List<Long> goodsIdList) {
         if (CollectionUtils.isEmpty(goodsIdList)) {
@@ -141,7 +141,7 @@ public class GoodsService {
 
 
     /**
-     * 分页查询
+     * 페이징 쿼리
      *
      * @param queryForm
      * @return

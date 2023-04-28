@@ -24,63 +24,63 @@ import java.util.List;
 @Data
 public class MenuBaseForm {
 
-    @ApiModelProperty("菜单名称")
-    @NotBlank(message = "菜单名称不能为空")
-    @Length(max = 30, message = "菜单名称最多30个字符")
+    @ApiModelProperty("메뉴 이름")
+    @NotBlank(message = "메뉴 이름은 비워둘 수 없습니다.")
+    @Length(max = 30, message = "메뉴 이름 최대 30자")
     private String menuName;
 
-    @ApiModelPropertyEnum(value = MenuTypeEnum.class, desc = "类型")
-    @CheckEnum(value = MenuTypeEnum.class, message = "类型错误")
+    @ApiModelPropertyEnum(value = MenuTypeEnum.class, desc = "유형")
+    @CheckEnum(value = MenuTypeEnum.class, message = "유형 오류")
     private Integer menuType;
 
-    @ApiModelProperty("父菜单ID 无上级可传0")
-    @NotNull(message = "父菜单ID不能为空")
+    @ApiModelProperty("상위 메뉴 ID 상위 메뉴는 0을 전달할 수 없습니다.")
+    @NotNull(message = "상위 메뉴 ID는 비어 있을 수 없습니다.")
     private Long parentId;
 
-    @ApiModelProperty("显示顺序")
+    @ApiModelProperty("순서 표시")
     private Integer sort;
 
-    @ApiModelProperty("路由地址")
+    @ApiModelProperty("라우팅 주소")
     private String path;
 
-    @ApiModelProperty("组件路径")
+    @ApiModelProperty("컴포넌트 경로")
     private String component;
 
-    @ApiModelProperty("是否为外链")
-    @NotNull(message = "是否为外链不能为空")
+    @ApiModelProperty("frameFlag")
+    @NotNull(message = "외부 링크는 비어 있을 수 없습니다.")
     private Boolean frameFlag;
 
-    @ApiModelProperty("外链地址")
+    @ApiModelProperty("외부 링크 주소")
     private String frameUrl;
 
-    @ApiModelProperty("是否缓存")
-    @NotNull(message = "是否缓存不能为空")
+    @ApiModelProperty("캐시 여부")
+    @NotNull(message = "캐시를 비울 수 없는지 여부")
     private Boolean cacheFlag;
 
-    @ApiModelProperty("显示状态")
-    @NotNull(message = "显示状态不能为空")
+    @ApiModelProperty("상태 표시")
+    @NotNull(message = "디스플레이 상태는 비어 있을 수 없습니다.")
     private Boolean visibleFlag;
 
-    @ApiModelProperty("禁用状态")
-    @NotNull(message = "禁用状态不能为空")
+    @ApiModelProperty("비활성화 상태")
+    @NotNull(message = "비활성화 상태는 비워둘 수 없습니다.")
     private Boolean disabledFlag;
 
-    @ApiModelPropertyEnum(value = MenuPermsTypeEnum.class, desc = "权限类型 ")
-    @CheckEnum(value = MenuPermsTypeEnum.class, message = "权限类型")
+    @ApiModelPropertyEnum(value = MenuPermsTypeEnum.class, desc = "권한 유형")
+    @CheckEnum(value = MenuPermsTypeEnum.class, message = "권한 유형")
     private Integer permsType;
 
-    @ApiModelProperty("前端权限字符串")
+    @ApiModelProperty("프런트엔드 권한 문자열")
     private String webPerms;
 
-    @ApiModelProperty("后端端权限字符串")
+    @ApiModelProperty("백엔드 권한 문자열")
     private String apiPerms;
 
-    @ApiModelProperty("后端接口权限集合（拆分）")
+    @ApiModelProperty("백엔드 인터페이스 권한 수집(분할)")
     private List<String> apiPermsList;
 
-    @ApiModelProperty("菜单图标")
+    @ApiModelProperty("메뉴 아이콘")
     private String icon;
 
-    @ApiModelProperty("功能点关联菜单ID")
+    @ApiModelProperty("기능 포인트 관련 메뉴 ID")
     private Long contextMenuId;
 }

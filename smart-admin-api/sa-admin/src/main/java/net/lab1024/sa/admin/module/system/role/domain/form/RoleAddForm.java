@@ -20,16 +20,16 @@ public class RoleAddForm {
     /**
      * 角色名称
      */
-    @ApiModelProperty("角色名称")
-    @NotNull(message = "角色名称不能为空")
-    @Length(min = 1, max = 20, message = "角色名称(1-20)个字符")
+    @ApiModelProperty("캐릭터 이름")
+    @NotNull(message = "캐릭터 이름은 비워둘 수 없습니다.")
+    @Length(min = 1, max = 20, message = "캐릭터 이름(1~20자)")
     private String roleName;
 
     /**
      * 角色描述
      */
-    @ApiModelProperty("角色描述")
-    @Length(max = 255, message = "角色描述最多255个字符")
+    @ApiModelProperty("캐릭터 설명")
+    @Length(max = 255, message = "캐릭터 설명 최대 255자")
     private String remark;
 
 

@@ -24,21 +24,21 @@ import javax.validation.constraints.NotBlank;
 @Data
 public class GoodsQueryForm extends PageParam {
 
-    @ApiModelProperty("商品分类")
+    @ApiModelProperty("제품 카테고리")
     private Integer categoryId;
 
-    @ApiModelProperty("搜索词")
-    @Length(max = 30, message = "搜索词最多30字符")
+    @ApiModelProperty("검색어")
+    @Length(max = 30, message = "검색어 최대 30자")
     private String searchWord;
 
     @ApiModelPropertyEnum(GoodsStatusEnum.class)
-    @CheckEnum(message = "商品状态错误", value = GoodsStatusEnum.class, required = false)
+    @CheckEnum(message = "제품 상태 오류", value = GoodsStatusEnum.class, required = false)
     private Integer goodsStatus;
 
-    @ApiModelProperty("产地")
+    @ApiModelProperty("원산지")
     private String place;
 
-    @ApiModelProperty("上架状态")
+    @ApiModelProperty("선반 상태")
     private Boolean shelvesFlag;
 
     @ApiModelProperty(hidden = true)

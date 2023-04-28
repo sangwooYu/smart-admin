@@ -51,7 +51,7 @@
           <a-form-item v-if="form.frameFlag" label="외부 링크 주소" name="frameUrl">
             <a-input v-model:value="form.frameUrl" placeholder="외부 링크 주소를 입력하세요." />
           </a-form-item>
-          <a-form-item v-else label="组件地址" name="component">
+          <a-form-item v-else label="컴포넌트 주소" name="component">
             <a-input v-model:value="form.component" placeholder="기본적으로 컴포넌트 주소는 시작 부분으로 입력하세요./@/views" />
           </a-form-item>
         </template>

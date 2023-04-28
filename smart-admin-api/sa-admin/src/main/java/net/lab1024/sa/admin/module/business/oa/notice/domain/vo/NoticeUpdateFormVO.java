@@ -19,17 +19,17 @@ import java.util.List;
 @Data
 public class NoticeUpdateFormVO extends NoticeVO {
 
-    @ApiModelProperty("纯文本内容")
+    @ApiModelProperty("일반 텍스트 콘텐츠")
     private String contentText;
 
-    @ApiModelProperty("html内容")
+    @ApiModelProperty("HTML 콘텐츠")
     private String contentHtml;
 
-    @ApiModelProperty("附件")
+    @ApiModelProperty("부록")
     @JsonSerialize(using = FileKeyVoSerializer.class)
     private String attachment;
 
-    @ApiModelProperty("可见范围")
+    @ApiModelProperty("가시 범위")
     private List<NoticeVisibleRangeVO> visibleRangeList;
 
 }

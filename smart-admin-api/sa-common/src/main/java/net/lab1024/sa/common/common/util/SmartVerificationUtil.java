@@ -14,9 +14,9 @@ import java.util.regex.Pattern;
 public class SmartVerificationUtil {
 
     /**
-     * 手机号码验证规则
+     * 핸드폰번호정규식
      */
-    public static final String PHONE_REGEXP = "^1[0-9]{10}";
+    public static final String PHONE_REGEXP = "^[A-Za-z0-9.]{10,11}$";
 
     /**
      * 固定号码验证规则

@@ -37,19 +37,19 @@ public class InvoiceController {
     @Autowired
     private InvoiceService invoiceService;
 
-    @ApiOperation(value = "分页查询发票信息 @author 善逸")
+    @ApiOperation(value = "인보이스 정보에 대한 페이징 @author ysw")
     @PostMapping("/oa/invoice/page/query")
     public ResponseDTO<PageResult<InvoiceVO>> queryByPage(@RequestBody @Valid InvoiceQueryForm queryDTO) {
         return invoiceService.queryByPage(queryDTO);
     }
 
-    @ApiOperation(value = "查询发票信息详情 @author 善逸")
+    @ApiOperation(value = "송장 정보 세부 정보 확인 @author ysw")
     @GetMapping("/oa/invoice/get/{invoiceId}")
     public ResponseDTO<InvoiceVO> getDetail(@PathVariable Long invoiceId) {
         return invoiceService.getDetail(invoiceId);
     }
 
-    @ApiOperation(value = "新建发票信息 @author 善逸")
+    @ApiOperation(value = "새 인보이스 정보 @author ysw")
     @PostMapping("/oa/invoice/create")
     public ResponseDTO<String> createInvoice(@RequestBody @Valid InvoiceAddForm createVO) {
         RequestUser requestUser = SmartRequestUtil.getRequestUser();
@@ -58,19 +58,19 @@ public class InvoiceController {
         return invoiceService.createInvoice(createVO);
     }
 
-    @ApiOperation(value = "编辑发票信息 @author 善逸")
+    @ApiOperation(value = "송장 정보 편집 @author ysw")
     @PostMapping("/oa/invoice/update")
     public ResponseDTO<String> updateInvoice(@RequestBody @Valid InvoiceUpdateForm updateVO) {
         return invoiceService.updateInvoice(updateVO);
     }
 
-    @ApiOperation(value = "删除发票信息 @author 善逸")
+    @ApiOperation(value = "송장 정보 삭제 @author ysw")
     @GetMapping("/invoice/delete/{invoiceId}")
     public ResponseDTO<String> deleteInvoice(@PathVariable Long invoiceId) {
         return invoiceService.deleteInvoice(invoiceId);
     }
 
-    @ApiOperation(value = "查询列表 @author lidoudou")
+    @ApiOperation(value = "문의 목록 @author ysw")
     @GetMapping("/oa/invoice/query/list/{enterpriseId}")
     public ResponseDTO<List<InvoiceVO>> queryList(@PathVariable Long enterpriseId) {
         return invoiceService.queryList(enterpriseId);

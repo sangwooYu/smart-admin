@@ -19,20 +19,20 @@ import java.time.LocalDate;
 @Data
 public class EnterpriseQueryForm extends PageParam {
 
-    @ApiModelProperty("关键字")
-    @Length(max = 200, message = "关键字最多200字符")
+    @ApiModelProperty("키워드")
+    @Length(max = 200, message = "키워드 최대 200자")
     private String keywords;
 
-    @ApiModelProperty("开始时间")
+    @ApiModelProperty("시작 시간")
     private LocalDate startTime;
 
-    @ApiModelProperty("结束时间")
+    @ApiModelProperty("마감 시간")
     private LocalDate endTime;
 
-    @ApiModelProperty("禁用状态")
+    @ApiModelProperty("비활성화 상태")
     private Boolean disabledFlag;
 
-    @ApiModelProperty(value = "删除状态", hidden = true)
+    @ApiModelProperty(value = "상태 삭제", hidden = true)
     private Boolean deletedFlag;
 
 }

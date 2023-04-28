@@ -30,14 +30,14 @@ public class AdminCacheController extends SupportBaseController {
     @Autowired
     private CacheService cacheService;
 
-    @ApiOperation(value = "获取所有缓存 @author 罗伊")
+    @ApiOperation(value = "모든 캐시 가져오기 @author ysw")
     @GetMapping("/cache/names")
     public ResponseDTO<List<String>> cacheNames() {
         return ResponseDTO.ok(cacheService.cacheNames());
     }
 
 
-    @ApiOperation(value = "移除某个缓存 @author 罗伊")
+    @ApiOperation(value = "캐시 제거 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('support:cache:delete')")
     @GetMapping("/cache/remove/{cacheName}")
     public ResponseDTO<String> removeCache(@PathVariable String cacheName) {
@@ -46,7 +46,7 @@ public class AdminCacheController extends SupportBaseController {
     }
 
 
-    @ApiOperation(value = "获取某个缓存的所有key @author 罗伊")
+    @ApiOperation(value = "캐시의 모든 키 가져오기 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('support:cache:keys')")
     @GetMapping("/cache/keys/{cacheName}")
     public ResponseDTO<List<String>> cacheKeys(@PathVariable String cacheName) {

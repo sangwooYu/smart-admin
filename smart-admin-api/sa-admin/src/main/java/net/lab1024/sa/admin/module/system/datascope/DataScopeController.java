@@ -14,15 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-/**
- * 查询支持的数据范围类型
- *
- * @Author 1024创新实验室: 罗伊
- * @Date 2022-03-18 20:59:17
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
- */
 @OperateLog
 @RestController
 @Api(tags = {AdminSwaggerTagConst.System.SYSTEM_DATA_SCOPE})
@@ -31,7 +22,7 @@ public class DataScopeController extends AdminBaseController {
     @Autowired
     private DataScopeService dataScopeService;
 
-    @ApiOperation(value = "获取当前系统所配置的所有数据范围 @author 罗伊")
+    @ApiOperation(value = "현재 시스템에서 구성한 모든 데이터 범위 가져오기 @author ysw")
     @GetMapping("/dataScope/list")
     public ResponseDTO<List<DataScopeAndViewTypeVO>> dataScopeList() {
         return dataScopeService.dataScopeList();

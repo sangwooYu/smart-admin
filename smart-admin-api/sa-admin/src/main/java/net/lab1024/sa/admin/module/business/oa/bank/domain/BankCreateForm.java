@@ -19,40 +19,40 @@ import javax.validation.constraints.NotNull;
 @Data
 public class BankCreateForm {
 
-    @ApiModelProperty("开户银行")
-    @NotBlank(message = "开户银行不能为空")
-    @Length(max = 200, message = "开户银行最多200字符")
+    @ApiModelProperty("계좌 은행")
+    @NotBlank(message = "계좌 은행이 비어 있으면 안 됩니다.")
+    @Length(max = 200, message = "계좌 개설 은행 최대 200자")
     private String bankName;
 
-    @ApiModelProperty("账户名称")
-    @NotBlank(message = "账户名称不能为空")
-    @Length(max = 200, message = "账户名称最多200字符")
+    @ApiModelProperty("계정 이름")
+    @NotBlank(message = "계정 이름은 비워둘 수 없습니다.")
+    @Length(max = 200, message = "계정 이름 최대 200자")
     private String accountName;
 
-    @ApiModelProperty("账号")
-    @NotBlank(message = "账号不能为空")
-    @Length(max = 200, message = "账号最多200字符")
+    @ApiModelProperty("계정 번호")
+    @NotBlank(message = "계정 번호는 비워 둘 수 없습니다.")
+    @Length(max = 200, message = "계정 번호 최대 200자")
     private String accountNumber;
 
-    @ApiModelProperty("备注")
-    @Length(max = 500, message = "备注最多500字符")
+    @ApiModelProperty("비고")
+    @Length(max = 500, message = "최대 500자의 메모")
     private String remark;
 
-    @ApiModelProperty("是否对公")
-    @NotNull(message = "是否对公不能为空")
+    @ApiModelProperty("대중이")
+    @NotNull(message = "공개 여부는 비워둘 수 없습니다.")
     private Boolean businessFlag;
 
-    @ApiModelProperty("企业")
-    @NotNull(message = "企业不能为空")
+    @ApiModelProperty("기업")
+    @NotNull(message = "비즈니스는 비워둘 수 없습니다.")
     private Long enterpriseId;
 
-    @ApiModelProperty("禁用状态")
-    @NotNull(message = "禁用状态不能为空")
+    @ApiModelProperty("비활성화 상태")
+    @NotNull(message = "비활성화 상태는 비워둘 수 없습니다.")
     private Boolean disabledFlag;
 
-    @ApiModelProperty(value = "创建人", hidden = true)
+    @ApiModelProperty(value = "작성자", hidden = true)
     private Long createUserId;
 
-    @ApiModelProperty(value = "创建人", hidden = true)
+    @ApiModelProperty(value = "작성자", hidden = true)
     private String createUserName;
 }

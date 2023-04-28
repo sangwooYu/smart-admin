@@ -28,7 +28,7 @@ public class NoticeVisibleRangeForm {
     @CheckEnum(value = NoticeVisibleRangeDataTypeEnum.class, required = true, message = "数据类型错误")
     private Integer dataType;
 
-    @ApiModelProperty("员工/部门id")
-    @NotNull(message = "员工/部门id不能为空")
+    @ApiModelProperty("직원/부서 ID")
+    @NotNull(message = "직원/부서 ID는 비워둘 수 없습니다.")
     private Long dataId;
 }

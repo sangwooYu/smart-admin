@@ -12,7 +12,7 @@
   <div>
     <div class="tree-header">
       <p>기능 작동, 백그라운드 관리 권한에 해당하는 역할 설정</p>
-      <a-button v-if="selectRoleId" type="primary" @click="saveChange" v-privilege="'system:role:menu:update'"> 保存 </a-button>
+      <a-button v-if="selectRoleId" type="primary" @click="saveChange" v-privilege="'system:role:menu:update'"> 저장 </a-button>
     </div>
     <!-- 功能权限勾选部分 -->
     <RoleTreeCheckbox :tree="tree" />

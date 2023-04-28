@@ -18,18 +18,18 @@ import java.time.LocalDateTime;
 @Data
 public class MenuVO extends MenuBaseForm {
 
-    @ApiModelProperty("菜单ID")
+    @ApiModelProperty("메뉴 ID")
     private Long menuId;
 
-    @ApiModelProperty("创建时间")
+    @ApiModelProperty("생성 시간")
     private LocalDateTime createTime;
 
-    @ApiModelProperty("创建人")
+    @ApiModelProperty("작성자")
     private Long createUserId;
 
-    @ApiModelProperty("更新时间")
+    @ApiModelProperty("업데이트 시간")
     private LocalDateTime updateTime;
 
-    @ApiModelProperty("更新人")
+    @ApiModelProperty("업데이트 유저 ID")
     private Long updateUserId;
 }

@@ -25,15 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.util.List;
 
-/**
- * 单据序列号
- *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-03-25 21:46:07
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
- */
 @Api(tags = SwaggerTagConst.Support.SERIAL_NUMBER)
 @RestController
 public class AdminSerialNumberController extends SupportBaseController {
@@ -47,24 +38,24 @@ public class AdminSerialNumberController extends SupportBaseController {
     @Autowired
     private SerialNumberRecordService serialNumberRecordService;
 
-    @ApiOperation("生成单号 @author 卓大")
+    @ApiOperation("주문 번호 생성 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('support:serial:number:generate')")
     @PostMapping("/serialNumber/generate")
     public ResponseDTO<List<String>> generate(@RequestBody @Valid SerialNumberGenerateForm generateForm) {
         SerialNumberIdEnum serialNumberIdEnum = SmartEnumUtil.getEnumByValue(generateForm.getSerialNumberId(), SerialNumberIdEnum.class);
         if (null == serialNumberIdEnum) {
-            return ResponseDTO.userErrorParam("SerialNumberId，不存在" + generateForm.getSerialNumberId());
+            return ResponseDTO.userErrorParam("SerialNumberId，존재하지 않음" + generateForm.getSerialNumberId());
         }
         return ResponseDTO.ok(serialNumberService.generate(serialNumberIdEnum, generateForm.getCount()));
     }
 
-    @ApiOperation("获取所有单号定义 @author 卓大")
+    @ApiOperation("모든 단일 숫자 정의 가져오기 @author ysw")
     @GetMapping("/serialNumber/all")
     public ResponseDTO<List<SerialNumberEntity>> getAll() {
         return ResponseDTO.ok(serialNumberDao.selectList(null));
     }
 
-    @ApiOperation("获取生成记录 @author 卓大")
+    @ApiOperation("생성된 레코드 가져오기 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('support:serial:number:record')")
     @PostMapping("/serialNumber/queryRecord")
     public ResponseDTO<PageResult<SerialNumberRecordEntity>> queryRecord(@RequestBody @Valid SerialNumberRecordQueryForm queryForm) {

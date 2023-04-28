@@ -41,7 +41,7 @@ public class LoginController {
 
     @NoNeedLogin
     @PostMapping("/login")
-    @ApiOperation("登录 @author 卓大")
+    @ApiOperation("로그인 @author ysw")
     public ResponseDTO<LoginEmployeeDetail> login(@Valid @RequestBody LoginForm loginForm) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String ip = ServletUtil.getClientIP(request);
@@ -50,14 +50,14 @@ public class LoginController {
     }
 
     @GetMapping("/login/refresh")
-    @ApiOperation("刷新用户信息（包含用户基础信息、权限信息等等）  @author 卓大")
+    @ApiOperation("사용자 정보(사용자 기반 정보, 권한 정보 등 포함) 새로 고침 @author ysw")
     public ResponseDTO<String> refresh() {
         loginService.removeLoginUserDetailCache(SmartRequestUtil.getRequestUserId());
         return ResponseDTO.ok();
     }
 
     @GetMapping("/login/getLoginInfo")
-    @ApiOperation("获取登录结果信息  @author 卓大")
+    @ApiOperation("로그인 결과 정보 얻기  @author ysw")
     public ResponseDTO<LoginEmployeeDetail> getLoginInfo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null) {
@@ -74,13 +74,13 @@ public class LoginController {
         return ResponseDTO.ok(loginEmployeeDetail);
     }
 
-    @ApiOperation("退出登陆  @author 卓大")
+    @ApiOperation("로그아웃  @author ysw")
     @GetMapping("/login/logout")
     public ResponseDTO<String> logout(@RequestHeader(value = RequestHeaderConst.TOKEN, required = false) String token) {
         return loginService.logout(token, SmartRequestUtil.getRequestUser());
     }
 
-    @ApiOperation("获取验证码  @author 卓大")
+    @ApiOperation("인증 코드 받기  @author ysw")
     @GetMapping("/login/getCaptcha")
     @NoNeedLogin
     public ResponseDTO<CaptchaVO> getCaptcha() {

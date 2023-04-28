@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class CategoryUpdateForm extends CategoryAddForm {
 
-    @ApiModelProperty("类目id")
-    @NotNull(message = "类目id不能为空")
+    @ApiModelProperty("카테고리 ID")
+    @NotNull(message = "카테고리 ID는 비워둘 수 없습니다.")
     private Long categoryId;
 }

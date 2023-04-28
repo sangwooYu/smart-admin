@@ -29,14 +29,14 @@ public class AdminOperateLogController extends SupportBaseController {
     @Autowired
     private OperateLogService operateLogService;
 
-    @ApiOperation(value = "分页查询 @author 罗伊")
+    @ApiOperation(value = "페이징 쿼리 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('operateLog:query')")
     @PostMapping("/operateLog/page/query")
     public ResponseDTO<PageResult<OperateLogVO>> queryByPage(@RequestBody OperateLogQueryForm queryForm) {
         return operateLogService.queryByPage(queryForm);
     }
 
-    @ApiOperation(value = "详情 @author 罗伊")
+    @ApiOperation(value = "세부 정보 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('operateLog:detail')")
     @GetMapping("/operateLog/detail/{operateLogId}")
     public ResponseDTO<OperateLogVO> detail(@PathVariable Long operateLogId) {

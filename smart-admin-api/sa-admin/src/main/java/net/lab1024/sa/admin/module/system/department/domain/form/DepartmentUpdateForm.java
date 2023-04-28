@@ -17,8 +17,8 @@ import javax.validation.constraints.NotNull;
 @Data
 public class DepartmentUpdateForm extends DepartmentAddForm {
 
-    @ApiModelProperty("部门id")
-    @NotNull(message = "部门id不能为空")
+    @ApiModelProperty("부서 ID")
+    @NotNull(message = "부서 ID는 비워둘 수 없습니다.")
     private Long departmentId;
 
 }

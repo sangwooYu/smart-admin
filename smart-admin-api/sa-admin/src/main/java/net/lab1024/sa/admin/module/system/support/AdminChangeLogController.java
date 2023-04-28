@@ -29,28 +29,28 @@ public class AdminChangeLogController {
     @Autowired
     private ChangeLogService changeLogService;
 
-    @ApiOperation("添加 @author 卓大")
+    @ApiOperation("추가 @author 卓大")
     @PostMapping("/changeLog/add")
     @PreAuthorize("@saAuth.checkPermission('changeLog:add')")
     public ResponseDTO<String> add(@RequestBody @Valid ChangeLogAddForm addForm) {
         return changeLogService.add(addForm);
     }
 
-    @ApiOperation("更新 @author 卓大")
+    @ApiOperation("업데이트 @author 卓大")
     @PreAuthorize("@saAuth.checkPermission('changeLog:update')")
     @PostMapping("/changeLog/update")
     public ResponseDTO<String> update(@RequestBody @Valid ChangeLogUpdateForm updateForm) {
         return changeLogService.update(updateForm);
     }
 
-    @ApiOperation("批量删除 @author 卓大")
+    @ApiOperation("일괄 삭제 @author 卓大")
     @PreAuthorize("@saAuth.checkPermission('changeLog:batchDelete')")
     @PostMapping("/changeLog/batchDelete")
     public ResponseDTO<String> batchDelete(@RequestBody ValidateList<Long> idList) {
         return changeLogService.batchDelete(idList);
     }
 
-    @ApiOperation("单个删除 @author 卓大")
+    @ApiOperation("개별적으로 삭제 @author 卓大")
     @PreAuthorize("@saAuth.checkPermission('changeLog:delete')")
     @GetMapping("/changeLog/delete/{changeLogId}")
     public ResponseDTO<String> batchDelete(@PathVariable Long changeLogId) {

@@ -11,7 +11,7 @@
   <a-card size="small" :bordered="false" :hoverable="true">
     <a-alert>
       <template v-slot:message>
-        <h4>스마트 하트비트 하트비트 서비스 소개:</h4>
+        <h4>프로세스 모니터링 서비스 소개:</h4>
       </template>
       <template v-slot:description>
         <pre>
@@ -29,11 +29,11 @@
 
     <a-form class="smart-query-form">
       <a-row class="smart-query-form-row">
-        <a-form-item label="핵심 단어" class="smart-query-form-item">
-          <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="핵심 단어" />
+        <a-form-item label="키워드" class="smart-query-form-item">
+          <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="키워드" />
         </a-form-item>
 
-        <a-form-item label="심장 박동 시간" class="smart-query-form-item">
+        <a-form-item label="최근 접속 시간" class="smart-query-form-item">
           <a-range-picker @change="changeCreateDate" v-model:value="createDateRange" :ranges="defaultChooseTimeRange" style="width: 240px" />
         </a-form-item>
 

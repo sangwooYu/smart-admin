@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class EnterpriseUpdateForm extends EnterpriseCreateForm {
 
-    @ApiModelProperty("企业ID")
-    @NotNull(message = "企业ID不能为空")
+    @ApiModelProperty("기업 ID")
+    @NotNull(message = "기업 ID는 비워둘 수 없습니다.")
     private Long enterpriseId;
 }

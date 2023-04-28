@@ -41,7 +41,7 @@
             <template #icon>
               <MoreOutlined />
             </template>
-            {{ moreQueryConditionFlag ? '치우기' : '펼치기' }}
+            {{ moreQueryConditionFlag ? '가리기' : '펼치기' }}
           </a-button>
         </a-form-item>
       </a-row>

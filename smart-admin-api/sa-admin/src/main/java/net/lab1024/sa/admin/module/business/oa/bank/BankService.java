@@ -78,7 +78,7 @@ public class BankService {
         // 校验银行信息是否存在
         BankVO bankVO = bankDao.getDetail(bankId, Boolean.FALSE);
         if (Objects.isNull(bankVO)) {
-            return ResponseDTO.userErrorParam("银行信息不存在");
+            return ResponseDTO.userErrorParam("은행 정보가 존재하지 않습니다.");
         }
         return ResponseDTO.ok(bankVO);
     }
@@ -95,17 +95,17 @@ public class BankService {
         // 校验企业是否存在
         EnterpriseEntity enterpriseDetail = enterpriseDao.selectById(enterpriseId);
         if (Objects.isNull(enterpriseDetail) || enterpriseDetail.getDeletedFlag()) {
-            return ResponseDTO.userErrorParam("企业不存在");
+            return ResponseDTO.userErrorParam("비즈니스가 존재하지 않습니다.");
         }
         // 验证银行信息账号是否重复
         BankEntity validateBank = bankDao.queryByAccountNumber(enterpriseId, createVO.getAccountNumber(), null, Boolean.FALSE);
         if (Objects.nonNull(validateBank)) {
-            return ResponseDTO.userErrorParam("银行信息账号重复");
+            return ResponseDTO.userErrorParam("중복 은행 정보 계좌 번호");
         }
         // 数据插入
         BankEntity insertBank = SmartBeanUtil.copy(createVO, BankEntity.class);
         bankDao.insert(insertBank);
-        dataTracerService.addTrace(enterpriseId, DataTracerTypeEnum.OA_ENTERPRISE, "新增银行:" + DataTracerConst.HTML_BR + dataTracerService.getChangeContent(insertBank));
+        dataTracerService.addTrace(enterpriseId, DataTracerTypeEnum.OA_ENTERPRISE, "새 은행:" + DataTracerConst.HTML_BR + dataTracerService.getChangeContent(insertBank));
         return ResponseDTO.ok();
     }
 
@@ -121,23 +121,23 @@ public class BankService {
         // 校验企业是否存在
         EnterpriseEntity enterpriseDetail = enterpriseDao.selectById(enterpriseId);
         if (Objects.isNull(enterpriseDetail) || enterpriseDetail.getDeletedFlag()) {
-            return ResponseDTO.userErrorParam("企业不存在");
+            return ResponseDTO.userErrorParam("비즈니스가 존재하지 않습니다.");
         }
         Long bankId = updateVO.getBankId();
         // 校验银行信息是否存在
         BankEntity bankDetail = bankDao.selectById(bankId);
         if (Objects.isNull(bankDetail) || bankDetail.getDeletedFlag()) {
-            return ResponseDTO.userErrorParam("银行信息不存在");
+            return ResponseDTO.userErrorParam("은행 정보가 존재하지 않습니다.");
         }
         // 验证银行信息账号是否重复
         BankEntity validateBank = bankDao.queryByAccountNumber(updateVO.getEnterpriseId(), updateVO.getAccountNumber(), bankId, Boolean.FALSE);
         if (Objects.nonNull(validateBank)) {
-            return ResponseDTO.userErrorParam("银行信息账号重复");
+            return ResponseDTO.userErrorParam("중복 은행 정보 계좌 번호");
         }
         // 数据编辑
         BankEntity updateBank = SmartBeanUtil.copy(updateVO, BankEntity.class);
         bankDao.updateById(updateBank);
-        dataTracerService.addTrace(enterpriseId, DataTracerTypeEnum.OA_ENTERPRISE, "更新银行:" + DataTracerConst.HTML_BR + dataTracerService.getChangeContent(bankDetail, updateBank));
+        dataTracerService.addTrace(enterpriseId, DataTracerTypeEnum.OA_ENTERPRISE, "은행 업데이트:" + DataTracerConst.HTML_BR + dataTracerService.getChangeContent(bankDetail, updateBank));
         return ResponseDTO.ok();
     }
 
@@ -153,7 +153,7 @@ public class BankService {
         // 校验银行信息是否存在
         BankEntity bankDetail = bankDao.selectById(bankId);
         if (Objects.isNull(bankDetail) || bankDetail.getDeletedFlag()) {
-            return ResponseDTO.userErrorParam("银行信息不存在");
+            return ResponseDTO.userErrorParam("은행 정보가 존재하지 않습니다.");
         }
         bankDao.deleteBank(bankId, Boolean.TRUE);
         dataTracerService.addTrace(bankDetail.getEnterpriseId(), DataTracerTypeEnum.OA_ENTERPRISE, "删除银行:" + DataTracerConst.HTML_BR + dataTracerService.getChangeContent(bankDetail));

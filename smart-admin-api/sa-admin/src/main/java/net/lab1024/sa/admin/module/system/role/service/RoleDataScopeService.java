@@ -56,7 +56,7 @@ public class RoleDataScopeService {
     public ResponseDTO<String> updateRoleDataScopeList(RoleDataScopeUpdateForm roleDataScopeUpdateForm) {
         List<RoleDataScopeUpdateForm.RoleUpdateDataScopeListFormItem> batchSetList = roleDataScopeUpdateForm.getDataScopeItemList();
         if (CollectionUtils.isEmpty(batchSetList)) {
-            return ResponseDTO.error(UserErrorCode.PARAM_ERROR, "缺少配置信息");
+            return ResponseDTO.error(UserErrorCode.PARAM_ERROR, "누락된 구성 정보");
         }
         List<RoleDataScopeEntity> roleDataScopeEntityList = SmartBeanUtil.copyList(batchSetList, RoleDataScopeEntity.class);
         roleDataScopeEntityList.forEach(e -> e.setRoleId(roleDataScopeUpdateForm.getRoleId()));

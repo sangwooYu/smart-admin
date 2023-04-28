@@ -1,18 +1,10 @@
-<!--
-  * 员工 表格 弹窗 选择框 
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-08-19 23:09:02 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
--->
+
 <template>
   <a-modal v-model:visible="visible" :width="900" title="직원 선택" @cancel="closeModal" @ok="onSelectEmployee">
     <a-form class="smart-query-form">
       <a-row class="smart-query-form-row">
-        <a-form-item label="핵심 단어" class="smart-query-form-item">
-          <a-input style="width: 150px" v-model:value="params.keyword" placeholder="핵심 단어" />
+        <a-form-item label="키워드" class="smart-query-form-item">
+          <a-input style="width: 150px" v-model:value="params.keyword" placeholder="키워드" />
         </a-form-item>
         <a-form-item label="섹터" class="smart-query-form-item">
           <DepartmentTreeSelect style="width: 200px" ref="departmentTreeSelect" v-model:value="params.departmentId" />

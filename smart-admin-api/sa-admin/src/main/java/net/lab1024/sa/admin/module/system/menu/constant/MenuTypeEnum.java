@@ -16,15 +16,15 @@ public enum MenuTypeEnum implements BaseEnum {
     /**
      * 目录
      */
-    CATALOG(1, "目录"),
+    CATALOG(1, "카탈로그"),
     /**
      * 菜单
      */
-    MENU(2, "菜单"),
+    MENU(2, "메뉴"),
     /**
      * 功能点
      */
-    POINTS(3, "功能点");
+    POINTS(3, "기능 포인트");
 
     private Integer value;
 

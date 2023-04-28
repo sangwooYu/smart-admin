@@ -18,15 +18,9 @@ import net.lab1024.sa.common.common.enumeration.BaseEnum;
 @Getter
 public enum CategoryTypeEnum implements BaseEnum {
 
-    /**
-     * 1 商品
-     */
-    GOODS(1, "商品"),
+    GOODS(1, "상품"),
 
-    /**
-     * 2 自定义
-     */
-    CUSTOM(2, "自定义"),
+    CUSTOM(2, "사용자 지정"),
 
     ;
 

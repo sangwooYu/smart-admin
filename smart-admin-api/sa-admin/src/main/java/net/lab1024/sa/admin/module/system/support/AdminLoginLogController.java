@@ -31,7 +31,7 @@ public class AdminLoginLogController extends SupportBaseController {
     @Autowired
     private LoginLogService loginLogService;
 
-    @ApiOperation(value = "分页查询 @author 卓大")
+    @ApiOperation(value = "페이징 쿼리 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('loginLog:query')")
     @PostMapping("/loginLog/page/query")
     public ResponseDTO<PageResult<LoginLogVO>> queryByPage(@RequestBody LoginLogQueryForm queryForm) {

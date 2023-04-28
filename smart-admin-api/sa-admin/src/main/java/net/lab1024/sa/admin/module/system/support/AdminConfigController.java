@@ -35,21 +35,21 @@ public class AdminConfigController extends SupportBaseController {
     @Autowired
     private ConfigService configService;
 
-    @ApiOperation("分页查询系统配置 @author 卓大")
+    @ApiOperation("페이징 쿼리 시스템 구성 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('support:config:query')")
     @PostMapping("/config/query")
     public ResponseDTO<PageResult<ConfigVO>> querySystemConfigPage(@RequestBody @Valid ConfigQueryForm queryForm) {
         return configService.queryConfigPage(queryForm);
     }
 
-    @ApiOperation("添加配置参数 @author 卓大")
+    @ApiOperation("구성 매개변수 추가 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('support:config:add')")
     @PostMapping("/config/add")
     public ResponseDTO<String> addSystemConfig(@RequestBody @Valid ConfigAddForm configAddForm) {
         return configService.add(configAddForm);
     }
 
-    @ApiOperation("修改配置参数 @author 卓大")
+    @ApiOperation("구성 매개변수 수정 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('support:config:update')")
     @PostMapping("/config/update")
     public ResponseDTO<String> updateSystemConfig(@RequestBody @Valid ConfigUpdateForm updateForm) {

@@ -71,7 +71,7 @@
               type="link"
               size="small"
               @click="resetPassword(record.employeeId, record.loginName)"
-              >重置密码</a-button
+              >비밀번호변경</a-button
             >
             <a-button v-privilege="'system:employee:disabled'" type="link" @click="updateDisabled(record.employeeId, record.disabledFlag)">{{
               record.disabledFlag ? '활성화' : '비활성화'

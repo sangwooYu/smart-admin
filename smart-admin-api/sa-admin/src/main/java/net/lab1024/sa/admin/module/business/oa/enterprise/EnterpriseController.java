@@ -38,21 +38,21 @@ public class EnterpriseController {
     @Autowired
     private EnterpriseService enterpriseService;
 
-    @ApiOperation(value = "分页查询企业模块 @author 开云")
+    @ApiOperation(value = "페이징 검색 엔터프라이즈 모듈 @author ysw")
     @PostMapping("/oa/enterprise/page/query")
     @SaAuth
     public ResponseDTO<PageResult<EnterpriseVO>> queryByPage(@RequestBody @Valid EnterpriseQueryForm queryDTO) {
         return enterpriseService.queryByPage(queryDTO);
     }
 
-    @ApiOperation(value = "查询企业详情 @author 开云")
+    @ApiOperation(value = "회사 세부 정보 찾기 @author ysw")
     @GetMapping("/oa/enterprise/get/{enterpriseId}")
     @SaAuth
     public ResponseDTO<EnterpriseVO> getDetail(@PathVariable Long enterpriseId) {
         return ResponseDTO.ok(enterpriseService.getDetail(enterpriseId));
     }
 
-    @ApiOperation(value = "新建企业 @author 开云")
+    @ApiOperation(value = "신규 비즈니스 @author ysw")
     @PostMapping("/oa/enterprise/create")
     @SaAuth
     public ResponseDTO<String> createEnterprise(@RequestBody @Valid EnterpriseCreateForm createVO) {
@@ -62,21 +62,21 @@ public class EnterpriseController {
         return enterpriseService.createEnterprise(createVO);
     }
 
-    @ApiOperation(value = "编辑企业 @author 开云")
+    @ApiOperation(value = "편집 회사 @author ysw")
     @PostMapping("/oa/enterprise/update")
     @SaAuth
     public ResponseDTO<String> updateEnterprise(@RequestBody @Valid EnterpriseUpdateForm updateVO) {
         return enterpriseService.updateEnterprise(updateVO);
     }
 
-    @ApiOperation(value = "删除企业 @author 开云")
+    @ApiOperation(value = "비즈니스 삭제 @author ysw")
     @GetMapping("/oa/enterprise/delete/{enterpriseId}")
     @SaAuth
     public ResponseDTO<String> deleteEnterprise(@PathVariable Long enterpriseId) {
         return enterpriseService.deleteEnterprise(enterpriseId);
     }
 
-    @ApiOperation(value = "企业列表查询 @author 开云")
+    @ApiOperation(value = "비즈니스 목록 검색 @author ysw")
     @GetMapping("/oa/enterprise/query/list")
     @SaAuth
     public ResponseDTO<List<EnterpriseListVO>> queryList(@RequestParam(value = "type", required = false) Integer type) {
@@ -84,21 +84,21 @@ public class EnterpriseController {
     }
 
 
-    @ApiOperation(value = "企业添加员工 @author 罗伊")
+    @ApiOperation(value = "비즈니스에 직원 추가하기 @author ysw")
     @PostMapping("/oa/enterprise/employee/add")
     @SaAuth
     public ResponseDTO<String> addEmployee(@RequestBody @Valid EnterpriseEmployeeForm enterpriseEmployeeForm) {
         return enterpriseService.addEmployee(enterpriseEmployeeForm);
     }
 
-    @ApiOperation(value = "查询企业全部员工 @author 罗伊")
+    @ApiOperation(value = "회사 내 모든 직원 검색 @author ysw")
     @PostMapping("/oa/enterprise/employee/list")
     @SaAuth
     public ResponseDTO<List<EnterpriseEmployeeVO>> employeeList(@RequestBody @Valid List<Long> enterpriseIdList) {
         return ResponseDTO.ok(enterpriseService.employeeList(enterpriseIdList));
     }
 
-    @ApiOperation(value = "分页查询企业员工 @author 卓大")
+    @ApiOperation(value = "페이지 매김 검색 기업 직원 @author ysw")
     @PostMapping("/oa/enterprise/employee/queryPage")
     @SaAuth
     public ResponseDTO<PageResult<EnterpriseEmployeeVO>> queryPageEmployeeList(@RequestBody @Valid EnterpriseEmployeeQueryForm queryForm) {
@@ -106,7 +106,7 @@ public class EnterpriseController {
     }
 
 
-    @ApiOperation(value = "企业删除员工 @author 罗伊")
+    @ApiOperation(value = "기업 직원 삭제 @author ysw")
     @PostMapping("/oa/enterprise/employee/delete")
     @SaAuth
     public ResponseDTO<String> deleteEmployee(@RequestBody @Valid EnterpriseEmployeeForm enterpriseEmployeeForm) {

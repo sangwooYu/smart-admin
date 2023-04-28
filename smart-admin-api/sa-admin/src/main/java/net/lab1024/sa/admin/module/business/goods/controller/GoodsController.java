@@ -36,35 +36,35 @@ public class GoodsController extends AdminBaseController {
     @Autowired
     private GoodsService goodsService;
 
-    @ApiOperation("分页查询 @author 胡克")
+    @ApiOperation("페이징 쿼리 @author 후커")
     @PostMapping("/goods/query")
     @PreAuthorize("@saAuth.checkPermission('goods:query ')")
     public ResponseDTO<PageResult<GoodsVO>> query(@RequestBody @Valid GoodsQueryForm queryForm) {
         return goodsService.query(queryForm);
     }
 
-    @ApiOperation("添加商品 @author 胡克")
+    @ApiOperation("제품 추가 @author 후커")
     @PostMapping("/goods/add")
     @PreAuthorize("@saAuth.checkPermission('goods:add')")
     public ResponseDTO<String> add(@RequestBody @Valid GoodsAddForm addForm) {
         return goodsService.add(addForm);
     }
 
-    @ApiOperation("更新商品 @author 胡克")
+    @ApiOperation("제품 업데이트 @author 후커")
     @PostMapping("/goods/update")
     @PreAuthorize("@saAuth.checkPermission('goods:update')")
     public ResponseDTO<String> update(@RequestBody @Valid GoodsUpdateForm updateForm) {
         return goodsService.update(updateForm);
     }
 
-    @ApiOperation("删除 @author 卓大")
+    @ApiOperation("삭제 @author 초대")
     @GetMapping("/goods/delete/{goodsId}")
     @PreAuthorize("@saAuth.checkPermission('goods:delete')")
     public ResponseDTO<String> delete(@PathVariable Long goodsId) {
         return goodsService.delete(goodsId);
     }
 
-    @ApiOperation("批量 @author 卓大")
+    @ApiOperation("대량 @author 초대")
     @PostMapping("/goods/batchDelete")
     @PreAuthorize("@saAuth.checkPermission('goods:batchDelete')")
     public ResponseDTO<String> batchDelete(@RequestBody @Valid ValidateList<Long> idList) {

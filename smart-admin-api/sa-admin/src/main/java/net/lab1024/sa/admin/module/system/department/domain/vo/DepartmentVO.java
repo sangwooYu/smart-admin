@@ -15,22 +15,22 @@ import lombok.Data;
 @Data
 public class DepartmentVO {
 
-    @ApiModelProperty("部门id")
+    @ApiModelProperty("부서 ID")
     private Long departmentId;
 
-    @ApiModelProperty("部门名称")
+    @ApiModelProperty("부서 이름")
     private String name;
 
-    @ApiModelProperty("部门负责人姓名")
+    @ApiModelProperty("부서장 이름")
     private String managerName;
 
-    @ApiModelProperty("部门负责人id")
+    @ApiModelProperty("부서장 아이디")
     private Long managerId;
 
-    @ApiModelProperty("父级部门id")
+    @ApiModelProperty("상위 부서 ID")
     private Long parentId;
 
-    @ApiModelProperty("排序")
+    @ApiModelProperty("정렬 기준")
     private Integer sort;
 
 }

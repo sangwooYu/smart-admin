@@ -19,22 +19,22 @@ import java.time.LocalDate;
 @Data
 public class BankQueryForm extends PageParam {
 
-    @ApiModelProperty("企业ID")
+    @ApiModelProperty("기업 ID")
     private Long enterpriseId;
 
-    @ApiModelProperty("关键字")
-    @Length(max = 200, message = "关键字最多200字符")
+    @ApiModelProperty("핵심 단어")
+    @Length(max = 200, message = "키워드 최대 200자")
     private String keywords;
 
-    @ApiModelProperty("开始时间")
+    @ApiModelProperty("시작 시간")
     private LocalDate startTime;
 
-    @ApiModelProperty("结束时间")
+    @ApiModelProperty("마감 시간")
     private LocalDate endTime;
 
-    @ApiModelProperty("禁用状态")
+    @ApiModelProperty("비활성화 상태")
     private Boolean disabledFlag;
 
-    @ApiModelProperty(value = "删除状态", hidden = true)
+    @ApiModelProperty(value = "상태 삭제", hidden = true)
     private Boolean deletedFlag;
 }

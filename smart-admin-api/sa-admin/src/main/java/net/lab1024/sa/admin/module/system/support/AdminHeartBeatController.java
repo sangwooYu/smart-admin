@@ -33,7 +33,7 @@ public class AdminHeartBeatController extends SupportBaseController {
     private HeartBeatService heartBeatService;
 
     @PostMapping("/heartBeat/query")
-    @ApiOperation("查询心跳记录 @author 卓大")
+    @ApiOperation("하트비트 기록 조회 @author ysw")
     public ResponseDTO<PageResult<HeartBeatRecordVO>> query(@RequestBody @Valid HeartBeatRecordQueryForm pageParam) {
         return heartBeatService.pageQuery(pageParam);
     }

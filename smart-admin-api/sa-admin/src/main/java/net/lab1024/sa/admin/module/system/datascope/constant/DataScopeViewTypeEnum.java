@@ -15,13 +15,13 @@ import net.lab1024.sa.common.common.enumeration.BaseEnum;
  */
 public enum DataScopeViewTypeEnum implements BaseEnum {
 
-    ME(0, 0, "本人"),
+    ME(0, 0, "본인"),
 
-    DEPARTMENT(1, 5, "本部门"),
+    DEPARTMENT(1, 5, "이 부서"),
 
-    DEPARTMENT_AND_SUB(2, 10, "本部门及下属子部门"),
+    DEPARTMENT_AND_SUB(2, 10, "이 부서 및 하위 부서"),
 
-    ALL(10, 100, "全部");
+    ALL(10, 100, "모두");
 
 
 

@@ -16,9 +16,9 @@ import net.lab1024.sa.common.common.domain.PageParam;
 @Data
 public class RoleQueryForm extends PageParam {
 
-    @ApiModelProperty("角色名称")
+    @ApiModelProperty("캐릭터 이름")
     private String roleName;
 
-    @ApiModelProperty("角色id")
+    @ApiModelProperty("역할 ID")
     private String roleId;
 }

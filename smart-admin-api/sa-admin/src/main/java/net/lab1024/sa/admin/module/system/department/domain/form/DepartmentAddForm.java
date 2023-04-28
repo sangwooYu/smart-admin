@@ -18,19 +18,19 @@ import javax.validation.constraints.NotNull;
 @Data
 public class DepartmentAddForm {
 
-    @ApiModelProperty("部门名称")
-    @Length(min = 1, max = 50, message = "请输入正确的部门名称(1-50个字符)")
-    @NotNull(message = "请输入正确的部门名称(1-50个字符)")
+    @ApiModelProperty("부서 이름")
+    @Length(min = 1, max = 50, message = "정확한 부서명을 입력하세요(1~50자).")
+    @NotNull(message = "정확한 부서명을 입력하세요(1~50자).")
     private String name;
 
-    @ApiModelProperty("排序")
-    @NotNull(message = "排序值")
+    @ApiModelProperty("정렬 기준")
+    @NotNull(message = "값으로 정렬")
     private Integer sort;
 
-    @ApiModelProperty("部门负责人id")
+    @ApiModelProperty("부서장 아이디")
     private Long managerId;
 
-    @ApiModelProperty("上级部门id (可选)")
+    @ApiModelProperty("상위 부서 ID(선택 사항)")
     private Long parentId;
 
 }

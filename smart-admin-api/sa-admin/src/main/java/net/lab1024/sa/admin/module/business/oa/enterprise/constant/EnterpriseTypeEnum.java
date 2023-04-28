@@ -14,9 +14,9 @@ import net.lab1024.sa.common.common.enumeration.BaseEnum;
  */
 public enum EnterpriseTypeEnum implements BaseEnum {
 
-    NORMAL(1, "有限企业"),
+    NORMAL(1, "제한 기업"),
 
-    FOREIGN(2, "外资企业"),
+    FOREIGN(2, "외국 소유 기업"),
     ;
 
     private Integer value;

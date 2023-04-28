@@ -25,37 +25,37 @@ public class BankEntity {
      * 银行信息ID
      */
     @TableId(type = IdType.AUTO)
-    @DataTracerFieldLabel("银行信息ID")
+    @DataTracerFieldLabel("은행 정보 ID")
     private Long bankId;
 
     /**
      * 开户银行
      */
-    @DataTracerFieldLabel("开户银行")
+    @DataTracerFieldLabel("계좌 은행")
     private String bankName;
 
     /**
      * 账户名称
      */
-    @DataTracerFieldLabel("账户名称")
+    @DataTracerFieldLabel("계정 이름")
     private String accountName;
 
     /**
      * 账号
      */
-    @DataTracerFieldLabel("账号")
+    @DataTracerFieldLabel("계정 번호")
     private String accountNumber;
 
     /**
      * 备注
      */
-    @DataTracerFieldLabel("备注")
+    @DataTracerFieldLabel("비고")
     private String remark;
 
     /**
      * 是否对公
      */
-    @DataTracerFieldLabel("是否对公")
+    @DataTracerFieldLabel("대중이")
     private Boolean businessFlag;
 
     /**
@@ -66,7 +66,7 @@ public class BankEntity {
     /**
      * 禁用状态
      */
-    @DataTracerFieldLabel("禁用状态")
+    @DataTracerFieldLabel("비활성화 상태")
     private Boolean disabledFlag;
 
     /**

@@ -12,7 +12,7 @@
   <div>
     <div class="header">
       <div>
-        핵심 단어：
+        키워드：
         <a-input style="width: 250px" v-model:value="queryForm.keywords" placeholder="이름/휴대폰 번호/로그인 계정" />
 
         <a-button class="button-style" v-if="selectRoleId" type="primary" @click="queryRoleEmployee">검색</a-button>

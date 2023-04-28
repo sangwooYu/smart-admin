@@ -19,26 +19,26 @@ import javax.validation.constraints.NotNull;
 @Data
 public class CategoryBaseDTO {
 
-    @ApiModelProperty(value = "类目名称", required = true)
-    @NotBlank(message = "类目名称不能为空")
-    @Length(max = 20, message = "类目名称最多20字符")
+    @ApiModelProperty(value = "카테고리 이름", required = true)
+    @NotBlank(message = "카테고리 이름은 비워둘 수 없습니다.")
+    @Length(max = 20, message = "카테고리 이름 최대 20자")
     private String categoryName;
 
-    @ApiModelPropertyEnum(desc = "分类类型", value = CategoryTypeEnum.class)
-    @CheckEnum(value = CategoryTypeEnum.class, required = true, message = "分类错误")
+    @ApiModelPropertyEnum(desc = "분류 유형", value = CategoryTypeEnum.class)
+    @CheckEnum(value = CategoryTypeEnum.class, required = true, message = "잘못된 분류")
     private Integer categoryType;
 
-    @ApiModelProperty("父级类目id|可选")
+    @ApiModelProperty("상위 카테고리 아이디|선택 사항")
     private Long parentId;
 
-    @ApiModelProperty("排序|可选")
+    @ApiModelProperty("정렬|선택 사항")
     private Integer sort;
 
-    @ApiModelProperty("备注|可选")
-    @Length(max = 200, message = "备注最多200字符")
+    @ApiModelProperty("비고|선택 사항")
+    @Length(max = 200, message = "최대 200자의 메모")
     private String remark;
 
-    @ApiModelProperty("禁用状态")
-    @NotNull(message = "禁用状态不能为空")
+    @ApiModelProperty("비활성화 상태")
+    @NotNull(message = "비활성화 상태는 비워둘 수 없습니다.")
     private Boolean disabledFlag;
 }

@@ -22,32 +22,32 @@ import java.time.LocalDateTime;
 @Data
 public class GoodsVO  {
 
-    @ApiModelProperty("商品分类")
+    @ApiModelProperty("제품 카테고리")
     private Long categoryId;
 
-    @ApiModelProperty("商品名称")
+    @ApiModelProperty("제품 이름")
     private String goodsName;
 
     @ApiModelPropertyEnum(GoodsStatusEnum.class)
     private Integer goodsStatus;
 
-    @ApiModelProperty("产地")
+    @ApiModelProperty("원산지")
     @JsonSerialize(using = DictValueVoSerializer.class)
     private String place;
 
-    @ApiModelProperty("商品价格")
+    @ApiModelProperty("제품 가격")
     private BigDecimal price;
 
-    @ApiModelProperty("上架状态")
+    @ApiModelProperty("선반 상태")
     private Boolean shelvesFlag;
 
-    @ApiModelProperty("备注|可选")
+    @ApiModelProperty("비고|선택 사항")
     private String remark;
 
-    @ApiModelProperty("商品id")
+    @ApiModelProperty("제품 ID")
     private Long goodsId;
 
-    @ApiModelProperty("商品分类")
+    @ApiModelProperty("제품 카테고리")
     private String categoryName;
 
     private LocalDateTime updateTime;

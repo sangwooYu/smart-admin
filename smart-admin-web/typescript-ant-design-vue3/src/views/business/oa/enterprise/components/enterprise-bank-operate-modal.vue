@@ -20,7 +20,7 @@
       <a-form-item label="계정 번호" name="accountNumber">
         <a-input v-model:value="form.accountNumber" placeholder="계정 번호를 입력하세요."/>
       </a-form-item>
-      <a-form-item label="대중이" name="businessFlag">
+      <a-form-item label="businessFlag" name="businessFlag">
         <a-switch v-model:checked="businessFlagChecked" @change="businessFlagCheckedChange"/>
       </a-form-item>
       <a-form-item label="상태 활성화" name="disabledFlag">

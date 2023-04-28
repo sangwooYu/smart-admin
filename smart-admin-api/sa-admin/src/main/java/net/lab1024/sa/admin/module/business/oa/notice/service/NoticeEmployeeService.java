@@ -98,12 +98,12 @@ public class NoticeEmployeeService {
     public ResponseDTO<NoticeDetailVO> view(Long requestEmployeeId, Long noticeId, String ip, String userAgent) {
         NoticeUpdateFormVO updateFormVO = noticeService.getUpdateFormVO(noticeId);
         if (updateFormVO == null || Boolean.TRUE.equals(updateFormVO.getDeletedFlag())) {
-            return ResponseDTO.userErrorParam("通知公告不存在");
+            return ResponseDTO.userErrorParam("공지가 존재하지 않습니다.");
         }
 
         EmployeeEntity employeeEntity = employeeService.getById(requestEmployeeId);
         if (!updateFormVO.getAllVisibleFlag() && checkVisibleRange(updateFormVO.getVisibleRangeList(), requestEmployeeId, employeeEntity.getDepartmentId())) {
-            return ResponseDTO.userErrorParam("对不起，您没有权限查看内容");
+            return ResponseDTO.userErrorParam("콘텐츠를 볼 수 있는 권한이 없습니다.");
         }
 
         NoticeDetailVO noticeDetailVO = SmartBeanUtil.copy(updateFormVO, NoticeDetailVO.class);

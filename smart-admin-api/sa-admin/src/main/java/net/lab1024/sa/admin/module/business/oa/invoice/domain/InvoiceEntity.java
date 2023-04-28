@@ -30,31 +30,31 @@ public class InvoiceEntity {
     /**
      * 开票抬头
      */
-    @DataTracerFieldLabel("开票抬头")
+    @DataTracerFieldLabel("송장 수취인")
     private String invoiceHeads;
 
     /**
      * 纳税人识别号
      */
-    @DataTracerFieldLabel("纳税人识别号")
+    @DataTracerFieldLabel("납세자 식별 번호")
     private String taxpayerIdentificationNumber;
 
     /**
      * 银行账户
      */
-    @DataTracerFieldLabel("银行账户")
+    @DataTracerFieldLabel("은행 계좌")
     private String accountNumber;
 
     /**
      * 开户行
      */
-    @DataTracerFieldLabel("开户行")
+    @DataTracerFieldLabel("계좌 개설 은행")
     private String bankName;
 
     /**
      * 备注
      */
-    @DataTracerFieldLabel("备注")
+    @DataTracerFieldLabel("비고")
     private String remark;
 
     /**
@@ -65,13 +65,13 @@ public class InvoiceEntity {
     /**
      * 禁用状态
      */
-    @DataTracerFieldLabel("禁用状态")
+    @DataTracerFieldLabel("비활성화 상태")
     private Boolean disabledFlag;
 
     /**
      * 删除状态
      */
-    @DataTracerFieldLabel("删除状态")
+    @DataTracerFieldLabel("상태 삭제")
     private Boolean deletedFlag;
 
     /**

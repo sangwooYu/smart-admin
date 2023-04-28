@@ -32,14 +32,14 @@ public class RoleMenuController extends AdminBaseController {
     @Autowired
     private RoleMenuService roleMenuService;
 
-    @ApiOperation("更新角色权限 @author 卓大")
+    @ApiOperation("역할 권한 업데이트 @author ysw")
     @PostMapping("/role/menu/updateRoleMenu")
     @PreAuthorize("@saAuth.checkPermission('system:role:menu:update')")
     public ResponseDTO<String> updateRoleMenu(@Valid @RequestBody RoleMenuUpdateForm updateDTO) {
         return roleMenuService.updateRoleMenu(updateDTO);
     }
 
-    @ApiOperation("获取角色关联菜单权限 @author 卓大")
+    @ApiOperation("역할 연결 메뉴에 액세스하기 @author ysw")
     @GetMapping("/role/menu/getRoleSelectedMenu/{roleId}")
     public ResponseDTO<RoleMenuTreeVO> getRoleSelectedMenu(@PathVariable Long roleId) {
         return roleMenuService.getRoleSelectedMenu(roleId);

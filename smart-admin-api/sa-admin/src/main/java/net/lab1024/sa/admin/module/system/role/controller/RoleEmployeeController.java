@@ -36,40 +36,40 @@ public class RoleEmployeeController extends AdminBaseController {
     @Autowired
     private RoleEmployeeService roleEmployeeService;
 
-    @ApiOperation(value = "查询某个角色下的员工列表  @author 卓大")
+    @ApiOperation(value = "역할 아래의 직원 목록 쿼리  @author ysw")
     @PostMapping("/role/employee/queryEmployee")
     public ResponseDTO<PageResult<EmployeeVO>> queryEmployee(@Valid @RequestBody RoleEmployeeQueryForm roleEmployeeQueryForm) {
         return roleEmployeeService.queryEmployee(roleEmployeeQueryForm);
     }
 
-    @ApiOperation(value = "获取某个角色下的所有员工列表(无分页)  @author 卓大")
+    @ApiOperation(value = "역할 아래의 모든 직원 목록 가져오기(페이징 없음)  @author ysw")
     @GetMapping("/role/employee/getAllEmployeeByRoleId/{roleId}")
     public ResponseDTO<List<EmployeeVO>> listAllEmployeeRoleId(@PathVariable Long roleId) {
         return ResponseDTO.ok(roleEmployeeService.getAllEmployeeByRoleId(roleId));
     }
 
-    @ApiOperation(value = "从角色成员列表中移除员工 @author 卓大")
+    @ApiOperation(value = "역할 구성원 목록에서 직원 제거 @author ysw")
     @GetMapping("/role/employee/removeEmployee")
     @PreAuthorize("@saAuth.checkPermission('system:role:employee:delete')")
     public ResponseDTO<String> removeEmployee(Long employeeId, Long roleId) {
         return roleEmployeeService.removeRoleEmployee(employeeId, roleId);
     }
 
-    @ApiOperation(value = "从角色成员列表中批量移除员工 @author 卓大")
+    @ApiOperation(value = "역할 구성원 목록에서 직원 일괄 제거 @author ysw")
     @PostMapping("/role/employee/batchRemoveRoleEmployee")
     @PreAuthorize("@saAuth.checkPermission('system:role:employee:batch:delete')")
     public ResponseDTO<String> batchRemoveEmployee(@Valid @RequestBody RoleEmployeeUpdateForm updateForm) {
         return roleEmployeeService.batchRemoveRoleEmployee(updateForm);
     }
 
-    @ApiOperation(value = "角色成员列表中批量添加员工 @author 卓大")
+    @ApiOperation(value = "역할 구성원 목록에 직원 일괄 추가 @author ysw")
     @PostMapping("/role/employee/batchAddRoleEmployee")
     @PreAuthorize("@saAuth.checkPermission('system:role:employee:add')")
     public ResponseDTO<String> addEmployeeList(@Valid @RequestBody RoleEmployeeUpdateForm addForm) {
         return roleEmployeeService.batchAddRoleEmployee(addForm);
     }
 
-    @ApiOperation(value = "获取员工所有选中的角色和所有角色 @author 卓大")
+    @ApiOperation(value = "선택한 모든 역할 및 직원에 대한 모든 역할 가져오기 @author ysw")
     @GetMapping("/role/employee/getRoles/{employeeId}")
     public ResponseDTO<List<RoleSelectedVO>> getRoleByEmployeeId(@PathVariable Long employeeId) {
         return ResponseDTO.ok(roleEmployeeService.getRoleInfoListByEmployeeId(employeeId));

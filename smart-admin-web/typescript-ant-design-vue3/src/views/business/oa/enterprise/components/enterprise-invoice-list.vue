@@ -1,16 +1,8 @@
-<!--
-  * 企业 发票信息
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-08-15 20:15:49
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
--->
+
 <template>
   <a-form class="smart-query-form">
     <a-row class="smart-query-form-row">
-      <a-form-item label="핵심 단어" class="smart-query-form-item">
+      <a-form-item label="키워드" class="smart-query-form-item">
         <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="송장 지급인 / 은행 계좌 / 제작자" />
       </a-form-item>
 

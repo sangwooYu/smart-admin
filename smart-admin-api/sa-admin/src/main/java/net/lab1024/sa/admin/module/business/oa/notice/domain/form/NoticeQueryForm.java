@@ -18,31 +18,31 @@ import java.time.LocalDate;
 @Data
 public class NoticeQueryForm extends PageParam {
 
-    @ApiModelProperty("分类")
+    @ApiModelProperty("분류")
     private Long noticeTypeId;
 
-    @ApiModelProperty("标题、作者、来源")
+    @ApiModelProperty("제목, 저자, 출처")
     private String keywords;
 
-    @ApiModelProperty("文号")
+    @ApiModelProperty("문서 번호")
     private String documentNumber;
 
-    @ApiModelProperty("创建人")
+    @ApiModelProperty("작성자")
     private Long createUserId;
 
-    @ApiModelProperty("删除标识")
+    @ApiModelProperty("로고 삭제")
     private Boolean deletedFlag;
 
-    @ApiModelProperty("创建-开始时间")
+    @ApiModelProperty("만들기 - 시작 시간")
     private LocalDate createTimeBegin;
 
-    @ApiModelProperty("创建-截止时间")
+    @ApiModelProperty("만들기 - 마감일")
     private LocalDate createTimeEnd;
 
-    @ApiModelProperty("发布-开始时间")
+    @ApiModelProperty("릴리스 - 시작 시간")
     private LocalDate publishTimeBegin;
 
-    @ApiModelProperty("发布-截止时间")
+    @ApiModelProperty("릴리스 - 마감일")
     private LocalDate publishTimeEnd;
 
 }

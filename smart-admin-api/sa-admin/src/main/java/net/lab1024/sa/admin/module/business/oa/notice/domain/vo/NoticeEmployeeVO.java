@@ -17,10 +17,10 @@ import java.time.LocalDate;
 @Data
 public class NoticeEmployeeVO extends NoticeVO {
 
-    @ApiModelProperty("是否查看")
+    @ApiModelProperty("보기 또는 보기 안 함")
     private Boolean viewFlag;
 
-    @ApiModelProperty("发布日期")
+    @ApiModelProperty("릴리스 날짜")
     private LocalDate publishDate;
 
 }

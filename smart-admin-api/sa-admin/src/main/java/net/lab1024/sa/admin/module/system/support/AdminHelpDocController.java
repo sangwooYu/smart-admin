@@ -41,21 +41,21 @@ public class AdminHelpDocController extends SupportBaseController {
     // --------------------- 帮助文档 【目录管理】 -------------------------
 
 
-    @ApiOperation("帮助文档目录-添加 @author 卓大")
+    @ApiOperation("도움말 파일 디렉토리 - 추가 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('helpDocCatalog:addCategory')")
     @PostMapping("/helpDoc/helpDocCatalog/add")
     public ResponseDTO<String> addHelpDocCatalog(@RequestBody @Valid HelpDocCatalogAddForm helpDocCatalogAddForm) {
         return helpDocCatalogService.add(helpDocCatalogAddForm);
     }
 
-    @ApiOperation("帮助文档目录-更新 @author 卓大")
+    @ApiOperation("도움말 파일 카탈로그 - 업데이트 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('helpDocCatalog:edit')")
     @PostMapping("/helpDoc/helpDocCatalog/update")
     public ResponseDTO<String> updateHelpDocCatalog(@RequestBody @Valid HelpDocCatalogUpdateForm helpDocCatalogUpdateForm) {
         return helpDocCatalogService.update(helpDocCatalogUpdateForm);
     }
 
-    @ApiOperation("帮助文档目录-删除 @author 卓大")
+    @ApiOperation("도움말 파일 디렉터리 - 삭제 @author ysw")
     @GetMapping("/helpDoc/helpDocCatalog/delete/{helpDocCatalogId}")
     public ResponseDTO<String> deleteHelpDocCatalog(@PathVariable Long helpDocCatalogId) {
         return helpDocCatalogService.delete(helpDocCatalogId);
@@ -63,20 +63,20 @@ public class AdminHelpDocController extends SupportBaseController {
 
     // --------------------- 帮助文档 【管理:增、删、查、改】-------------------------
 
-    @ApiOperation("【管理】帮助文档-分页查询 @author 卓大")
+    @ApiOperation("[관리] 도움말 파일 - 페이징 쿼리 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('helpDoc:query')")
     @PostMapping("/helpDoc/query")
     public ResponseDTO<PageResult<HelpDocVO>> query(@RequestBody @Valid HelpDocQueryForm queryForm) {
         return ResponseDTO.ok(helpDocService.query(queryForm));
     }
 
-    @ApiOperation("【管理】帮助文档-获取详情 @author 卓大")
+    @ApiOperation("【관리] 도움말 파일-자세한 정보 보기 @author ysw")
     @GetMapping("/helpDoc/getDetail/{helpDocId}")
     public ResponseDTO<HelpDocDetailVO> getDetail(@PathVariable Long helpDocId) {
         return ResponseDTO.ok(helpDocService.getDetail(helpDocId));
     }
 
-    @ApiOperation("【管理】帮助文档-添加 @author 卓大")
+    @ApiOperation("[관리] 도움말 파일 - 추가 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('helpDoc:add')")
     @PostMapping("/helpDoc/add")
     @RepeatSubmit
@@ -84,7 +84,7 @@ public class AdminHelpDocController extends SupportBaseController {
         return helpDocService.add(addForm);
     }
 
-    @ApiOperation("【管理】帮助文档-更新 @author 卓大")
+    @ApiOperation("【관리] 도움말 파일-업데이트 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('helpDoc:update')")
     @PostMapping("/helpDoc/update")
     @RepeatSubmit
@@ -92,14 +92,14 @@ public class AdminHelpDocController extends SupportBaseController {
         return helpDocService.update(updateForm);
     }
 
-    @ApiOperation("【管理】帮助文档-删除 @author 卓大")
+    @ApiOperation("[관리] 도움말 파일 - 삭제 @author ysw")
     @PreAuthorize("@saAuth.checkPermission('helpDoc:delete')")
     @GetMapping("/helpDoc/delete/{helpDocId}")
     public ResponseDTO<String> delete(@PathVariable Long helpDocId) {
         return helpDocService.delete(helpDocId);
     }
 
-    @ApiOperation("【管理】帮助文档-根据关联id查询 @author 卓大")
+    @ApiOperation("[관리] 도움말 - 연결된 아이디로 검색 @author ysw")
     @GetMapping("/helpDoc/queryHelpDocByRelationId/{relationId}")
     public ResponseDTO<List<HelpDocVO>> queryHelpDocByRelationId(@PathVariable Long relationId) {
         return ResponseDTO.ok(helpDocService.queryHelpDocByRelationId(relationId));

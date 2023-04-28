@@ -24,18 +24,18 @@ import javax.validation.constraints.Pattern;
 @Data
 public class LoginForm extends CaptchaForm {
 
-    @ApiModelProperty("登录名")
-    @NotBlank(message = "登录名不能为空")
-    @Length(max = 30, message = "登录账号最多30字符")
+    @ApiModelProperty("로그인 계정")
+    @NotBlank(message = "로그인 계정은 비워 둘 수 없습니다.")
+    @Length(max = 30, message = "로그인 계정 최대 30자")
     private String loginName;
 
-    @ApiModelProperty("密码")
-    @NotBlank(message = "密码不能为空")
-    @Pattern(regexp = SmartVerificationUtil.PWD_REGEXP, message = "请输入6-15位密码(数字|大小写字母|小数点)")
+    @ApiModelProperty("비밀번호")
+    @NotBlank(message = "비밀번호는 비워 둘 수 없습니다.")
+    @Pattern(regexp = SmartVerificationUtil.PWD_REGEXP, message = "6~15자리 비밀번호(숫자 | 대문자 및 소문자 | 소수점)를 입력하세요.")
     private String password;
 
-    @ApiModelProperty(value = "登录终端")
+    @ApiModelProperty(value = "로그인 터미널")
     @ApiModelPropertyEnum(LoginDeviceEnum.class)
-    @CheckEnum(value = LoginDeviceEnum.class, required = true, message = "此终端不允许登录")
+    @CheckEnum(value = LoginDeviceEnum.class, required = true, message = "이 단말기는 로그인을 허용하지 않습니다.")
     private Integer loginDevice;
 }

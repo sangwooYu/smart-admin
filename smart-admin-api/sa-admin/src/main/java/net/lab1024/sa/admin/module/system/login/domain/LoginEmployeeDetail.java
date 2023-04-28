@@ -31,52 +31,52 @@ public class LoginEmployeeDetail implements UserDetails, RequestUser {
     @ApiModelProperty("token")
     private String token;
 
-    @ApiModelProperty("员工id")
+    @ApiModelProperty("직원 ID")
     private Long employeeId;
 
     @ApiModelPropertyEnum(UserTypeEnum.class)
     private UserTypeEnum userType;
 
-    @ApiModelProperty("登录账号")
+    @ApiModelProperty("로그인 계정")
     private String loginName;
 
-    @ApiModelProperty("员工名称")
+    @ApiModelProperty("직원 이름")
     private String actualName;
 
     @ApiModelPropertyEnum(GenderEnum.class)
     private Integer gender;
 
-    @ApiModelProperty("手机号码")
+    @ApiModelProperty("휴대폰 번호")
     private String phone;
 
-    @ApiModelProperty("部门id")
+    @ApiModelProperty("부서 ID")
     private Long departmentId;
 
-    @ApiModelProperty("部门名称")
+    @ApiModelProperty("부서 이름")
     private String departmentName;
 
-    @ApiModelProperty("是否为超管")
+    @ApiModelProperty("administratorFlag")
     private Boolean administratorFlag;
 
-    @ApiModelProperty("菜单列表")
+    @ApiModelProperty("메뉴 목록")
     private List<MenuVO> menuList;
 
     @JsonIgnore
     private String loginPassword;
 
-    @ApiModelProperty("上次登录id")
+    @ApiModelProperty("마지막 로그인 ID")
     private String lastLoginIp;
 
-    @ApiModelProperty("上次登录user-agent")
+    @ApiModelProperty("마지막 로그인 사용자 에이전트")
     private String lastLoginUserAgent;
 
-    @ApiModelProperty("上次登录时间")
+    @ApiModelProperty("마지막 로그인 시간")
     private LocalDateTime lastLoginTime;
 
-    @ApiModelProperty("请求ip")
+    @ApiModelProperty("IP 요청")
     private String ip;
 
-    @ApiModelProperty("请求user-agent")
+    @ApiModelProperty("사용자 에이전트 요청")
     private String userAgent;
 
     /**

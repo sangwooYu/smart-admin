@@ -16,7 +16,7 @@ public enum DataScopeTypeEnum implements BaseEnum {
     /**
      * 系统通知
      */
-    NOTICE(1, 20, "系统通知", "系统通知数据范围"),
+    NOTICE(1, 20, "시스템 알림", "시스템 알림 데이터 범위"),
     ;
 
     private Integer value;

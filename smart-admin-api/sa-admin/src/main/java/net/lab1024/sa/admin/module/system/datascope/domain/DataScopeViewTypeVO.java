@@ -17,12 +17,12 @@ import lombok.Data;
 @Builder
 public class DataScopeViewTypeVO {
 
-    @ApiModelProperty("可见范围")
+    @ApiModelProperty("가시 범위")
     private Integer viewType;
 
-    @ApiModelProperty("可见范围名称")
+    @ApiModelProperty("표시 범위 이름")
     private String viewTypeName;
 
-    @ApiModelProperty("级别,用于表示范围大小")
+    @ApiModelProperty("레벨: 범위 크기를 나타내는 데 사용됩니다.")
     private Integer viewTypeLevel;
 }

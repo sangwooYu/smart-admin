@@ -12,9 +12,9 @@ import lombok.Data;
 @Data
 public class EnterpriseListVO {
 
-    @ApiModelProperty("企业ID")
+    @ApiModelProperty("기업 ID")
     private Long enterpriseId;
 
-    @ApiModelProperty("企业名称")
+    @ApiModelProperty("회사 이름")
     private String enterpriseName;
 }

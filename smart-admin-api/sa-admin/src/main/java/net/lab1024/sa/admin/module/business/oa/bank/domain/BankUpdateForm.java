@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class BankUpdateForm extends BankCreateForm {
 
-    @ApiModelProperty("银行信息ID")
-    @NotNull(message = "银行信息ID不能为空")
+    @ApiModelProperty("은행 정보 ID")
+    @NotNull(message = "은행 정보 ID는 비워둘 수 없습니다.")
     private Long bankId;
 }

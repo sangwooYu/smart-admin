@@ -20,39 +20,39 @@ import java.util.List;
 @Data
 public class EmployeeVO {
 
-    @ApiModelProperty("主键id")
+    @ApiModelProperty("기본 키 ID")
     private Long employeeId;
 
-    @ApiModelProperty("登录账号")
+    @ApiModelProperty("로그인 계정")
     private String loginName;
 
     @ApiModelPropertyEnum(GenderEnum.class)
     private Integer gender;
 
-    @ApiModelProperty("员工名称")
+    @ApiModelProperty("직원 이름")
     private String actualName;
 
-    @ApiModelProperty("手机号码")
+    @ApiModelProperty("휴대폰 번호")
     private String phone;
 
-    @ApiModelProperty("部门id")
+    @ApiModelProperty("부서 ID")
     private Long departmentId;
 
-    @ApiModelProperty("是否被禁用")
+    @ApiModelProperty("비활성화 여부")
     private Boolean disabledFlag;
 
-    @ApiModelProperty("是否 超级管理员")
+    @ApiModelProperty("예 또는 아니요 슈퍼 관리자")
     private Boolean administratorFlag;
 
-    @ApiModelProperty("部门名称")
+    @ApiModelProperty("부서 이름")
     private String departmentName;
 
-    @ApiModelProperty("创建时间")
+    @ApiModelProperty("생성 시간")
     private LocalDateTime createTime;
 
-    @ApiModelProperty("角色列表")
+    @ApiModelProperty("캐릭터 목록")
     private List<Long> roleIdList;
 
-    @ApiModelProperty("角色名称列表")
+    @ApiModelProperty("캐릭터 이름 목록")
     private List<String> roleNameList;
 }

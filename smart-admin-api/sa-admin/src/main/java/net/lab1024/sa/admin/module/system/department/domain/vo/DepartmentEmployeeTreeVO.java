@@ -18,10 +18,10 @@ import java.util.List;
 @Data
 public class DepartmentEmployeeTreeVO extends DepartmentVO {
 
-    @ApiModelProperty("部门员工列表")
+    @ApiModelProperty("부서별 직원 목록")
     private List<EmployeeVO> employees;
 
-    @ApiModelProperty("子部门")
+    @ApiModelProperty("하위 부문")
     private List<DepartmentEmployeeTreeVO> children;
 
 }

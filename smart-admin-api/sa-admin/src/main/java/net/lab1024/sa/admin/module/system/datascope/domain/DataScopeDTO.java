@@ -17,16 +17,16 @@ import lombok.Data;
 @Builder
 public class DataScopeDTO {
 
-    @ApiModelProperty("数据范围类型")
+    @ApiModelProperty("데이터 범위 유형")
     private Integer dataScopeType;
 
-    @ApiModelProperty("数据范围名称")
+    @ApiModelProperty("데이터 범위 이름")
     private String dataScopeTypeName;
 
-    @ApiModelProperty("描述")
+    @ApiModelProperty("설명")
     private String dataScopeTypeDesc;
 
-    @ApiModelProperty("顺序")
+    @ApiModelProperty("주문")
     private Integer dataScopeTypeSort;
 
 }

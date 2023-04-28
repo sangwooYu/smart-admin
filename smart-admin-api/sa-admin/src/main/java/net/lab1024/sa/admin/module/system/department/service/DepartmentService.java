@@ -65,7 +65,7 @@ public class DepartmentService {
      */
     public ResponseDTO<String> updateDepartment(DepartmentUpdateForm updateDTO) {
         if (updateDTO.getParentId() == null) {
-            return ResponseDTO.userErrorParam("父级部门id不能为空");
+            return ResponseDTO.userErrorParam("상위 부서 ID는 비어 있을 수 없습니다.");
         }
         DepartmentEntity entity = departmentDao.selectById(updateDTO.getDepartmentId());
         if (entity == null) {
@@ -94,13 +94,13 @@ public class DepartmentService {
         // 是否有子级部门
         int subDepartmentNum = departmentDao.countSubDepartment(departmentId);
         if (subDepartmentNum > 0) {
-            return ResponseDTO.userErrorParam("请先删除子级部门");
+            return ResponseDTO.userErrorParam("먼저 하위 부서를 삭제하세요.");
         }
 
         // 是否有未删除员工
         int employeeNum = employeeDao.countByDepartmentId(departmentId);
         if (employeeNum > 0) {
-            return ResponseDTO.userErrorParam("请先删除部门员工");
+            return ResponseDTO.userErrorParam("부서 직원을 먼저 삭제하세요.");
         }
         departmentDao.deleteById(departmentId);
         // 清除缓存
@@ -109,7 +109,7 @@ public class DepartmentService {
     }
 
     /**
-     * 清除自身以及下级的id列表缓存
+     * 본인 및 부하의 아이디 목록 캐시 지우기
      */
     private void clearCache() {
         departmentCacheManager.clearCache();
@@ -118,7 +118,7 @@ public class DepartmentService {
     // ---------------------------- 查询 ----------------------------
 
     /**
-     * 获取部门树形结构
+     * 부서별 트리 구조 가져오기
      *
      * @return
      */
@@ -129,7 +129,7 @@ public class DepartmentService {
 
 
     /**
-     * 自身以及所有下级的部门id列表
+     * 본인 및 모든 부하의 부서 ID 목록
      *
      * @param departmentId
      * @return

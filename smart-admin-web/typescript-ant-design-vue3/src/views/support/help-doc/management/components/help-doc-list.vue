@@ -10,7 +10,7 @@
 <template>
   <a-form class="smart-query-form" v-privilege="'helpDoc:query'">
     <a-row class="smart-query-form-row">
-      <a-form-item label="핵심 단어" class="smart-query-form-item">
+      <a-form-item label="키워드" class="smart-query-form-item">
         <a-input style="width: 300px" v-model:value="queryForm.keywords" placeholder="제목, 작성자" />
       </a-form-item>
 

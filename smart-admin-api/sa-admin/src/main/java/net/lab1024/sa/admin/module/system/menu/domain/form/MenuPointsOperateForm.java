@@ -20,24 +20,24 @@ import java.util.List;
 @Data
 public class MenuPointsOperateForm {
 
-    @ApiModelProperty("菜单ID")
+    @ApiModelProperty("메뉴 ID")
     private Long menuId;
 
-    @ApiModelProperty("功能点名称")
-    @NotBlank(message = "功能点不能为空")
-    @Length(max = 30, message = "功能点最多30个字符")
+    @ApiModelProperty("함수 포인트 이름")
+    @NotBlank(message = "함수점은 비어있을 수 없습니다.")
+    @Length(max = 30, message = "최대 30자의 함수 포인트")
     private String menuName;
 
-    @ApiModelProperty("禁用状态")
-    @NotNull(message = "禁用状态不能为空")
+    @ApiModelProperty("비활성화 상태")
+    @NotNull(message = "비활성화 상태는 비워둘 수 없습니다.")
     private Boolean disabledFlag;
 
-    @ApiModelProperty("后端接口权限集合")
+    @ApiModelProperty("백엔드 인터페이스 권한 수집")
     private List<String> apiPermsList;
 
-    @ApiModelProperty("权限字符串")
+    @ApiModelProperty("권한 문자열")
     private String webPerms;
 
-    @ApiModelProperty("功能点关联菜单ID")
+    @ApiModelProperty("기능 포인트 관련 메뉴 ID")
     private Long contextMenuId;
 }

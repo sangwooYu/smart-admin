@@ -17,9 +17,9 @@ import net.lab1024.sa.common.common.swagger.ApiModelPropertyEnum;
 @Data
 public class CategoryTreeQueryForm {
 
-    @ApiModelPropertyEnum(desc = "分类类型|可选", value = CategoryTypeEnum.class)
+    @ApiModelPropertyEnum(desc = "분류 유형|선택 사항", value = CategoryTypeEnum.class)
     private Integer categoryType;
 
-    @ApiModelProperty("父级类目id|可选")
+    @ApiModelProperty("상위 카테고리 아이디|선택 사항")
     private Long parentId;
 }

@@ -35,31 +35,31 @@ public class CategoryController extends AdminBaseController {
     @Autowired
     private CategoryService categoryService;
 
-    @ApiOperation("添加类目 @author 胡克")
+    @ApiOperation("카테고리 추가 @author 후커")
     @PostMapping("/category/add")
     public ResponseDTO<String> add(@RequestBody @Valid CategoryAddForm addForm) {
         return categoryService.add(addForm);
     }
 
-    @ApiOperation("更新类目 @author 胡克")
+    @ApiOperation("카테고리 업데이트 @author 후커")
     @PostMapping("/category/update")
     public ResponseDTO<String> update(@RequestBody @Valid CategoryUpdateForm updateForm) {
         return categoryService.update(updateForm);
     }
 
-    @ApiOperation("查询类目详情 @author 胡克")
+    @ApiOperation("카테고리 세부 정보 찾기 @author 후커")
     @GetMapping("/category/{categoryId}")
     public ResponseDTO<CategoryVO> queryDetail(@PathVariable Long categoryId) {
         return categoryService.queryDetail(categoryId);
     }
 
-    @ApiOperation("查询类目层级树 @author 胡克")
+    @ApiOperation("쿼리 카테고리 계층 구조 트리 @author 후커")
     @PostMapping("/category/tree")
     public ResponseDTO<List<CategoryTreeVO>> queryTree(@RequestBody @Valid CategoryTreeQueryForm queryForm) {
         return categoryService.queryTree(queryForm);
     }
 
-    @ApiOperation("删除类目 @author 胡克")
+    @ApiOperation("카테고리 삭제 @author 후커")
     @GetMapping("/category/delete/{categoryId}")
     public ResponseDTO<String> delete(@PathVariable Long categoryId) {
         return categoryService.delete(categoryId);

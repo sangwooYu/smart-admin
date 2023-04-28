@@ -34,34 +34,34 @@ public class RoleController extends AdminBaseController {
     @Autowired
     private RoleService roleService;
 
-    @ApiOperation("添加角色 @author 卓大")
+    @ApiOperation("역할 추가하기 @author ysw")
     @PostMapping("/role/add")
     @PreAuthorize("@saAuth.checkPermission('system:role:add')")
     public ResponseDTO addRole(@Valid @RequestBody RoleAddForm roleAddForm) {
         return roleService.addRole(roleAddForm);
     }
 
-    @ApiOperation("删除角色 @author 卓大")
+    @ApiOperation("역할 삭제 @author ysw")
     @GetMapping("/role/delete/{roleId}")
     @PreAuthorize("@saAuth.checkPermission('system:role:delete')")
     public ResponseDTO<String> deleteRole(@PathVariable Long roleId) {
         return roleService.deleteRole(roleId);
     }
 
-    @ApiOperation("更新角色 @author 卓大")
+    @ApiOperation("역할 업데이트 @author ysw")
     @PostMapping("/role/update")
     @PreAuthorize("@saAuth.checkPermission('system:role:update')")
     public ResponseDTO<String> updateRole(@Valid @RequestBody RoleUpdateForm roleUpdateDTO) {
         return roleService.updateRole(roleUpdateDTO);
     }
 
-    @ApiOperation("获取角色数据 @author 卓大")
+    @ApiOperation("캐릭터 데이터에 액세스 @author ysw")
     @GetMapping("/role/get/{roleId}")
     public ResponseDTO<RoleVO> getRole(@PathVariable("roleId") Long roleId) {
         return roleService.getRoleById(roleId);
     }
 
-    @ApiOperation("获取所有角色 @author 卓大")
+    @ApiOperation("모든 캐릭터 가져오기 @author ysw")
     @GetMapping("/role/getAll")
     public ResponseDTO<List<RoleVO>> getAllRole() {
         return roleService.getAllRole();

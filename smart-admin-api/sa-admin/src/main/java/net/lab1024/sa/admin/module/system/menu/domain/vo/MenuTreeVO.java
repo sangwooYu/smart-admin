@@ -17,6 +17,6 @@ import java.util.List;
 @Data
 public class MenuTreeVO extends MenuVO{
 
-    @ApiModelProperty("菜单子集")
+    @ApiModelProperty("메뉴 하위 집합")
     private List<MenuTreeVO> children;
 }

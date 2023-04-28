@@ -17,24 +17,24 @@ import java.util.List;
 @Data
 public class CategoryTreeVO {
 
-    @ApiModelProperty("类目id")
+    @ApiModelProperty("카테고리 ID")
     private Long categoryId;
 
-    @ApiModelProperty("类目名称")
+    @ApiModelProperty("카테고리 이름")
     private String categoryName;
 
-    @ApiModelProperty("类目层级全称")
+    @ApiModelProperty("클래스 계층 구조의 전체 이름")
     private String categoryFullName;
 
-    @ApiModelProperty("父级id")
+    @ApiModelProperty("부모 ID")
     private Long parentId;
 
-    @ApiModelProperty("类目id")
+    @ApiModelProperty("카테고리 ID")
     private Long value;
 
-    @ApiModelProperty("类目名称")
+    @ApiModelProperty("카테고리 이름")
     private String label;
 
-    @ApiModelProperty("子类")
+    @ApiModelProperty("하위 카테고리")
     private List<CategoryTreeVO> children;
 }

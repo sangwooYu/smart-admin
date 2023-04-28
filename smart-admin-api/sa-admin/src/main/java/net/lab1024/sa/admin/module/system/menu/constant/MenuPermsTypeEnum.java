@@ -16,11 +16,11 @@ public enum MenuPermsTypeEnum implements BaseEnum {
     /**
      * SpringSecurity模式
      */
-    SPRING_SECURITY(1, "SpringSecurity模式"),
+    SPRING_SECURITY(1, "SpringSecurity패턴"),
     /**
      * URL模式
      */
-    URL(2, "URL模式"),
+    URL(2, "URL 모드"),
 
     ;
 

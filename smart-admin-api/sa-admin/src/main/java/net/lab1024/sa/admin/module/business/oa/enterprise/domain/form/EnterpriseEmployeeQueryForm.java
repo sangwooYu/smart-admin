@@ -21,15 +21,15 @@ import java.util.List;
 @Data
 public class EnterpriseEmployeeQueryForm extends PageParam {
 
-    @ApiModelProperty("搜索词")
-    @Length(max = 20, message = "搜索词最多20字符")
+    @ApiModelProperty("검색어")
+    @Length(max = 20, message = "검색어 최대 20자")
     private String keyword;
 
-    @ApiModelProperty("公司Id")
-    @NotNull(message = "公司id 不能为空")
+    @ApiModelProperty("회사 ID")
+    @NotNull(message = "회사 ID는 비워둘 수 없습니다.")
     private Long enterpriseId;
 
-    @ApiModelProperty(value = "删除标识", hidden = true)
+    @ApiModelProperty(value = "로고 삭제", hidden = true)
     private Boolean deletedFlag;
 
 }

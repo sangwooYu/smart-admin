@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class GoodsUpdateForm extends GoodsAddForm {
 
-    @ApiModelProperty("商品id")
-    @NotNull(message = "商品id不能为空")
+    @ApiModelProperty("제품 ID")
+    @NotNull(message = "제품 ID는 비워 둘 수 없습니다.")
     private Long goodsId;
 }

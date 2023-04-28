@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
 public class NoticeUpdateForm extends NoticeAddForm {
 
     @ApiModelProperty("id")
-    @NotNull(message = "通知id不能为空")
+    @NotNull(message = "알림 ID는 비워둘 수 없습니다.")
     private Long noticeId;
 
 }

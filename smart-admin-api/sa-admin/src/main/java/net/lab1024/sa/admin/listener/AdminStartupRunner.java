@@ -26,7 +26,7 @@ public class AdminStartupRunner implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        // 初始化状态码
+        // 초기화 상태 코드
         int codeCount = ErrorCodeRegister.initialize();
 
         //TODO <卓大> ：시간 제한 작업을 설정할지 여부는 실제 상황에 따라 다릅니다.

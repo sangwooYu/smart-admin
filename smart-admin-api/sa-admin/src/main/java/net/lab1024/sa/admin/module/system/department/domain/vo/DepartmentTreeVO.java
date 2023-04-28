@@ -17,16 +17,16 @@ import java.util.List;
 @Data
 public class DepartmentTreeVO extends DepartmentVO {
 
-    @ApiModelProperty("同级上一个元素id")
+    @ApiModelProperty("동일한 레벨의 이전 요소 ID")
     private Long preId;
 
-    @ApiModelProperty("同级下一个元素id")
+    @ApiModelProperty("같은 레벨의 다음 요소 ID")
     private Long nextId;
 
-    @ApiModelProperty("子部门")
+    @ApiModelProperty("하위 부문")
     private List<DepartmentTreeVO> children;
 
-    @ApiModelProperty("自己和所有递归子部门的id集合")
+    @ApiModelProperty("자신과 모든 재귀 하위 섹터에 대한 ID 모음")
     private List<Long> selfAndAllChildrenIdList;
 
 }

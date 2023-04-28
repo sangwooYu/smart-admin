@@ -18,12 +18,12 @@ import java.util.List;
 @Data
 public class RoleMenuTreeVO {
 
-    @ApiModelProperty("角色ID")
+    @ApiModelProperty("캐릭터 ID")
     private Long roleId;
 
-    @ApiModelProperty("菜单列表")
+    @ApiModelProperty("메뉴 목록")
     private List<MenuSimpleTreeVO> menuTreeList;
 
-    @ApiModelProperty("选中的菜单ID")
+    @ApiModelProperty("선택한 메뉴 ID")
     private List<Long> selectedMenuId;
 }

@@ -24,25 +24,25 @@ import java.time.LocalDateTime;
 @Data
 public class CategoryVO {
 
-    @ApiModelProperty(value = "类目名称", required = true)
+    @ApiModelProperty(value = "카테고리 이름", required = true)
     private String categoryName;
 
-    @ApiModelPropertyEnum(desc = "分类类型", value = CategoryTypeEnum.class)
+    @ApiModelPropertyEnum(desc = "분류 유형", value = CategoryTypeEnum.class)
     private Integer categoryType;
 
-    @ApiModelProperty("父级类目id|可选")
+    @ApiModelProperty("상위 카테고리 아이디|선택 사항")
     private Long parentId;
 
-    @ApiModelProperty("排序|可选")
+    @ApiModelProperty("정렬|선택 사항")
     private Integer sort;
 
-    @ApiModelProperty("备注|可选")
+    @ApiModelProperty("비고|선택 사항")
     private String remark;
 
-    @ApiModelProperty("禁用状态")
+    @ApiModelProperty("비활성화 상태")
     private Boolean disabledFlag;
 
-    @ApiModelProperty("类目id")
+    @ApiModelProperty("카테고리 아이디")
     private Long categoryId;
 
     private LocalDateTime updateTime;

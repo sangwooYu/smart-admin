@@ -51,11 +51,11 @@ public class MenuService {
     public synchronized ResponseDTO<String> addMenu(MenuAddForm menuAddForm) {
         // 校验菜单名称
         if (this.validateMenuName(menuAddForm)) {
-            return ResponseDTO.userErrorParam("菜单名称已存在");
+            return ResponseDTO.userErrorParam("메뉴 이름이 이미 존재합니다.");
         }
         // 校验前端权限字符串
         if (this.validateWebPerms(menuAddForm)) {
-            return ResponseDTO.userErrorParam("权限字符串已存在");
+            return ResponseDTO.userErrorParam("권한 문자열이 이미 존재합니다.");
         }
         MenuEntity menuEntity = SmartBeanUtil.copy(menuAddForm, MenuEntity.class);
         // 处理接口权限
@@ -78,21 +78,21 @@ public class MenuService {
         //校验菜单是否存在
         MenuEntity selectMenu = menuDao.selectById(menuUpdateForm.getMenuId());
         if (selectMenu == null) {
-            return ResponseDTO.userErrorParam("菜单不存在");
+            return ResponseDTO.userErrorParam("메뉴가 존재하지 않습니다.");
         }
         if (selectMenu.getDeletedFlag()) {
-            return ResponseDTO.userErrorParam("菜单已被删除");
+            return ResponseDTO.userErrorParam("메뉴가 제거되었습니다.");
         }
         //校验菜单名称
         if (this.validateMenuName(menuUpdateForm)) {
-            return ResponseDTO.userErrorParam("菜单名称已存在");
+            return ResponseDTO.userErrorParam("메뉴 이름이 이미 존재합니다.");
         }
         // 校验前端权限字符串
         if (this.validateWebPerms(menuUpdateForm)) {
-            return ResponseDTO.userErrorParam("权限字符串已存在");
+            return ResponseDTO.userErrorParam("권한 문자열이 이미 존재합니다.");
         }
         if (menuUpdateForm.getMenuId().equals(menuUpdateForm.getParentId())) {
-            return ResponseDTO.userErrorParam("上级菜单不能为自己");
+            return ResponseDTO.userErrorParam("우월한 메뉴는 그 자체로 존재할 수 없습니다.");
         }
         MenuEntity menuEntity = SmartBeanUtil.copy(menuUpdateForm, MenuEntity.class);
         // 处理接口权限
@@ -115,7 +115,7 @@ public class MenuService {
      */
     public synchronized ResponseDTO<String> batchDeleteMenu(List<Long> menuIdList, Long employeeId) {
         if (CollectionUtils.isEmpty(menuIdList)) {
-            return ResponseDTO.userErrorParam("所选菜单不能为空");
+            return ResponseDTO.userErrorParam("선택한 메뉴는 비워둘 수 없습니다.");
         }
         menuDao.deleteByMenuIdList(menuIdList, employeeId, Boolean.TRUE);
         //孩子节点也需要删除
@@ -263,10 +263,10 @@ public class MenuService {
         //校验菜单是否存在
         MenuEntity selectMenu = menuDao.selectById(menuId);
         if (selectMenu == null) {
-            return ResponseDTO.error(SystemErrorCode.SYSTEM_ERROR, "菜单不存在");
+            return ResponseDTO.error(SystemErrorCode.SYSTEM_ERROR, "메뉴가 존재하지 않습니다.");
         }
         if (selectMenu.getDeletedFlag()) {
-            return ResponseDTO.error(SystemErrorCode.SYSTEM_ERROR, "菜单已被删除");
+            return ResponseDTO.error(SystemErrorCode.SYSTEM_ERROR, "메뉴가 제거되었습니다.");
         }
         MenuVO menuVO = SmartBeanUtil.copy(selectMenu, MenuVO.class);
         //处理接口权限

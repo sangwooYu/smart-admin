@@ -18,9 +18,9 @@ import net.lab1024.sa.common.common.enumeration.BaseEnum;
 @AllArgsConstructor
 public enum NoticeVisibleRangeDataTypeEnum implements BaseEnum {
 
-    EMPLOYEE(1, "员工"),
+    EMPLOYEE(1, "직원"),
 
-    DEPARTMENT(2, "部门"),
+    DEPARTMENT(2, "섹터"),
 
     ;
 

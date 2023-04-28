@@ -36,67 +36,67 @@ public class EmployeeController extends AdminBaseController {
     private EmployeeService employeeService;
 
     @PostMapping("/employee/query")
-    @ApiOperation(value = "员工管理查询 @author 卓大")
+    @ApiOperation(value = "직원 관리 문의 @author ysw")
     public ResponseDTO<PageResult<EmployeeVO>> query(@Valid @RequestBody EmployeeQueryForm query) {
         return employeeService.queryEmployee(query);
     }
 
-    @ApiOperation(value = "添加员工(返回添加员工的密码) @author 卓大")
+    @ApiOperation(value = "직원 추가(직원 추가를 위한 비밀번호 반환) @author ysw")
     @PostMapping("/employee/add")
     @PreAuthorize("@saAuth.checkPermission('system:employee:add')")
     public ResponseDTO<String> addEmployee(@Valid @RequestBody EmployeeAddForm employeeAddForm) {
         return employeeService.addEmployee(employeeAddForm);
     }
 
-    @ApiOperation(value = "更新员工 @author 卓大")
+    @ApiOperation(value = "직원 업데이트 @author ysw")
     @PostMapping("/employee/update")
     @PreAuthorize("@saAuth.checkPermission('system:employee:update')")
     public ResponseDTO<String> updateEmployee(@Valid @RequestBody EmployeeUpdateForm employeeUpdateForm) {
         return employeeService.updateEmployee(employeeUpdateForm);
     }
 
-    @ApiOperation(value = "更新员工禁用/启用状态 @author 卓大")
+    @ApiOperation(value = "직원 비활성화/활성화 상태 업데이트 @author ysw")
     @GetMapping("/employee/update/disabled/{employeeId}")
     @PreAuthorize("@saAuth.checkPermission('system:employee:disabled')")
     public ResponseDTO<String> updateDisableFlag(@PathVariable Long employeeId) {
         return employeeService.updateDisableFlag(employeeId);
     }
 
-    @ApiOperation(value = "批量删除员工 @author 卓大")
+    @ApiOperation(value = "직원 일괄 삭제 @author ysw")
     @PostMapping("/employee/update/batch/delete")
     @PreAuthorize("@saAuth.checkPermission('system:employee:delete')")
     public ResponseDTO<String> batchUpdateDeleteFlag(@RequestBody List<Long> employeeIdList) {
         return employeeService.batchUpdateDeleteFlag(employeeIdList);
     }
 
-    @ApiOperation(value = "批量调整员工部门 @author 卓大")
+    @ApiOperation(value = "직원 부서 일괄 조정 @author ysw")
     @PostMapping("/employee/update/batch/department")
     @PreAuthorize("@saAuth.checkPermission('system:employee:department:update')")
     public ResponseDTO<String> batchUpdateDepartment(@Valid @RequestBody EmployeeBatchUpdateDepartmentForm batchUpdateDepartmentForm) {
         return employeeService.batchUpdateDepartment(batchUpdateDepartmentForm);
     }
 
-    @ApiOperation(value = "修改密码 @author 卓大")
+    @ApiOperation(value = "비밀번호 변경 @author ysw")
     @PostMapping("/employee/update/password")
     public ResponseDTO<String> updatePassword(@Valid @RequestBody EmployeeUpdatePasswordForm updatePasswordForm) {
         updatePasswordForm.setEmployeeId(SmartRequestUtil.getRequestUserId());
         return employeeService.updatePassword(updatePasswordForm);
     }
 
-    @ApiOperation(value = "重置员工密码 @author 卓大")
+    @ApiOperation(value = "직원 비밀번호 재설정 @author ysw")
     @GetMapping("/employee/update/password/reset/{employeeId}")
     @PreAuthorize("@saAuth.checkPermission('system:employee:password:reset')")
     public ResponseDTO<String> resetPassword(@PathVariable Integer employeeId) {
         return employeeService.resetPassword(employeeId);
     }
 
-    @ApiOperation(value = "查询员工-根据部门id @author 卓大")
+    @ApiOperation(value = "직원 검색 - 부서 ID로 검색 @author ysw")
     @GetMapping("/employee/getAllEmployeeByDepartmentId/{departmentId}")
     public ResponseDTO<List<EmployeeVO>> getAllEmployeeByDepartmentId(@PathVariable Long departmentId) {
         return employeeService.getAllEmployeeByDepartmentId(departmentId, Boolean.FALSE);
     }
 
-    @ApiOperation("查询所有员工 @author 卓大")
+    @ApiOperation("모든 직원 검색 @author ysw")
     @GetMapping("/employee/queryAll")
     public ResponseDTO<List<EmployeeVO>> queryAllEmployee(@RequestParam(value = "disabledFlag", required = false) Boolean disabledFlag) {
         return employeeService.queryAllEmployee(disabledFlag);

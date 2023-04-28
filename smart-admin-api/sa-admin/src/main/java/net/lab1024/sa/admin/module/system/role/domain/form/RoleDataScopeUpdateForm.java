@@ -19,11 +19,11 @@ import java.util.List;
 @Data
 public class RoleDataScopeUpdateForm {
 
-    @ApiModelProperty("角色id")
-    @NotNull(message = "角色id不能为空")
+    @ApiModelProperty("캐릭터 ID")
+    @NotNull(message = "캐릭터 ID는 비어 있을 수 없습니다.")
     private Long roleId;
 
-    @ApiModelProperty("设置信息")
+    @ApiModelProperty("설정 정보")
     @Valid
     private List<RoleUpdateDataScopeListFormItem> dataScopeItemList;
 
@@ -31,12 +31,12 @@ public class RoleDataScopeUpdateForm {
     @Data
     public static class RoleUpdateDataScopeListFormItem {
 
-        @ApiModelProperty("数据范围类型")
-        @NotNull(message = "数据范围类型不能为空")
+        @ApiModelProperty("데이터 범위 유형")
+        @NotNull(message = "데이터 범위 유형은 비어 있을 수 없습니다.")
         private Integer dataScopeType;
 
-        @ApiModelProperty("可见范围")
-        @NotNull(message = "可见范围不能为空")
+        @ApiModelProperty("가시 범위")
+        @NotNull(message = "가시 범위는 비워둘 수 없습니다.")
         private Integer viewType;
     }
 
