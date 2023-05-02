@@ -5,7 +5,7 @@
  * @LastEditTime: 2022-06-23
  * @LastEditors: zhuoda
  */
-import { postRequest, getRequest } from '/@/lib/axios';
+import { postRequest, getRequest } from '/src/lib/axios';
 
 export const goodsApi = {
   // 添加商品 @author zhuoda

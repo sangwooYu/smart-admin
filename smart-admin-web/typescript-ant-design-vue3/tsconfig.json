@@ -9,6 +9,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
     "jsx": "preserve",
     "baseUrl": ".",
     "sourceMap": true,
@@ -21,6 +22,7 @@
     "types": ["vite/client","node"],
     "typeRoots": ["./node_modules/@types/", "./types"],
     "skipLibCheck": true,
+    "allowJS" : true,
     "paths": {
       "/@/*": ["src/*"]
     }

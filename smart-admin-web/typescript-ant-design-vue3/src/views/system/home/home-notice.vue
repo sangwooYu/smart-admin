@@ -72,7 +72,7 @@ import DefaultHomeCard from '/@/views/system/home/components/default-home-card.v
 
   // 세부 정보 입력
   const router = useRouter();
-  function toDetail(noticeId) {
+  function toDetail(noticeId: any) {
     router.push({
       path: '/oa/notice/notice-employee-detail',
       query: { noticeId },

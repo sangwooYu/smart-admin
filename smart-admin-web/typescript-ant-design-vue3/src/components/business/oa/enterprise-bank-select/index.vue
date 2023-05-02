@@ -1,13 +1,3 @@
-<!--
-  * 公司银行 下拉选择框
-  * 
-  * @Author:    1024创新实验室：开云
-  * @Date:      2022-09-02 22:12:20 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
-  *
--->
 <template>
   <a-select
     v-model:value="selectValue"
@@ -78,7 +68,7 @@
     }
   );
 
-  function handleChange(value) {
+  function handleChange(value: any) {
     emit('update:value', value);
     emit('change', value);
   }
@@ -98,7 +88,7 @@
   }
 
   // 银行卡号 中间位数 加星 处理
-  function starAccountNumber(accountNumber) {
+  function starAccountNumber(accountNumber: string) {
     if (accountNumber.length < 7) {
       return accountNumber;
     }

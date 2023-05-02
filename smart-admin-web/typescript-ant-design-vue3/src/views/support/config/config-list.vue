@@ -33,7 +33,7 @@
             <template #icon>
               <PlusOutlined />
             </template>
-            신규 건설
+            신규 추가
           </a-button>
         </a-form-item>
       </a-row>

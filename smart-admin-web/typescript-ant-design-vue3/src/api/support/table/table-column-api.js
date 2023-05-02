@@ -6,7 +6,7 @@
  * @LastEditors: zhuoda
  * @LastEditTime: 2022-08-21
  */
-import { postRequest, getRequest } from '/@/lib/axios';
+import { postRequest, getRequest } from '/src/lib/axios';
 
 export const tableColumnApi = {
   // 修改表格列 @author zhuoda

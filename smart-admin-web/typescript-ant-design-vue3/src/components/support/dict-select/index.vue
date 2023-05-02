@@ -75,7 +75,7 @@
     let res = [];
     if (props.value && props.value.length > 0) {
       props.value.forEach((element) => {
-        res.push(element.valueCode);
+        return res.push(element.valueCode);
       });
       return res;
     }

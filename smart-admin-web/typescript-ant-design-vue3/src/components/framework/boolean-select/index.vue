@@ -52,7 +52,7 @@
   const emit = defineEmits(['update:value', 'change']);
 
   function convertBoolean2number(value) {
-    let result = null;
+    let result: number | null = null;
     if (_.isNaN(value) || _.isNull(value) || _.isUndefined(value)) {
       result = null;
     } else {
@@ -71,7 +71,7 @@
 
   const handleChange = (value) => {
     console.log('boolean enum select', value);
-    let booleanResult = null;
+    let booleanResult: boolean | null = null;
     if (!_.isUndefined(value)) {
       booleanResult = value === 1 ? true : false;
     }

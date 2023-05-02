@@ -109,7 +109,7 @@ export const useUserStore = defineStore({
       localClear();
     },
     //设置登录信息
-    setUserLoginInfo(data) {
+    setUserLoginInfo(data: any) {
       // 用户基本信息
       this.token = data.token;
       this.employeeId = data.employeeId;
@@ -252,13 +252,13 @@ export const useUserStore = defineStore({
 /**
  * 构建菜单父级集合
  */
-function buildMenuParentIdListMap(menuTree) {
+function buildMenuParentIdListMap(menuTree: any) {
   let menuParentIdListMap = new Map();
   recursiveBuildMenuParentIdListMap(menuTree, [], menuParentIdListMap);
   return menuParentIdListMap;
 }
 
-function recursiveBuildMenuParentIdListMap(menuList, parentMenuList, menuParentIdListMap) {
+function recursiveBuildMenuParentIdListMap(menuList: any, parentMenuList: any, menuParentIdListMap: any) {
   for (const e of menuList) {
     // 顶级parentMenuList清空
     if (e.parentId == 0) {
@@ -282,20 +282,20 @@ function recursiveBuildMenuParentIdListMap(menuList, parentMenuList, menuParentI
  * @param  menuList
  * @returns
  */
-function buildMenuTree(menuList) {
+function buildMenuTree(menuList: any) {
   //1 获取所有 有效的 目录和菜单
-  let catalogAndMenuList = menuList.filter((menu) => menu.menuType !== MENU_TYPE_ENUM.POINTS.value && menu.visibleFlag && !menu.disabledFlag);
+  let catalogAndMenuList = menuList.filter((menu: any) => menu.menuType !== MENU_TYPE_ENUM.POINTS.value && menu.visibleFlag && !menu.disabledFlag);
 
   //2 获取顶级目录
-  let topCatalogList = catalogAndMenuList.filter((menu) => menu.parentId === 0);
+  let topCatalogList = catalogAndMenuList.filter((menu: any) => menu.parentId === 0);
   for (const topCatalog of topCatalogList) {
     buildMenuChildren(topCatalog, catalogAndMenuList);
   }
   return topCatalogList;
 }
 
-function buildMenuChildren(menu, allMenuList) {
-  let children = allMenuList.filter((e) => e.parentId === menu.menuId);
+function buildMenuChildren(menu: any, allMenuList: any) {
+  let children = allMenuList.filter((e: any) => e.parentId === menu.menuId);
   if (children.length === 0) {
     return;
   }

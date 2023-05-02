@@ -247,7 +247,7 @@
     return [
       '엔티티 카테고리:' + formData.moduleName + 'Entity.java', //
       '성능 카테고리:' + formData.moduleName + 'VO.java', //
-      '새로운 건설 카테고리:' + formData.moduleName + 'AddForm.java', //
+      '새로운 추가 카테고리:' + formData.moduleName + 'AddForm.java', //
       '갱신 카테고리:' + formData.moduleName + 'UpdateForm.java', //
       '문의 카테고리:' + formData.moduleName + 'QueryForm.java', //
     ];

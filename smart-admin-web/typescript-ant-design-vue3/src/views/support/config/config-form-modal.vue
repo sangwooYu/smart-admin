@@ -11,13 +11,13 @@
   <a-modal :visible="visible" :title="form.configId ? '편집' : '추가'" ok-text="OK" cancel-text="취소" @ok="onSubmit" @cancel="onClose">
     <a-form ref="formRef" :model="form" :rules="rules" :label-col="{ span: 5 }">
       <a-form-item label="매개변수 키" name="configKey">
-        <a-input v-model:value="form.configKey" placeholder="请输入参数Key" />
+        <a-input v-model:value="form.configKey" placeholder="configKey" />
       </a-form-item>
       <a-form-item label="매개변수 이름" name="configName">
-        <a-input v-model:value="form.configName" placeholder="请输入参数名称" />
+        <a-input v-model:value="form.configName" placeholder="configName" />
       </a-form-item>
       <a-form-item label="매개변수 값" name="configValue">
-        <a-input v-model:value="form.configValue" placeholder="请输入参数值" />
+        <a-input v-model:value="form.configValue" placeholder="configValue" />
       </a-form-item>
       <a-form-item label="비고" name="remark">
         <textarea v-model="form.remark" style="width: 100%; height: 100px; outline: none"></textarea>

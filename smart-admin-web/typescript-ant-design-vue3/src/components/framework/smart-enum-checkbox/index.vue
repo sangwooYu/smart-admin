@@ -12,7 +12,7 @@
   <a-checkbox-group :style="`width: ${width}`" v-model:value="selectValue" :options="optionList" @change="handleChange" />
 </template>
 
-<script setup lang="ts">
+<script setup lang="js">
   import { ref, watch, getCurrentInstance, onMounted } from 'vue';
 
   const props = defineProps({

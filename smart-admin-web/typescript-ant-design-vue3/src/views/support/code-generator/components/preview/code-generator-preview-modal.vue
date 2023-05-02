@@ -143,7 +143,7 @@
           block.innerHTML =
             "<div><div style='padding: 5px 0px 10px 20px;float:right'><span style='margin-right: 10px;padding: 5px;border: white solid 1px;color:white;border-radius: 2px'>" +
             block.className.match(/(?<=language-).*(?= hljs)/).toString() +
-            "</span><button class='ant-btn ant-btn-sm' >复制代码</button></div>" +
+            "</span><button class='ant-btn ant-btn-sm' >코드 복사</button></div>" +
             block.innerHTML +
             '</div>';
           let copyButton = block.querySelector('button');

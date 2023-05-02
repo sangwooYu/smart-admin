@@ -38,7 +38,7 @@
           <template #icon>
             <PlusOutlined />
           </template>
-          신규 건설
+          신규 추가
         </a-button>
 
         <a-button @click="confirmBatchDelete" v-privilege="'support:dict:batch:delete'" type="danger" size="small" :disabled="selectedRowKeyList.length == 0">

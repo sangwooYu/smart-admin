@@ -93,7 +93,7 @@ public class CaptchaService {
      */
     public ResponseDTO<String> checkCaptcha(CaptchaForm captchaForm) {
         if (StringUtils.isBlank(captchaForm.getCaptchaUuid()) || StringUtils.isBlank(captchaForm.getCaptchaCode())) {
-            return ResponseDTO.userErrorParam("请输入正确验证码");
+            return ResponseDTO.userErrorParam("올바른 인증 코드를 입력하세요.");
         }
         /**
          * 1、校验redis里的验证码
@@ -102,10 +102,10 @@ public class CaptchaService {
         String redisCaptchaKey = redisService.generateRedisKey(RedisKeyConst.Support.CAPTCHA, captchaForm.getCaptchaUuid());
         String redisCaptchaCode = redisService.get(redisCaptchaKey);
         if (StringUtils.isBlank(redisCaptchaCode)) {
-            return ResponseDTO.userErrorParam("验证码已过期，请刷新重试");
+            return ResponseDTO.userErrorParam("캡차가 만료되었습니다. 새로고침 후 다시 시도하세요.");
         }
         if (!Objects.equals(redisCaptchaCode, captchaForm.getCaptchaCode())) {
-            return ResponseDTO.userErrorParam("验证码错误，请输入正确的验证码");
+            return ResponseDTO.userErrorParam("인증 코드가 잘못되었습니다. 올바른 코드를 입력하세요.");
         }
         // 删除已使用的验证码
         redisService.delete(redisCaptchaKey);

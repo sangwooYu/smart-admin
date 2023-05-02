@@ -44,11 +44,13 @@ export function mergeColumn(originalTableColumnArray, userTableColumnArray) {
         fontColumn.width = userColumn.width;
       }
     }
+    // @ts-ignore
     newColumns.push(fontColumn);
     fontColumnSort++;
   }
 
   //第三步：前端列进行排序
+  // @ts-ignore
   newColumns = _.sortBy(newColumns, (e) => e.sort);
   return newColumns;
 }

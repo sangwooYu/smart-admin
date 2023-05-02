@@ -97,7 +97,7 @@
     margin-bottom: 10px;
 
     .heart-sentence {
-      width: calc(100% -660px);
+      width: calc(100% - 660px);
       h3 {
         color: rgba(0, 0, 0, 0.75);
       }

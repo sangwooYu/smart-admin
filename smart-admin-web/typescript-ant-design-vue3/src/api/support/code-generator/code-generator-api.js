@@ -7,7 +7,7 @@
  * @Email:     lab1024@163.com
  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
  */
-import { getRequest, postRequest,download } from '/@/lib/axios';
+import { getRequest, postRequest,download } from '/src/lib/axios';
 
 export const codeGeneratorApi = {
   // 查询数据库的表 @author 卓大

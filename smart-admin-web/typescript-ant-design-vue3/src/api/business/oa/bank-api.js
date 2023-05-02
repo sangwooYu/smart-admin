@@ -7,7 +7,7 @@
  * @Email:     lab1024@163.com
  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
  */
-import { postRequest, getRequest } from '/@/lib/axios';
+import { postRequest, getRequest } from '/src/lib/axios';
 
 export const bankApi = {
   // 新建银行信息 @author 善逸

@@ -90,7 +90,7 @@
     }
   );
 
-  function onChange(value) {
+  function onChange(value: any) {
     emit('update:value', value);
     emit('change', value);
   }

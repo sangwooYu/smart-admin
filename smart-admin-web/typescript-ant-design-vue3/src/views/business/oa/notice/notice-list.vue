@@ -69,7 +69,7 @@
           <template #icon>
             <PlusOutlined />
           </template>
-          신규 건설
+          신규 추가
         </a-button>
       </div>
       <div class="smart-table-setting-block">

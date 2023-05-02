@@ -85,7 +85,7 @@
     emit(
       'change',
       value,
-      dataList.value.find((e) => e.invoiceId == value)
+      dataList.value.find((e) => e['invoiceId'] == value)
     );
   }
 

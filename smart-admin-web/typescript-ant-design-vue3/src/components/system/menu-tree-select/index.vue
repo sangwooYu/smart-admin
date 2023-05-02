@@ -50,7 +50,7 @@
     let res = await menuApi.queryMenu();
     menuList = res.data.filter((e) => e.menuType === MENU_TYPE_ENUM.MENU.value || e.menuType === MENU_TYPE_ENUM.CATALOG.value);
     for (const item of menuList) {
-      if (item.menuType === MENU_TYPE_ENUM.CATALOG.value) {
+      if (item['menuType'] === MENU_TYPE_ENUM.CATALOG.value) {
         item.disabled = true;
       }
     }
@@ -61,7 +61,7 @@
    * 根据id集合，获取菜单集合
    */
   function getMenuListByIdList(menuIdList) {
-    return _.cloneDeep(menuList.filter((e) => menuIdList.indexOf(e.menuId) > -1));
+    return _.cloneDeep(menuList.filter((e) => menuIdList.indexOf(e['menuId']) > -1));
   }
 
   function onSelectChange(e) {
