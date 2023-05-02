@@ -7,8 +7,8 @@
  * @Email:     lab1024@163.com
  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
  */
-import antd from 'ant-design-vue/es/locale-provider/zh_CN';
-import dayjs from 'dayjs/locale/zh-cn';
+import antd from 'ant-design-vue/es/locale-provider/en_US';
+import dayjs from 'dayjs/locale/eu';
 
 export default {
   antdLocale: antd,
