@@ -50,7 +50,7 @@ public class Swagger2MapperImplExtension extends ServiceModelToSwagger2MapperImp
                 return Integer.compare(position1, position2);
             });
             try {
-                // 因ApiListing的属性都是final故需要通过反射来修改值
+                // ApiListing 속성은 모두 최종적이므로 값을 반영하여 수정해야 합니다.
                 modify(apis, "apis", apiList);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -76,16 +76,16 @@ public class Swagger2MapperImplExtension extends ServiceModelToSwagger2MapperImp
     }
 
     public static void modify(Object object, String fieldName, Object newFieldValue) throws Exception {
-        Field field = object.getClass().getDeclaredField(fieldName);
-
-        Field modifiersField = Field.class.getDeclaredField("modifiers");
-        modifiersField.setAccessible(true);
-        modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
-
-        if (!field.isAccessible()) {
-            field.setAccessible(true);
-        }
-
-        field.set(object, newFieldValue);
+//        Field field = object.getClass().getDeclaredField(fieldName);
+//
+//        Field modifiersField = Field.class.getDeclaredField("modifiers");
+//        modifiersField.setAccessible(true);
+//        modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+//
+//        if (!field.isAccessible()) {
+//            field.setAccessible(true);
+//        }
+//
+//        field.set(object, newFieldValue);
     }
 }

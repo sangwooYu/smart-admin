@@ -55,13 +55,13 @@ public class RoleController extends AdminBaseController {
         return roleService.updateRole(roleUpdateDTO);
     }
 
-    @ApiOperation("캐릭터 데이터에 액세스 @author ysw")
+    @ApiOperation("역할 데이터에 액세스 @author ysw")
     @GetMapping("/role/get/{roleId}")
     public ResponseDTO<RoleVO> getRole(@PathVariable("roleId") Long roleId) {
         return roleService.getRoleById(roleId);
     }
 
-    @ApiOperation("모든 캐릭터 가져오기 @author ysw")
+    @ApiOperation("모든 역할 가져오기 @author ysw")
     @GetMapping("/role/getAll")
     public ResponseDTO<List<RoleVO>> getAllRole() {
         return roleService.getAllRole();

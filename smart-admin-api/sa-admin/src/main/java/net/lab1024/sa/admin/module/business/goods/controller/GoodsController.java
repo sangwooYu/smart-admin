@@ -19,15 +19,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-/**
- * 商品业务
- *
- * @Author 1024创新实验室: 胡克
- * @Date 2021-10-25 20:26:54
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
- */
 @OperateLog
 @RestController
 @Api(tags = AdminSwaggerTagConst.Business.MANAGER_GOODS)

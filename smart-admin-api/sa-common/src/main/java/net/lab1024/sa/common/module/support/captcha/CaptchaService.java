@@ -63,7 +63,7 @@ public class CaptchaService {
             base64Code = Base64Utils.encodeToString(os.toByteArray());
         } catch (Exception e) {
             log.error("generateCaptcha error:", e);
-            throw new BusinessException("生成验证码错误");
+            throw new BusinessException("캡차 오류 발생");
         }
 
         /**

@@ -38,15 +38,6 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-/**
- * 通知。公告 后台管理业务
- *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-08-12 21:40:39
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
- */
 @Service
 public class NoticeService {
 
@@ -201,7 +192,7 @@ public class NoticeService {
     public ResponseDTO<String> delete(Long noticeId) {
         NoticeEntity noticeEntity = noticeDao.selectById(noticeId);
         if (null == noticeEntity || noticeEntity.getDeletedFlag()) {
-            return ResponseDTO.userErrorParam("알림 통지가 존재하지 않습니다.");
+            return ResponseDTO.userErrorParam("공지가 존재하지 않습니다.");
         }
         // 更新删除状态
         noticeDao.updateDeletedFlag(noticeId);

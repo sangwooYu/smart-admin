@@ -9,15 +9,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-/**
- * 查询企业员工
- *
- * @Author 1024创新实验室: 开云
- * @Date 2021-12-20 21:06:49
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
- */
 @Data
 public class EnterpriseEmployeeQueryForm extends PageParam {
 

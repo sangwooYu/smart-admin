@@ -19,6 +19,6 @@ public class RoleEmployeeQueryForm extends PageParam {
     @ApiModelProperty("키워드")
     private String keywords;
 
-    @ApiModelProperty("캐릭터 ID")
+    @ApiModelProperty("역할 ID")
     private String roleId;
 }

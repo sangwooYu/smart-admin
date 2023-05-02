@@ -7,22 +7,13 @@ import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDate;
 
-/**
- * OA办公-OA银行信息查询
- *
- * @Author 1024创新实验室:善逸
- * @Date 2022/6/23 21:59:22
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
- */
 @Data
 public class BankQueryForm extends PageParam {
 
     @ApiModelProperty("기업 ID")
     private Long enterpriseId;
 
-    @ApiModelProperty("핵심 단어")
+    @ApiModelProperty("키워드")
     @Length(max = 200, message = "키워드 최대 200자")
     private String keywords;
 

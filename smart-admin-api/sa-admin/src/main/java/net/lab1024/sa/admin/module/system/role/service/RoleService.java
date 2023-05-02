@@ -46,7 +46,7 @@ public class RoleService {
     public ResponseDTO addRole(RoleAddForm roleAddForm) {
         RoleEntity existRoleEntity = roleDao.getByRoleName(roleAddForm.getRoleName());
         if (null != existRoleEntity) {
-            return ResponseDTO.userErrorParam("중복된 캐릭터 이름");
+            return ResponseDTO.userErrorParam("중복된 역할 이름");
         }
         RoleEntity roleEntity = SmartBeanUtil.copy(roleAddForm, RoleEntity.class);
         roleDao.insert(roleEntity);
@@ -84,7 +84,7 @@ public class RoleService {
         }
         RoleEntity existRoleEntity = roleDao.getByRoleName(roleUpdateForm.getRoleName());
         if (null != existRoleEntity && !existRoleEntity.getRoleId().equals(roleUpdateForm.getRoleId())) {
-            return ResponseDTO.userErrorParam("중복된 캐릭터 이름");
+            return ResponseDTO.userErrorParam("중복된 역할 이름");
         }
         RoleEntity roleEntity = SmartBeanUtil.copy(roleUpdateForm, RoleEntity.class);
         roleDao.updateById(roleEntity);

@@ -15,12 +15,12 @@ import lombok.Data;
 @Data
 public class RoleVO {
 
-    @ApiModelProperty("캐릭터 ID")
+    @ApiModelProperty("역할 ID")
     private Long roleId;
 
-    @ApiModelProperty("캐릭터 이름")
+    @ApiModelProperty("역할 이름")
     private String roleName;
 
-    @ApiModelProperty("캐릭터 비고")
+    @ApiModelProperty("역할 비고")
     private String remark;
 }

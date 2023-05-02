@@ -7,15 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-/**
- * admin 应用启动加载
- *
- * @Author 1024创新实验室-主任:卓大
- * @Date 2021-08-26 18:46:32
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
- */
 @Slf4j
 @Component
 public class AdminStartupRunner implements CommandLineRunner {

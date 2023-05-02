@@ -12,15 +12,6 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * 企业员工
- *
- * @Author 1024创新实验室: 罗伊
- * @Date 2022/7/28 20:37:15
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
- */
 @Mapper
 @Component
 public interface EnterpriseEmployeeDao extends BaseMapper<EnterpriseEmployeeEntity> {

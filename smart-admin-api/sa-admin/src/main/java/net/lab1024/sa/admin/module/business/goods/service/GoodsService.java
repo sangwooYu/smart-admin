@@ -30,15 +30,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/**
- * 商品
- *
- * @Author 1024创新实验室: 胡克
- * @Date 2021-10-25 20:26:54
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
- */
 @Service
 public class GoodsService {
     @Autowired

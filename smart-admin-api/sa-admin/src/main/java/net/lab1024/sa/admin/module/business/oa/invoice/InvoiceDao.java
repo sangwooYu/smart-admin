@@ -11,15 +11,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-/**
- * OA发票信息
- *
- * @Author 1024创新实验室: 善逸
- * @Date 2022-06-23 19:32:59
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
- */
 @Mapper
 @Component
 public interface InvoiceDao extends BaseMapper<InvoiceEntity> {

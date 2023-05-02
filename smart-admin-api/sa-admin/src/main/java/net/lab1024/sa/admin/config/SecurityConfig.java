@@ -9,15 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.servlet.http.HttpServletRequest;
 import java.util.function.BiFunction;
 
-/**
- * 权限配置
- *
- * @Author 1024创新实验室: 罗伊
- * @Date 2022-05-30 21:22:12
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
- */
 @Configuration
 public class SecurityConfig extends AbstractSecurityConfig {
     /**

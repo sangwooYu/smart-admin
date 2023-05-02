@@ -7,15 +7,6 @@ import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDate;
 
-/**
- * OA发票信息查询
- *
- * @Author 1024创新实验室: 善逸
- * @Date 2022-06-23 19:32:59
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
- */
 @Data
 public class InvoiceQueryForm extends PageParam {
 

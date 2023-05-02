@@ -3,15 +3,6 @@ package net.lab1024.sa.admin.module.business.oa.enterprise.constant;
 
 import net.lab1024.sa.common.common.enumeration.BaseEnum;
 
-/**
- * 企业类型
- *
- * @Author 1024创新实验室: 开云
- * @Date 2022/7/28 20:37:15
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
- */
 public enum EnterpriseTypeEnum implements BaseEnum {
 
     NORMAL(1, "제한 기업"),

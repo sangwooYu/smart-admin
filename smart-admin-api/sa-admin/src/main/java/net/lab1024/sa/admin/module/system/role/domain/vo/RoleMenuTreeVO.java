@@ -18,7 +18,7 @@ import java.util.List;
 @Data
 public class RoleMenuTreeVO {
 
-    @ApiModelProperty("캐릭터 ID")
+    @ApiModelProperty("역할 ID")
     private Long roleId;
 
     @ApiModelProperty("메뉴 목록")

@@ -51,6 +51,6 @@ public class EmployeeAddForm {
     @Pattern(regexp = SmartVerificationUtil.PHONE_REGEXP, message = "잘못된 휴대폰 번호 형식")
     private String phone;
 
-    @ApiModelProperty("캐릭터 목록")
+    @ApiModelProperty("역할 목록")
     private List<Long> roleIdList;
 }

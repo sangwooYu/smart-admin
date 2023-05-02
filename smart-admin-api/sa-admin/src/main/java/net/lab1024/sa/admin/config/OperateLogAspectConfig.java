@@ -26,8 +26,7 @@ public class OperateLogAspectConfig extends OperateLogAspect{
      */
     @Override
     public OperateLogConfig getOperateLogConfig() {
-        OperateLogConfig config = OperateLogConfig.builder().corePoolSize(4).queueCapacity(1000).build();
-        return config;
+        return OperateLogConfig.builder().corePoolSize(4).queueCapacity(1000).build();
     }
 
 

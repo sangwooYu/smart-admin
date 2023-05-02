@@ -14,7 +14,7 @@
         <a-form-item label="섹터" class="smart-query-form-item" style="width: 280px; margin-right: 20px">
           <DepartmentTreeSelect v-model:value="queryForm.departmentId" width="100%" />
         </a-form-item>
-        <a-form-item label="핵심 단어" class="smart-query-form-item" style="width: 280px">
+        <a-form-item label="키워드" class="smart-query-form-item" style="width: 280px">
           <a-input v-model:value="queryForm.keywords" placeholder="姓名/IP/设备" />
         </a-form-item>
         <a-form-item class="smart-query-form-item smart-margin-left10">

@@ -8,15 +8,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-/**
- * 企业员工
- *
- * @Author 1024创新实验室: 罗伊
- * @Date 2022/7/28 20:37:15
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
- */
 @Data
 @TableName("t_oa_enterprise_employee")
 @NoArgsConstructor

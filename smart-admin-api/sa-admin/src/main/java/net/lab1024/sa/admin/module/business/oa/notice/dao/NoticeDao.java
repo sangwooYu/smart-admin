@@ -17,15 +17,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-/**
- * 公告、通知、新闻等等
- *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-08-12 21:40:39
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
- */
 @Mapper
 @Component
 public interface NoticeDao extends BaseMapper<NoticeEntity> {

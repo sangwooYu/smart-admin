@@ -11,20 +11,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
 import org.springframework.security.core.Authentication;
 
-/**
- * 1、클래스 이름과 메서드 이름을 권한 문자열로 사용하는 체크섬 모드 <br>
- * 2、重写MethodSecurityMetadataSource将优化security配置，只需在方法上加上@saAuth注解，方法上就会存在权限（权限字符串为类名加方法名），而无需另外手动设置，减轻后端开发成本<br>
- * 3、security将不再依据权限字符串进行权限控制，<br>
- * 4、security将依据对应权限字符串下的接口权限进行控制 <br>
- * 5、采用此配置原@PreAuthorize依然有效 <br>
- * 6、如若无需此配置，需将@EnableGlobalMethodSecurity注解添加至SecurityConfig类上
- *
- * @Author 1024创新实验室: 罗伊
- * @Date 2021-08-31 0:01
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
- */
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityMethodConfig extends GlobalMethodSecurityConfiguration {
 

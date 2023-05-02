@@ -10,15 +10,6 @@ import net.lab1024.sa.common.module.support.datatracer.annoation.DataTracerField
 
 import java.time.LocalDateTime;
 
-/**
- * 企业
- *
- * @Author 1024创新实验室: 开云
- * @Date 2022/7/28 20:37:15
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
- */
 @Data
 @TableName("t_oa_enterprise")
 public class EnterpriseEntity {
@@ -71,7 +62,7 @@ public class EnterpriseEntity {
     /**
      * 邮箱
      */
-    @DataTracerFieldLabel("사서함")
+    @DataTracerFieldLabel("이메일")
     private String email;
 
     /**

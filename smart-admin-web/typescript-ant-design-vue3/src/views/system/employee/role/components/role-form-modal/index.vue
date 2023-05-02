@@ -12,10 +12,10 @@
   <a-modal :title="form.roleId ? '역할 수정' : '역할 추가'" :width="600" :visible="modalVisible" @cancel="onClose" :footer="null">
     <a-form ref="formRef" :model="form" :rules="rules" :labelCol="{ span: 4 }">
       <a-form-item label="롤 이름" name="roleName">
-        <a-input style="width: 100%" placeholder="롤 이름을 입력하세요." v-model:value="form.roleName" />
+        <a-input style="width: 100%" placeholder="역할 이름을 입력하세요." v-model:value="form.roleName" />
       </a-form-item>
       <a-form-item label="롤 비고">
-        <a-input style="width: 100%" placeholder="캐릭터 메모를 입력하세요." v-model:value="form.remark" />
+        <a-input style="width: 100%" placeholder="역할 메모를 입력하세요." v-model:value="form.remark" />
       </a-form-item>
     </a-form>
 
@@ -69,7 +69,7 @@ import { smartSentry } from '/@/lib/smart-sentry';
 
   // 表单规则
   const rules = {
-    roleName: [{ required: true, message: '캐릭터 이름을 입력하세요.' }],
+    roleName: [{ required: true, message: '역할 이름을 입력하세요.' }],
   };
 
   // 提交表单

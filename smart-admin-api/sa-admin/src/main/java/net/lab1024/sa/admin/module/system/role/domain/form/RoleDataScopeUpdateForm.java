@@ -19,8 +19,8 @@ import java.util.List;
 @Data
 public class RoleDataScopeUpdateForm {
 
-    @ApiModelProperty("캐릭터 ID")
-    @NotNull(message = "캐릭터 ID는 비어 있을 수 없습니다.")
+    @ApiModelProperty("역할 ID")
+    @NotNull(message = "역할 ID는 비어 있을 수 없습니다.")
     private Long roleId;
 
     @ApiModelProperty("설정 정보")

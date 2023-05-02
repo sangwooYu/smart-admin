@@ -25,7 +25,7 @@ public class NoticeViewRecordQueryForm extends PageParam {
     @ApiModelProperty("부서 ID")
     private Long departmentId;
 
-    @ApiModelProperty("핵심 단어")
+    @ApiModelProperty("키워드")
     private String keywords;
 
 

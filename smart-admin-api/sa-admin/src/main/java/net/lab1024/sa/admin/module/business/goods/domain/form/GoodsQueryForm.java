@@ -12,15 +12,6 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 
-/**
- * 商品 分页查询
- *
- * @Author 1024创新实验室: 胡克
- * @Date 2021-10-25 20:26:54
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
- */
 @Data
 public class GoodsQueryForm extends PageParam {
 

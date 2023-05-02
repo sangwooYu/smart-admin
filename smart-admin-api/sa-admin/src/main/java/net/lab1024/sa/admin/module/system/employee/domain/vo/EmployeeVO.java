@@ -50,9 +50,9 @@ public class EmployeeVO {
     @ApiModelProperty("생성 시간")
     private LocalDateTime createTime;
 
-    @ApiModelProperty("캐릭터 목록")
+    @ApiModelProperty("역할 목록")
     private List<Long> roleIdList;
 
-    @ApiModelProperty("캐릭터 이름 목록")
+    @ApiModelProperty("역할 이름 목록")
     private List<String> roleNameList;
 }
